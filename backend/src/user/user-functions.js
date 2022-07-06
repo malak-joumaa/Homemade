@@ -1,4 +1,6 @@
 const User = require("../../model/Users");
+const Cook = require("../../model/Cooks");
+const Customer = require("../../model/Customers");
 
 //Add user function
 async function addUser(body, hashPassword) {
@@ -24,6 +26,33 @@ async function addUser(body, hashPassword) {
   return await user.save();
 }
 
+//Add cook function
+async function addCook(body) {
+  const { rate, opening_hours, user } = body;
+
+  const cook = new Cook({
+    rate,
+    opening_hours,
+    user,
+  });
+
+  return await cook.save();
+}
+
+//Add customer function
+async function addCustomer(body) {
+  const { user, categories } = body;
+
+  const customer = new Customer({
+    user,
+    categories,
+  });
+
+  return await customer.save();
+}
+
 module.exports = {
   addUser,
+  addCook,
+  addCustomer,
 };
