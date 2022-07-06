@@ -13,5 +13,5 @@ mongoose.connect(DB_CONNECT, (err) => {
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use("/api", userRouter);
+app.use("/api/user", userRouter);
 app.listen(5000, () => console.log("Server running"));

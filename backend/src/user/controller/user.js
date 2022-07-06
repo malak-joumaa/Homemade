@@ -1,4 +1,4 @@
-const { addUser } = require("../user-functions");
+const { addUser } = require("../service");
 const bcrypt = require("bcryptjs");
 
 // User Register
