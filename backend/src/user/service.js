@@ -53,8 +53,16 @@ async function addCustomer(body) {
   return await customer.save();
 }
 
+//Get user by email
+async function getByEmail(email) {
+  return await User.findOne({
+    email,
+  });
+}
+
 module.exports = {
   addUser,
   addCook,
   addCustomer,
+  getByEmail,
 };
