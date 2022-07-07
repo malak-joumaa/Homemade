@@ -34,5 +34,9 @@ code {
 }
 
 .left-register{
-width: 400px;
-border: 2px solid black;}
+  width: 400px;
+  background-image: url("assets/user-sign-in.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
