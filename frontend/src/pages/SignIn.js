@@ -10,6 +10,25 @@ const SignIn = () => {
   console.log(email);
   console.log(password);
 
+  // Login api
+  const signIn = async () => {
+    const res = await fetch("http://localhost:5000/api/user/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    });
+    const data = await res.json();
+    console.log(data);
+    var token = data.token;
+    // Saving token in local storage
+    window.localStorage.setItem("token", token);
+  };
+
   return (
     <div className="main-container">
       <div className="register">
@@ -43,7 +62,13 @@ const SignIn = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
             <br />
-            <button>Sign In</button>
+            <button
+              onClick={() => {
+                signIn();
+              }}
+            >
+              Sign In
+            </button>
             <br />
             {/* Sign Up */}
             <p>Don't have an account? {/*<Link>SignUp</Link> */}</p>
