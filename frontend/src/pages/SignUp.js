@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/logo.png";
 
 const SignUp = () => {
+  var navigate = useNavigate();
   // Use states
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
@@ -27,6 +28,7 @@ const SignUp = () => {
     });
     const data = await res.json();
     console.log(data);
+    navigate("/sign-in");
   };
 
   return (
