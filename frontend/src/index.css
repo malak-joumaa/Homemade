@@ -10,7 +10,7 @@ code {
     monospace;
 }
 
-/* Sign In */
+/* Sign In - Sign Up*/
 .main-container{
   display: table;
   position: absolute;
@@ -41,6 +41,7 @@ code {
 .left-register{
   width: 400px;
   margin: 0 auto;
+  display: inline-block;
 }
 
 .welcome-photo{
@@ -50,6 +51,7 @@ code {
 
 .right-register{
   width: 400px;
+  display: inline-block;
 }
 
 .logo-div{
@@ -108,4 +110,7 @@ code {
 a:link, a:visited{
   text-decoration: none;
   color: #45a479;
+}
+#form{
+  margin-left: 40px;
 }
