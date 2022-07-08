@@ -28,7 +28,6 @@ const userSchema = new mongoose.Schema({
   },
   phone_number: {
     type: String,
-    required: true,
     min: 6,
     max: 255,
   },
@@ -41,11 +40,9 @@ const userSchema = new mongoose.Schema({
     type: {
       type: String,
       enum: ["Point"],
-      required: true,
     },
     coordinates: {
       type: [Number],
-      required: true,
     },
   },
   user_type: {
