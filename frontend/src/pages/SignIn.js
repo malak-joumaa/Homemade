@@ -13,12 +13,14 @@ const SignIn = () => {
   return (
     <div className="main-container">
       <div className="register">
+        {/* Left Div (Image) */}
         <div className="left-register">
           <div className="logo-div">
             <img src={Logo} className="register-logo" />
           </div>
           <img src={User_Sign_In} className="welcome-photo" />
         </div>
+        {/* Right Div (Form) */}
         <div className="right-register">
           {/* Sign in form */}
           <div>
