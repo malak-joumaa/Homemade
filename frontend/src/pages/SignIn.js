@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import User_Sign_In from "../assets/chef.jpg";
 import Logo from "../assets/logo.png";
+import jwt_decode from "jwt-decode";
 
 const SignIn = () => {
   // Email and password use state
@@ -27,6 +28,12 @@ const SignIn = () => {
     var token = data.token;
     // Saving token in local storage
     window.localStorage.setItem("token", token);
+    // Decode JWT
+    var decoded = jwt_decode(token);
+    console.log(decoded);
+    window.localStorage.setItem("first_name", decoded.first_name);
+    window.localStorage.setItem("last_name", decoded.last_name);
+    window.localStorage.setItem("customer_id", decoded._id);
   };
 
   return (
