@@ -42,7 +42,7 @@ const SignIn = () => {
         {/* Left Div (Image) */}
         <div className="left-register">
           <div className="logo-div">
-            <img src={Logo} className="register-logo" />
+            <img src={Logo} className="sign-in-logo" />
           </div>
           <img src={User_Sign_In} className="welcome-photo" />
         </div>

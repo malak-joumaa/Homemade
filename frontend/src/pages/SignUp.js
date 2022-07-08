@@ -6,12 +6,12 @@ const SignUp = () => {
   return (
     <div className="main-container">
       <div className="register sign-up">
-        {/* Logo */}
-        {/* <div className="logo-div">
-          <img src={Logo} className="register-logo" />
-        </div> */}
         {/* Sign up form */}
         <div id="form">
+          {/* Logo */}
+          <div className="sign-up-logo-div">
+            <img src={Logo} className="sign-up-logo" />
+          </div>
           <h1>Sign Up</h1>
           <div className="left-register left-sign-up">
             <label>First Name</label>

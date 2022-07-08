@@ -23,7 +23,7 @@ code {
 
 .register{
   width: 850px;
-  height: 55vh;
+  min-height: 55vh;
   margin: 0 auto;
   position: absolute;
   top: 50%;
@@ -59,7 +59,7 @@ code {
   float: left;
 }
 
-.register-logo{
+.sign-in-logo{
   width: 180px;
 }
 
@@ -113,4 +113,15 @@ a:link, a:visited{
 }
 #form{
   margin-left: 40px;
+}
+
+.sign-up-logo-div{
+  margin-top: 25px;
+  text-align: center;
+}
+.sign-up-logo{
+  width: 280px;
+}
+#form h1{
+  margin-top: 5px;
 }
