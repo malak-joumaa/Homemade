@@ -78,7 +78,9 @@ const SignIn = () => {
             </button>
             <br />
             {/* Sign Up */}
-            <p>Don't have an account? {/*<Link>SignUp</Link> */}</p>
+            <p>
+              Don't have an account? <Link to="/sign-up">SignUp</Link>
+            </p>
           </div>
         </div>
       </div>
