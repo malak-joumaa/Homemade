@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import User_Sign_In from "../assets/chef.jpg";
+import Logo from "../assets/logo.png";
 
 const SignIn = () => {
   // Email and password use state
@@ -11,7 +13,9 @@ const SignIn = () => {
   return (
     <div className="main-container">
       <div className="register">
-        <div className="left-register"></div>
+        <div className="left-register">
+          <img src={User_Sign_In} className="welcome-photo" />
+        </div>
         <div className="right-register">
           {/* Sign in form */}
           <div>

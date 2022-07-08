@@ -18,11 +18,12 @@ code {
   left: 0;
   height: 100%;
   width: 100%;
+  background-color: #ACDAC5;
 }
 
 .register{
-  width: 900px;
-  height: 60vh;
+  width: 850px;
+  height: 55vh;
   margin: 0 auto;
   position: absolute;
   top: 50%;
@@ -34,33 +35,48 @@ code {
   justify-content: center;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 20px;
+  background-color: white;
 }
 
 .left-register{
   width: 400px;
-  background-image: url("assets/user-sign-in.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  margin: 0 auto;
+}
+
+.welcome-photo{
+  width:400px;
+  height: 400px;
+  margin-top: 50px;
 }
 
 .right-register{
-  padding-left: 20px
+  width: 400px;
+}
+
+.logo-div{
+  text-align: center;
+}
+
+.register-logo{
+  width: 300px;
+  margin-top: 40px;
 }
 
 .register h1{
   font-size: 2.2em;
   margin-bottom: 50px;
+  margin-top: 70px;
 }
 
 .register input{
-  background-color: #ACDAC5;
+  background-color: #acdac5ba;
   border: none;
   border-radius: 10px;
   height: 35px;
-  width: 400px;
+  width: 350px;
   margin-bottom: 20px;
   margin-top: 10px;
+  font-size: 1.05em;
 }
 
 .register label{
@@ -71,13 +87,14 @@ code {
 .register button{
   cursor: pointer;
   width: 100px;
-  height: 35px;
-  font-size: 16px;
-  font-weight: bold;
+  height: 40px;
+  font-size: 17px;
   border-radius: 12px;
   background-color: transparent;
   color: #45a479;
-  border: 2px solid #45a479;
+  border: 2px solid #64b892;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .register p{
