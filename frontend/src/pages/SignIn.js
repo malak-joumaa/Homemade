@@ -14,6 +14,9 @@ const SignIn = () => {
     <div className="main-container">
       <div className="register">
         <div className="left-register">
+          <div className="logo-div">
+            <img src={Logo} className="register-logo" />
+          </div>
           <img src={User_Sign_In} className="welcome-photo" />
         </div>
         <div className="right-register">

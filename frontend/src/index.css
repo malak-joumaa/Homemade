@@ -46,7 +46,6 @@ code {
 .welcome-photo{
   width:400px;
   height: 400px;
-  margin-top: 50px;
 }
 
 .right-register{
@@ -54,12 +53,12 @@ code {
 }
 
 .logo-div{
-  text-align: center;
+  margin-top: 30px;
+  float: left;
 }
 
 .register-logo{
-  width: 300px;
-  margin-top: 40px;
+  width: 180px;
 }
 
 .register h1{
