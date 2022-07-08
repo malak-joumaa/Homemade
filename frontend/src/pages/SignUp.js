@@ -11,6 +11,24 @@ const SignUp = () => {
   const [c_password, setCpassword] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
 
+  const signUp = async () => {
+    const res = await fetch("http://localhost:5000/api/user/auth/register", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        first_name: fname,
+        last_name: lname,
+        email: email,
+        password: password,
+        user_type: "customer",
+      }),
+    });
+    const data = await res.json();
+    console.log(data);
+  };
+
   return (
     <div className="main-container">
       <div className="register sign-up">
@@ -78,7 +96,13 @@ const SignUp = () => {
             />
           </div>
           <br />
-          <button onClick={() => {}}>Sign Up</button>
+          <button
+            onClick={() => {
+              signUp();
+            }}
+          >
+            Sign Up
+          </button>
           <br />
           {/* Sign In */}
           <p>
