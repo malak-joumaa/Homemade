@@ -42,8 +42,10 @@ const SignUp = () => {
           <br />
           <button onClick={() => {}}>Sign Up</button>
           <br />
-          {/* Sign Up */}
-          <p>{/* Don't have an account? <Link to="/sign-up"></Link> */}</p>
+          {/* Sign In */}
+          <p>
+            Already have an account? <Link to="/sign-in">Sign In</Link>
+          </p>
         </div>
       </div>
     </div>
