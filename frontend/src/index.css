@@ -233,3 +233,51 @@ a:link, a:visited{
   transition: all .2s ease;
   cursor: pointer;
 }
+
+/* Opening Hours */
+.oph-div{
+  display: flex;
+}
+
+#oph-photo{
+  width: 40%;
+  text-align: center;
+}
+
+#setTime{
+  width: 5=60%;
+  text-align: center;
+  font-size: 1.3em;
+  font-weight: 600;
+  position: absolute;
+  top: 40%;
+  right: 50px;
+}
+
+.oph{
+  width: 250px;
+  height: 40px;
+  font-size: 22px;
+  margin-right: 20px;
+  margin-left: 20px;
+  border: none;
+  background-color: #f9ecd9;
+  border-bottom: 5px solid #dbbd90;
+}
+
+.oph:focus{
+  outline: none;
+  background-color: #ACDAC5;
+  border-bottom: 5px solid #43C187;
+}
+
+#oph-validity:invalid{
+  outline: none;
+  background-color: #ACDAC5;
+  border-bottom: 5px solid #EF0000;
+}
+
+#oph-photo img{
+  width: 400px;
+  margin: 30px auto;
+}
