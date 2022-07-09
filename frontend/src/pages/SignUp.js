@@ -28,7 +28,7 @@ const SignUp = () => {
     });
     const data = await res.json();
     console.log(data);
-    navigate("/sign-in");
+    navigate("/profile-photo");
   };
 
   return (
