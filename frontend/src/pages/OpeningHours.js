@@ -4,6 +4,10 @@ import Photo from "../assets/hours.jpg";
 
 const OpeningHours = () => {
   const [valid, setValid] = useState(false);
+  const [timeFrom, setTimeFrom] = useState("");
+  const [timeTill, setTimeTill] = useState("");
+  console.log(timeFrom);
+  console.log(timeTill);
 
   return (
     <div>
@@ -21,6 +25,10 @@ const OpeningHours = () => {
               type="time"
               className="oph"
               name="oph"
+              value={timeFrom}
+              onChange={(e) => {
+                setTimeFrom(e.target.value);
+              }}
               required
               id={!valid ? "" : "oph-validity"}
               onClick={() => {
@@ -32,9 +40,13 @@ const OpeningHours = () => {
               type="time"
               className="oph"
               name="oph"
+              value={timeTill}
+              onChange={(e) => {
+                setTimeTill(e.target.value);
+              }}
               required
               id={!valid ? "" : "oph-validity"}
-              onClick={() => {
+              onClick={(e) => {
                 setValid(true);
               }}
             />
