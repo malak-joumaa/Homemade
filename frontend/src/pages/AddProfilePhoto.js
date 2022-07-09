@@ -35,7 +35,28 @@ const AddProfilePhoto = () => {
               <h3>CLICK OR DRAG AND DROP A FILE</h3>
             </div>
           ) : (
-            <></>
+            <>
+              <div class="file-upload-content">
+                <img
+                  class="file-upload-image"
+                  src={imageSrc}
+                  alt="your image"
+                />
+                <div>
+                  <button
+                    onClick={() => {
+                      setSelectedImage(null);
+                      setImageSrc("");
+                      setFileName("");
+                    }}
+                    class="remove-image-btn"
+                  >
+                    Remove <br />
+                    {fileName}
+                  </button>
+                </div>
+              </div>
+            </>
           )}
         </div>
 
