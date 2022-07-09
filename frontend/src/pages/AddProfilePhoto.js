@@ -1,75 +1,67 @@
-import React, { useState, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const AddProfilePhoto = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [imageSrc, setImageSrc] = useState("");
   const [fileName, setFileName] = useState("");
-  const PhotoContext = createContext();
 
   return (
     <div>
-      <PhotoContext.Provider value={imageSrc}>
-        <div className="follow-up-div">
-          <h1>Upload Profile Photo</h1>
+      <div className="follow-up-div">
+        <h1>Upload Profile Photo</h1>
 
-          <div class="file-upload">
-            {!selectedImage ? (
-              <div class="image-upload-wrap">
-                <input
-                  class="file-upload-input"
-                  type="file"
-                  onChange={(e) => {
-                    setSelectedImage(e.target.files[0]);
-                    setFileName(e.target.files[0].name);
-                    var reader = new FileReader();
-                    reader.onload = function (event) {
-                      setImageSrc(event.target.result);
-                      console.log(e.target.files[0]);
-                      console.log(event.target);
-                      console.log(event.target.result);
-                      console.log(imageSrc);
-                    };
-                    reader.readAsDataURL(e.target.files[0]);
+        <div class="file-upload">
+          {!selectedImage ? (
+            <div class="image-upload-wrap">
+              <input
+                class="file-upload-input"
+                type="file"
+                onChange={(e) => {
+                  setSelectedImage(e.target.files[0]);
+                  setFileName(e.target.files[0].name);
+                  var reader = new FileReader();
+                  reader.onload = function (event) {
+                    setImageSrc(event.target.result);
+                    console.log(e.target.files[0]);
+                    console.log(event.target);
+                    console.log(event.target.result);
+                    console.log(imageSrc);
+                  };
+                  reader.readAsDataURL(e.target.files[0]);
+                }}
+                accept="image/*"
+              />
+              <h3>CLICK OR DRAG AND DROP A FILE</h3>
+            </div>
+          ) : (
+            <div class="file-upload-content">
+              <img class="file-upload-image" src={imageSrc} alt="your image" />
+              <div>
+                <button
+                  onClick={() => {
+                    setSelectedImage(null);
+                    setImageSrc("");
+                    setFileName("");
                   }}
-                  accept="image/*"
-                />
-                <h3>CLICK OR DRAG AND DROP A FILE</h3>
+                  class="remove-image-btn"
+                >
+                  Remove <br />
+                  {fileName}
+                </button>
               </div>
-            ) : (
-              <div class="file-upload-content">
-                <img
-                  class="file-upload-image"
-                  src={imageSrc}
-                  alt="your image"
-                />
-                <div>
-                  <button
-                    onClick={() => {
-                      setSelectedImage(null);
-                      setImageSrc("");
-                      setFileName("");
-                    }}
-                    class="remove-image-btn"
-                  >
-                    Remove <br />
-                    {fileName}
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
-
-          <div id="uploaded-profile-photo"></div>
-          {/* Link to be changed */}
-          <Link to="/sign-in" className="skip">
-            Skip
-          </Link>
-          <Link to="/sign-in" className="next">
-            Next -{">"}
-          </Link>
+            </div>
+          )}
         </div>
-      </PhotoContext.Provider>
+
+        <div id="uploaded-profile-photo"></div>
+        <Link to="/openning-hours" className="skip">
+          Skip
+        </Link>
+        <Link to="/openning-hours" className="next">
+          Next -{">"}
+        </Link>
+      </div>
     </div>
   );
 };
