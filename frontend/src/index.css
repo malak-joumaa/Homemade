@@ -129,3 +129,39 @@ a:link, a:visited{
 #form h1{
   margin-top: 5px;
 }
+
+/* Following sign-up */
+
+.follow-up-div{
+  width: 1300px;
+  height: 750px;
+  background-color: #F8F8F8;
+  border: 1px solid #A4A4A4;
+  border-radius: 5px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: auto;
+  box-sizing: border-box;
+  padding: 20px 50px;
+}
+
+.follow-up-div h1{
+  color: #43C187;
+}
+
+.follow-up-div a{
+  position: absolute;
+  bottom: 40px;
+  color: #43C187;
+  font-weight: 600;
+  font-size: 1.35em;
+}
+.follow-up-div a:last-of-type{
+  right: 40px;
+}
