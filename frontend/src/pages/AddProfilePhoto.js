@@ -55,10 +55,10 @@ const AddProfilePhoto = () => {
         </div>
 
         <div id="uploaded-profile-photo"></div>
-        <Link to="/openning-hours" className="skip">
+        <Link to="/opening-hours" className="skip">
           Skip
         </Link>
-        <Link to="/openning-hours" className="next">
+        <Link to="/opening-hours" className="next">
           Next -{">"}
         </Link>
       </div>
