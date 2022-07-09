@@ -165,3 +165,71 @@ a:link, a:visited{
 .follow-up-div a:last-of-type{
   right: 40px;
 }
+
+/* Uploading Profile Photo */
+
+.file-upload {
+  width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.file-upload-content {
+  text-align: center;
+}
+
+.file-upload-input {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.image-upload-wrap {
+  margin-top: 20px;
+  border: 4px dashed #1FB264;
+  position: relative;
+}
+
+.image-upload-wrap:hover {
+  background-color: #ACDAC5;
+  border: 4px dashed #ffffff;
+}
+
+.file-upload h3 {
+  text-align: center;
+  font-weight: 100;
+  color: #15824B;
+  padding: 60px 0;
+}
+
+.file-upload-image {
+  max-height: 450px;
+  max-width: 450px;
+  padding: 20px;
+}
+
+.remove-image-btn {
+  width: 200px;
+  color: #fff;
+  background: #43C187;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 1.1em;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.remove-image-btn:hover {
+  background: rgb(226, 48, 48);
+  color: #ffffff;
+  transition: all .2s ease;
+  cursor: pointer;
+}
