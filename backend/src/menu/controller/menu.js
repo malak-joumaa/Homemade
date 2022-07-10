@@ -1,4 +1,4 @@
-const { newCategory } = require("../service");
+const { newCategory, newMenu } = require("../service");
 
 // Category
 async function addCategory(req, res) {
@@ -14,6 +14,21 @@ async function addCategory(req, res) {
   }
 }
 
+// Menu
+async function addMenu(req, res) {
+  try {
+    console.log(req.body);
+
+    const addMenuResult = await newMenu(req.body);
+    console.log("addMenuResult =>", addMenuResult);
+
+    return res.send({ menu_id: addMenuResult._id });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 module.exports = {
   addCategory,
+  addMenu,
 };
