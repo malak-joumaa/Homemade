@@ -4,11 +4,12 @@ const Category = require("../../model/Category");
 
 //Add Menu function
 async function newMenu(body) {
-  const { cook, days } = body;
+  const { cook, days, dishes } = body;
 
   const menu = new Menu({
     cook,
     days,
+    dishes,
   });
 
   return await menu.save();

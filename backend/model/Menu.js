@@ -11,6 +11,12 @@ const menuSchema = new mongoose.Schema({
       ref: "Day",
     },
   ],
+  dishes: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Dish",
+    },
+  ],
 });
 
 module.exports = mongoose.model("Menu", menuSchema);
