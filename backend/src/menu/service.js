@@ -3,7 +3,7 @@ const Dish = require("../../model/Dish");
 s;
 
 //Add Menu function
-async function addMenu(body) {
+async function newMenu(body) {
   const { cook, days } = body;
 
   const menu = new Menu({
@@ -15,7 +15,7 @@ async function addMenu(body) {
 }
 
 //Add dish function
-async function addDish(body) {
+async function newDish(body) {
   const { description, price, quantity, photo, menu, categories } = body;
 
   const dish = new Dish({
@@ -30,7 +30,20 @@ async function addDish(body) {
   return await dish.save();
 }
 
+//Add dish function
+async function newCategory(body) {
+  const { name, created_by } = body;
+
+  const dish = new Dish({
+    name,
+    created_by,
+  });
+
+  return await dish.save();
+}
+
 module.exports = {
-  addMenu,
-  addDish,
+  newMenu,
+  newDish,
+  newCategory,
 };
