@@ -29,7 +29,7 @@ async function addUser(body, hashPassword) {
 }
 
 //Add cook function
-async function addCook(body) {
+async function addNewCook(body) {
   const { rate, opening_hours, user } = body;
 
   const cook = new Cook({
@@ -62,7 +62,7 @@ async function getByEmail(email) {
 
 module.exports = {
   addUser,
-  addCook,
+  addNewCook,
   addCustomer,
   getByEmail,
 };

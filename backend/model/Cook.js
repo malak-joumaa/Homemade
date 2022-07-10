@@ -4,8 +4,7 @@ const cookSchema = new mongoose.Schema({
   rate: {
     type: Number,
     required: true,
-    min: 6,
-    max: 50,
+    min: 1,
   },
   opening_hours: [
     {

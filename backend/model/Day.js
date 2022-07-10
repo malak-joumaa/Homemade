@@ -7,12 +7,6 @@ const daySchema = new mongoose.Schema({
     min: 6,
     max: 50,
   },
-  menus: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Menu",
-    },
-  ],
 });
 
 module.exports = mongoose.model("Day", daySchema);

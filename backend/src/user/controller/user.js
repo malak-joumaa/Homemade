@@ -1,4 +1,4 @@
-const { addUser, getByEmail } = require("../service");
+const { addUser, getByEmail, addNewCook } = require("../service");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const TOKEN_SECRET = process.env.TOKEN_SECRET || "";
@@ -49,7 +49,21 @@ async function login(req, res) {
   }
 }
 
+async function addCook(req, res) {
+  try {
+    console.log(req.body);
+
+    const addCookResult = await addNewCook(req.body);
+    console.log("addCookResult =>", addCookResult);
+
+    return res.send({ cook: addCookResult._id });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 module.exports = {
   register,
   login,
+  addCook,
 };
