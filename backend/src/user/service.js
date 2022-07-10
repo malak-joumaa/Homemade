@@ -1,6 +1,6 @@
-const User = require("../../model/Users");
-const Cook = require("../../model/Cooks");
-const Customer = require("../../model/Customers");
+const User = require("../../model/User");
+const Cook = require("../../model/Cook");
+const Customer = require("../../model/Customer");
 
 //Add user function
 async function addUser(body, hashPassword) {

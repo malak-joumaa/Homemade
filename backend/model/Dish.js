@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const daySchema = new mongoose.Schema({
+const dishSchema = new mongoose.Schema({
   description: {
     type: String,
     required: true,
@@ -27,4 +27,4 @@ const daySchema = new mongoose.Schema({
   ],
 });
 
-module.exports = mongoose.model("Day", daySchema);
+module.exports = mongoose.model("Dish", dishSchema);
