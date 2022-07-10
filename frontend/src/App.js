@@ -4,6 +4,7 @@ import OpeningHours from "./pages/OpeningHours";
 import Categories from "./pages/Categories";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
+import AddMenu from "./pages/AddMenu";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/profile-photo" element={<AddProfilePhoto />}></Route>
         <Route path="/opening-hours" element={<OpeningHours />}></Route>
         <Route path="/categories" element={<Categories />}></Route>
+        <Route path="/add-menu" element={<AddMenu />}></Route>
       </Routes>
     </BrowserRouter>
   );
