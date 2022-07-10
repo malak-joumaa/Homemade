@@ -5,6 +5,12 @@ const menuSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Cook",
   },
+  days: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Day",
+    },
+  ],
 });
 
 module.exports = mongoose.model("Menu", menuSchema);
