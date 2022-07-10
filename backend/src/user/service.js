@@ -42,7 +42,7 @@ async function addNewCook(body) {
 }
 
 //Add customer function
-async function addCustomer(body) {
+async function addNewCustomer(body) {
   const { user, categories } = body;
 
   const customer = new Customer({
@@ -63,6 +63,6 @@ async function getByEmail(email) {
 module.exports = {
   addUser,
   addNewCook,
-  addCustomer,
+  addNewCustomer,
   getByEmail,
 };

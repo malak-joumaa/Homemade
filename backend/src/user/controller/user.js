@@ -1,4 +1,9 @@
-const { addUser, getByEmail, addNewCook } = require("../service");
+const {
+  addUser,
+  getByEmail,
+  addNewCook,
+  addNewCustomer,
+} = require("../service");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const TOKEN_SECRET = process.env.TOKEN_SECRET || "";
@@ -49,6 +54,7 @@ async function login(req, res) {
   }
 }
 
+// Add Cook
 async function addCook(req, res) {
   try {
     console.log(req.body);
@@ -56,7 +62,21 @@ async function addCook(req, res) {
     const addCookResult = await addNewCook(req.body);
     console.log("addCookResult =>", addCookResult);
 
-    return res.send({ cook: addCookResult._id });
+    return res.send({ cook_id: addCookResult._id });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// Add Customer
+async function addCustomer(req, res) {
+  try {
+    console.log(req.body);
+
+    const addCustomerResult = await addNewCustomer(req.body);
+    console.log("addCustomerResult =>", addCustomerResult);
+
+    return res.send({ customer_id: addCustomerResult._id });
   } catch (error) {
     console.log(error);
   }
@@ -66,4 +86,5 @@ module.exports = {
   register,
   login,
   addCook,
+  addCustomer,
 };
