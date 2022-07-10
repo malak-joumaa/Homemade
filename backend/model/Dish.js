@@ -3,9 +3,6 @@ const mongoose = require("mongoose");
 const dishSchema = new mongoose.Schema({
   description: {
     type: String,
-    required: true,
-    min: 6,
-    max: 500,
   },
   price: {
     type: Number,
@@ -13,6 +10,9 @@ const dishSchema = new mongoose.Schema({
   },
   photo: {
     type: String,
+  },
+  quantity: {
+    type: Number,
     required: true,
   },
   menu: {
