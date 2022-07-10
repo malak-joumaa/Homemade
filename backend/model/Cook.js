@@ -13,11 +13,17 @@ const cookSchema = new mongoose.Schema({
     },
   ],
   user: {
-    type: mongoose.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: "Users",
   },
+  menus: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Menu",
+    },
+  ],
 });
 
 cookSchema.set("timestamps", true);
 
-module.exports = mongoose.model("cook", cookSchema);
+module.exports = mongoose.model("Cook", cookSchema);

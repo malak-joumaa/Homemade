@@ -15,10 +15,10 @@ const categorySchema = new mongoose.Schema({
   },
   customers: [
     {
-      type: mongoose.Types.ObjectId,
-      ref: "customers",
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Customer",
     },
   ],
 });
 
-module.exports = mongoose.model("category", categorySchema);
+module.exports = mongoose.model("Category", categorySchema);

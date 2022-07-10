@@ -8,9 +8,9 @@ const customerSchema = new mongoose.Schema({
   categories: [
     {
       type: mongoose.Types.ObjectId,
-      ref: "categories",
+      ref: "Category",
     },
   ],
 });
 
-module.exports = mongoose.model("customer", customerSchema);
+module.exports = mongoose.model("Customer", customerSchema);
