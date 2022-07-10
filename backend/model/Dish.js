@@ -25,6 +25,12 @@ const dishSchema = new mongoose.Schema({
       ref: "Category",
     },
   ],
+  questions: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Question",
+    },
+  ],
 });
 
 module.exports = mongoose.model("Dish", dishSchema);

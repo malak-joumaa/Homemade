@@ -11,8 +11,7 @@ const questionSchema = new mongoose.Schema({
     ref: "Dish",
   },
   question_type: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Question_Type",
+    type: String,
   },
 });
 

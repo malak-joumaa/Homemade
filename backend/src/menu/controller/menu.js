@@ -1,4 +1,4 @@
-const { newCategory, newMenu, newDish } = require("../service");
+const { newCategory, newMenu, newDish, newQuestion } = require("../service");
 
 // Category
 async function addCategory(req, res) {
@@ -42,8 +42,23 @@ async function addDish(req, res) {
   }
 }
 
+// Question
+async function addQuestion(req, res) {
+  try {
+    console.log(req.body);
+
+    const addQuestionResult = await newQuestion(req.body);
+    console.log("addQuestionResult =>", addQuestionResult);
+
+    return res.send({ question_id: addQuestionResult._id });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 module.exports = {
   addCategory,
   addMenu,
   addDish,
+  addQuestion,
 };

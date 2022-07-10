@@ -1,6 +1,7 @@
 const Menu = require("../../model/Menu");
 const Dish = require("../../model/Dish");
 const Category = require("../../model/Category");
+const Question = require("../../model/Question");
 
 //Add Menu function
 async function newMenu(body) {
@@ -43,8 +44,22 @@ async function newCategory(body) {
   return await category.save();
 }
 
+//Add Question
+async function newQuestion(body) {
+  const { question, dish, question_type } = body;
+
+  const quest = new Question({
+    question,
+    dish,
+    question_type,
+  });
+
+  return await quest.save();
+}
+
 module.exports = {
   newMenu,
   newDish,
   newCategory,
+  newQuestion,
 };
