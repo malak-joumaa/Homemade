@@ -5,11 +5,15 @@ async function addCategory(req, res) {
   try {
     console.log(req.body);
 
-    const addCategoryResult = await addCategory(req.body);
+    const addCategoryResult = await newCategory(req.body);
     console.log("addCategoryResult =>", addCategoryResult);
 
-    return res.send({ menu: addCategoryResult._id });
+    return res.send({ id: addCategoryResult._id });
   } catch (error) {
     console.log(error);
   }
 }
+
+module.exports = {
+  addCategory,
+};
