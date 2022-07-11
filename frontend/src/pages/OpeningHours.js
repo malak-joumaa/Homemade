@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Photo from "../assets/hours.jpg";
+import Photo from "../assets/hours.png";
 
 const OpeningHours = () => {
   const [valid, setValid] = useState(false);
