@@ -19,6 +19,20 @@ const AddMenu = () => {
   };
   console.log(dish);
 
+  //Add a new item
+  const addDish = (e) => {
+    e.preventDefault();
+    let newDish = {
+      name: "",
+      description: "",
+      price: "",
+      quantity: "",
+      photo: "",
+      categories: [],
+    };
+    setDish([...dish, newDish]);
+  };
+
   return (
     <div>
       <div id="add-menu">
