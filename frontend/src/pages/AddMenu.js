@@ -20,8 +20,7 @@ const AddMenu = () => {
   console.log(dish);
 
   //Add a new item
-  const addDish = (e) => {
-    e.preventDefault();
+  const addDish = () => {
     let newDish = {
       name: "",
       description: "",
@@ -77,6 +76,14 @@ const AddMenu = () => {
               <h3>Special Instructions</h3>
             </div>
           ))}
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              addDish();
+            }}
+          >
+            Add Item
+          </button>
         </form>
       </div>
     </div>
