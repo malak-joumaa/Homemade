@@ -240,17 +240,18 @@ a:link, a:visited{
 }
 
 #oph-photo{
+  margin-top: 70px;
   width: 40%;
   text-align: center;
 }
 
 #setTime{
-  width: 5=60%;
+  width: 60%;
   text-align: center;
   font-size: 1.3em;
   font-weight: 600;
   position: absolute;
-  top: 40%;
+  top: 45%;
   right: 50px;
 }
 
@@ -261,11 +262,11 @@ a:link, a:visited{
   margin-right: 20px;
   margin-left: 20px;
   border: none;
-  background-color: #f9ecd9;
-  border-bottom: 5px solid #dbbd90;
+  background-color: #d7d7d7;
+  border-bottom: 5px solid gray;
 }
 
-.oph:focus{
+.oph:focus, .oph:valid{
   outline: none;
   background-color: #ACDAC5;
   border-bottom: 5px solid #43C187;
