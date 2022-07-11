@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Specifications from "../components/Specifications";
 
 const AddMenu = () => {
   const [dish, setDish] = useState([
@@ -73,7 +74,8 @@ const AddMenu = () => {
               <p>Category</p>
               <input type="text" />
 
-              <h3>Special Instructions</h3>
+              <h3>Specifications</h3>
+              <Specifications />
             </div>
           ))}
           <button
