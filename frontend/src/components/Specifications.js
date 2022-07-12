@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Button from "./Button";
 
 const Specifications = () => {
   const [question, setQuestion] = useState([
@@ -20,8 +21,7 @@ const Specifications = () => {
   };
 
   //Add a new question field
-  const addQuestion = (e) => {
-    e.preventDefault();
+  const addQuestion = () => {
     let newQuestion = {
       question: "",
       type: "textBox",
@@ -92,9 +92,7 @@ const Specifications = () => {
             )}
           </div>
         ))}
-        <button type="button" onClick={addQuestion}>
-          +
-        </button>
+        <Button btn_name="+" btn_func={addQuestion} />
       </form>
     </div>
   );

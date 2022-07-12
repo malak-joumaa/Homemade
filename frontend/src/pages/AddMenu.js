@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Specifications from "../components/Specifications";
 import "../styles/menu.css";
+import Textbox from "../components/Textbox";
+import Button from "../components/Button";
 
 const AddMenu = () => {
   const [dish, setDish] = useState([
@@ -47,14 +49,6 @@ const AddMenu = () => {
             <div key={index} id="dish">
               <div>
                 <h3>Item Name:</h3>
-                <input
-                  type="text"
-                  name="name"
-                  value={input.name}
-                  onChange={(e) => {
-                    handleFormChange(index, e);
-                  }}
-                />
                 <br />
                 <label>Add photo:</label>
                 {/* ************** */}
@@ -137,14 +131,7 @@ const AddMenu = () => {
               </div>
             </div>
           ))}
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              addDish();
-            }}
-          >
-            +
-          </button>
+          <Button btn_name="+" btn_func={addDish} />
         </form>
       </div>
     </div>

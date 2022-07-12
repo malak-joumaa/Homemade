@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/logo.png";
+import Button from "../components/Button";
+import Textbox from "../components/Textbox";
 
 const SignUp = () => {
   var navigate = useNavigate();
@@ -44,67 +46,35 @@ const SignUp = () => {
           <div className="left-register left-sign-up">
             <label>First Name</label>
             <br />
-            <input
-              type="text"
-              id="fname"
-              value={fname}
-              onChange={(e) => setFname(e.target.value)}
-            />
+            <Textbox value={fname} setValue={setFname} />
             <br />
             <label>Last Name</label>
             <br />
-            <input
-              type="text"
-              id="lname"
-              value={lname}
-              onChange={(e) => setLname(e.target.value)}
-            />
+            <Textbox value={lname} setValue={setLname} />
             <br />
             <label>Email</label>
             <br />
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+            <Textbox type="email" value={email} setValue={setEmail} />
           </div>
           <div className="right-register">
             <label>Password</label>
             <br />
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <Textbox type="password" value={password} setValue={setPassword} />
             <br />
             <label>Confirm Password</label>
             <br />
-            <input
+            <Textbox
               type="password"
-              id="c_password"
               value={c_password}
-              onChange={(e) => setCpassword(e.target.value)}
+              setValue={setCpassword}
             />
             <br />
             <label>Phone number</label>
             <br />
-            <input
-              type="text"
-              id="phone_number"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-            />
+            <Textbox value={phoneNumber} setValue={setPhoneNumber} />
           </div>
           <br />
-          <button
-            onClick={() => {
-              signUp();
-            }}
-          >
-            Sign Up
-          </button>
+          <Button btn_name="Sign Up" btn_func={signUp} />
           <br />
           {/* Sign In */}
           <p>
