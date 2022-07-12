@@ -64,3 +64,33 @@
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 8px;
 }
+
+.image-upload{
+    width: 145px;
+    height: 145px;
+    border: 4px dashed #1FB264;
+    position: relative;
+}
+
+.upload h3 {
+    text-align: center;
+    font-weight: 100;
+    color: #15824B;
+    padding:40px 0;
+    font-size: 1.2em !important;
+  }
+
+  .upload-image {
+    height: 120px;
+    width: 120px;
+  }
+
+  .remove-btn {
+    width:150px !important;
+    height: 30px !important;
+    font-size: 1em !important;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }

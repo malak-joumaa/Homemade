@@ -14,6 +14,10 @@ const AddMenu = () => {
     },
   ]);
 
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [imageSrc, setImageSrc] = useState("");
+  const [fileName, setFileName] = useState("");
+
   const handleFormChange = (index, event) => {
     let data = [...dish];
     data[index][event.target.name] = event.target.value;
@@ -53,7 +57,53 @@ const AddMenu = () => {
                 />
                 <br />
                 <label>Add photo:</label>
-                <input type="file" />
+                {/* ************** */}
+                <div class="upload">
+                  {!selectedImage ? (
+                    <div class="image-upload">
+                      <input
+                        class="file-upload-input"
+                        type="file"
+                        onChange={(e) => {
+                          setSelectedImage(e.target.files[0]);
+                          setFileName(e.target.files[0].name);
+                          var reader = new FileReader();
+                          reader.onload = function (event) {
+                            setImageSrc(event.target.result);
+                            console.log(e.target.files[0]);
+                            console.log(event.target);
+                            console.log(event.target.result);
+                            console.log(imageSrc);
+                          };
+                          reader.readAsDataURL(e.target.files[0]);
+                        }}
+                        accept="image/*"
+                      />
+                      <h3>Upload Here</h3>
+                    </div>
+                  ) : (
+                    <div class="upload-content">
+                      <img
+                        class="upload-image"
+                        src={imageSrc}
+                        alt="your image"
+                      />
+                      <div>
+                        <button
+                          onClick={() => {
+                            setSelectedImage(null);
+                            setImageSrc("");
+                            setFileName("");
+                          }}
+                          class="remove-btn"
+                        >
+                          Remove {fileName}
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+                {/* ************************* */}
                 <br />
                 <label>Description:</label>
                 <input
