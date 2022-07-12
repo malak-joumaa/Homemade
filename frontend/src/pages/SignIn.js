@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import User_Sign_In from "../assets/chef.jpg";
 import Logo from "../assets/logo.png";
 import jwt_decode from "jwt-decode";
+import Textbox from "../components/Textbox";
+import Button from "../components/Button";
 
 const SignIn = () => {
   // Email and password use state
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  console.log(email);
-  console.log(password);
 
   // Login api
   const signIn = async () => {
@@ -53,29 +53,13 @@ const SignIn = () => {
             <h1>Sign In</h1>
             <label>Email</label>
             <br />
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+            <Textbox type="email" value={email} setValue={setEmail} />
             <br />
             <label>Password</label>
             <br />
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <Textbox type="password" value={password} setValue={setPassword} />
             <br />
-            <button
-              onClick={() => {
-                signIn();
-              }}
-            >
-              Sign In
-            </button>
+            <Button btn_name="SignIn" btn_func={signIn} />
             <br />
             {/* Sign Up */}
             <p>
