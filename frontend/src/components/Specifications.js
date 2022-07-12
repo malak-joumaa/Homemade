@@ -43,7 +43,7 @@ const Specifications = () => {
       <form>
         {question.map((input, index) => (
           <div key={index}>
-            <p>Question Type</p>
+            <label>Question Type</label>
             <select
               value={input.type}
               name="type"
@@ -55,7 +55,8 @@ const Specifications = () => {
                 <option value={type}>{type}</option>
               ))}
             </select>
-            <p>Question: </p>
+            <br />
+            <label>Question: </label>
             <input
               type="text"
               name="question"
@@ -64,9 +65,10 @@ const Specifications = () => {
                 handleFormChange(index, e);
               }}
             />
+            <br />
             {(input.type === "dropDown" || input.type === "radio") && (
               <div>
-                <p>Choices: </p>
+                <span>Choices: </span>
                 <input
                   type={"text"}
                   name="currentChoice"
@@ -74,6 +76,7 @@ const Specifications = () => {
                     handleFormChange(index, e);
                   }}
                 />
+                <br />
                 <button
                   type="button"
                   onClick={() => {
@@ -90,7 +93,7 @@ const Specifications = () => {
           </div>
         ))}
         <button type="button" onClick={addQuestion}>
-          Add More
+          +
         </button>
       </form>
     </div>

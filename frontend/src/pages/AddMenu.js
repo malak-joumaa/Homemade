@@ -52,10 +52,10 @@ const AddMenu = () => {
                   }}
                 />
                 <br />
-                <span>Add photo:</span>
+                <label>Add photo:</label>
                 <input type="file" />
                 <br />
-                <span>Description:</span>
+                <label>Description:</label>
                 <input
                   type="text"
                   name="description"
@@ -65,7 +65,7 @@ const AddMenu = () => {
                   }}
                 />
                 <br />
-                <span>Price:</span>
+                <label>Price:</label>
                 <input
                   type="text"
                   name="price"
@@ -75,10 +75,10 @@ const AddMenu = () => {
                   }}
                 />
                 <br />
-                <span>Quantity:</span>
+                <label>Quantity:</label>
                 <input type="text" />
                 <br />
-                <span>Category:</span>
+                <label>Category:</label>
                 <input type="text" />
               </div>
               <div>
@@ -93,7 +93,7 @@ const AddMenu = () => {
               addDish();
             }}
           >
-            Add Item
+            +
           </button>
         </form>
       </div>
