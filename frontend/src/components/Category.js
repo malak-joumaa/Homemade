@@ -1,7 +1,7 @@
 import React from "react";
 
-const Category = (props) => {
-  return <div className="category">{props.name}</div>;
+const Category = ({ name }) => {
+  return <span className="category">{name} </span>;
 };
 
 export default Category;
