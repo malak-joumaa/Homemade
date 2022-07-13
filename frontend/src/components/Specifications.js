@@ -1,16 +1,7 @@
 import { useState } from "react";
 import Button from "./Button";
 
-const Specifications = () => {
-  const [question, setQuestion] = useState([
-    {
-      question: "Special Instructions",
-      type: "textBox",
-      choices: [],
-      currentChoice: "",
-    },
-  ]);
-
+const Specifications = ({ question, setQuestion, dishIndex }) => {
   const types = ["dropDown", "checkBox", "textBox", "radio"];
 
   //Change Input Values on change according to event and index

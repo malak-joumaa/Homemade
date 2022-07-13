@@ -16,23 +16,33 @@ const AddMenu = () => {
     },
   ]);
 
-  const [profilePhoto, setProfilePhoto] = useState("photo");
+  const [question, setQuestion] = useState([
+    {
+      question: "Special Instructions",
+      type: "textBox",
+      choices: [],
+      currentChoice: "",
+    },
+  ]);
 
-  // Function to get profile photo source from UploadPhoto component
-  const useImageSource = (image) => {
-    setProfilePhoto(image);
-  };
+  const [innerQuestion, setInnerQuestion] = useState([[...question]]);
 
   const handleFormChange = (index, event) => {
     let data = [...dish];
     data[index][event.target.name] = event.target.value;
     setDish(data);
   };
+  const handleImageChange = (index, event) => {
+    let data = [...dish];
+    data[index].photo = event.target.result;
+    setDish(data);
+  };
   console.log(dish);
-  console.log(profilePhoto);
+  console.log(question);
 
   //Add a new item
   const addDish = () => {
+    setInnerQuestion([[...question], []]);
     let newDish = {
       name: "",
       description: "",
@@ -44,6 +54,67 @@ const AddMenu = () => {
     setDish([...dish, newDish]);
   };
 
+  const submitMenu = async () => {
+    try {
+      const res = await fetch("http://localhost:5000/api/cook/add-menu", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          user: localStorage.getItem("user_id"),
+          days: ["Monday", "Tuesday"],
+        }),
+      });
+      const data = await res.json();
+      const menuId = data._id;
+      console.log(data);
+      dish.forEach(async (singleDish) => {
+        const res2 = await fetch("http://localhost:5000/api/cook/add-dish", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            description: singleDish.description,
+            price: singleDish.price,
+            photo: singleDish.photo,
+            quantity: singleDish.quantity,
+            menu: menuId,
+            categories: [
+              "62cb22ab7c4f7b9583bd6d5e",
+              "62cb29b0c427950bca3e65ed",
+            ],
+          }),
+        });
+        // const data2 = await res2.json();
+        // const dishId = data2.id;
+        // question.forEach(async (singleQuestion) => {
+        //   const res3 = await fetch(
+        //     "http://localhost:5000/api/cook/add-question",
+        //     {
+        //       method: "POST",
+        //       headers: {
+        //         "Content-type": "application/json",
+        //       },
+        //       body: JSON.stringify({
+        //         question: singleQuestion.question,
+        //         dish: dishId,
+        //         question_type: singleQuestion.type,
+        //         choices: singleQuestion.choices,
+        //       }),
+        //     }
+        //   );
+        //   const data3 = await res3.json();
+        // });
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const imgStore = (image) => {
+    console.log(image);
+  };
   return (
     <div id="menu">
       <div id="add-menu">
@@ -56,7 +127,11 @@ const AddMenu = () => {
                 <br />
                 <label>Add photo:</label>
 
-                <UploadPhoto imgStore={useImageSource} />
+                <UploadPhoto
+                  handleImage={handleImageChange}
+                  index={index}
+                  imgStore={imgStore}
+                />
 
                 <br />
                 <label>Description:</label>
@@ -80,18 +155,31 @@ const AddMenu = () => {
                 />
                 <br />
                 <label>Quantity:</label>
-                <input type="text" />
+                <input
+                  type="text"
+                  name="quantity"
+                  value={input.quantity}
+                  onChange={(e) => {
+                    handleFormChange(index, e);
+                  }}
+                />
                 <br />
                 <label>Category:</label>
                 <input type="text" />
               </div>
               <div>
                 <h3>Specifications</h3>
-                <Specifications />
+                <Specifications
+                  question={question}
+                  setQuestion={setQuestion}
+                  dishIndex={index}
+                />
               </div>
             </div>
           ))}
           <Button btn_name="+" btn_func={addDish} />
+          <br />
+          <Button btn_name="Submit Menu" btn_func={submitMenu} />
         </form>
       </div>
     </div>
