@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const UploadPhoto = ({ imgStore, page }) => {
+const UploadPhoto = ({ imgStore, page, index, handleImage }) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [imageSrc, setImageSrc] = useState("");
   const [fileName, setFileName] = useState("");
@@ -22,6 +22,7 @@ const UploadPhoto = ({ imgStore, page }) => {
                 setImageSrc(event.target.result);
                 // Sending image to AddProfilePage
                 imgStore(event.target.result);
+                handleImage(index, event);
               };
               reader.readAsDataURL(e.target.files[0]);
             }}
