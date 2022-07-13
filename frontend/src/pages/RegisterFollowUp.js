@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import AddProfilePhoto from "../components/AddProfilePhoto";
 import Categories from "../components/Categories";
 import ChooseLocation from "../components/ChooseLocation";
 import OpeningHours from "../components/OpeningHours";
 
 const RegisterFollowUp = () => {
+  const navigate = useNavigate();
   const [stateNb, setStateNb] = useState(1);
   const [data, setData] = useState([
     { profilePhoto: "" },
@@ -33,6 +34,8 @@ const RegisterFollowUp = () => {
           ) : (
             <Categories data={data} setData={setData} />
           ))}
+
+        {stateNb == 4 && navigate("/sign-in")}
 
         {/* Links to Skip or move to the next page */}
         <span className="skip" onClick={() => setStateNb(stateNb + 1)}>
