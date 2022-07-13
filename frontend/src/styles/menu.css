@@ -65,27 +65,34 @@
     box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 8px;
 }
 
-.image-upload{
+/* Image Upload */
+#menu .file-upload{
     width: 145px;
     height: 145px;
+    padding: 0;
+    margin: 0;
+}
+#menu .image-upload-wrap{
     border: 4px dashed #1FB264;
     position: relative;
+    margin-top: 3px;
 }
 
-.upload h3 {
+#menu .file-upload h3 {
     text-align: center;
     font-weight: 100;
     color: #15824B;
-    padding:40px 0;
+    padding:20px 0;
     font-size: 1.2em !important;
   }
 
-  .upload-image {
-    height: 120px;
-    width: 120px;
-  }
+#menu .file-upload-image {
+    max-height: 120px;
+    max-width: 120px;
+    padding: 0;
+}
 
-  .remove-btn {
+#menu .remove-image-btn {
     width:150px !important;
     height: 30px !important;
     font-size: 1em !important;
@@ -93,4 +100,4 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
+}

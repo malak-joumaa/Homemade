@@ -3,6 +3,7 @@ import Specifications from "../components/Specifications";
 import "../styles/menu.css";
 import Textbox from "../components/Textbox";
 import Button from "../components/Button";
+import UploadPhoto from "../components/UploadPhoto";
 
 const AddMenu = () => {
   const [dish, setDish] = useState([
@@ -16,9 +17,12 @@ const AddMenu = () => {
     },
   ]);
 
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [imageSrc, setImageSrc] = useState("");
-  const [fileName, setFileName] = useState("");
+  const [profilePhoto, setProfilePhoto] = useState("photo");
+
+  // Function to get profile photo source from UploadPhoto component
+  const useImageSource = (image) => {
+    setProfilePhoto(image);
+  };
 
   const handleFormChange = (index, event) => {
     let data = [...dish];
@@ -26,6 +30,7 @@ const AddMenu = () => {
     setDish(data);
   };
   console.log(dish);
+  console.log(profilePhoto);
 
   //Add a new item
   const addDish = () => {
@@ -51,53 +56,9 @@ const AddMenu = () => {
                 <h3>Item Name:</h3>
                 <br />
                 <label>Add photo:</label>
-                {/* ************** */}
-                <div class="upload">
-                  {!selectedImage ? (
-                    <div class="image-upload">
-                      <input
-                        class="file-upload-input"
-                        type="file"
-                        onChange={(e) => {
-                          setSelectedImage(e.target.files[0]);
-                          setFileName(e.target.files[0].name);
-                          var reader = new FileReader();
-                          reader.onload = function (event) {
-                            setImageSrc(event.target.result);
-                            console.log(e.target.files[0]);
-                            console.log(event.target);
-                            console.log(event.target.result);
-                            console.log(imageSrc);
-                          };
-                          reader.readAsDataURL(e.target.files[0]);
-                        }}
-                        accept="image/*"
-                      />
-                      <h3>Upload Here</h3>
-                    </div>
-                  ) : (
-                    <div class="upload-content">
-                      <img
-                        class="upload-image"
-                        src={imageSrc}
-                        alt="your image"
-                      />
-                      <div>
-                        <button
-                          onClick={() => {
-                            setSelectedImage(null);
-                            setImageSrc("");
-                            setFileName("");
-                          }}
-                          class="remove-btn"
-                        >
-                          Remove {fileName}
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </div>
-                {/* ************************* */}
+
+                <UploadPhoto imgStore={useImageSource} />
+
                 <br />
                 <label>Description:</label>
                 <input

@@ -1,60 +1,25 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import UploadPhoto from "../components/UploadPhoto";
 
 const AddProfilePhoto = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [imageSrc, setImageSrc] = useState("");
-  const [fileName, setFileName] = useState("");
+  const [profilePhoto, setProfilePhoto] = useState("photo");
+
+  // Function to get profile photo source from UploadPhoto component
+  const useImageSource = (image) => {
+    setProfilePhoto(image);
+  };
+  console.log(profilePhoto);
 
   return (
     <div>
       <div className="follow-up-div">
         <h1>Upload Profile Photo</h1>
 
-        <div class="file-upload">
-          {!selectedImage ? (
-            <div class="image-upload-wrap">
-              <input
-                class="file-upload-input"
-                type="file"
-                onChange={(e) => {
-                  setSelectedImage(e.target.files[0]);
-                  setFileName(e.target.files[0].name);
-                  var reader = new FileReader();
-                  reader.onload = function (event) {
-                    setImageSrc(event.target.result);
-                    console.log(e.target.files[0]);
-                    console.log(event.target);
-                    console.log(event.target.result);
-                    console.log(imageSrc);
-                  };
-                  reader.readAsDataURL(e.target.files[0]);
-                }}
-                accept="image/*"
-              />
-              <h3>CLICK OR DRAG AND DROP A FILE</h3>
-            </div>
-          ) : (
-            <div class="file-upload-content">
-              <img class="file-upload-image" src={imageSrc} alt="your image" />
-              <div>
-                <button
-                  onClick={() => {
-                    setSelectedImage(null);
-                    setImageSrc("");
-                    setFileName("");
-                  }}
-                  class="remove-image-btn"
-                >
-                  Remove <br />
-                  {fileName}
-                </button>
-              </div>
-            </div>
-          )}
-        </div>
+        {/* Upload Image */}
+        <UploadPhoto imgStore={useImageSource} page="pp" />
 
-        <div id="uploaded-profile-photo"></div>
+        {/* Links to Skip or move to the next page */}
         <Link to="/opening-hours" className="skip">
           Skip
         </Link>
