@@ -155,14 +155,15 @@ a:link, a:visited{
   color: #43C187;
 }
 
-.follow-up-div a{
+.next, .skip{
+  cursor: pointer;
   position: absolute;
   bottom: 40px;
   color: #43C187;
   font-weight: 600;
   font-size: 1.35em;
 }
-.follow-up-div a:last-of-type{
+.next{
   right: 40px;
 }
 

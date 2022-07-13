@@ -5,43 +5,43 @@ import Categories from "../components/Categories";
 import OpeningHours from "../components/OpeningHours";
 
 const RegisterFollowUp = () => {
-  const [stateNb, setStateNb] = useState(3);
+  const [stateNb, setStateNb] = useState(1);
   const [data, setData] = useState([
     { profilePhoto: "" },
     { location: [] },
-    { openingHours: [] },
+    { openingHours: { from: "", till: "" } },
     { categories: [] },
   ]);
 
   var user_type = localStorage.getItem("user_type");
+  console.log(stateNb);
+  console.log(data);
 
   return (
     <div>
       <div className="follow-up-div">
         {/*Calling Components */}
 
-        {stateNb == 1 && (
-          <AddProfilePhoto state={setStateNb} setData={setData} />
-        )}
+        {stateNb == 1 && <AddProfilePhoto data={data} setData={setData} />}
 
         {/* {stateNb == 2 && (
-          <AddProfilePhoto state={setStateNb} setData={setData} />
+          <ChooseLocation setData={setData} />
         )} */}
 
         {stateNb == 3 &&
           (user_type == "cook" ? (
-            <OpeningHours state={setStateNb} setData={setData} />
+            <OpeningHours data={data} setData={setData} />
           ) : (
-            <Categories state={setStateNb} setData={setData} />
+            <Categories data={data} setData={setData} />
           ))}
 
         {/* Links to Skip or move to the next page */}
-        <Link to="/opening-hours" className="skip">
+        <span className="skip" onClick={() => setStateNb(stateNb + 2)}>
           Skip
-        </Link>
-        <Link to="/opening-hours" className="next">
+        </span>
+        <span className="next" onClick={() => setStateNb(stateNb + 2)}>
           Next -{">"}
-        </Link>
+        </span>
       </div>
     </div>
   );

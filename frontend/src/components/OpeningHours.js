@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import Photo from "../assets/hours.png";
 
-const OpeningHours = () => {
+const OpeningHours = ({ setData, data }) => {
   const [valid, setValid] = useState(false);
   const [timeFrom, setTimeFrom] = useState("");
   const [timeTill, setTimeTill] = useState("");
   console.log(timeFrom);
   console.log(timeTill);
+  console.log(data[2]);
 
   return (
     <>
@@ -25,6 +26,8 @@ const OpeningHours = () => {
             value={timeFrom}
             onChange={(e) => {
               setTimeFrom(e.target.value);
+              data[2].openingHours.from = e.target.value;
+              setData(data);
             }}
             required
             id={!valid ? "" : "oph-validity"}
@@ -40,6 +43,8 @@ const OpeningHours = () => {
             value={timeTill}
             onChange={(e) => {
               setTimeTill(e.target.value);
+              data[2].openingHours.till = e.target.value;
+              setData(data);
             }}
             required
             id={!valid ? "" : "oph-validity"}

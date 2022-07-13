@@ -1,7 +1,7 @@
 import React from "react";
 import Category from "./Category";
 
-const Categories = () => {
+const Categories = ({ setData, data }) => {
   return (
     <>
       <h1>Choose Preffered Categories</h1>
