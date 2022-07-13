@@ -71,10 +71,20 @@ async function newChoice(body) {
   return await ans_choice.save();
 }
 
+async function getByType(type) {
+  return await Category.find({ created_by: type });
+}
+
+async function getCategories() {
+  return await Category.find();
+}
+
 module.exports = {
   newMenu,
   newDish,
   newCategory,
   newQuestion,
   newChoice,
+  getByType,
+  getCategories,
 };

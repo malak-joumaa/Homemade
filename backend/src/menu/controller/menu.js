@@ -1,24 +1,4 @@
-const {
-  newCategory,
-  newMenu,
-  newDish,
-  newQuestion,
-  newChoice,
-} = require("../service");
-
-// Category
-async function addCategory(req, res) {
-  try {
-    console.log(req.body);
-
-    const addCategoryResult = await newCategory(req.body);
-    console.log("addCategoryResult =>", addCategoryResult);
-
-    return res.send({ id: addCategoryResult._id });
-  } catch (error) {
-    console.log(error);
-  }
-}
+const { newMenu, newDish, newQuestion, newChoice } = require("../service");
 
 // Menu
 async function addMenu(req, res) {
@@ -77,7 +57,6 @@ async function addChoice(req, res) {
 }
 
 module.exports = {
-  addCategory,
   addMenu,
   addDish,
   addQuestion,
