@@ -8,12 +8,11 @@ const {
 const { addCategory, getCategory } = require("./controller/categories");
 const router = Router();
 
-router.post("/auth/add-category", addCategory);
-router.post("/auth/add-menu", addMenu);
-router.post("/auth/add-dish", addDish);
-router.post("/auth/add-question", addQuestion);
-router.post("/auth/answer-choice", addChoice);
-router.get("/auth/add-category", addCategory);
-router.get("/auth/get-category", getCategory);
+router.post("/add-menu", addMenu);
+router.post("/add-dish", addDish);
+router.post("/add-question", addQuestion);
+router.post("/answer-choice", addChoice);
+router.post("/add-category", addCategory);
+router.get("/get-category", getCategory);
 
 module.exports = router;

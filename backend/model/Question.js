@@ -13,6 +13,12 @@ const questionSchema = new mongoose.Schema({
   question_type: {
     type: String,
   },
+  choices: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Answer_choices",
+    },
+  ],
 });
 
 module.exports = mongoose.model("Question", questionSchema);
