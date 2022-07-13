@@ -1,14 +1,5 @@
 const mongoose = require("mongoose");
 
-const daySchema = new mongoose.Schema({
-  day: {
-    type: String,
-    required: true,
-    min: 6,
-    max: 50,
-  },
-});
-
 const menuSchema = new mongoose.Schema({
   cook: {
     type: mongoose.Schema.Types.ObjectId,
@@ -20,7 +11,7 @@ const menuSchema = new mongoose.Schema({
       ref: "Dish",
     },
   ],
-  days: daySchema,
+  days: [{ type: String }],
 });
 
 module.exports = mongoose.model("Menu", menuSchema);
