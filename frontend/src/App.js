@@ -1,7 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import AddProfilePhoto from "./pages/AddProfilePhoto";
-import OpeningHours from "./pages/OpeningHours";
-import Categories from "./pages/Categories";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import AddMenu from "./pages/AddMenu";
@@ -13,9 +10,6 @@ function App() {
       <Routes>
         <Route path="/sign-in" element={<SignIn />}></Route>
         <Route path="/sign-up" element={<SignUp />}></Route>
-        <Route path="/profile-photo" element={<AddProfilePhoto />}></Route>
-        <Route path="/opening-hours" element={<OpeningHours />}></Route>
-        <Route path="/categories" element={<Categories />}></Route>
         <Route path="/add-menu" element={<AddMenu />}></Route>
         <Route path="/follow-up" element={<RegisterFollowUp />}></Route>
       </Routes>
