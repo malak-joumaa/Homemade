@@ -27,9 +27,15 @@ const Categories = ({ setData, data }) => {
     <>
       <h1>Choose Preffered Categories</h1>
       {/* Main Content */}
-      {categories.map((singleCat, index) => (
-        <Category key={index} name={categories[index].name} />
-      ))}
+      <div id="category-div">
+        {categories.map((singleCat, index) => (
+          <Category
+            key={index}
+            id={categories[index]._id}
+            name={categories[index].name}
+          />
+        ))}
+      </div>
     </>
   );
 };
