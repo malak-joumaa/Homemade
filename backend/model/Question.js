@@ -15,8 +15,7 @@ const questionSchema = new mongoose.Schema({
   },
   choices: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Answer_choices",
+      type: String,
     },
   ],
 });

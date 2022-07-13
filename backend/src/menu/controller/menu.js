@@ -1,4 +1,4 @@
-const { newMenu, newDish, newQuestion, newChoice } = require("../service");
+const { newMenu, newDish, newQuestion } = require("../service");
 const Menu = require("../../../model/Menu");
 const Dish = require("../../../model/Dish");
 const Question = require("../../../model/Question");
@@ -80,39 +80,8 @@ async function addQuestion(req, res) {
   }
 }
 
-// Answer Choice
-async function addChoice(req, res) {
-  try {
-    console.log(req.body);
-    if (!req.body) return res.status(400).send("invalid credentials");
-
-    const choiceResult = await newChoice(req.body);
-    console.log("choiceResult =>", choiceResult);
-    if (!choiceResult) return res.status(400).send("Invalid Credentials");
-
-    // Updating question containing this choice
-    const updateQuestion = await Question.updateOne(
-      {
-        _id: choiceResult.question,
-      },
-      {
-        $push: {
-          choices: choiceResult._id,
-        },
-      }
-    );
-    console.log("updateQuestion =>", updateQuestion);
-
-    return res.status(200).send(choiceResult);
-  } catch (error) {
-    console.log(error);
-    res.status(500).send(error);
-  }
-}
-
 module.exports = {
   addMenu,
   addDish,
   addQuestion,
-  addChoice,
 };

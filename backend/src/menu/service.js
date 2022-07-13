@@ -47,28 +47,16 @@ async function newCategory(body) {
 
 //Add Question
 async function newQuestion(body) {
-  const { question, dish, question_type } = body;
+  const { question, dish, question_type, choices } = body;
 
   const quest = new Question({
     question,
     dish,
     question_type,
+    choices,
   });
 
   return await quest.save();
-}
-
-//Add Answer Choice
-async function newChoice(body) {
-  const { choice, dish, question } = body;
-
-  const ans_choice = new AnswerChoice({
-    choice,
-    dish,
-    question,
-  });
-
-  return await ans_choice.save();
 }
 
 async function getByType(type) {
@@ -84,7 +72,6 @@ module.exports = {
   newDish,
   newCategory,
   newQuestion,
-  newChoice,
   getByType,
   getCategories,
 };
