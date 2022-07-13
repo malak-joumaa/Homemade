@@ -1,16 +1,22 @@
 const { newMenu, newDish, newQuestion, newChoice } = require("../service");
+const Menu = require("../../../model/Menu");
+const Dish = require("../../../model/Dish");
+const Question = require("../../../model/Question");
 
 // Menu
 async function addMenu(req, res) {
   try {
     console.log(req.body);
+    if (!req.body) return res.status(400).send("Invalid Credentials");
 
-    const addMenuResult = await newMenu(req.body);
-    console.log("addMenuResult =>", addMenuResult);
+    const menuResult = await newMenu(req.body);
+    console.log("menuResult =>", menuResult);
+    if (!menuResult) return res.status(400).send("Invalid Credentials");
 
-    return res.send({ menu_id: addMenuResult._id });
+    return res.status(200).send(menuResult);
   } catch (error) {
     console.log(error);
+    res.status(500).send(error);
   }
 }
 
@@ -18,13 +24,29 @@ async function addMenu(req, res) {
 async function addDish(req, res) {
   try {
     console.log(req.body);
+    if (!req.body) return res.status(400).send("Invalid Credentials");
 
-    const addDishResult = await newDish(req.body);
-    console.log("addDishResult =>", addDishResult);
+    const dishResult = await newDish(req.body);
+    console.log("dishResult =>", dishResult);
+    if (!dishResult) return res.status(400).send("Invalid Credentials");
 
-    return res.send({ dish_id: addDishResult._id });
+    // Updating menu containing this dish
+    const updateMenu = await Menu.updateOne(
+      {
+        _id: dishResult.menu,
+      },
+      {
+        $push: {
+          dishes: dishResult._id,
+        },
+      }
+    );
+    console.log("updateMenu =>", updateMenu);
+
+    return res.status(200).send(dishResult);
   } catch (error) {
     console.log(error);
+    res.status(500).send(error);
   }
 }
 
@@ -32,13 +54,29 @@ async function addDish(req, res) {
 async function addQuestion(req, res) {
   try {
     console.log(req.body);
+    if (!req.body) return res.status(400).send("invalid credentials");
 
-    const addQuestionResult = await newQuestion(req.body);
-    console.log("addQuestionResult =>", addQuestionResult);
+    const questionResult = await newQuestion(req.body);
+    console.log("questionResult =>", questionResult);
+    if (!questionResult) return res.status(400).send("Invalid Credentials");
 
-    return res.send({ question_id: addQuestionResult._id });
+    // Updating dish containing this question
+    const updateDish = await Dish.updateOne(
+      {
+        _id: questionResult.dish,
+      },
+      {
+        $push: {
+          questions: questionResult._id,
+        },
+      }
+    );
+    console.log("updateDish =>", updateDish);
+
+    return res.status(200).send(questionResult);
   } catch (error) {
     console.log(error);
+    res.status(500).send(error);
   }
 }
 
@@ -46,13 +84,29 @@ async function addQuestion(req, res) {
 async function addChoice(req, res) {
   try {
     console.log(req.body);
+    if (!req.body) return res.status(400).send("invalid credentials");
 
-    const addChoiceResult = await newChoice(req.body);
-    console.log("addChoiceResult =>", addChoiceResult);
+    const choiceResult = await newChoice(req.body);
+    console.log("choiceResult =>", choiceResult);
+    if (!choiceResult) return res.status(400).send("Invalid Credentials");
 
-    return res.send({ choice_id: addChoiceResult._id });
+    // Updating question containing this choice
+    const updateQuestion = await Question.updateOne(
+      {
+        _id: choiceResult.question,
+      },
+      {
+        $push: {
+          choices: choiceResult._id,
+        },
+      }
+    );
+    console.log("updateQuestion =>", updateQuestion);
+
+    return res.status(200).send(choiceResult);
   } catch (error) {
     console.log(error);
+    res.status(500).send(error);
   }
 }
 
