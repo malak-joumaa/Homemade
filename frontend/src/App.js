@@ -5,6 +5,7 @@ import Categories from "./pages/Categories";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import AddMenu from "./pages/AddMenu";
+import RegisterFollowUp from "./pages/RegisterFollowUp";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/opening-hours" element={<OpeningHours />}></Route>
         <Route path="/categories" element={<Categories />}></Route>
         <Route path="/add-menu" element={<AddMenu />}></Route>
+        <Route path="/follow-up" element={<RegisterFollowUp />}></Route>
       </Routes>
     </BrowserRouter>
   );

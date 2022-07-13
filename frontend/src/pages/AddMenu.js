@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Specifications from "../components/Specifications";
 import "../styles/menu.css";
-import Textbox from "../components/Textbox";
 import Button from "../components/Button";
 import UploadPhoto from "../components/UploadPhoto";
 
