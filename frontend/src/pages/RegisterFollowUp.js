@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import AddProfilePhoto from "../components/AddProfilePhoto";
 import Categories from "../components/Categories";
+import ChooseLocation from "../components/ChooseLocation";
 import OpeningHours from "../components/OpeningHours";
 
 const RegisterFollowUp = () => {
@@ -24,9 +25,7 @@ const RegisterFollowUp = () => {
 
         {stateNb == 1 && <AddProfilePhoto data={data} setData={setData} />}
 
-        {/* {stateNb == 2 && (
-          <ChooseLocation setData={setData} />
-        )} */}
+        {stateNb == 2 && <ChooseLocation setData={setData} />}
 
         {stateNb == 3 &&
           (user_type == "cook" ? (
@@ -36,10 +35,10 @@ const RegisterFollowUp = () => {
           ))}
 
         {/* Links to Skip or move to the next page */}
-        <span className="skip" onClick={() => setStateNb(stateNb + 2)}>
+        <span className="skip" onClick={() => setStateNb(stateNb + 1)}>
           Skip
         </span>
-        <span className="next" onClick={() => setStateNb(stateNb + 2)}>
+        <span className="next" onClick={() => setStateNb(stateNb + 1)}>
           Next -{">"}
         </span>
       </div>
