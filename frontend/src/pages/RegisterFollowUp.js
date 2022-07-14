@@ -19,6 +19,54 @@ const RegisterFollowUp = () => {
   console.log(stateNb);
   console.log(data);
 
+  const addData = async () => {
+    if (user_type == "cook") {
+      try {
+        const res = await fetch(
+          "http://localhost:5000/api/user/auth/add-cook",
+          {
+            method: "POST",
+            headers: {
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify({
+              user: localStorage.getItem("user_id"),
+              opening_hours: [
+                data[2].openingHours.from,
+                data[2].openingHours.till,
+              ],
+              rate: 5,
+            }),
+          }
+        );
+        const resData = await res.json();
+        console.log(resData);
+      } catch (error) {
+        console.log("Failed");
+      }
+    } else if (user_type == "customer") {
+      try {
+        const res = await fetch(
+          "http://localhost:5000/api/user/auth/add-customer",
+          {
+            method: "POST",
+            headers: {
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify({
+              user: localStorage.getItem("user_id"),
+              categories: data.categories,
+            }),
+          }
+        );
+        const resData = await res.json();
+        console.log(resData);
+      } catch (error) {
+        console.log("Failed");
+      }
+    }
+  };
+
   return (
     <div>
       <div className="follow-up-div">
@@ -38,10 +86,26 @@ const RegisterFollowUp = () => {
         {stateNb == 4 && navigate("/sign-in")}
 
         {/* Links to Skip or move to the next page */}
-        <span className="skip" onClick={() => setStateNb(stateNb + 1)}>
-          Skip
-        </span>
-        <span className="next" onClick={() => setStateNb(stateNb + 1)}>
+        {stateNb == 1 ? (
+          <span className="skip" onClick={() => setStateNb(stateNb + 1)}>
+            Skip
+          </span>
+        ) : (
+          <span className="skip" onClick={() => setStateNb(stateNb - 1)}>
+            Back
+          </span>
+        )}
+
+        <span
+          className="next"
+          onClick={() => {
+            if (stateNb == 3) {
+              addData();
+            } else {
+              setStateNb(stateNb + 1);
+            }
+          }}
+        >
           Next -{">"}
         </span>
       </div>
