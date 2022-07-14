@@ -4,9 +4,12 @@ import AddProfilePhoto from "../components/AddProfilePhoto";
 import Categories from "../components/Categories";
 import ChooseLocation from "../components/ChooseLocation";
 import OpeningHours from "../components/OpeningHours";
+import { useSelector } from "react-redux";
 
 const RegisterFollowUp = () => {
   const navigate = useNavigate();
+  const user = useSelector((state) => state.user);
+
   const [stateNb, setStateNb] = useState(1);
   const [data, setData] = useState([
     { profilePhoto: "" },
@@ -17,9 +20,26 @@ const RegisterFollowUp = () => {
 
   var user_type = localStorage.getItem("user_type");
   console.log(stateNb);
-  console.log(data);
+  console.log(data[0].profilePhoto.image);
 
   const addData = async () => {
+    const res = await fetch("http://localhost:5000/api/user/auth/register", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        first_name: user.fname,
+        last_name: user.lname,
+        email: user.email,
+        password: user.password,
+        user_type: localStorage.getItem("user_type"),
+        profile_photo: data[0].profilePhoto.image,
+        // location: data[1].location
+      }),
+    });
+    const data2 = await res.json();
+    console.log(data2);
     if (user_type == "cook") {
       try {
         const res = await fetch(
@@ -30,7 +50,7 @@ const RegisterFollowUp = () => {
               "Content-type": "application/json",
             },
             body: JSON.stringify({
-              user: localStorage.getItem("user_id"),
+              user: data2._id,
               opening_hours: [
                 data[2].openingHours.from,
                 data[2].openingHours.till,
