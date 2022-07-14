@@ -3,10 +3,16 @@ import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/logo.png";
 import Button from "../components/Button";
 import Textbox from "../components/Textbox";
+import { useSelector, useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
+import { actionCreators } from "../state/index";
 
 const SignUp = () => {
   var navigate = useNavigate();
-  // Use states
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const { changeValue } = bindActionCreators(actionCreators, dispatch);
+
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
   const [email, setEmail] = useState("");
@@ -14,23 +20,27 @@ const SignUp = () => {
   const [c_password, setCpassword] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
 
-  const signUp = async () => {
-    const res = await fetch("http://localhost:5000/api/user/auth/register", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        first_name: fname,
-        last_name: lname,
-        email: email,
-        password: password,
-        user_type: "customer",
-      }),
+  // User state
+  const [signUpData, setSignUpData] = useState({
+    fname: fname,
+    lname: lname,
+    email: email,
+    password: password,
+    phoneNumber: phoneNumber,
+  });
+
+  const followUp = async () => {
+    setSignUpData({
+      fname: fname,
+      lname: lname,
+      email: email,
+      password: password,
+      phoneNumber: phoneNumber,
     });
-    const data = await res.json();
-    console.log(data);
-    navigate("/profile-photo");
+    console.log("heree");
+    changeValue(signUpData);
+    console.log(user);
+    navigate("/follow-up");
   };
 
   return (
@@ -74,7 +84,7 @@ const SignUp = () => {
             <Textbox value={phoneNumber} setValue={setPhoneNumber} />
           </div>
           <br />
-          <Button btn_name="Sign Up" btn_func={signUp} />
+          <Button btn_name="Sign Up" btn_func={followUp} />
           <br />
           {/* Sign In */}
           <p>
