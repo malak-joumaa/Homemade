@@ -3,6 +3,7 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import AddMenu from "./pages/AddMenu";
 import RegisterFollowUp from "./pages/RegisterFollowUp";
+import MainPage from "./pages/MainPage";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/sign-up" element={<SignUp />}></Route>
         <Route path="/add-menu" element={<AddMenu />}></Route>
         <Route path="/follow-up" element={<RegisterFollowUp />}></Route>
+        <Route path="/main-page" element={<MainPage />}></Route>
       </Routes>
     </BrowserRouter>
   );
