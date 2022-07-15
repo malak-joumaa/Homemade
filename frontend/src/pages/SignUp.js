@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/logo.png";
-import Button from "../components/Button";
+import toast from "react-hot-toast";
 import Textbox from "../components/Textbox";
 import { useSelector, useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -84,7 +84,29 @@ const SignUp = () => {
             <Textbox value={phoneNumber} setValue={setPhoneNumber} />
           </div>
           <br />
-          <Button btn_name="Sign Up" btn_func={followUp} />
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              if (
+                fname == "" ||
+                lname == "" ||
+                email == "" ||
+                password == "" ||
+                c_password == "" ||
+                phoneNumber == ""
+              ) {
+                console.log("here");
+                toast.error("Please fill all feilds");
+              } else if (password != c_password) {
+                toast.error("Password and Confirm Password do not match");
+              } else {
+                console.log("followup");
+                followUp();
+              }
+            }}
+          >
+            Sign Up
+          </button>
           <br />
           {/* Sign In */}
           <p>

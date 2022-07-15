@@ -4,10 +4,12 @@ import SignUp from "./pages/SignUp";
 import AddMenu from "./pages/AddMenu";
 import RegisterFollowUp from "./pages/RegisterFollowUp";
 import MainPage from "./pages/MainPage";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <BrowserRouter>
+      <Toaster position="top-center" reverseOrder={false} />
       <Routes>
         <Route path="/sign-in" element={<SignIn />}></Route>
         <Route path="/sign-up" element={<SignUp />}></Route>

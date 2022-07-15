@@ -1,39 +1,44 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import User_Sign_In from "../assets/chef.jpg";
 import Logo from "../assets/logo.png";
 import jwt_decode from "jwt-decode";
 import Textbox from "../components/Textbox";
-import Button from "../components/Button";
+import toast from "react-hot-toast";
 
 const SignIn = () => {
+  const navigate = useNavigate();
   // Email and password use state
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   // Login api
   const signIn = async () => {
-    const res = await fetch("http://localhost:5000/api/user/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        email: email,
-        password: password,
-      }),
-    });
-    const data = await res.json();
-    console.log(data);
-    var token = data.token;
-    // Saving token in local storage
-    window.localStorage.setItem("token", token);
-    // Decode JWT
-    var decoded = jwt_decode(token);
-    console.log(decoded);
-    window.localStorage.setItem("first_name", decoded.first_name);
-    window.localStorage.setItem("last_name", decoded.last_name);
-    window.localStorage.setItem("customer_id", decoded._id);
+    try {
+      const res = await fetch("http://localhost:5000/api/user/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
+      });
+      const data = await res.json();
+      console.log(data);
+      var token = data.token;
+      // Saving token in local storage
+      window.localStorage.setItem("token", token);
+      // Decode JWT
+      var decoded = jwt_decode(token);
+      window.localStorage.setItem("user_type", decoded.user_type);
+      if (decoded.user_type == "customer") {
+        navigate("/main-page");
+      } else navigate("/add-menu");
+    } catch (error) {
+      toast.error("Incorrect username or password");
+    }
   };
 
   return (
@@ -59,7 +64,19 @@ const SignIn = () => {
             <br />
             <Textbox type="password" value={password} setValue={setPassword} />
             <br />
-            <Button btn_name="SignIn" btn_func={signIn} />
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                if (email == "" || password == "") {
+                  console.log("here");
+                  toast.error("Please fill all feilds");
+                } else {
+                  signIn();
+                }
+              }}
+            >
+              Sign In
+            </button>
             <br />
             {/* Sign Up */}
             <p>
