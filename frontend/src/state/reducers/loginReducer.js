@@ -1,4 +1,4 @@
-const reducer = (state = "Login", action) => {
+const reducer = (state = {}, action) => {
   switch (action.type) {
     case "getData":
       state = action.payload;

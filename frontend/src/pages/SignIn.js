@@ -5,9 +5,18 @@ import Logo from "../assets/logo.png";
 import jwt_decode from "jwt-decode";
 import Textbox from "../components/Textbox";
 import toast from "react-hot-toast";
+import { useSelector, useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
+import { actionCreators } from "../state/index";
 
 const SignIn = () => {
   const navigate = useNavigate();
+  const userData = useSelector((state) => state.login);
+  const dispatch = useDispatch();
+  const { addUserData } = bindActionCreators(actionCreators, dispatch);
+
+  console.log(userData);
+
   // Email and password use state
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,6 +42,14 @@ const SignIn = () => {
       // Decode JWT
       var decoded = jwt_decode(token);
       window.localStorage.setItem("user_type", decoded.user_type);
+      addUserData({
+        fname: decoded.first_name,
+        lname: decoded.first_name,
+        email: decoded.email,
+        phone_number: decoded.phone_number,
+        location: decoded.location,
+        profile_photo: decoded.profile_photo,
+      });
       if (decoded.user_type == "customer") {
         navigate("/main-page");
       } else navigate("/add-menu");

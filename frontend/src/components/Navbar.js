@@ -1,9 +1,9 @@
 import React from "react";
-import jwt_decode from "jwt-decode";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
-  var decoded = jwt_decode(localStorage.getItem("token"));
-
+  const userData = useSelector((state) => state.login);
+  console.log(userData);
   return (
     <div>
       <div></div>
@@ -14,12 +14,12 @@ const Navbar = () => {
           <li>Messages</li>
           <li>
             <img
-              src={decoded.profile_photo}
+              src={userData.profile_photo}
               style={{ width: "40px", borderRadius: "50px" }}
             />
-            {decoded.first_name} {decoded.last_name}
+            {userData.fname} {userData.lname}
           </li>
-          <li></li>
+          <li>Notifications</li>
         </ul>
       </div>
     </div>
