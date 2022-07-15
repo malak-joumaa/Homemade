@@ -43,6 +43,10 @@ async function login(req, res) {
         first_name: user.first_name,
         last_name: user.last_name,
         email: user.email,
+        phone_number: user.phone_number,
+        profile_photo: user.profile_photo,
+        location: user.location,
+        user_type: user.user_type,
       },
       TOKEN_SECRET
     );
