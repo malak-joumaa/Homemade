@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Nav, Nav_ul, Nav_Logo_Div } from "../styles/Container.style";
 import { List } from "../styles/Links.style";
-import { Nav_Logo } from "../styles/Image.style";
+import { Nav_Logo, Profile_Icon } from "../styles/Image.style";
 import Logo from "../assets/logo.png";
 
 const Navbar = () => {
@@ -19,13 +19,14 @@ const Navbar = () => {
           <List>Orders</List>
           <List>Messages</List>
           <List>
-            <img
-              src={userData.profile_photo}
-              style={{ width: "40px", borderRadius: "50px" }}
-            />
-            {userData.fname} {userData.lname}
+            <Profile_Icon src={userData.profile_photo} />
+            <span>
+              {userData.fname} {userData.lname}
+            </span>
           </List>
-          <List>Notifications</List>
+          <List>
+            <i class="fa-solid fa-bars"></i>
+          </List>
         </Nav_ul>
       </div>
     </Nav>
