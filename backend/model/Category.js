@@ -4,15 +4,17 @@ const categorySchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    min: 6,
-    max: 50,
   },
   created_by: {
     type: String,
     required: true,
-    min: 6,
-    max: 50,
   },
+  questions: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Question",
+    },
+  ],
 });
 
 module.exports = mongoose.model("Category", categorySchema);

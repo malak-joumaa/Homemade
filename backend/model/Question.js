@@ -4,7 +4,6 @@ const questionSchema = new mongoose.Schema({
   question: {
     type: String,
     required: true,
-    minLenght: 3,
   },
   dish: {
     type: mongoose.Schema.Types.ObjectId,
@@ -12,6 +11,7 @@ const questionSchema = new mongoose.Schema({
   },
   question_type: {
     type: String,
+    required: true,
   },
   choices: [
     {

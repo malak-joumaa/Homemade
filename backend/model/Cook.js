@@ -4,7 +4,6 @@ const cookSchema = new mongoose.Schema({
   rate: {
     type: Number,
     required: true,
-    min: 1,
   },
   opening_hours: [
     {
@@ -19,6 +18,12 @@ const cookSchema = new mongoose.Schema({
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Menu",
+    },
+  ],
+  reviews: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Reviews",
     },
   ],
 });
