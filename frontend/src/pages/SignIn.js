@@ -50,6 +50,7 @@ const SignIn = () => {
         location: decoded.location,
         profile_photo: decoded.profile_photo,
       });
+      window.localStorage.setItem("userData", userData);
       if (decoded.user_type == "customer") {
         navigate("/main-page");
       } else navigate("/add-menu");

@@ -1,7 +1,7 @@
 export const changeValue = (new_value) => {
   return (dispatch) => {
     dispatch({
-      type: "deposit",
+      type: "signUp",
       payload: new_value,
     });
   };
