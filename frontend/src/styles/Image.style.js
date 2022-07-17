@@ -12,3 +12,10 @@ export const Profile_Icon = styled.img`
   margin-right: 10px;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 10px;
 `;
+
+export const Display_Cook_Image = styled.img`
+  width: 200px;
+  height: 200px;
+  border-radius: 70px;
+  border: 2px solid white;
+`;
