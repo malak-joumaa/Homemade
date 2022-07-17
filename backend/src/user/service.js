@@ -1,6 +1,7 @@
 const User = require("../../model/User");
 const Cook = require("../../model/Cook");
 const Customer = require("../../model/Customer");
+const Review = require("../../model/Review");
 
 //Add user function
 async function addUser(body, hashPassword) {
@@ -53,6 +54,19 @@ async function addNewCustomer(body) {
   return await customer.save();
 }
 
+//Add customer function
+async function addNewReview(body) {
+  const { user_review, cook, customer } = body;
+
+  const review = new Review({
+    user_review,
+    cook,
+    customer,
+  });
+
+  return await review.save();
+}
+
 //Get user by email
 async function getByEmail(email) {
   return await User.findOne({
@@ -64,5 +78,6 @@ module.exports = {
   addUser,
   addNewCook,
   addNewCustomer,
+  addNewReview,
   getByEmail,
 };

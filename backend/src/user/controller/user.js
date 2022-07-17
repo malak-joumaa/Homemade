@@ -3,6 +3,7 @@ const {
   getByEmail,
   addNewCook,
   addNewCustomer,
+  addNewReview,
 } = require("../service");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -86,9 +87,24 @@ async function addCustomer(req, res) {
   }
 }
 
+// Add Customer
+async function addReview(req, res) {
+  try {
+    console.log(req.body);
+
+    const addReviewResult = await addNewReview(req.body);
+    console.log("addReviewResult =>", addReviewResult);
+
+    return res.send({ review_id: addReviewResult });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 module.exports = {
   register,
   login,
   addCook,
   addCustomer,
+  addReview,
 };
