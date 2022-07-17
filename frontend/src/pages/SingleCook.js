@@ -6,6 +6,7 @@ import {
   Info_Container,
   Description,
   Opening_Hours,
+  Day,
 } from "../styles/SingleCook.styles";
 import { Display_Cook_Image } from "../styles/Image.style";
 
@@ -63,7 +64,31 @@ function SingleCook() {
           Opening Hours: {cook.opening_hours[0]} -&gt; {cook.opening_hours[1]}
         </Opening_Hours>
       </Info_Container>
-      {/* <Days></Days> */}
+
+      {/* Days */}
+      <Grid container spacing={1}>
+        <Grid item xs={1.714}>
+          <Day>Monday</Day>
+        </Grid>
+        <Grid item xs={1.714}>
+          <Day>Tuesday</Day>
+        </Grid>
+        <Grid item xs={1.714}>
+          <Day>Wednesday</Day>
+        </Grid>
+        <Grid item xs={1.714}>
+          <Day>Thursday</Day>
+        </Grid>
+        <Grid item xs={1.714}>
+          <Day>Friday</Day>
+        </Grid>
+        <Grid item xs={1.714}>
+          <Day>Saturday</Day>
+        </Grid>
+        <Grid item xs={1.714}>
+          <Day>Sunday</Day>
+        </Grid>
+      </Grid>
     </Container>
   );
 }

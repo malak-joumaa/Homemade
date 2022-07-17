@@ -29,3 +29,18 @@ export const Opening_Hours = styled.div`
   float: left;
   margin-top: 10px;
 `;
+
+export const Day = styled.button`
+  width: 110px;
+  height: 35px;
+  background-color: transparent;
+  color: #494949;
+  font-weight: 500;
+  border: 1px solid #acdac5;
+  border-radius: 20px;
+  font-size: 1em;
+  &:hover,
+  :active {
+    background-color: #acdac5;
+  }
+`;
