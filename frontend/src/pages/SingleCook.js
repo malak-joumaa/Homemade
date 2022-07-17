@@ -10,7 +10,14 @@ import {
   Menu,
 } from "../styles/SingleCook.styles";
 import { Display_Cook_Image } from "../styles/Image.style";
-import { MenuContainer } from "../styles/Menu.style";
+import {
+  MenuContainer,
+  DishImg,
+  DishName,
+  DishDescription,
+  DishPrice,
+  AddDish,
+} from "../styles/Menu.style";
 
 function SingleCook() {
   const [cook, setCook] = useState([]);
@@ -92,14 +99,134 @@ function SingleCook() {
           {/* Days */}
           <Grid container spacing={1} columns={7}>
             {days.map((day, index) => (
-              <Grid item xs={1} textAlign="center">
+              <Grid item md={1} sm={3} textAlign="center">
                 <Day key={index}>{day}</Day>
               </Grid>
             ))}
           </Grid>
 
           {/* Menu */}
-          <MenuContainer></MenuContainer>
+          <MenuContainer>
+            <Grid container spacing={1}>
+              {/* Dish Image */}
+              <Grid
+                item
+                xl={3}
+                lg={4}
+                md={6}
+                xs={12}
+                style={{ position: "relative" }}
+              >
+                <Grid container spacing={0}>
+                  <Grid item xs={4.5}>
+                    <DishImg />
+                  </Grid>
+                  {/* Dish Info */}
+                  <Grid item xs={6}>
+                    <DishName>Mloukhiye</DishName>
+                    <br />
+                    <DishPrice>10$</DishPrice>
+                    <br />
+                    <DishDescription>
+                      Lorem Ipsum is simply dummy text of the printing and
+                    </DishDescription>
+                  </Grid>
+                  <Grid item xs={1.5}>
+                    <AddDish>
+                      <i class="fa-solid fa-plus"></i>
+                    </AddDish>
+                  </Grid>
+                </Grid>
+              </Grid>
+              <Grid
+                item
+                xl={3}
+                lg={4}
+                md={6}
+                xs={12}
+                style={{ position: "relative" }}
+              >
+                <Grid container spacing={0}>
+                  <Grid item xs={4.5}>
+                    <DishImg />
+                  </Grid>
+                  {/* Dish Info */}
+                  <Grid item xs={6}>
+                    <DishName>Mloukhiye</DishName>
+                    <br />
+                    <DishPrice>10$</DishPrice>
+                    <br />
+                    <DishDescription>
+                      Lorem Ipsum is simply dummy text of the printing and
+                    </DishDescription>
+                  </Grid>
+                  <Grid item xs={1.5}>
+                    <AddDish>
+                      <i class="fa-solid fa-plus"></i>
+                    </AddDish>
+                  </Grid>
+                </Grid>
+              </Grid>
+              <Grid
+                item
+                xl={3}
+                lg={4}
+                md={6}
+                xs={12}
+                style={{ position: "relative" }}
+              >
+                <Grid container spacing={0}>
+                  <Grid item xs={4.5}>
+                    <DishImg />
+                  </Grid>
+                  {/* Dish Info */}
+                  <Grid item xs={6}>
+                    <DishName>Mloukhiye</DishName>
+                    <br />
+                    <DishPrice>10$</DishPrice>
+                    <br />
+                    <DishDescription>
+                      Lorem Ipsum is simply dummy text of the printing and
+                    </DishDescription>
+                  </Grid>
+                  <Grid item xs={1.5}>
+                    <AddDish>
+                      <i class="fa-solid fa-plus"></i>
+                    </AddDish>
+                  </Grid>
+                </Grid>
+              </Grid>
+              <Grid
+                item
+                xl={3}
+                lg={4}
+                md={6}
+                xs={12}
+                style={{ position: "relative" }}
+              >
+                <Grid container spacing={0}>
+                  <Grid item xs={4.5}>
+                    <DishImg />
+                  </Grid>
+                  {/* Dish Info */}
+                  <Grid item xs={6}>
+                    <DishName>Mloukhiye</DishName>
+                    <br />
+                    <DishPrice>10$</DishPrice>
+                    <br />
+                    <DishDescription>
+                      Lorem Ipsum is simply dummy text of the printing and
+                    </DishDescription>
+                  </Grid>
+                  <Grid item xs={1.5}>
+                    <AddDish>
+                      <i class="fa-solid fa-plus"></i>
+                    </AddDish>
+                  </Grid>
+                </Grid>
+              </Grid>
+            </Grid>
+          </MenuContainer>
           {/* </div> */}
         </Container>
       )}

@@ -312,3 +312,7 @@ a:link, a:visited{
 .clicked_category{
   background-color: #43C187;
 }
+
+.fa-plus{
+  margin-top: 4px;
+}
