@@ -4,6 +4,7 @@ const {
   addNewCook,
   addNewCustomer,
   addNewReview,
+  getReviewsByCookID,
 } = require("../service");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -101,10 +102,27 @@ async function addReview(req, res) {
   }
 }
 
+// Get Reviews
+async function getReview(req, res) {
+  try {
+    console.log(req.query);
+
+    if (req.query.id) {
+      const id = req.query.id;
+      const result = await getReviewsByCookID(id);
+      console.log("review data =>", result);
+      return res.send(result);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 module.exports = {
   register,
   login,
   addCook,
   addCustomer,
   addReview,
+  getReview,
 };

@@ -2,6 +2,7 @@ const User = require("../../model/User");
 const Cook = require("../../model/Cook");
 const Customer = require("../../model/Customer");
 const Review = require("../../model/Review");
+const { populate } = require("../../model/Menu");
 
 //Add user function
 async function addUser(body, hashPassword) {
@@ -74,10 +75,15 @@ async function getByEmail(email) {
   });
 }
 
+async function getReviewsByCookID(id) {
+  return await Review.find({ cook: id }).populate("customer");
+}
+
 module.exports = {
   addUser,
   addNewCook,
   addNewCustomer,
   addNewReview,
   getByEmail,
+  getReviewsByCookID,
 };

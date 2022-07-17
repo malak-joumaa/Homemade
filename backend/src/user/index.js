@@ -5,6 +5,7 @@ const {
   addCook,
   addCustomer,
   addReview,
+  getReview,
 } = require("./controller/user");
 const router = Router();
 
@@ -13,5 +14,6 @@ router.post("/auth/login", login);
 router.post("/auth/add-cook", addCook);
 router.post("/auth/add-customer", addCustomer);
 router.post("/auth/add-review", addReview);
+router.get("/auth/get-review", getReview);
 
 module.exports = router;
