@@ -12,7 +12,7 @@ const cookSchema = new mongoose.Schema({
   ],
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Users",
+    ref: "User",
   },
   menus: [
     {
@@ -23,7 +23,7 @@ const cookSchema = new mongoose.Schema({
   reviews: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Reviews",
+      ref: "Review",
     },
   ],
 });

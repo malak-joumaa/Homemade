@@ -2,6 +2,8 @@ const Menu = require("../../model/Menu");
 const Dish = require("../../model/Dish");
 const Category = require("../../model/Category");
 const Question = require("../../model/Question");
+const Cook = require("../../model/Cook");
+const User = require("../../model/User");
 
 //Add Menu function
 async function newMenu(body) {
@@ -66,6 +68,10 @@ async function getCategories() {
   return await Category.find();
 }
 
+async function getCookById(id) {
+  return await Cook.findById(id).populate("user");
+}
+
 module.exports = {
   newMenu,
   newDish,
@@ -73,4 +79,5 @@ module.exports = {
   newQuestion,
   getByType,
   getCategories,
+  getCookById,
 };
