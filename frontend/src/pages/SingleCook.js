@@ -7,8 +7,10 @@ import {
   Description,
   Opening_Hours,
   Day,
+  Menu,
 } from "../styles/SingleCook.styles";
 import { Display_Cook_Image } from "../styles/Image.style";
+import { MenuContainer } from "../styles/Menu.style";
 
 function SingleCook() {
   const [cook, setCook] = useState([]);
@@ -85,6 +87,8 @@ function SingleCook() {
             </Opening_Hours>
           </Info_Container>
 
+          <Menu>Menu</Menu>
+
           {/* Days */}
           <Grid container spacing={1} columns={7}>
             {days.map((day, index) => (
@@ -94,6 +98,8 @@ function SingleCook() {
             ))}
           </Grid>
 
+          {/* Menu */}
+          <MenuContainer></MenuContainer>
           {/* </div> */}
         </Container>
       )}
