@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import green_bg from "../assets/green-bk.png";
 
 export const Nav = styled.div`
   height: 50px;
@@ -25,4 +26,12 @@ export const Main_Page_Container = styled.div`
 
 export const Search_Location = styled.div`
   margin-top: 25px;
+`;
+
+export const Display_Cook_Info = styled.div`
+  width: 1300px;
+  height: 400px;
+  margin: 30px auto;
+  background-image: url(${green_bg});
+  border-radius: 20px;
 `;

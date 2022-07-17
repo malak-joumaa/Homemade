@@ -5,6 +5,7 @@ import AddMenu from "./pages/AddMenu";
 import RegisterFollowUp from "./pages/RegisterFollowUp";
 import MainPage from "./pages/MainPage";
 import { Toaster } from "react-hot-toast";
+import SingleCook from "./pages/SingleCook";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/add-menu" element={<AddMenu />}></Route>
         <Route path="/follow-up" element={<RegisterFollowUp />}></Route>
         <Route path="/main-page" element={<MainPage />}></Route>
+        <Route path="/cook" element={<SingleCook />}></Route>
       </Routes>
     </BrowserRouter>
   );
