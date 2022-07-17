@@ -12,6 +12,16 @@ import { Display_Cook_Image } from "../styles/Image.style";
 
 function SingleCook() {
   const [cook, setCook] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const days = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
 
   useEffect(() => {
     getCook();
@@ -23,73 +33,71 @@ function SingleCook() {
       const res = await fetch(
         "http://localhost:5000/api/cook/display-cook?id=62cf9ca1c3f55e7c6b16e4b6"
         //localStorage.getItem("cook_id")
-      );
-      const data = await res.json();
-      console.log(data);
-      setCook(data);
+      ).then(async (res) => {
+        const data = await res.json();
+        console.log(data);
+        setCook(data);
+        setLoading(false);
+      });
     } catch (err) {
       console.log(err);
     }
   };
   console.log(cook);
   return (
-    <Container maxWidth="xl">
-      <Navbar />
-      <Info_Container>
-        <Display_Cook_Image src={cook.user.profile_photo}></Display_Cook_Image>
-        <Cook_Name>
-          {cook.user.first_name} {cook.user.last_name}
-        </Cook_Name>
-        <Grid container spacing={1}>
-          <Grid item xs={10}>
-            <Description>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged.
-            </Description>
-          </Grid>
-          <Grid item xs={2}>
-            <Rating
-              name="half-rating-read"
-              precision={0.5}
-              value={cook.rate}
-              readOnly
-            />
-          </Grid>
-        </Grid>
-        <Opening_Hours>
-          Opening Hours: {cook.opening_hours[0]} -&gt; {cook.opening_hours[1]}
-        </Opening_Hours>
-      </Info_Container>
+    <>
+      {loading && <div>Loading...</div>}
+      {!loading && (
+        <Container maxWidth="xl">
+          <Navbar />
+          <Info_Container>
+            <Display_Cook_Image
+              src={cook.user.profile_photo}
+            ></Display_Cook_Image>
+            <Cook_Name>
+              {cook?.user?.first_name} {cook?.user?.last_name}
+            </Cook_Name>
+            <Grid container spacing={1}>
+              <Grid item xs={10}>
+                <Description>
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s, when an unknown
+                  printer took a galley of type and scrambled it to make a type
+                  specimen book. It has survived not only five centuries, but
+                  also the leap into electronic typesetting, remaining
+                  essentially unchanged.
+                </Description>
+              </Grid>
+              <Grid item xs={2}>
+                <Rating
+                  name="half-rating-read"
+                  precision={0.5}
+                  value={cook.rate}
+                  readOnly
+                />
+              </Grid>
+            </Grid>
+            <Opening_Hours>
+              Opening Hours:{" "}
+              {cook?.opening_hours?.length > 0 && cook.opening_hours[0]} -&gt;{" "}
+              {cook?.opening_hours?.length > 0 && cook.opening_hours[1]}
+            </Opening_Hours>
+          </Info_Container>
 
-      {/* Days */}
-      <Grid container spacing={1}>
-        <Grid item xs={1.714}>
-          <Day>Monday</Day>
-        </Grid>
-        <Grid item xs={1.714}>
-          <Day>Tuesday</Day>
-        </Grid>
-        <Grid item xs={1.714}>
-          <Day>Wednesday</Day>
-        </Grid>
-        <Grid item xs={1.714}>
-          <Day>Thursday</Day>
-        </Grid>
-        <Grid item xs={1.714}>
-          <Day>Friday</Day>
-        </Grid>
-        <Grid item xs={1.714}>
-          <Day>Saturday</Day>
-        </Grid>
-        <Grid item xs={1.714}>
-          <Day>Sunday</Day>
-        </Grid>
-      </Grid>
-    </Container>
+          {/* Days */}
+          <Grid container spacing={1} columns={7}>
+            {days.map((day, index) => (
+              <Grid item xs={1} textAlign="center">
+                <Day key={index}>{day}</Day>
+              </Grid>
+            ))}
+          </Grid>
+
+          {/* </div> */}
+        </Container>
+      )}
+    </>
   );
 }
 
