@@ -14,8 +14,8 @@ export const Profile_Icon = styled.img`
 `;
 
 export const Display_Cook_Image = styled.img`
-  width: 200px;
-  height: 200px;
+  width: 180px;
+  height: 180px;
   border-radius: 70px;
   border: 2px solid white;
 `;

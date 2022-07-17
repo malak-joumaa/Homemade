@@ -2,8 +2,7 @@ import styled from "styled-components";
 import green_bg from "../assets/green-bk.png";
 
 export const Info_Container = styled.div`
-  width: 1300px;
-  min-height: 410px;
+  min-height: 400px;
   margin: 30px auto;
   background-image: url(${green_bg});
   border-radius: 20px;

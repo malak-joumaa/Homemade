@@ -26,7 +26,3 @@ export const Main_Page_Container = styled.div`
 export const Search_Location = styled.div`
   margin-top: 25px;
 `;
-
-export const Flex_container = styled.div`
-  display: flex;
-`;
