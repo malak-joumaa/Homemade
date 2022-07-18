@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Search_box = styled.input`
+export const SearchBox = styled.input`
   height: 40px;
   width: 900px;
   margin-right: 100px;
@@ -11,7 +11,7 @@ export const Search_box = styled.input`
   font-size: 1.1em;
 `;
 
-export const Location_name = styled.input`
+export const LocationName = styled.input`
   height: 40px;
   width: 250px;
   float: right;

@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-export const Nav_Logo = styled.img`
+export const NavLogo = styled.img`
   width: 200px;
   float: left;
 `;
 
-export const Profile_Icon = styled.img`
+export const ProfileIcon = styled.img`
   width: 40px;
   height: 40px;
   border-radius: 50px;
