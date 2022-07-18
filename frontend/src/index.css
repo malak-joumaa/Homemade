@@ -241,7 +241,6 @@ a:link, a:visited{
 }
 
 #oph-photo{
-  margin-top: 70px;
   width: 40%;
   text-align: center;
 }
@@ -252,7 +251,7 @@ a:link, a:visited{
   font-size: 1.3em;
   font-weight: 600;
   position: absolute;
-  top: 45%;
+  top: 35%;
   right: 50px;
 }
 
@@ -315,4 +314,8 @@ a:link, a:visited{
 
 .fa-plus{
   margin-top: 4px;
+}
+
+#desc{
+  font-size: 1.2em;
 }

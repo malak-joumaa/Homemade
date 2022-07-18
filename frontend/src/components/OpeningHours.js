@@ -1,5 +1,7 @@
+import { Grid } from "@mui/material";
 import React, { useState } from "react";
 import Photo from "../assets/hours.png";
+import { Description } from "../styles/Container.style";
 
 const OpeningHours = ({ setData, data }) => {
   const [valid, setValid] = useState(false);
@@ -11,47 +13,58 @@ const OpeningHours = ({ setData, data }) => {
 
   return (
     <>
-      <h1>Set Opening Hours</h1>
-      <div className="oph-div">
-        {/* Main Content */}
-        <div id="oph-photo">
-          <img src={Photo} />
+      <h1>Opening Hours - Description</h1>
+      <div>
+        <div className="oph-div">
+          {/* Main Content */}
+          <div id="oph-photo">
+            <img src={Photo} />
+          </div>
+          <div id="setTime">
+            From{" "}
+            <input
+              type="time"
+              className="oph"
+              name="oph"
+              value={timeFrom}
+              onChange={(e) => {
+                setTimeFrom(e.target.value);
+                data[2].openingHours.from = e.target.value;
+                setData(data);
+              }}
+              required
+              id={!valid ? "" : "oph-validity"}
+              onClick={() => {
+                setValid(true);
+              }}
+            />
+            Till{" "}
+            <input
+              type="time"
+              className="oph"
+              name="oph"
+              value={timeTill}
+              onChange={(e) => {
+                setTimeTill(e.target.value);
+                data[2].openingHours.till = e.target.value;
+                setData(data);
+              }}
+              required
+              id={!valid ? "" : "oph-validity"}
+              onClick={(e) => {
+                setValid(true);
+              }}
+            />
+          </div>
         </div>
-        <div id="setTime">
-          From{" "}
-          <input
-            type="time"
-            className="oph"
-            name="oph"
-            value={timeFrom}
-            onChange={(e) => {
-              setTimeFrom(e.target.value);
-              data[2].openingHours.from = e.target.value;
-              setData(data);
-            }}
-            required
-            id={!valid ? "" : "oph-validity"}
-            onClick={() => {
-              setValid(true);
-            }}
-          />
-          Till{" "}
-          <input
-            type="time"
-            className="oph"
-            name="oph"
-            value={timeTill}
-            onChange={(e) => {
-              setTimeTill(e.target.value);
-              data[2].openingHours.till = e.target.value;
-              setData(data);
-            }}
-            required
-            id={!valid ? "" : "oph-validity"}
-            onClick={(e) => {
-              setValid(true);
-            }}
-          />
+        <div>
+          <label id="desc">Cook/Restaurant Description:</label>
+          <br />
+          <Grid container spacing={1}>
+            <Grid item xs={12}>
+              <Description id="description"></Description>
+            </Grid>
+          </Grid>
         </div>
       </div>
     </>
