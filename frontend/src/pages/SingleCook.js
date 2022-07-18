@@ -41,8 +41,7 @@ function SingleCook() {
   const getCook = async () => {
     try {
       const res = await fetch(
-        "http://localhost:5000/api/cook/display-cook?" +
-          localStorage.getItem("cook_id")
+        "http://localhost:5000/api/cook/display-cook?id=62cf9ca1c3f55e7c6b16e4b6"
       ).then(async (res) => {
         const data = await res.json();
         console.log(data);
@@ -100,7 +99,7 @@ function SingleCook() {
           {/* Days */}
           <Grid container spacing={1} columns={7}>
             {days.map((day, index) => (
-              <Grid item md={1} sm={3} textAlign="center">
+              <Grid item md={1} textAlign="center">
                 <Day key={index}>{day}</Day>
               </Grid>
             ))}

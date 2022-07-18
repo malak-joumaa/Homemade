@@ -1,20 +1,11 @@
 import React, { useState } from "react";
 
-const Category = ({ name, id }) => {
-  const [clicked, setClicked] = useState([]);
-
-  console.log(clicked);
-  console.log(id);
-
+const Category = ({ name, id, handleClick }) => {
   return (
     <div
-      className={
-        clicked.includes(id) ? "category clicked_category" : "category"
-      }
-      onClick={() => {
-        clicked.includes(id)
-          ? setClicked(clicked.filter(clicked != { id }))
-          : setClicked([...clicked, id]);
+      className="category"
+      onClick={(event) => {
+        handleClick(event, id);
       }}
     >
       {name}{" "}

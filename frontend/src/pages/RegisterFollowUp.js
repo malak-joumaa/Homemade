@@ -82,8 +82,8 @@ const RegisterFollowUp = () => {
                 "Content-type": "application/json",
               },
               body: JSON.stringify({
-                user: localStorage.getItem("user_id"),
-                categories: data.categories,
+                user: data2._id,
+                categories: data[4].categories,
               }),
             }
           );

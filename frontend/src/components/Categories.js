@@ -8,11 +8,28 @@ const Categories = ({ setData, data }) => {
     getCategories();
   }, []);
 
+  const [clicked, setClicked] = useState([]);
+
+  console.log(clicked);
+
+  const handleClick = (event, id) => {
+    // Adding class to the clicked category
+    event.currentTarget.classList.toggle("clicked_category");
+    console.log(clicked.includes(id));
+    // Adding the clicked category to the array
+    clicked.includes(id)
+      ? setClicked(clicked.filter((item) => item !== id))
+      : setClicked([...clicked, id]);
+    data[4].categories = [...clicked, id];
+    setData(data);
+    console.log(data);
+  };
+
   // Get Categories
   const getCategories = async () => {
     try {
       const res = await fetch(
-        "http://localhost:5000/api/cook/auth/get-category/?type=admin"
+        "http://localhost:5000/api/cook/get-category/?type=admin"
       );
       const data = await res.json();
       console.log(data);
@@ -21,11 +38,10 @@ const Categories = ({ setData, data }) => {
       console.log(err);
     }
   };
-  console.log(categories);
 
   return (
     <>
-      <h1>Choose Preffered Categories</h1>
+      <h1>Choose Preferred Categories</h1>
       {/* Main Content */}
       <div id="category-div">
         {categories.map((singleCat, index) => (
@@ -33,6 +49,7 @@ const Categories = ({ setData, data }) => {
             key={index}
             id={categories[index]._id}
             name={categories[index].name}
+            handleClick={handleClick}
           />
         ))}
       </div>
