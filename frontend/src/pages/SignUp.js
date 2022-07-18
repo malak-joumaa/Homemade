@@ -20,25 +20,14 @@ const SignUp = () => {
   const [c_password, setCpassword] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
 
-  // User state
-  const [signUpData, setSignUpData] = useState({
-    fname: fname,
-    lname: lname,
-    email: email,
-    password: password,
-    phoneNumber: phoneNumber,
-  });
-
   const followUp = async () => {
-    setSignUpData({
+    changeValue({
       fname: fname,
       lname: lname,
       email: email,
       password: password,
       phoneNumber: phoneNumber,
     });
-    console.log("heree");
-    changeValue(signUpData);
     console.log(user);
     navigate("/follow-up");
   };
@@ -85,6 +74,9 @@ const SignUp = () => {
           </div>
           <br />
           <button
+            onKeyDown={(e) => {
+              e.preventDefault();
+            }}
             onClick={(e) => {
               e.preventDefault();
               if (
