@@ -66,8 +66,8 @@ const AddMenu = () => {
           "Content-type": "application/json",
         },
         body: JSON.stringify({
-          user: localStorage.getItem("user_id"),
-          days: ["Monday", "Tuesday"],
+          cook: localStorage.getItem("cook_id"),
+          days: [1, 2],
         }),
       });
       const data = await res.json();
@@ -80,6 +80,7 @@ const AddMenu = () => {
             "Content-type": "application/json",
           },
           body: JSON.stringify({
+            name: singleDish.name,
             description: singleDish.description,
             price: singleDish.price,
             photo: singleDish.photo,
@@ -137,6 +138,16 @@ const AddMenu = () => {
                   imgStore={imgStore}
                 />
 
+                <br />
+                <label>Name:</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={input.name}
+                  onChange={(e) => {
+                    handleFormChange(index, e);
+                  }}
+                />
                 <br />
                 <label>Description:</label>
                 <input
