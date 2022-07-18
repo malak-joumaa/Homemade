@@ -20,9 +20,10 @@ async function newMenu(body) {
 
 //Add dish function
 async function newDish(body) {
-  const { description, price, quantity, photo, menu, categories } = body;
+  const { name, description, price, quantity, photo, menu, categories } = body;
 
   const dish = new Dish({
+    name,
     description,
     price,
     quantity,
