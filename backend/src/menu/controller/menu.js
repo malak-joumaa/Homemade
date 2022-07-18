@@ -37,7 +37,7 @@ async function addDish(req, res) {
       },
       {
         $push: {
-          dishes: dishResult._id,
+          dishes: dishResult,
         },
       }
     );

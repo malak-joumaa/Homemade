@@ -7,9 +7,12 @@ const OpeningHours = ({ setData, data }) => {
   const [valid, setValid] = useState(false);
   const [timeFrom, setTimeFrom] = useState("");
   const [timeTill, setTimeTill] = useState("");
+  const [desc, setDesc] = useState("");
+
   console.log(timeFrom);
   console.log(timeTill);
   console.log(data[2]);
+  console.log(data[3]);
 
   return (
     <>
@@ -62,7 +65,15 @@ const OpeningHours = ({ setData, data }) => {
           <br />
           <Grid container spacing={1}>
             <Grid item xs={12}>
-              <Description id="description"></Description>
+              <Description
+                id="description"
+                value={desc}
+                onChange={(e) => {
+                  setDesc(e.target.value);
+                  data[3].description = e.target.value;
+                  setData(data);
+                }}
+              />
             </Grid>
           </Grid>
         </div>

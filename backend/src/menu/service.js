@@ -34,7 +34,7 @@ async function newDish(body) {
   return await dish.save();
 }
 
-//Add dish function
+//Add Category function
 async function newCategory(body) {
   const { name, created_by } = body;
 
@@ -73,7 +73,7 @@ async function getCookById(id) {
 }
 
 async function getMenusBycookId(id) {
-  return await Menu.find({ cook: id });
+  return await Menu.find({ cook: id }).populate("dishes");
 }
 
 module.exports = {

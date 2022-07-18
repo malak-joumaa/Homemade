@@ -15,8 +15,10 @@ const RegisterFollowUp = () => {
     { profilePhoto: "" },
     { location: [] },
     { openingHours: { from: "", till: "" } },
+    { description: "" },
     { categories: [] },
   ]);
+  console.log(stateNb);
 
   var user_type = localStorage.getItem("user_type");
   console.log(stateNb);
@@ -55,12 +57,14 @@ const RegisterFollowUp = () => {
                 data[2].openingHours.from,
                 data[2].openingHours.till,
               ],
+              description: data[3].description,
               rate: 5,
             }),
           }
         );
         const resData = await res.json();
         console.log(resData);
+        navigate("/sign-in");
       } catch (error) {
         console.log("Failed");
       }
@@ -81,6 +85,7 @@ const RegisterFollowUp = () => {
         );
         const resData = await res.json();
         console.log(resData);
+        navigate("/sign-in");
       } catch (error) {
         console.log("Failed");
       }
@@ -102,8 +107,6 @@ const RegisterFollowUp = () => {
           ) : (
             <Categories data={data} setData={setData} />
           ))}
-
-        {stateNb == 4 && navigate("/sign-in")}
 
         {/* Links to Skip or move to the next page */}
         {stateNb == 1 ? (
