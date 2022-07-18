@@ -5,6 +5,7 @@ import Button from "../components/Button";
 import UploadPhoto from "../components/UploadPhoto";
 
 const AddMenu = () => {
+  // Dish useState
   const [dish, setDish] = useState([
     {
       name: "",
@@ -16,22 +17,25 @@ const AddMenu = () => {
     },
   ]);
 
+  // Question useState
   const [question, setQuestion] = useState([
-    {
-      question: "Special Instructions",
-      type: "textBox",
-      choices: [],
-      currentChoice: "",
-    },
+    [
+      {
+        question: "Special Instructions",
+        type: "textBox",
+        choices: [],
+        currentChoice: "",
+      },
+    ],
   ]);
 
-  const [innerQuestion, setInnerQuestion] = useState([[...question]]);
-
+  //Handle Dish Form Change
   const handleFormChange = (index, event) => {
     let data = [...dish];
     data[index][event.target.name] = event.target.value;
     setDish(data);
   };
+  // Handle Image Upload
   const handleImageChange = (index, event) => {
     let data = [...dish];
     data[index].photo = event.target.result;
@@ -40,9 +44,8 @@ const AddMenu = () => {
   console.log(dish);
   console.log(question);
 
-  //Add a new item
+  //Add a new Dish
   const addDish = () => {
-    setInnerQuestion([[...question], []]);
     let newDish = {
       name: "",
       description: "",
@@ -52,6 +55,7 @@ const AddMenu = () => {
       categories: [],
     };
     setDish([...dish, newDish]);
+    setQuestion([...question, []]);
   };
 
   const submitMenu = async () => {

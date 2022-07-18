@@ -4,11 +4,13 @@ import Button from "./Button";
 const Specifications = ({ question, setQuestion, dishIndex }) => {
   const types = ["dropDown", "checkBox", "textBox", "radio"];
 
-  //Change Input Values on change according to event and index
-  const handleFormChange = (index, event) => {
-    let data = [...question];
+  //Change Input Values on change according index
+  const handleFormChange = (index, event, dishIndex) => {
+    let data = [...question[dishIndex]];
     data[index][event.target.name] = event.target.value;
-    setQuestion(data);
+    let data2 = [...question];
+    data2[dishIndex] = data;
+    setQuestion(data2);
   };
 
   //Add a new question field
@@ -19,27 +21,32 @@ const Specifications = ({ question, setQuestion, dishIndex }) => {
       choices: [],
       currentChoice: "",
     };
-    setQuestion([...question, newQuestion]);
+    let data = [...question[dishIndex]];
+    data.push(newQuestion);
+    let data2 = [...question];
+    data2[dishIndex] = data;
+    setQuestion(data2);
   };
 
   //Add New choices to a question
-  const handleChoiceAdd = (index, newChoice) => {
-    let data = [...question];
+  const handleAddChoice = (index, newChoice) => {
+    let data = [...question[dishIndex]];
     data[index].choices.push(newChoice);
-    setQuestion(data);
+    let data2 = [...question];
+    data2[dishIndex] = data;
+    setQuestion(data2);
   };
-
   return (
     <div className="container">
       <form>
-        {question.map((input, index) => (
+        {question[dishIndex].map((input, index) => (
           <div key={index}>
             <label>Question Type</label>
             <select
               value={input.type}
               name="type"
               onChange={(e) => {
-                handleFormChange(index, e);
+                handleFormChange(index, e, dishIndex);
               }}
             >
               {types.map((type) => (
@@ -53,7 +60,7 @@ const Specifications = ({ question, setQuestion, dishIndex }) => {
               name="question"
               value={input.question}
               onChange={(e) => {
-                handleFormChange(index, e);
+                handleFormChange(index, e, dishIndex);
               }}
             />
             <br />
@@ -64,14 +71,14 @@ const Specifications = ({ question, setQuestion, dishIndex }) => {
                   type={"text"}
                   name="currentChoice"
                   onChange={(e) => {
-                    handleFormChange(index, e);
+                    handleFormChange(index, e, dishIndex);
                   }}
                 />
                 <br />
                 <button
                   type="button"
                   onClick={() => {
-                    handleChoiceAdd(index, input.currentChoice);
+                    handleAddChoice(index, input.currentChoice);
                   }}
                 >
                   Add Choice
