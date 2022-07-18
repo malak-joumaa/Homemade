@@ -5,6 +5,7 @@ import Categories from "../components/Categories";
 import ChooseLocation from "../components/ChooseLocation";
 import OpeningHours from "../components/OpeningHours";
 import { useSelector } from "react-redux";
+import toast from "react-hot-toast";
 
 const RegisterFollowUp = () => {
   const navigate = useNavigate();
@@ -24,71 +25,79 @@ const RegisterFollowUp = () => {
   console.log(stateNb);
   console.log(data[0].profilePhoto.image);
 
+  // Add Data to User
   const addData = async () => {
-    const res = await fetch("http://localhost:5000/api/user/auth/register", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        first_name: user.fname,
-        last_name: user.lname,
-        email: user.email,
-        password: user.password,
-        user_type: localStorage.getItem("user_type"),
-        profile_photo: data[0].profilePhoto.image,
-        // location: data[1].location
-      }),
-    });
-    const data2 = await res.json();
-    console.log(data2);
-    if (user_type == "cook") {
-      try {
-        const res = await fetch(
-          "http://localhost:5000/api/user/auth/add-cook",
-          {
-            method: "POST",
-            headers: {
-              "Content-type": "application/json",
-            },
-            body: JSON.stringify({
-              user: data2._id,
-              opening_hours: [
-                data[2].openingHours.from,
-                data[2].openingHours.till,
-              ],
-              description: data[3].description,
-              rate: 5,
-            }),
-          }
-        );
-        const resData = await res.json();
-        console.log(resData);
-        navigate("/sign-in");
-      } catch (error) {
-        console.log("Failed");
+    try {
+      const res = await fetch("http://localhost:5000/api/user/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          first_name: user.fname,
+          last_name: user.lname,
+          email: user.email,
+          password: user.password,
+          user_type: localStorage.getItem("user_type"),
+          profile_photo: data[0].profilePhoto.image,
+          // location: data[1].location
+        }),
+      });
+      const data2 = await res.json();
+      console.log(data2);
+
+      if (user_type == "cook") {
+        try {
+          const res = await fetch(
+            "http://localhost:5000/api/user/auth/add-cook",
+            {
+              method: "POST",
+              headers: {
+                "Content-type": "application/json",
+              },
+              body: JSON.stringify({
+                user: data2._id,
+                opening_hours: [
+                  data[2].openingHours.from,
+                  data[2].openingHours.till,
+                ],
+                description: data[3].description,
+                rate: 5,
+              }),
+            }
+          );
+          const resData = await res.json();
+          console.log(resData);
+          navigate("/sign-in");
+        } catch (error) {
+          toast.error("Sign up failed");
+        }
+      } else if (user_type == "customer") {
+        try {
+          const res = await fetch(
+            "http://localhost:5000/api/user/auth/add-customer",
+            {
+              method: "POST",
+              headers: {
+                "Content-type": "application/json",
+              },
+              body: JSON.stringify({
+                user: localStorage.getItem("user_id"),
+                categories: data.categories,
+              }),
+            }
+          );
+          const resData = await res.json();
+          console.log(resData);
+          navigate("/sign-in");
+        } catch (error) {
+          console.log("Failed");
+          toast.error("Sign up failed");
+        }
       }
-    } else if (user_type == "customer") {
-      try {
-        const res = await fetch(
-          "http://localhost:5000/api/user/auth/add-customer",
-          {
-            method: "POST",
-            headers: {
-              "Content-type": "application/json",
-            },
-            body: JSON.stringify({
-              user: localStorage.getItem("user_id"),
-              categories: data.categories,
-            }),
-          }
-        );
-        const resData = await res.json();
-        console.log(resData);
-        navigate("/sign-in");
-      } catch (error) {
-        console.log("Failed");
-      }
+    } catch (err) {
+      console.log(err);
+      toast.error("Sign up failed, make sure image size is not too big");
     }
   };
 
