@@ -35,13 +35,15 @@ function SingleCook() {
 
   useEffect(() => {
     getCook();
+    getMenu();
   }, []);
 
   // Get Cook Details
   const getCook = async () => {
     try {
       const res = await fetch(
-        "http://localhost:5000/api/cook/display-cook?id=62cf9ca1c3f55e7c6b16e4b6"
+        "http://localhost:5000/api/cook/display-cook?id=" +
+          localStorage.getItem("cook_id")
       ).then(async (res) => {
         const data = await res.json();
         console.log(data);
@@ -52,6 +54,24 @@ function SingleCook() {
       console.log(err);
     }
   };
+
+  // Get Menu Data
+  const getMenu = async () => {
+    try {
+      console.log("here");
+      const res2 = await fetch(
+        "http://localhost:5000/api/cook/get-menu?id=" +
+          localStorage.getItem("cook_id")
+      ).then(async (res2) => {
+        const data2 = await res2.json();
+        console.log(data2);
+        setMenu(data2);
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  console.log(menu);
   console.log(cook);
   return (
     <>
@@ -109,35 +129,38 @@ function SingleCook() {
           <MenuContainer>
             <Grid container spacing={1}>
               {/* Dish Image */}
-              <Grid
-                item
-                xl={3}
-                lg={4}
-                md={6}
-                xs={12}
-                style={{ position: "relative" }}
-              >
-                <Grid container spacing={0}>
-                  <Grid item xs={4.5}>
-                    <DishImg />
-                  </Grid>
-                  {/* Dish Info */}
-                  <Grid item xs={6}>
-                    <DishName>Mloukhiye</DishName>
-                    <br />
-                    <DishPrice>10$</DishPrice>
-                    <br />
-                    <DishDescription>
-                      Lorem Ipsum is simply dummy text of the printing and
-                    </DishDescription>
-                  </Grid>
-                  <Grid item xs={1.5}>
-                    <AddDish>
-                      <i class="fa-solid fa-plus"></i>
-                    </AddDish>
+              {menu[0].dishes.map((dish, index) => (
+                <Grid
+                  key={index}
+                  item
+                  xl={3}
+                  lg={4}
+                  md={6}
+                  xs={12}
+                  style={{ position: "relative" }}
+                >
+                  <Grid container spacing={0}>
+                    <Grid item xs={4.5}>
+                      <DishImg src={menu[0].dishes[index].photo} />
+                    </Grid>
+                    {/* Dish Info */}
+                    <Grid item xs={6}>
+                      <DishName>{menu[0].dishes[index].name}</DishName>
+                      <br />
+                      <DishPrice>{menu[0].dishes[index].price}$</DishPrice>
+                      <br />
+                      <DishDescription>
+                        {menu[0].dishes[index].description}
+                      </DishDescription>
+                    </Grid>
+                    <Grid item xs={1.5}>
+                      <AddDish>
+                        <i class="fa-solid fa-plus"></i>
+                      </AddDish>
+                    </Grid>
                   </Grid>
                 </Grid>
-              </Grid>
+              ))}
             </Grid>
           </MenuContainer>
           {/* </div> */}
