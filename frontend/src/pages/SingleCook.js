@@ -161,7 +161,7 @@ function SingleCook() {
                       </DishDescription>
                     </Grid>
                     <Grid item xs={1.5}>
-                      <AddDish>
+                      <AddDish onClick={toggleModal}>
                         <i class="fa-solid fa-plus"></i>
                       </AddDish>
                     </Grid>
