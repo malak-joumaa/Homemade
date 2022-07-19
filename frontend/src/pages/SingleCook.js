@@ -18,6 +18,7 @@ import {
   DishPrice,
   AddDish,
 } from "../styles/Menu.style";
+import defaultDish from "../assets/default-plate.jpg";
 
 function SingleCook() {
   const [cook, setCook] = useState([]);
@@ -141,7 +142,13 @@ function SingleCook() {
                 >
                   <Grid container spacing={0}>
                     <Grid item xs={4.5}>
-                      <DishImg src={menu[0].dishes[index].photo} />
+                      <DishImg
+                        src={
+                          menu[0].dishes[index].photo
+                            ? menu[0].dishes[index].photo
+                            : defaultDish
+                        }
+                      />
                     </Grid>
                     {/* Dish Info */}
                     <Grid item xs={6}>
