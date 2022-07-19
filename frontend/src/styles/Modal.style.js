@@ -8,6 +8,7 @@ export const ModalDiv = styled.div`
   right: 0;
   bottom: 0;
   position: fixed;
+  z-index: 1;
 `;
 
 export const Overlay = styled.div`
@@ -23,7 +24,7 @@ export const Overlay = styled.div`
 
 export const ModalContent = styled.div`
   position: absolute;
-  top: 40%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
   line-height: 1.4;
@@ -105,15 +106,15 @@ export const Total = styled.span`
   border-radius: 50px;
   padding: 4px 12px;
   background-color: #b2d5c6c2;
-  color: black;
-  font-size: 1.1em;
+  color: #181818;
+  font-size: 17px;
   display: inline-block;
 `;
 export const Cart = styled.button`
   border: 2px solid #7dc1a2;
   background-color: white;
   border-radius: 20px;
-  padding: 5px 15px;
+  padding: 5px 10px;
   font-family: "Quicksand", sans-serif;
   font-size: 1em;
 `;
