@@ -17,7 +17,6 @@ import {
   DishName,
   DishDescription,
   DishPrice,
-  AddDish,
 } from "../styles/Menu.style";
 import defaultDish from "../assets/default-plate.jpg";
 

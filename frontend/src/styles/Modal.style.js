@@ -27,11 +27,10 @@ export const ModalContent = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   line-height: 1.4;
-  background: #f1f1f1;
+  background: white;
   padding: 14px 28px;
   border-radius: 3px;
-  max-width: 600px;
-  min-width: 300px;
+  width: 420px;
 `;
 
 export const AddDish = styled.div`
@@ -45,4 +44,100 @@ export const AddDish = styled.div`
   height: 25px;
   position: absolute;
   bottom: 4px;
+`;
+
+export const Photo = styled.img`
+  width: 250px;
+  height: 120px;
+  margin: 10px auto;
+  border: 2px solid #79c3a1;
+  border-radius: 10px;
+  display: block;
+`;
+
+export const Question = styled.p`
+  font-size: 17px;
+  font-weight: 500;
+  background-color: #c4e1d4;
+  border-radius: 5px;
+  width: 400px;
+  box-sizing: border-box;
+  padding: 10px 10px;
+  color: #181818;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  opacity: 0.9;
+`;
+export const AnswerTxt = styled.input`
+  width: 400px;
+  height: 30px;
+  border: 1px solid #7e7d7d;
+  border-radius: 50px;
+  box-sizing: border-box;
+  padding: 17px 12px;
+  font-size: 1.05em;
+  margin-bottom: 10px;
+`;
+export const AnswerRadio = styled.input`
+  width: 4%;
+  height: 20px;
+`;
+export const AnswerCheck = styled.input`
+  width: 4%;
+  height: 18px;
+  &:checked::after {
+  }
+`;
+export const AnswerSelect = styled.select`
+  width: 400px;
+  height: 30px;
+  border: 1px solid #7e7d7d;
+  border-radius: 50px;
+  box-sizing: border-box;
+  padding: 17px 12px;
+  font-size: 1.05em;
+  margin-bottom: 10px;
+`;
+export const Quantity = styled.span`
+  font-size: 1.4em;
+  margin: 0 20px;
+`;
+export const Total = styled.span`
+  border-radius: 50px;
+  padding: 4px 12px;
+  background-color: #b2d5c6c2;
+  color: black;
+  font-size: 1.1em;
+  display: inline-block;
+`;
+export const Cart = styled.button`
+  border: 2px solid #7dc1a2;
+  background-color: white;
+  border-radius: 20px;
+  padding: 5px 15px;
+  font-family: "Quicksand", sans-serif;
+  font-size: 1em;
+`;
+export const Add = styled.button`
+  border: 1px solid #7dc1a2;
+  border-radius: 50px;
+  width: 25px;
+  height: 25px;
+  background-color: white;
+  color: #7dc1a2;
+`;
+export const Close = styled.button`
+  border: 1px solid #7dc1a2;
+  border-radius: 50px;
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  color: #7dc1a2;
+  float: right;
+`;
+
+export const QA = styled.div`
+  height: 300px;
+  overflow-y: scroll;
+  margin-bottom: 10px;
 `;
