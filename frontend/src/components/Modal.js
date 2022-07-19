@@ -28,6 +28,14 @@ const Modal = () => {
   } else {
     document.body.classList.remove("active-modal");
   }
+
+  //   Counter for quantity
+  const [count, setCount] = useState(1);
+  const handleAdd = () => setCount(count + 1);
+  const handleSub = () => {
+    if (count > 1) setCount(count - 1);
+  };
+
   return (
     <>
       <AddDish onClick={toggleModal}>
@@ -71,12 +79,16 @@ const Modal = () => {
               </QA>
               <Grid container spacing={1}>
                 <Grid item xs={4}>
-                  <Add>
+                  <Add
+                    onClick={() => {
+                      handleAdd();
+                    }}
+                  >
                     {" "}
                     <i class="fa-solid fa-plus"></i>
                   </Add>
-                  <Quantity>1</Quantity>
-                  <Add>
+                  <Quantity>{count}</Quantity>
+                  <Add onClick={handleSub}>
                     {" "}
                     <i class="fa-solid fa-minus"></i>
                   </Add>
