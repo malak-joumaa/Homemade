@@ -30,16 +30,3 @@ export const DishPrice = styled.span`
 export const DishDescription = styled.span`
   font-size: 14px;
 `;
-
-export const AddDish = styled.div`
-  border: 1px solid #6a6a6a;
-  border-radius: 8px;
-  background-color: white;
-  text-align: center;
-  color: #6a6a6a;
-  font-size: 17px;
-  width: 25px;
-  height: 25px;
-  position: absolute;
-  bottom: 4px;
-`;

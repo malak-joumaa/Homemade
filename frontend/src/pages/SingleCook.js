@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
+import Modal from "../components/Modal";
 import { Rating, Grid, Container } from "@mui/material";
 import {
   Cook_Name,
@@ -161,9 +162,7 @@ function SingleCook() {
                       </DishDescription>
                     </Grid>
                     <Grid item xs={1.5}>
-                      <AddDish onClick={toggleModal}>
-                        <i class="fa-solid fa-plus"></i>
-                      </AddDish>
+                      <Modal />
                     </Grid>
                   </Grid>
                 </Grid>
