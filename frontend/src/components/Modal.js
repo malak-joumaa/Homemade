@@ -19,8 +19,9 @@ import {
   QA,
 } from "../styles/Modal.style";
 import { DishName, DishDescription, DishPrice } from "../styles/Menu.style";
+import defaultDish from "../assets/default-plate.jpg";
 
-const Modal = () => {
+const Modal = (data) => {
   const [modal, setModal] = useState(false);
   const toggleModal = () => setModal(!modal);
   if (modal) {
@@ -35,6 +36,9 @@ const Modal = () => {
   const handleSub = () => {
     if (count > 1) setCount(count - 1);
   };
+  console.log(count);
+
+  console.log(data);
 
   return (
     <>
@@ -50,13 +54,13 @@ const Modal = () => {
                 <i class="fa-solid fa-x"></i>
               </Close>
               <br />
-              <Photo />
+              <Photo src={data.data.photo ? data.data.photo : defaultDish} />
+
+              <DishName>{data.data.name}</DishName>
               <br />
-              <DishName>Mloukhiye </DishName>
+              <DishPrice>{data.data.price}$</DishPrice>
               <br />
-              <DishPrice>10$</DishPrice>
-              <br />
-              <DishDescription>Lorem Ipsum idk.... </DishDescription>
+              <DishDescription>{data.data.description}</DishDescription>
               <br />
               <QA>
                 {/* Map */}

@@ -161,7 +161,7 @@ function SingleCook() {
                       </DishDescription>
                     </Grid>
                     <Grid item xs={1.5}>
-                      <Modal />
+                      <Modal data={menu[0].dishes[index]} />
                     </Grid>
                   </Grid>
                 </Grid>

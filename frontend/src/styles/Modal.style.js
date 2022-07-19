@@ -47,10 +47,9 @@ export const AddDish = styled.div`
 `;
 
 export const Photo = styled.img`
-  width: 250px;
-  height: 120px;
+  width: 220px;
+  height: 130px;
   margin: 10px auto;
-  border: 2px solid #79c3a1;
   border-radius: 10px;
   display: block;
 `;
