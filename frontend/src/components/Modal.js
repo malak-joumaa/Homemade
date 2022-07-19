@@ -20,6 +20,7 @@ import {
 } from "../styles/Modal.style";
 import { DishName, DishDescription, DishPrice } from "../styles/Menu.style";
 import defaultDish from "../assets/default-plate.jpg";
+import toast from "react-hot-toast";
 
 const Modal = (data) => {
   const [modal, setModal] = useState(false);
@@ -32,7 +33,12 @@ const Modal = (data) => {
 
   //   Counter for quantity
   const [count, setCount] = useState(1);
-  const handleAdd = () => setCount(count + 1);
+  const handleAdd = () => {
+    if (count < data.data.quantity) setCount(count + 1);
+    if (count === data.data.quantity) {
+      toast.error(data.data.quantity + " is the maximum quantity available");
+    }
+  };
   const handleSub = () => {
     if (count > 1) setCount(count - 1);
   };
