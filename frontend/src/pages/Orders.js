@@ -12,6 +12,7 @@ import {
   CookInfo,
   Info,
   Delete,
+  Button,
 } from "../styles/Orders.style";
 
 const Orders = () => {
@@ -55,6 +56,7 @@ const Orders = () => {
             </Grid>
           </Grid>
         </CartOrder>
+        <Button>Go to checkout</Button>
       </Container>
     </>
   );

@@ -53,3 +53,18 @@ export const Delete = styled.span`
   line-height: 80px;
   font-size: 1.2em;
 `;
+
+export const Button = styled.button`
+  width: 140px;
+  height: 37px;
+  color: white;
+  border-radius: 5px;
+  background-color: #76cfa6;
+  border: none;
+  font-size: 1.05em;
+  display: block;
+  margin: 0 auto;
+  margin-top: 30px;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 500;
+`;
