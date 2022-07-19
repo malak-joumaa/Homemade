@@ -34,15 +34,24 @@ const Modal = (data) => {
   //   Counter for quantity
   const [count, setCount] = useState(1);
   const handleAdd = () => {
-    if (count < data.data.quantity) setCount(count + 1);
+    if (count < data.data.quantity) {
+      setCount(count + 1);
+      setTotal(total + data.data.price);
+    }
     if (count === data.data.quantity) {
       toast.error(data.data.quantity + " is the maximum quantity available");
     }
   };
   const handleSub = () => {
-    if (count > 1) setCount(count - 1);
+    if (count > 1) {
+      setCount(count - 1);
+      setTotal(total - data.data.price);
+    }
   };
   console.log(count);
+
+  //   Total calculation
+  const [total, setTotal] = useState(data.data.price);
 
   console.log(data);
 
@@ -104,7 +113,7 @@ const Modal = (data) => {
                   </Add>
                 </Grid>
                 <Grid item xs={4}>
-                  <Total>Total: $</Total>
+                  <Total>Total: {total}$</Total>
                 </Grid>
                 <Grid item xs={4}>
                   <Cart>Add to Cart</Cart>
