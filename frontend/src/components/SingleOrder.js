@@ -10,31 +10,28 @@ import {
   Delete,
 } from "../styles/Orders.style";
 
-const SingleOrder = ({ cart = false }) => {
+const SingleOrder = ({ cart = false, orderData }) => {
+  console.log(orderData);
   return (
     <CartOrder>
       <Grid container spacing={1}>
         <Grid item xs={0.8}>
-          <Photo />
+          <Photo src={orderData.dish.photo} />
         </Grid>
-        <Grid item xs={6.2}>
+        <Grid item xs={8.2}>
           <CookInfo>
-            <CookName>Cook Name</CookName>
+            <CookName>{orderData.dish.name}</CookName>
             <br />
             <span>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam
-              rem officia, corrupti minima nisi modi. <Answer>Spicy</Answer>
+              {orderData.dish.description} <Answer>{orderData.answer}</Answer>
             </span>
           </CookInfo>
         </Grid>
-        <Grid item xs={2}>
-          <Info>Chef's name</Info>
+        <Grid item xs={1}>
+          <Info>{orderData.quantity} items</Info>
         </Grid>
         <Grid item xs={1}>
-          <Info>3 items</Info>
-        </Grid>
-        <Grid item xs={1}>
-          <Info>Total:15$</Info>
+          <Info>Total:{orderData.total}$</Info>
         </Grid>
         <Grid item xs={1} align="center">
           {cart ? (

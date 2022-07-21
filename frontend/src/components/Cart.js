@@ -10,7 +10,7 @@ const Cart = () => {
       {orderData.map((order, index) => (
         <>
           {orderData[index].status === "cart" ? (
-            <SingleOrder cart={true} order={orderData[index]} />
+            <SingleOrder cart={true} orderData={orderData[index]} />
           ) : (
             <></>
           )}
