@@ -18,12 +18,10 @@ const orderSchema = new mongoose.Schema({
     ref: "Customer",
   },
 
-  dishes: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Dish",
-    },
-  ],
+  dish: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Dish",
+  },
   answers: [
     {
       type: String,

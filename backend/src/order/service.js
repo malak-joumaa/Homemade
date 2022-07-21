@@ -4,15 +4,14 @@ const Order = require("../../model/Order");
 async function newOrder(body) {
   const {
     quantity,
-    status,
-    pickup_hours,
-    route,
-    date,
     total,
     cook,
     customer,
+    dish,
     answers,
-    dishes,
+    status,
+    pickup_hours,
+    route,
   } = body;
 
   const order = new Order({
@@ -20,7 +19,7 @@ async function newOrder(body) {
     total,
     cook,
     customer,
-    dishes,
+    dish,
     answers,
     status,
     pickup_hours,
@@ -29,3 +28,6 @@ async function newOrder(body) {
 
   return await order.save();
 }
+module.exports = {
+  newOrder,
+};

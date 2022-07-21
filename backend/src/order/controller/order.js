@@ -7,7 +7,7 @@ async function addOrder(req, res) {
     console.log(req.body);
     if (!req.body) return res.status(400).send("Invalid Inputs");
 
-    const orderResult = await addOrder(req.body);
+    const orderResult = await newOrder(req.body);
     console.log("orderResult =>", orderResult);
     if (!orderResult) return res.status(400).send("Invalid Inputs");
 
