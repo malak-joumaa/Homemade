@@ -1,31 +1,23 @@
-const Order = require("../../model/Order");
+const { newOrder } = require("../service");
+const Order = require("../../../model/Order");
 
-//Add Order function
-async function newOrder(body) {
-  const {
-    quantity,
-    status,
-    pickup_hours,
-    route,
-    date,
-    total,
-    cook,
-    customer,
-    answers,
-    dishes,
-  } = body;
+// Menu
+async function addOrder(req, res) {
+  try {
+    console.log(req.body);
+    if (!req.body) return res.status(400).send("Invalid Inputs");
 
-  const order = new Order({
-    quantity,
-    total,
-    cook,
-    customer,
-    dishes,
-    answers,
-    status,
-    pickup_hours,
-    route,
-  });
+    const orderResult = await addOrder(req.body);
+    console.log("orderResult =>", orderResult);
+    if (!orderResult) return res.status(400).send("Invalid Inputs");
 
-  return await order.save();
+    return res.status(200).send(orderResult);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(error);
+  }
 }
+
+module.exports = {
+  addOrder,
+};
