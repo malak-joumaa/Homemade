@@ -39,7 +39,7 @@ const SingleOrder = ({ cart = false, orderData }) => {
               <i className="fa-solid fa-trash"></i>
             </Delete>
           ) : (
-            <Info>Hour</Info>
+            <Info>{orderData.pickup_hours}</Info>
           )}
         </Grid>
       </Grid>
