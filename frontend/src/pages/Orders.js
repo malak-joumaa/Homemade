@@ -1,8 +1,9 @@
 import { Grid } from "@mui/material";
 import { Container } from "@mui/system";
 import React, { useState } from "react";
+import Cart from "../components/Cart";
 import Navbar from "../components/Navbar";
-import SingleOrder from "../components/SingleOrder";
+import Ordered from "../components/Ordered";
 import { Nav, NavItem, Button } from "../styles/Orders.style";
 
 const Orders = () => {
@@ -31,11 +32,10 @@ const Orders = () => {
             }}
             type={isOrdered}
           >
-            Pre-Ordered
+            Ordered
           </NavItem>
         </Nav>
-        <SingleOrder cart={true} />
-        <Button>Go to checkout</Button>
+        {isCart ? <Cart /> : <Ordered />}
       </Container>
     </>
   );
