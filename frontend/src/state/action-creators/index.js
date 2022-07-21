@@ -15,3 +15,12 @@ export const addUserData = (new_value) => {
     });
   };
 };
+
+export const addOrderData = (new_value) => {
+  return (dispatch) => {
+    dispatch({
+      type: "getOrders",
+      payload: new_value,
+    });
+  };
+};
