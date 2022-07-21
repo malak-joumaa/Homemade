@@ -5,31 +5,6 @@ const orderSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  status: {
-    type: String,
-    required: true,
-  },
-  pickup_hours: [
-    {
-      type: String,
-      required: true,
-    },
-  ],
-  route: [
-    {
-      type: {
-        type: String,
-        enum: ["Point"],
-      },
-      coordinates: {
-        type: [Number],
-      },
-    },
-  ],
-  date: {
-    type: String,
-    required: true,
-  },
   total: {
     type: Number,
     required: true,
@@ -42,15 +17,37 @@ const orderSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Customer",
   },
+
+  dishes: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Dish",
+    },
+  ],
   answers: [
     {
       type: String,
     },
   ],
-  dishes: [
+  pickup_hours: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Dish",
+      type: String,
+      required: true,
+    },
+  ],
+  status: {
+    type: String,
+    required: true,
+  },
+  route: [
+    {
+      type: {
+        type: String,
+        enum: ["Point"],
+      },
+      coordinates: {
+        type: [Number],
+      },
     },
   ],
 });
