@@ -32,7 +32,7 @@ async function addUser(body, hashPassword) {
 
 //Add cook function
 async function addNewCook(body) {
-  const { rate, description, opening_hours, user } = body;
+  const { rate, description, opening_hours, user, orders } = body;
 
   const cook = new Cook({
     rate,
@@ -47,7 +47,7 @@ async function addNewCook(body) {
 
 //Add customer function
 async function addNewCustomer(body) {
-  const { user, categories } = body;
+  const { user, categories, orders } = body;
 
   const customer = new Customer({
     user,

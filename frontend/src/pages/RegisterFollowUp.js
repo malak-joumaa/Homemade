@@ -56,7 +56,7 @@ const RegisterFollowUp = () => {
                 "Content-type": "application/json",
               },
               body: JSON.stringify({
-                user: data2._id,
+                user: data2.user,
                 opening_hours: [
                   data[2].openingHours.from,
                   data[2].openingHours.till,
@@ -82,7 +82,7 @@ const RegisterFollowUp = () => {
                 "Content-type": "application/json",
               },
               body: JSON.stringify({
-                user: data2._id,
+                user: data2.user,
                 categories: data[4].categories,
               }),
             }

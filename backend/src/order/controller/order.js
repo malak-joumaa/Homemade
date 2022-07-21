@@ -20,7 +20,7 @@ async function addOrder(req, res) {
       },
       {
         $push: {
-          order: orderResult._id,
+          orders: orderResult._id,
         },
       }
     );
