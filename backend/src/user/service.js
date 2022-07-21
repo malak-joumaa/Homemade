@@ -39,6 +39,7 @@ async function addNewCook(body) {
     description,
     opening_hours,
     user,
+    orders,
   });
 
   return await cook.save();
@@ -51,6 +52,7 @@ async function addNewCustomer(body) {
   const customer = new Customer({
     user,
     categories,
+    orders,
   });
 
   return await customer.save();
