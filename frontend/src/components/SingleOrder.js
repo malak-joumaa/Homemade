@@ -10,14 +10,14 @@ import {
   Delete,
 } from "../styles/Orders.style";
 
-const SingleOrder = () => {
+const SingleOrder = ({ cart = false }) => {
   return (
     <CartOrder>
       <Grid container spacing={1}>
         <Grid item xs={0.8}>
           <Photo />
         </Grid>
-        <Grid item xs={7.2}>
+        <Grid item xs={6.2}>
           <CookInfo>
             <CookName>Cook Name</CookName>
             <br />
@@ -27,7 +27,7 @@ const SingleOrder = () => {
             </span>
           </CookInfo>
         </Grid>
-        <Grid item xs={1}>
+        <Grid item xs={2}>
           <Info>Chef's name</Info>
         </Grid>
         <Grid item xs={1}>
@@ -37,9 +37,13 @@ const SingleOrder = () => {
           <Info>Total:15$</Info>
         </Grid>
         <Grid item xs={1} align="center">
-          <Delete>
-            <i class="fa-solid fa-trash"></i>
-          </Delete>
+          {cart ? (
+            <Delete>
+              <i className="fa-solid fa-trash"></i>
+            </Delete>
+          ) : (
+            <Info>Hour</Info>
+          )}
         </Grid>
       </Grid>
     </CartOrder>

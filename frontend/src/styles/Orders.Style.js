@@ -13,6 +13,7 @@ export const NavItem = styled.div`
   margin-right: 20px;
   font-size: 1.2em;
   font-weight: 600;
+  background-color: ${(props) => (props.type === true ? "#76cfa6" : "white")};
   &:hover {
     background-color: #acdac5;
   }
