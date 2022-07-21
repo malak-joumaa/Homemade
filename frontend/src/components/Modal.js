@@ -24,12 +24,15 @@ import toast from "react-hot-toast";
 
 const Modal = (data) => {
   const [modal, setModal] = useState(false);
+  const [answers, setAnswers] = useState([]);
+
   const toggleModal = () => setModal(!modal);
   if (modal) {
     document.body.classList.add("active-modal");
   } else {
     document.body.classList.remove("active-modal");
   }
+  console.log(data.data._id);
 
   //   Counter for quantity
   const [count, setCount] = useState(1);
@@ -54,6 +57,30 @@ const Modal = (data) => {
   const [total, setTotal] = useState(data.data.price);
 
   console.log(data);
+
+  const AddToCart = async () => {
+    try {
+      const res = await fetch("http://localhost:5000/api/order/add-order", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          quantity: count,
+          total: total,
+          cook: "62d5e7b5d669ef55bdc9424d",
+          customer: localStorage.getItem("customer_id"),
+          dish: data.data._id,
+          answers: answers,
+          status: "cart",
+        }),
+      });
+      const data2 = await res.json();
+      console.log(data2);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -116,7 +143,7 @@ const Modal = (data) => {
                   <Total>Total: {total}$</Total>
                 </Grid>
                 <Grid item xs={4}>
-                  <Cart>Add to Cart</Cart>
+                  <Cart onClick={AddToCart}>Add to Cart</Cart>
                 </Grid>
               </Grid>
             </ModalContent>
