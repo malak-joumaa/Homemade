@@ -1,7 +1,12 @@
 import React from "react";
+import SingleOrder from "../components/SingleOrder";
 
 const Ordered = () => {
-  return <></>;
+  return (
+    <>
+      <SingleOrder cart={false} />
+    </>
+  );
 };
 
 export default Ordered;
