@@ -28,6 +28,12 @@ async function newOrder(body) {
 
   return await order.save();
 }
+
+async function getOrdersByCustomerId(id) {
+  return await Order.find({ customer: id }).populate("dish");
+}
+
 module.exports = {
   newOrder,
+  getOrdersByCustomerId,
 };

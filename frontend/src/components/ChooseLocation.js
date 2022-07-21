@@ -1,11 +1,7 @@
 import React from "react";
 
-const ChooseLocation = ({ data, setData }) => {
-  return (
-    <>
-      <h1>Choose Your Location</h1>
-    </>
-  );
-};
+function ChooseLocation() {
+  return <div></div>;
+}
 
-export default ChooseLocation;
+export default React.memo(ChooseLocation);
