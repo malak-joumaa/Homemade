@@ -7,7 +7,15 @@ const Cart = () => {
   const orderData = useSelector((state) => state.order);
   return (
     <>
-      <SingleOrder cart={true} />
+      {orderData.map((order, index) => (
+        <>
+          {orderData[index].status === "cart" ? (
+            <SingleOrder cart={true} order={orderData[index]} />
+          ) : (
+            <></>
+          )}
+        </>
+      ))}
       <Button>Go to checkout</Button>
     </>
   );
