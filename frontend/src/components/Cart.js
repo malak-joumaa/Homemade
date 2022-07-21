@@ -2,8 +2,10 @@ import React from "react";
 import SingleOrder from "../components/SingleOrder";
 import { Button } from "../styles/Orders.style";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
+  const navigate = useNavigate();
   const orderData = useSelector((state) => state.order);
   return (
     <>
@@ -16,7 +18,7 @@ const Cart = () => {
           )}
         </>
       ))}
-      <Button>Go to checkout</Button>
+      <Button onClick={navigate("checkout")}>Go to checkout</Button>
     </>
   );
 };
