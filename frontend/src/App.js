@@ -7,6 +7,7 @@ import MainPage from "./pages/MainPage";
 import { Toaster } from "react-hot-toast";
 import SingleCook from "./pages/SingleCook";
 import Orders from "./pages/Orders";
+import Checkout from "./pages/Checkout";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/main-page" element={<MainPage />}></Route>
         <Route path="/cook" element={<SingleCook />}></Route>
         <Route path="/orders" element={<Orders />}></Route>
+        <Route path="/checkout" element={<Checkout />}></Route>
       </Routes>
     </BrowserRouter>
   );
