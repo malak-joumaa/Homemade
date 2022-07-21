@@ -5,6 +5,9 @@ import Cart from "../components/Cart";
 import Navbar from "../components/Navbar";
 import Ordered from "../components/Ordered";
 import { Nav, NavItem, Button } from "../styles/Orders.style";
+import { useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
+import { actionCreators } from "../state/index";
 
 const Orders = () => {
   const [isCart, setCart] = useState(true);
@@ -16,6 +19,10 @@ const Orders = () => {
   }, []);
   console.log(order);
 
+  // Redux
+  const dispatch = useDispatch();
+  const { addOrderData } = bindActionCreators(actionCreators, dispatch);
+
   // Get Orders
   const getOrders = async () => {
     try {
@@ -25,6 +32,7 @@ const Orders = () => {
       ).then(async (res) => {
         const data = await res.json();
         setOrder(data);
+        addOrderData(data);
       });
     } catch (err) {
       console.log(err);
