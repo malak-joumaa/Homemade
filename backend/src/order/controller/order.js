@@ -49,7 +49,7 @@ async function getOrders(req, res) {
   }
 }
 
-// Delete contact by order id
+// Delete order by id
 async function deleteOrder(req, res) {
   try {
     const order = await Order.findOne({ _id: req.query.id });
@@ -68,8 +68,29 @@ async function deleteOrder(req, res) {
   }
 }
 
+// Update order by id
+async function updateOrder(req, res) {
+  try {
+    console.log("update");
+    const order = await Order.findByIdAndUpdate(
+      { _id: req.query.id },
+      {
+        $set: {
+          status: req.body.status,
+          route: req.body.route,
+          pickup_hours: req.body.pickup_hours,
+        },
+      }
+    );
+    return res.send();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 module.exports = {
   addOrder,
   getOrders,
   deleteOrder,
+  updateOrder,
 };
