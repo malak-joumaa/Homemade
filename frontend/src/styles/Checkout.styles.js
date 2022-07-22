@@ -12,3 +12,9 @@ background-color: #f5f5f5;
   border-radius: 5px;
 
 `;
+
+export const Total = styled.h3`
+  text-align: center;
+  padding: 7px 12px;
+  background-color: #76cfa6;
+`;
