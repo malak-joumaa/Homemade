@@ -20,7 +20,16 @@ async function newMenu(body) {
 
 //Add dish function
 async function newDish(body) {
-  const { name, description, price, quantity, photo, menu, categories } = body;
+  const {
+    name,
+    description,
+    price,
+    quantity,
+    photo,
+    menu,
+    categories,
+    questions,
+  } = body;
 
   const dish = new Dish({
     name,
@@ -30,6 +39,7 @@ async function newDish(body) {
     photo,
     menu,
     categories,
+    questions,
   });
 
   return await dish.save();

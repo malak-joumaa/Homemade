@@ -61,7 +61,7 @@ async function addQuestion(req, res) {
     if (!questionResult) return res.status(400).send("Invalid Credentials");
 
     // Updating dish containing this question
-    const updateDish = await Dish.updateOne(
+    const updateDish = await Menu.updateOne(
       {
         _id: questionResult.dish,
       },

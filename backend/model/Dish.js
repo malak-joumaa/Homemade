@@ -30,8 +30,7 @@ const dishSchema = new mongoose.Schema({
   ],
   questions: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Question",
+      type: Array,
     },
   ],
 });
