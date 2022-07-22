@@ -90,28 +90,11 @@ const AddMenu = () => {
               "62cb22ab7c4f7b9583bd6d5e",
               "62cb29b0c427950bca3e65ed",
             ],
+            questions: question,
           }),
         });
-        // const data2 = await res2.json();
-        // const dishId = data2.id;
-        // question.forEach(async (singleQuestion) => {
-        //   const res3 = await fetch(
-        //     "http://localhost:5000/api/cook/add-question",
-        //     {
-        //       method: "POST",
-        //       headers: {
-        //         "Content-type": "application/json",
-        //       },
-        //       body: JSON.stringify({
-        //         question: singleQuestion.question,
-        //         dish: dishId,
-        //         question_type: singleQuestion.type,
-        //         choices: singleQuestion.choices,
-        //       }),
-        //     }
-        //   );
-        //   const data3 = await res3.json();
-        // });
+        const data2 = await res2.json();
+        const dishId = data2.id;
       });
     } catch (err) {
       console.log(err);
