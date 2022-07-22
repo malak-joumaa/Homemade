@@ -12,6 +12,20 @@ import {
 
 const SingleOrder = ({ cart = false, orderData }) => {
   console.log(orderData);
+
+  // Delete order
+  const deleteOrder = async (order_id) => {
+    const res = await fetch(
+      "http://localhost:5000/api/order/delete-order/?id=" + order_id,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-type": "application/json",
+        },
+      }
+    );
+  };
+
   return (
     <CartOrder>
       <Grid container spacing={1}>
@@ -35,7 +49,11 @@ const SingleOrder = ({ cart = false, orderData }) => {
         </Grid>
         <Grid item xs={1} align="center">
           {cart ? (
-            <Delete>
+            <Delete
+              onClick={() => {
+                deleteOrder(orderData._id);
+              }}
+            >
               <i className="fa-solid fa-trash"></i>
             </Delete>
           ) : (
