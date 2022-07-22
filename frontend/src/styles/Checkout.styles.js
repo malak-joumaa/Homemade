@@ -10,6 +10,5 @@ width:100%
 min-height:80px;
 background-color: #f5f5f5;
   border-radius: 5px;
-  display: flex;
 
 `;
