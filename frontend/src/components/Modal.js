@@ -83,6 +83,7 @@ const Modal = (data) => {
     }
   };
   console.log(details.questions[0].question);
+  console.log(answers);
   return (
     <>
       <AddDish onClick={toggleModal}>
@@ -109,18 +110,52 @@ const Modal = (data) => {
                 {/* Map */}
                 {details.questions.map((singleQuest, index) => (
                   <>
+                    {singleQuest.type === "checkBox" &&
+                      (answers[index] = new Array(
+                        singleQuest.choices.length
+                      ).fill(""))}
                     <Question>{singleQuest.question}</Question>
                     <br />
                     {singleQuest.type === "textBox" ? (
-                      <AnswerTxt type="textBox" />
+                      <AnswerTxt
+                        type="textBox"
+                        value={answers[index]}
+                        onChange={(e) => {
+                          answers[index] = e.target.value;
+                          setAnswers(answers);
+                          console.log(answers);
+                        }}
+                      />
                     ) : (
-                      singleQuest.choices.map((choice, index) => (
+                      singleQuest.choices.map((choice, choiceIndex) => (
                         <>
-                          <AnswerTxt
-                            type={singleQuest.type}
-                            value={choice}
-                            name={singleQuest}
-                          />
+                          {singleQuest.type === "radio" && (
+                            <AnswerTxt
+                              key={choiceIndex}
+                              type={singleQuest.type}
+                              value={choice}
+                              name={singleQuest}
+                              onChange={(e) => {
+                                answers[index] = e.target.value;
+                                setAnswers(answers);
+                                console.log(answers);
+                              }}
+                            />
+                          )}
+                          {singleQuest.type === "checkBox" && (
+                            <AnswerTxt
+                              key={choiceIndex}
+                              type="checkbox"
+                              value={choice}
+                              onChange={(e) => {
+                                answers[index][choiceIndex] = e.target.checked
+                                  ? e.target.value
+                                  : "";
+                                setAnswers(answers);
+                                console.log(answers);
+                              }}
+                            />
+                          )}
                           <span>{choice}</span>
                         </>
                       ))
