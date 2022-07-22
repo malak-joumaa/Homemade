@@ -5,7 +5,7 @@ import { List } from "../styles/Links.style";
 import { NavLogo, ProfileIcon } from "../styles/Image.style";
 import Logo from "../assets/logo.png";
 import { Container } from "@mui/material";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const userData = useSelector((state) => state.login);
@@ -18,16 +18,20 @@ const Navbar = () => {
         </NavLogoDiv>
         <div>
           <NavUl>
-            <List>Explore</List>
             <List>
-              <Link to="/orders">Orders</Link>
+              <NavLink to="/main-page">Explore</NavLink>
+            </List>
+            <List>
+              <NavLink to="/orders">Orders</NavLink>
             </List>
             <List>Messages</List>
             <List>
-              <ProfileIcon src={userData.profile_photo} />
-              <span>
-                {userData.fname} {userData.lname}
-              </span>
+              <NavLink to="/cook-profile">
+                <ProfileIcon src={userData.profile_photo} />
+                <span>
+                  {userData.fname} {userData.lname}
+                </span>
+              </NavLink>
             </List>
             <List>
               <i class="fa-solid fa-bars"></i>
