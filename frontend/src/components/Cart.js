@@ -18,7 +18,13 @@ const Cart = () => {
           )}
         </>
       ))}
-      <Button onClick={navigate("checkout")}>Go to checkout</Button>
+      <Button
+        onClick={() => {
+          navigate("/checkout");
+        }}
+      >
+        Go to checkout
+      </Button>
     </>
   );
 };
