@@ -51,7 +51,9 @@ const Checkout = () => {
       <Orders>
         {orderData.map((order, index) => (
           <>
-            <SingleOrder cart={false} orderData={orderData[index]} />
+            {order.status === "cart" && (
+              <SingleOrder cart={false} orderData={orderData[index]} />
+            )}
           </>
         ))}
       </Orders>

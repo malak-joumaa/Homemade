@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import SingleOrder from "../components/SingleOrder";
 import { Button } from "../styles/Orders.style";
 import { useSelector } from "react-redux";
@@ -6,25 +6,35 @@ import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const navigate = useNavigate();
-  const orderData = useSelector((state) => state.order);
+  var orderData = useSelector((state) => state.order);
+  var count = 0;
+  for (let i = 0; i < orderData.length; i++) {
+    if (orderData[i].status === "cart") {
+      count++;
+    }
+  }
   return (
     <>
       {orderData.map((order, index) => (
         <>
           {orderData[index].status === "cart" ? (
-            <SingleOrder cart={true} orderData={orderData[index]} />
+            <>
+              <SingleOrder cart={true} orderData={orderData[index]} />
+            </>
           ) : (
             <></>
           )}
         </>
       ))}
-      <Button
-        onClick={() => {
-          navigate("/checkout");
-        }}
-      >
-        Go to checkout
-      </Button>
+      {count > 0 && (
+        <Button
+          onClick={() => {
+            navigate("/checkout");
+          }}
+        >
+          Go to checkout
+        </Button>
+      )}
     </>
   );
 };
