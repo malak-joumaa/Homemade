@@ -2,7 +2,7 @@ import { useState } from "react";
 import Button from "./Button";
 
 const Specifications = ({ question, setQuestion, dishIndex }) => {
-  const types = ["dropDown", "checkBox", "textBox", "radio"];
+  const types = ["checkBox", "textBox", "radio"];
 
   //Change Input Values on change according index
   const handleFormChange = (index, event, dishIndex) => {
@@ -64,7 +64,7 @@ const Specifications = ({ question, setQuestion, dishIndex }) => {
               }}
             />
             <br />
-            {(input.type === "dropDown" || input.type === "radio") && (
+            {(input.type === "radio" || input.type === "checkBox") && (
               <div>
                 <span>Choices: </span>
                 <input

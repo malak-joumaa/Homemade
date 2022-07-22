@@ -107,11 +107,24 @@ const Modal = (data) => {
               <br />
               <QA>
                 {/* Map */}
-                {details.questions.map((question, index) => (
+                {details.questions.map((singleQuest, index) => (
                   <>
-                    <Question>{question.question}</Question>
+                    <Question>{singleQuest.question}</Question>
                     <br />
-                    <AnswerTxt type="text"></AnswerTxt>
+                    {singleQuest.type === "textBox" ? (
+                      <AnswerTxt type="textBox" />
+                    ) : (
+                      singleQuest.choices.map((choice, index) => (
+                        <>
+                          <AnswerTxt
+                            type={singleQuest.type}
+                            value={choice}
+                            name={singleQuest}
+                          />
+                          <span>{choice}</span>
+                        </>
+                      ))
+                    )}
                   </>
                 ))}
                 <br />

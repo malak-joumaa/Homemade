@@ -122,7 +122,7 @@ function SingleCook() {
             <Grid container spacing={1}>
               {/* Dish Image */}
               {menu?.length > 0 &&
-                menu[5].dishes.map((dish, index) => (
+                menu[6].dishes.map((dish, index) => (
                   <Grid
                     key={index}
                     item
@@ -136,24 +136,24 @@ function SingleCook() {
                       <Grid item xs={4.5}>
                         <DishImg
                           src={
-                            menu[5].dishes[index].photo
-                              ? menu[5].dishes[index].photo
+                            menu[6].dishes[index].photo
+                              ? menu[6].dishes[index].photo
                               : defaultDish
                           }
                         />
                       </Grid>
                       {/* Dish Info */}
                       <Grid item xs={6}>
-                        <DishName>{menu[5].dishes[index].name}</DishName>
+                        <DishName>{menu[6].dishes[index].name}</DishName>
                         <br />
-                        <DishPrice>{menu[5].dishes[index].price}$</DishPrice>
+                        <DishPrice>{menu[6].dishes[index].price}$</DishPrice>
                         <br />
                         <DishDescription>
-                          {menu[5].dishes[index].description}
+                          {menu[6].dishes[index].description}
                         </DishDescription>
                       </Grid>
                       <Grid item xs={1.5}>
-                        <Modal data={menu[5].dishes[index]} />
+                        <Modal data={menu[6].dishes[index]} />
                       </Grid>
                     </Grid>
                   </Grid>
