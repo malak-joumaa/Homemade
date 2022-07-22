@@ -130,42 +130,43 @@ function SingleCook() {
           <MenuContainer>
             <Grid container spacing={1}>
               {/* Dish Image */}
-              {menu[0].dishes.map((dish, index) => (
-                <Grid
-                  key={index}
-                  item
-                  xl={3}
-                  lg={4}
-                  md={6}
-                  xs={12}
-                  style={{ position: "relative" }}
-                >
-                  <Grid container spacing={0}>
-                    <Grid item xs={4.5}>
-                      <DishImg
-                        src={
-                          menu[0].dishes[index].photo
-                            ? menu[0].dishes[index].photo
-                            : defaultDish
-                        }
-                      />
-                    </Grid>
-                    {/* Dish Info */}
-                    <Grid item xs={6}>
-                      <DishName>{menu[0].dishes[index].name}</DishName>
-                      <br />
-                      <DishPrice>{menu[0].dishes[index].price}$</DishPrice>
-                      <br />
-                      <DishDescription>
-                        {menu[0].dishes[index].description}
-                      </DishDescription>
-                    </Grid>
-                    <Grid item xs={1.5}>
-                      <Modal data={menu[0].dishes[index]} />
+              {menu?.length > 0 &&
+                menu[5].dishes.map((dish, index) => (
+                  <Grid
+                    key={index}
+                    item
+                    xl={3}
+                    lg={4}
+                    md={6}
+                    xs={12}
+                    style={{ position: "relative" }}
+                  >
+                    <Grid container spacing={0}>
+                      <Grid item xs={4.5}>
+                        <DishImg
+                          src={
+                            menu[5].dishes[index].photo
+                              ? menu[5].dishes[index].photo
+                              : defaultDish
+                          }
+                        />
+                      </Grid>
+                      {/* Dish Info */}
+                      <Grid item xs={6}>
+                        <DishName>{menu[5].dishes[index].name}</DishName>
+                        <br />
+                        <DishPrice>{menu[5].dishes[index].price}$</DishPrice>
+                        <br />
+                        <DishDescription>
+                          {menu[5].dishes[index].description}
+                        </DishDescription>
+                      </Grid>
+                      <Grid item xs={1.5}>
+                        <Modal data={menu[5].dishes[index]} />
+                      </Grid>
                     </Grid>
                   </Grid>
-                </Grid>
-              ))}
+                ))}
             </Grid>
           </MenuContainer>
           {/* </div> */}

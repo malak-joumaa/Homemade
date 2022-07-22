@@ -23,6 +23,7 @@ import defaultDish from "../assets/default-plate.jpg";
 import toast from "react-hot-toast";
 
 const Modal = (data) => {
+  const details = data.data;
   const [modal, setModal] = useState(false);
   const [answers, setAnswers] = useState([]);
 
@@ -32,29 +33,29 @@ const Modal = (data) => {
   } else {
     document.body.classList.remove("active-modal");
   }
-  console.log(data.data._id);
+  console.log(details._id);
 
   //   Counter for quantity
   const [count, setCount] = useState(1);
   const handleAdd = () => {
-    if (count < data.data.quantity) {
+    if (count < details.quantity) {
       setCount(count + 1);
-      setTotal(total + data.data.price);
+      setTotal(total + details.price);
     }
-    if (count === data.data.quantity) {
-      toast.error(data.data.quantity + " is the maximum quantity available");
+    if (count === details.quantity) {
+      toast.error(details.quantity + " is the maximum quantity available");
     }
   };
   const handleSub = () => {
     if (count > 1) {
       setCount(count - 1);
-      setTotal(total - data.data.price);
+      setTotal(total - details.price);
     }
   };
   console.log(count);
 
   //   Total calculation
-  const [total, setTotal] = useState(data.data.price);
+  const [total, setTotal] = useState(details.price);
 
   console.log(data);
 
@@ -70,7 +71,7 @@ const Modal = (data) => {
           total: total,
           cook: "62d5e7b5d669ef55bdc9424d",
           customer: localStorage.getItem("customer_id"),
-          dish: data.data._id,
+          dish: details._id,
           answers: answers,
           status: "cart",
         }),
@@ -81,7 +82,7 @@ const Modal = (data) => {
       console.log(error);
     }
   };
-
+  console.log(details.questions[0].question);
   return (
     <>
       <AddDish onClick={toggleModal}>
@@ -96,31 +97,23 @@ const Modal = (data) => {
                 <i class="fa-solid fa-x"></i>
               </Close>
               <br />
-              <Photo src={data.data.photo ? data.data.photo : defaultDish} />
+              <Photo src={details.photo ? details.photo : defaultDish} />
 
-              <DishName>{data.data.name}</DishName>
+              <DishName>{details.name}</DishName>
               <br />
-              <DishPrice>{data.data.price}$</DishPrice>
+              <DishPrice>{details.price}$</DishPrice>
               <br />
-              <DishDescription>{data.data.description}</DishDescription>
+              <DishDescription>{details.description}</DishDescription>
               <br />
               <QA>
                 {/* Map */}
-                <Question>This is a dummy question</Question>
-                <br />
-                <AnswerTxt type="text"></AnswerTxt>
-                <br />
-                <Question>This is a dummy question</Question>
-                <br />
-                <AnswerRadio type="radio"></AnswerRadio>
-                <br />
-                <Question>This is a dummy question</Question>
-                <br />
-                <AnswerCheck type="checkbox"></AnswerCheck>
-                <br />
-                <Question>This is a dummy question</Question>
-                <br />
-                <AnswerSelect></AnswerSelect>
+                {details.questions.map((question, index) => (
+                  <>
+                    <Question>{question.question}</Question>
+                    <br />
+                    <AnswerTxt type="text"></AnswerTxt>
+                  </>
+                ))}
                 <br />
               </QA>
               <Grid container spacing={1}>
