@@ -110,10 +110,10 @@ const Modal = (data) => {
                 {/* Map */}
                 {details.questions.map((singleQuest, index) => (
                   <>
-                    {singleQuest.type === "checkBox" &&
+                    {/* {singleQuest.type === "checkBox" &&
                       (answers[index] = new Array(
                         singleQuest.choices.length
-                      ).fill(""))}
+                      ).fill(""))} */}
                     <Question>{singleQuest.question}</Question>
                     <br />
                     {singleQuest.type === "textBox" ? (
@@ -151,7 +151,7 @@ const Modal = (data) => {
                                 answers[index][choiceIndex] = e.target.checked
                                   ? e.target.value
                                   : "";
-                                setAnswers(answers);
+                                // setAnswers(answers);
                                 console.log(answers);
                               }}
                             />

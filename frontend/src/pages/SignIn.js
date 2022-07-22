@@ -53,9 +53,11 @@ const SignIn = () => {
       window.localStorage.setItem("userData", userData);
       if (decoded.user_type == "customer") {
         navigate("/main-page");
+        window.localStorage.setItem("customer_id", decoded._id);
       } else navigate("/add-menu");
     } catch (error) {
       toast.error("Incorrect username or password");
+      window.localStorage.setItem("cook_id", decoded._id);
     }
   };
 
