@@ -10,7 +10,7 @@ import {
   AnswerTxt,
   AnswerRadio,
   AnswerCheck,
-  AnswerSelect,
+  Choice,
   Quantity,
   Total,
   Cart,
@@ -130,7 +130,7 @@ const Modal = (data) => {
                       singleQuest.choices.map((choice, choiceIndex) => (
                         <>
                           {singleQuest.type === "radio" && (
-                            <AnswerTxt
+                            <AnswerRadio
                               key={choiceIndex}
                               type={singleQuest.type}
                               value={choice}
@@ -143,7 +143,7 @@ const Modal = (data) => {
                             />
                           )}
                           {singleQuest.type === "checkBox" && (
-                            <AnswerTxt
+                            <AnswerCheck
                               key={choiceIndex}
                               type="checkbox"
                               value={choice}
@@ -156,7 +156,7 @@ const Modal = (data) => {
                               }}
                             />
                           )}
-                          <span>{choice}</span>
+                          <Choice>{choice}</Choice>
                         </>
                       ))
                     )}

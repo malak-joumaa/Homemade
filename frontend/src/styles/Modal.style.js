@@ -88,15 +88,10 @@ export const AnswerCheck = styled.input`
   &:checked::after {
   }
 `;
-export const AnswerSelect = styled.select`
-  width: 400px;
-  height: 30px;
-  border: 1px solid #7e7d7d;
-  border-radius: 50px;
-  box-sizing: border-box;
-  padding: 17px 12px;
-  font-size: 1.05em;
-  margin-bottom: 10px;
+export const Choice = styled.span`
+  position: relative;
+  bottom: 1.5%;
+  margin-right: 15px;
 `;
 export const Quantity = styled.span`
   font-size: 1.4em;
