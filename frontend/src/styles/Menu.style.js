@@ -12,9 +12,7 @@ export const MenuContainer = styled.div`
 export const DishImg = styled.img`
   width: 120px;
   height: 120px;
-  border: 2px solid #79c3a1;
   border-radius: 20px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 `;
 
 export const DishName = styled.span`

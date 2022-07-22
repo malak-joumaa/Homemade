@@ -117,15 +117,6 @@ function SingleCook() {
 
           <Menu>Menu</Menu>
 
-          {/* Days */}
-          <Grid container spacing={1} columns={7}>
-            {days.map((day, index) => (
-              <Grid item md={1} textAlign="center">
-                <Day key={index}>{day}</Day>
-              </Grid>
-            ))}
-          </Grid>
-
           {/* Menu */}
           <MenuContainer>
             <Grid container spacing={1}>
