@@ -73,7 +73,9 @@ const AddMenu = () => {
       const data = await res.json();
       const menuId = data._id;
       console.log(data);
+      var count = -1;
       dish.forEach(async (singleDish) => {
+        count++;
         const res2 = await fetch("http://localhost:5000/api/cook/add-dish", {
           method: "POST",
           headers: {
@@ -90,11 +92,10 @@ const AddMenu = () => {
               "62cb22ab7c4f7b9583bd6d5e",
               "62cb29b0c427950bca3e65ed",
             ],
-            questions: question,
+            questions: question[count],
           }),
         });
         const data2 = await res2.json();
-        const dishId = data2.id;
       });
     } catch (err) {
       console.log(err);

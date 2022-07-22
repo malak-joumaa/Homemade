@@ -28,11 +28,9 @@ const dishSchema = new mongoose.Schema({
       ref: "Category",
     },
   ],
-  questions: [
-    {
-      type: Array,
-    },
-  ],
+  questions: {
+    type: Array,
+  },
 });
 
 module.exports = mongoose.model("Dish", dishSchema);
