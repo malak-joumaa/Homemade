@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { Container } from "@mui/system";
 import {
@@ -12,11 +13,32 @@ import SingleOrder from "../components/SingleOrder";
 import { useSelector } from "react-redux";
 
 const Checkout = () => {
+  const navigate = useNavigate();
   const orderData = useSelector((state) => state.order);
   const [time, setTime] = useState("");
   const [isValid, setIsValid] = useState(false);
 
-  console.log(orderData);
+  // Update Order
+  const updateOrder = async () => {
+    orderData.forEach(async (singleOrder) => {
+      console.log(singleOrder);
+      const res = await fetch(
+        "http://localhost:5000/api/order/update-order/?id=" + singleOrder._id,
+        {
+          method: "PUT",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            status: "pending",
+            pickup_hours: [time],
+            route: [],
+          }),
+        }
+      );
+    });
+    navigate("/orders");
+  };
 
   var total = 0;
   for (let i = 0; i < orderData.length; i++) {
@@ -52,7 +74,14 @@ const Checkout = () => {
         style={{ marginLeft: "0px" }}
       />
       <br />
-      <Button>Confirm</Button>
+      <Button
+        onClick={() => {
+          console.log("click");
+          updateOrder();
+        }}
+      >
+        Confirm
+      </Button>
     </Container>
   );
 };
