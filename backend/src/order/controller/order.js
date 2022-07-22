@@ -49,7 +49,27 @@ async function getOrders(req, res) {
   }
 }
 
+// Delete contact by order id
+async function deleteOrder(req, res) {
+  try {
+    const order = await Order.findOne({ _id: req.query.id });
+    if (!order) return res.status(400).send("invalid credentials");
+
+    const deleteOrder = await order.remove();
+
+    await Customer.updateOne(
+      { _id: order.customer },
+      { $pull: { orders: order._id } }
+    );
+
+    return res.send("order removed");
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 module.exports = {
   addOrder,
   getOrders,
+  deleteOrder,
 };
