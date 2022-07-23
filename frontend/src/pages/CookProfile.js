@@ -14,6 +14,7 @@ import {
   Rate,
   Button,
 } from "../styles/Profile.style";
+import OrderTable from "../components/OrderTable";
 
 const CookProfile = () => {
   const navigate = useNavigate();
@@ -72,7 +73,12 @@ const CookProfile = () => {
       {/* Functionalities */}
       <Grid container spacing={1}>
         <Grid item xs={1}>
-          <Button>
+          <Button
+            onClick={() => {
+              setIsOrder(true);
+              setIsMenu(false);
+            }}
+          >
             <i class="bx bx-shopping-bag"></i> Orders
           </Button>
           <br />
@@ -99,6 +105,7 @@ const CookProfile = () => {
         </Grid>
         <Grid item xs={10}>
           {isMenu && <Menu menu={menu} disable={true} />}
+          {isOrder && <OrderTable />}
         </Grid>
       </Grid>
     </Container>

@@ -42,6 +42,16 @@ async function login(req, res) {
     console.log(user._id.toString());
     const cook = await getByUserId(user._id.toString());
 
+    if (user.user_type == "customer") {
+      description = "";
+      opening_hours = "";
+      rate = null;
+    } else {
+      description = cook.description;
+      opening_hours = cook.opening_hours;
+      rate = cook.rate;
+    }
+
     const token = jwt.sign(
       {
         _id: user._id,
@@ -52,9 +62,9 @@ async function login(req, res) {
         profile_photo: user.profile_photo,
         location: user.location,
         user_type: user.user_type,
-        description: cook.description,
-        opening_hours: cook.opening_hours,
-        rate: cook.rate,
+        description: description,
+        opening_hours: opening_hours,
+        rate: rate,
       },
       TOKEN_SECRET
     );

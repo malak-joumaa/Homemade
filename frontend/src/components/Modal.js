@@ -69,7 +69,7 @@ const Modal = (data) => {
         body: JSON.stringify({
           quantity: count,
           total: total,
-          cook: "62d5e7b5d669ef55bdc9424d",
+          cook: localStorage.getItem("cook_id"),
           customer: localStorage.getItem("customer_id"),
           dish: details._id,
           answers: answers,

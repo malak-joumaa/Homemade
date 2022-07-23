@@ -26,6 +26,19 @@ async function addOrder(req, res) {
     );
     console.log("updateCustomer =>", updateCustomer);
 
+    // Updating cook having this order
+    const updateCook = await Cook.updateOne(
+      {
+        _id: orderResult.cook,
+      },
+      {
+        $push: {
+          orders: orderResult._id,
+        },
+      }
+    );
+    console.log("updateCook =>", updateCook);
+
     return res.status(200).send(orderResult);
   } catch (error) {
     console.log(error);
