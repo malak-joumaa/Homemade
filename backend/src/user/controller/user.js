@@ -5,6 +5,7 @@ const {
   addNewCustomer,
   addNewReview,
   getReviewsByCookID,
+  getByUserId,
 } = require("../service");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -38,6 +39,8 @@ async function login(req, res) {
       user.password
     );
     if (!validPassword) return res.status(400).send("invalid credentials");
+    console.log(user._id.toString());
+    const cook = await getByUserId(user._id.toString());
 
     const token = jwt.sign(
       {
@@ -49,6 +52,9 @@ async function login(req, res) {
         profile_photo: user.profile_photo,
         location: user.location,
         user_type: user.user_type,
+        description: cook.description,
+        opening_hours: cook.opening_hours,
+        rate: cook.rate,
       },
       TOKEN_SECRET
     );

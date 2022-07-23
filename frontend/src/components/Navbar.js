@@ -34,7 +34,7 @@ const Navbar = () => {
               </NavLink>
             </List>
             <List>
-              <i class="fa-solid fa-bars"></i>
+              <i className="fa-solid fa-bars"></i>
             </List>
           </NavUl>
         </div>

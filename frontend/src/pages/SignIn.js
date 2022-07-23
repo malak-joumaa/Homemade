@@ -42,6 +42,7 @@ const SignIn = () => {
       // Decode JWT
       var decoded = jwt_decode(token);
       window.localStorage.setItem("user_type", decoded.user_type);
+      console.log(decoded);
       addUserData({
         fname: decoded.first_name,
         lname: decoded.first_name,
@@ -49,6 +50,9 @@ const SignIn = () => {
         phone_number: decoded.phone_number,
         location: decoded.location,
         profile_photo: decoded.profile_photo,
+        opening_hours: decoded.opening_hours,
+        rate: decoded.rate,
+        description: decoded.description,
       });
       window.localStorage.setItem("userData", userData);
       if (decoded.user_type == "customer") {
