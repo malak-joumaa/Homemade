@@ -1,4 +1,4 @@
-const { newOrder, getOrdersByCustomerId } = require("../service");
+const { newOrder, getOrdersById } = require("../service");
 const Order = require("../../../model/Order");
 const Cook = require("../../../model/Cook");
 const Customer = require("../../../model/Customer");
@@ -53,7 +53,7 @@ async function getOrders(req, res) {
 
     if (req.query.id) {
       const id = req.query.id;
-      const result = await getOrdersByCustomerId(id);
+      const result = await getOrdersById(id);
       console.log("order data =>", result);
       return res.send(result);
     }

@@ -78,10 +78,13 @@ async function getByEmail(email) {
   });
 }
 
-async function getByUserId(userId) {
+async function getCookByUserId(userId) {
   return await Cook.findOne({ user: userId });
 }
 
+async function getCustomerByUserId(userId) {
+  return await Customer.findOne({ user: userId });
+}
 async function getReviewsByCookID(id) {
   return await Review.find({ cook: id }).populate("customer");
 }
@@ -93,5 +96,6 @@ module.exports = {
   addNewReview,
   getByEmail,
   getReviewsByCookID,
-  getByUserId,
+  getCookByUserId,
+  getCustomerByUserId,
 };

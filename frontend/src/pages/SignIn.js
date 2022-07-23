@@ -35,7 +35,7 @@ const SignIn = () => {
         }),
       });
       const data = await res.json();
-      console.log(data);
+      console.log("here", data);
       var token = data.token;
       // Saving token in local storage
       window.localStorage.setItem("token", token);
@@ -53,15 +53,19 @@ const SignIn = () => {
         opening_hours: decoded.opening_hours,
         rate: decoded.rate,
         description: decoded.description,
+        cook_id: decoded.cook_id,
+        customer_id: decoded.customer_id,
       });
       window.localStorage.setItem("userData", userData);
       if (decoded.user_type == "customer") {
         navigate("/main-page");
-        window.localStorage.setItem("customer_id", decoded._id);
-      } else navigate("/add-menu");
+        window.localStorage.setItem("customer_id", decoded.customer_id);
+      } else {
+        navigate("/add-menu");
+        window.localStorage.setItem("cook_id", decoded.cook_id);
+      }
     } catch (error) {
       toast.error("Incorrect username or password");
-      window.localStorage.setItem("cook_id", decoded._id);
     }
   };
 

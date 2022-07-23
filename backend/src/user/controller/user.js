@@ -5,7 +5,8 @@ const {
   addNewCustomer,
   addNewReview,
   getReviewsByCookID,
-  getByUserId,
+  getCookByUserId,
+  getCustomerByUserId,
 } = require("../service");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -40,16 +41,21 @@ async function login(req, res) {
     );
     if (!validPassword) return res.status(400).send("invalid credentials");
     console.log(user._id.toString());
-    const cook = await getByUserId(user._id.toString());
+    const cook = await getCookByUserId(user._id.toString());
+    const customer = await getCustomerByUserId(user._id.toString());
 
     if (user.user_type == "customer") {
       description = "";
       opening_hours = "";
       rate = null;
+      customer_id = customer._id;
+      cook_id = "";
     } else {
       description = cook.description;
       opening_hours = cook.opening_hours;
       rate = cook.rate;
+      cook_id = cook._id;
+      customer_id = "";
     }
 
     const token = jwt.sign(
@@ -65,6 +71,8 @@ async function login(req, res) {
         description: description,
         opening_hours: opening_hours,
         rate: rate,
+        cook_id: cook_id,
+        customer_id: customer_id,
       },
       TOKEN_SECRET
     );
