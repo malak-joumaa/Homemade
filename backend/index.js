@@ -1,5 +1,3 @@
-import { Server } from "socket.io";
-
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
@@ -22,6 +20,8 @@ app.use("/api/user", userRouter);
 app.use("/api/cook", cookRouter);
 app.use("/api/order", orderRouter);
 
+const { Server } = require("socket.io");
+
 const io = new Server({
   cors: {
     origin: "http://localhost:3000",
@@ -29,12 +29,12 @@ const io = new Server({
 });
 
 io.on("connection", (socket) => {
+  io.emit("firstEvent", "Hello from server");
   console.log("someone connected");
   socket.on("disconnect", () => {
     console.log("someone disconnected");
   });
 });
 
-io.listen(5000);
-
 app.listen(5000, () => console.log("Server running"));
+io.listen(4000, () => console.log("Socket.io running"));
