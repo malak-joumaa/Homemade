@@ -11,7 +11,6 @@ async function newMenu(body) {
 
   const menu = new Menu({
     cook,
-    days,
     dishes,
   });
 
@@ -57,20 +56,6 @@ async function newCategory(body) {
   return await category.save();
 }
 
-//Add Question
-async function newQuestion(body) {
-  const { question, dish, question_type, choices } = body;
-
-  const quest = new Question({
-    question,
-    dish,
-    question_type,
-    choices,
-  });
-
-  return await quest.save();
-}
-
 async function getByType(type) {
   return await Category.find({ created_by: type });
 }
@@ -91,7 +76,6 @@ module.exports = {
   newMenu,
   newDish,
   newCategory,
-  newQuestion,
   getByType,
   getCategories,
   getCookById,

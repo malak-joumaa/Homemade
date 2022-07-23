@@ -1,7 +1,5 @@
 const { newMenu, newDish, newQuestion } = require("../service");
 const Menu = require("../../../model/Menu");
-const Dish = require("../../../model/Dish");
-const Question = require("../../../model/Question");
 
 // Menu
 async function addMenu(req, res) {
@@ -44,36 +42,6 @@ async function addDish(req, res) {
     console.log("updateMenu =>", updateMenu);
 
     return res.status(200).send(dishResult);
-  } catch (error) {
-    console.log(error);
-    res.status(500).send(error);
-  }
-}
-
-// Question
-async function addQuestion(req, res) {
-  try {
-    console.log(req.body);
-    if (!req.body) return res.status(400).send("invalid credentials");
-
-    const questionResult = await newQuestion(req.body);
-    console.log("questionResult =>", questionResult);
-    if (!questionResult) return res.status(400).send("Invalid Credentials");
-
-    // Updating dish containing this question
-    const updateDish = await Menu.updateOne(
-      {
-        _id: questionResult.dish,
-      },
-      {
-        $push: {
-          questions: questionResult._id,
-        },
-      }
-    );
-    console.log("updateDish =>", updateDish);
-
-    return res.status(200).send(questionResult);
   } catch (error) {
     console.log(error);
     res.status(500).send(error);

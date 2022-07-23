@@ -7,7 +7,6 @@ const menuSchema = new mongoose.Schema({
     ref: "Cook",
   },
   dishes: [dishSchema],
-  days: [{ type: Number }],
 });
 
 module.exports = mongoose.model("Menu", menuSchema);

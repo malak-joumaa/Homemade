@@ -3,11 +3,9 @@ const mongoose = require("mongoose");
 const cookSchema = new mongoose.Schema({
   rate: {
     type: Number,
-    required: true,
   },
   description: {
     type: String,
-    required: true,
   },
   opening_hours: [
     {
