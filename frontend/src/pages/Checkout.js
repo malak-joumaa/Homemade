@@ -17,7 +17,41 @@ const Checkout = () => {
   const orderData = useSelector((state) => state.order);
   const [time, setTime] = useState("");
   const [isValid, setIsValid] = useState(false);
+  var OrderIDs = [];
+  var total = 0;
+  orderData.forEach((order) => {
+    if (order.status == "cart") {
+      OrderIDs.push(order._id);
+      total += order.total;
+    }
+  });
 
+  console.log(OrderIDs);
+
+  // Add Submitted Order
+  const SubmitOrder = async () => {
+    try {
+      const res = await fetch("http://localhost:5000/api/order/add-sub-order", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          total: total,
+          cook: localStorage.getItem("cook_id"),
+          customer: localStorage.getItem("customer_id"),
+          status: "pending",
+          pickup_hours: [time],
+          route: [],
+          orders: OrderIDs,
+        }),
+      });
+      const data2 = await res.json();
+      console.log(data2);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   // Update Order
   const updateOrder = async () => {
     orderData.forEach(async (singleOrder) => {
@@ -31,19 +65,12 @@ const Checkout = () => {
           },
           body: JSON.stringify({
             status: "pending",
-            pickup_hours: [time],
-            route: [],
           }),
         }
       );
     });
     navigate("/orders");
   };
-
-  var total = 0;
-  for (let i = 0; i < orderData.length; i++) {
-    total += orderData[i].total;
-  }
   return (
     <Container maxWidth="xl">
       <Navbar />
@@ -79,6 +106,7 @@ const Checkout = () => {
       <Button
         onClick={() => {
           console.log("click");
+          SubmitOrder();
           updateOrder();
         }}
       >

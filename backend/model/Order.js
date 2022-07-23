@@ -5,6 +5,10 @@ const orderSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  total: {
+    type: Number,
+    required: true,
+  },
   cook: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Cook",

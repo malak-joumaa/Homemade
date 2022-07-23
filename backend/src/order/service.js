@@ -3,10 +3,11 @@ const SubmittedOrder = require("../../model/SubmittedOrder");
 
 //Add Order function
 async function newOrder(body) {
-  const { quantity, cook, customer, dish, answers, status } = body;
+  const { quantity, total, cook, customer, dish, answers, status } = body;
 
   const order = new Order({
     quantity,
+    total,
     cook,
     customer,
     dish,
@@ -23,18 +24,19 @@ async function getOrdersById(id) {
 
 //Add Submitted Order function
 async function newSubOrder(body) {
-  const { total, pickup_hours, route, status, cook, customer } = body;
+  const { total, pickup_hours, route, status, cook, customer, orders } = body;
 
-  const order = new Order({
+  const subOrder = new SubmittedOrder({
     total,
     pickup_hours,
     route,
     status,
     cook,
     customer,
+    orders,
   });
 
-  return await order.save();
+  return await subOrder.save();
 }
 
 async function getSubOrdersById(id) {
