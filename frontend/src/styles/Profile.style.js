@@ -34,3 +34,5 @@ export const Rate = styled.div`
   text-align: center;
   margin-top: 70px;
 `;
+
+export const Button = styled.button``;

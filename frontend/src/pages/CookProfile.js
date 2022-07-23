@@ -10,6 +10,7 @@ import {
   Name,
   Description,
   Rate,
+  Button,
 } from "../styles/Profile.style";
 
 const CookProfile = () => {
@@ -43,6 +44,22 @@ const CookProfile = () => {
           </Grid>
         </Grid>
       </ProfileInfo>
+
+      {/* Functionalities */}
+      <Grid container spacing={1}>
+        <Grid item xs={3}>
+          <Button>
+            <i class="bx bx-shopping-bag"></i> Orders
+          </Button>
+          <Button>
+            <i className="fa-solid fa-bars"></i> Menu
+          </Button>
+          <Button>
+            <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+          </Button>
+        </Grid>
+        <Grid item xs={9}></Grid>
+      </Grid>
     </Container>
   );
 };
