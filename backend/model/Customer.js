@@ -17,6 +17,12 @@ const customerSchema = new mongoose.Schema({
       ref: "Order",
     },
   ],
+  submittedOrders: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "SubmittedOrder",
+    },
+  ],
 });
 
 module.exports = mongoose.model("Customer", customerSchema);

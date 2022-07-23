@@ -34,6 +34,12 @@ const cookSchema = new mongoose.Schema({
       ref: "Order",
     },
   ],
+  submittedOrders: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "SubmittedOrder",
+    },
+  ],
 });
 
 cookSchema.set("timestamps", true);
