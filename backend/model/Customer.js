@@ -17,7 +17,7 @@ const customerSchema = new mongoose.Schema({
       ref: "Order",
     },
   ],
-  submittedOrders: [
+  submitted_orders: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "SubmittedOrder",

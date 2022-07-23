@@ -40,6 +40,7 @@ async function addNewCook(body) {
     opening_hours,
     user,
     orders,
+    submitted_orders,
   });
 
   return await cook.save();
@@ -53,6 +54,7 @@ async function addNewCustomer(body) {
     user,
     categories,
     orders,
+    submitted_orders,
   });
 
   return await customer.save();
