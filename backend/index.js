@@ -1,3 +1,5 @@
+import { Server } from "socket.io";
+
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
@@ -12,11 +14,27 @@ mongoose.connect(DB_CONNECT, (err) => {
   if (err) console.log(err);
   else console.log("Connected to db");
 });
+
 const app = express();
 app.use(cors());
 app.use(express.json());
 app.use("/api/user", userRouter);
 app.use("/api/cook", cookRouter);
 app.use("/api/order", orderRouter);
+
+const io = new Server({
+  cors: {
+    origin: "http://localhost:3000",
+  },
+});
+
+io.on("connection", (socket) => {
+  console.log("someone connected");
+  socket.on("disconnect", () => {
+    console.log("someone disconnected");
+  });
+});
+
+io.listen(3000);
 
 app.listen(5000, () => console.log("Server running"));
