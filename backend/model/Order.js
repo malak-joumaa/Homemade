@@ -5,10 +5,6 @@ const orderSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  total: {
-    type: Number,
-    required: true,
-  },
   cook: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Cook",
@@ -27,27 +23,10 @@ const orderSchema = new mongoose.Schema({
       type: String,
     },
   ],
-  pickup_hours: [
-    {
-      type: String,
-      required: true,
-    },
-  ],
   status: {
     type: String,
     required: true,
   },
-  route: [
-    {
-      type: {
-        type: String,
-        enum: ["Point"],
-      },
-      coordinates: {
-        type: [Number],
-      },
-    },
-  ],
 });
 
 module.exports = mongoose.model("Orders", orderSchema);

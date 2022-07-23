@@ -1,0 +1,45 @@
+const mongoose = require("mongoose");
+
+const submittedSchema = new mongoose.Schema({
+  total: {
+    type: Number,
+    required: true,
+  },
+  pickup_hours: [
+    {
+      type: String,
+      required: true,
+    },
+  ],
+  route: [
+    {
+      type: {
+        type: String,
+        enum: ["Point"],
+      },
+      coordinates: {
+        type: [Number],
+      },
+    },
+  ],
+  status: {
+    type: String,
+    required: true,
+  },
+  orders: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Order",
+    },
+  ],
+  cook: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Cook",
+  },
+  customer: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Customer",
+  },
+});
+
+module.exports = mongoose.model("SubmittedOrders", submittedSchema);
