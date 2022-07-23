@@ -97,7 +97,9 @@ const CookProfile = () => {
           </Button>
           <br />
         </Grid>
-        <Grid item xs={10}></Grid>
+        <Grid item xs={10}>
+          {isMenu && <Menu menu={menu} disable={true} />}
+        </Grid>
       </Grid>
     </Container>
   );
