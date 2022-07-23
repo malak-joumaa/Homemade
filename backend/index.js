@@ -36,5 +36,46 @@ io.on("connection", (socket) => {
   });
 });
 
+let onlineUsers = [];
+
+const addNewUser = (email, socketId) => {
+  !onlineUsers.some((user) => user.email === email) &&
+    onlineUsers.push({ email, socketId });
+};
+
+const removeUser = (socketId) => {
+  onlineUsers = onlineUsers.filter((user) => user.socketId !== socketId);
+};
+
+const getUser = (email) => {
+  return onlineUsers.find((user) => user.email === email);
+};
+
+io.on("connection", (socket) => {
+  socket.on("newUser", (email) => {
+    addNewUser(email, socket.id);
+  });
+
+  socket.on("sendNotification", ({ senderName, receiverName, type }) => {
+    const receiver = getUser(receiverName);
+    io.to(receiver.socketId).emit("getNotification", {
+      senderName,
+      type,
+    });
+  });
+
+  socket.on("sendText", ({ senderName, receiverName, text }) => {
+    const receiver = getUser(receiverName);
+    io.to(receiver.socketId).emit("getText", {
+      senderName,
+      text,
+    });
+  });
+
+  socket.on("disconnect", () => {
+    removeUser(socket.id);
+  });
+});
+
 app.listen(5000, () => console.log("Server running"));
 io.listen(4000, () => console.log("Socket.io running"));
