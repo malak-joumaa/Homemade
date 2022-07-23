@@ -45,7 +45,7 @@ export const Day = styled.button`
   }
 `;
 
-export const Menu = styled.h2`
+export const Title = styled.h2`
   color: #3c3c3c;
   text-decoration: underline;
 `;

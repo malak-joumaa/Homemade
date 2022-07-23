@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
+import Menu from "../components/Menu";
 import { Rating, Grid, Container } from "@mui/material";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import hat from "../assets/hat.png";
 import {
   Hat,
@@ -14,8 +16,30 @@ import {
 } from "../styles/Profile.style";
 
 const CookProfile = () => {
+  const navigate = useNavigate();
   const userData = useSelector((state) => state.login);
   console.log(userData);
+
+  const [menu, setMenu] = useState([]);
+  const [isOrder, setIsOrder] = useState(true);
+  const [isMenu, setIsMenu] = useState(false);
+
+  // Get Menu Data
+  const getMenu = async () => {
+    try {
+      console.log("here");
+      const res2 = await fetch(
+        "http://localhost:5000/api/cook/get-menu?id=" +
+          localStorage.getItem("cook_id")
+      ).then(async (res2) => {
+        const data2 = await res2.json();
+        console.log(data2);
+        setMenu(data2);
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <Container maxWidth="xl">
@@ -47,18 +71,33 @@ const CookProfile = () => {
 
       {/* Functionalities */}
       <Grid container spacing={1}>
-        <Grid item xs={3}>
+        <Grid item xs={1}>
           <Button>
             <i class="bx bx-shopping-bag"></i> Orders
           </Button>
-          <Button>
+          <br />
+
+          <Button
+            onClick={() => {
+              getMenu();
+              setIsOrder(false);
+              setIsMenu(true);
+            }}
+          >
             <i className="fa-solid fa-bars"></i> Menu
           </Button>
-          <Button>
+          <br />
+          <Button
+            onClick={() => {
+              localStorage.clear();
+              navigate("/");
+            }}
+          >
             <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
           </Button>
+          <br />
         </Grid>
-        <Grid item xs={9}></Grid>
+        <Grid item xs={10}></Grid>
       </Grid>
     </Container>
   );

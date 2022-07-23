@@ -35,4 +35,22 @@ export const Rate = styled.div`
   margin-top: 70px;
 `;
 
-export const Button = styled.button``;
+export const Button = styled.div`
+  cursor: pointer;
+  width: 150%;
+  height: 50px;
+  font-size: 1.2em;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 600;
+  text-align: center;
+  line-height: 50px;
+  border: 1px solid #e1e0e0;
+  border-radius: 15px;
+  color: #847e7c;
+  background-color: white;
+  &:hover,
+  :active {
+    color: white;
+    background-color: #43c187;
+  }
+`;
