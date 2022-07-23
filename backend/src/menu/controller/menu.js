@@ -51,5 +51,4 @@ async function addDish(req, res) {
 module.exports = {
   addMenu,
   addDish,
-  addQuestion,
 };

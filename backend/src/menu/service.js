@@ -1,7 +1,6 @@
 const Menu = require("../../model/Menu");
 const Dish = require("../../model/Dish");
 const Category = require("../../model/Category");
-const Question = require("../../model/Question");
 const Cook = require("../../model/Cook");
 const User = require("../../model/User");
 
