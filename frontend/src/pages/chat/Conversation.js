@@ -29,9 +29,9 @@ const Conversation = ({ conversation, currentUser }) => {
 
   return (
     <ConversationContainer>
-      <ConversationImg src={user ? user.profile_photo : ""}></ConversationImg>
+      <ConversationImg src={user?.profile_photo}></ConversationImg>
       <ConversationName>
-        {user ? user.first_name : "Friend"} {user ? user.last_name : "Friend"}
+        {user?.first_name} {user?.last_name}
       </ConversationName>
     </ConversationContainer>
   );

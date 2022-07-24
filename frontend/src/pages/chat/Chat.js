@@ -47,6 +47,25 @@ const Chat = () => {
   };
 
   console.log("convo", conversation);
+  console.log("currentChat", currentChat);
+
+  useEffect(() => {
+    const getMessages = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:5000/api/chat/get-message/?id=" + currentChat?._id
+        );
+        const msg = await response.json();
+        console.log(msg);
+        setMessages(msg);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getMessages();
+  }, [currentChat]);
+
+  console.log("messages", messages);
 
   return (
     <div>
@@ -58,7 +77,13 @@ const Chat = () => {
               <ChatMenuWrapper>
                 <SearchBox placeholder="search" />
                 {conversation.map((convo) => (
-                  <Conversation conversation={convo} currentUser={user_id} />
+                  <div
+                    onClick={() => {
+                      setCurrentChat(convo);
+                    }}
+                  >
+                    <Conversation conversation={convo} currentUser={user_id} />
+                  </div>
                 ))}
               </ChatMenuWrapper>
             </ChatMenu>
