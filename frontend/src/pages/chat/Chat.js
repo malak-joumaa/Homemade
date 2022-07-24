@@ -17,6 +17,7 @@ import {
 } from "../../styles/chat/Chat.style";
 import Conversation from "./Conversation";
 import Message from "./Message";
+import OnlineChat from "./OnlineChat";
 
 const Chat = () => {
   return (
@@ -45,7 +46,6 @@ const Chat = () => {
                   <Message />
                   <Message />
                   <Message />
-
                   <Message />
                   <Message />
                   <Message />
@@ -69,7 +69,9 @@ const Chat = () => {
 
           <Grid item xs={3}>
             <ChatOnline>
-              <ChatOnlineWrapper>wrapper</ChatOnlineWrapper>
+              <ChatOnlineWrapper>
+                <OnlineChat />
+              </ChatOnlineWrapper>
             </ChatOnline>
           </Grid>
         </Grid>
