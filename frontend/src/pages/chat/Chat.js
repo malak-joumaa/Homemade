@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Navbar from "../../components/Navbar";
 import { Grid, Container } from "@mui/material";
 import {
@@ -28,6 +28,7 @@ const Chat = () => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const user_id = user.user_id;
+  const scrollRef = useRef();
 
   console.log(user_id);
   useEffect(() => {
@@ -98,6 +99,11 @@ const Chat = () => {
     }
   };
 
+  // Scroll to bottom
+  useEffect(() => {
+    scrollRef?.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
   return (
     <div>
       <Navbar />
@@ -127,7 +133,9 @@ const Chat = () => {
                   <>
                     <ChatBoxTop>
                       {messages.map((msg) => (
-                        <Message message={msg} me={msg.sender === user_id} />
+                        <div ref={scrollRef}>
+                          <Message message={msg} me={msg.sender === user_id} />
+                        </div>
                       ))}
                     </ChatBoxTop>
                     <ChatBoxBottom>
