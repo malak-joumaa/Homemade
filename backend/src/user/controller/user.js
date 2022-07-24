@@ -7,6 +7,7 @@ const {
   getReviewsByCookID,
   getCookByUserId,
   getCustomerByUserId,
+  getByUserId,
 } = require("../service");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -112,7 +113,7 @@ async function addCustomer(req, res) {
   }
 }
 
-// Add Customer
+// Add Review
 async function addReview(req, res) {
   try {
     console.log(req.body);
@@ -142,6 +143,22 @@ async function getReview(req, res) {
   }
 }
 
+// Get User by id
+async function getUser(req, res) {
+  try {
+    console.log(req.query);
+
+    if (req.query.id) {
+      const id = req.query.id;
+      const result = await getByUserId(id);
+      console.log("user data =>", result);
+      return res.send(result);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 module.exports = {
   register,
   login,
@@ -149,4 +166,5 @@ module.exports = {
   addCustomer,
   addReview,
   getReview,
+  getUser,
 };

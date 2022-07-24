@@ -73,6 +73,11 @@ async function addNewReview(body) {
   return await review.save();
 }
 
+//Get user by id
+async function getByUserId(id) {
+  return await User.findById(id);
+}
+
 //Get user by email
 async function getByEmail(email) {
   return await User.findOne({
@@ -100,4 +105,5 @@ module.exports = {
   getReviewsByCookID,
   getCookByUserId,
   getCustomerByUserId,
+  getByUserId,
 };
