@@ -26,6 +26,7 @@ const Chat = () => {
   const [conversation, setConversation] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
   const [messages, setMessages] = useState([]);
+  const [newMessage, setNewMessage] = useState("");
   const user_id = user.user_id;
 
   console.log(user_id);
@@ -67,6 +68,36 @@ const Chat = () => {
 
   console.log("messages", messages);
 
+  // Submit message
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const message = {
+      sender: user_id,
+      text: newMessage,
+      conversationId: currentChat._id,
+    };
+    console.log("hi", currentChat);
+
+    try {
+      const response = await fetch(
+        "http://localhost:5000/api/chat/add-message",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(message),
+        }
+      );
+      const data = await response.json();
+      console.log(data);
+      setMessages([...messages, data]);
+      setNewMessage("");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div>
       <Navbar />
@@ -100,8 +131,12 @@ const Chat = () => {
                       ))}
                     </ChatBoxTop>
                     <ChatBoxBottom>
-                      <ChatInput placeholder="Type a message..." />
-                      <SendBtn>Send</SendBtn>
+                      <ChatInput
+                        placeholder="Type a message..."
+                        value={newMessage}
+                        onChange={(e) => setNewMessage(e.target.value)}
+                      />
+                      <SendBtn onClick={handleSubmit}>Send</SendBtn>
                     </ChatBoxBottom>
                   </>
                 ) : (
