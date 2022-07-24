@@ -25,7 +25,13 @@ async function newConversation(body) {
   return await conversation.save();
 }
 
+// Get Conversation By User Id
+async function getConversationByUserId(userId) {
+  return await Conversation.find({ members: { $in: [userId] } });
+}
+
 module.exports = {
   newMessage,
   newConversation,
+  getConversationByUserId,
 };

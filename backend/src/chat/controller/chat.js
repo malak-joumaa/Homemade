@@ -1,7 +1,11 @@
-const { newConversation, newMessage } = require("../service");
+const {
+  newConversation,
+  newMessage,
+  getConversationByUserId,
+} = require("../service");
 const Conversation = require("../../../model/Conversation");
 
-// AddMenu
+// Add Menu
 async function addConversation(req, res) {
   try {
     console.log(req.body);
@@ -18,6 +22,23 @@ async function addConversation(req, res) {
   }
 }
 
+//Get Cook
+async function getConversation(req, res) {
+  try {
+    console.log(req.query);
+
+    if (req.query.id) {
+      const id = req.query.id;
+      const result = await getConversationByUserId(id);
+      console.log("conversation data =>", result);
+      return res.send(result);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 module.exports = {
   addConversation,
+  getConversation,
 };
