@@ -34,6 +34,7 @@ const LandingPage = () => {
         <SignInBtn
           onClick={() => {
             navigate("/sign-in");
+            localStorage.setItem("user_type", "customer");
           }}
         >
           <SignInText>Sign in</SignInText>
@@ -44,6 +45,7 @@ const LandingPage = () => {
         <SignInBtn
           onClick={() => {
             navigate("/sign-in");
+            localStorage.setItem("user_type", "cook");
           }}
         >
           <SignInText>Sign in</SignInText>
