@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Blob,
   MainLogo,
@@ -22,6 +23,7 @@ import CookImg from "../assets/user-sign-in.jpg";
 import { Grid, Container } from "@mui/material";
 
 const LandingPage = () => {
+  const navigate = useNavigate();
   return (
     <>
       <Container1></Container1>
@@ -29,13 +31,21 @@ const LandingPage = () => {
         <Welcome>Welcome to Homemade</Welcome>
         <SubTitle>For Home Cooks</SubTitle>
         <SubTitle>For Food Lovers</SubTitle>
-        <SignInBtn>
+        <SignInBtn
+          onClick={() => {
+            navigate("/sign-in");
+          }}
+        >
           <SignInText>Sign in</SignInText>
           <br />
 
           <TypeText>As a customer</TypeText>
         </SignInBtn>
-        <SignInBtn>
+        <SignInBtn
+          onClick={() => {
+            navigate("/sign-in");
+          }}
+        >
           <SignInText>Sign in</SignInText>
           <br />
           <TypeText>As a cook</TypeText>
