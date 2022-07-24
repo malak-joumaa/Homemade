@@ -24,7 +24,9 @@ const Navbar = () => {
             <List>
               <NavLink to="/orders">Orders</NavLink>
             </List>
-            <List>Messages</List>
+            <List>
+              <NavLink to="/chat">Messages</NavLink>
+            </List>
             <List>
               <NavLink to="/cook-profile">
                 <ProfileIcon src={userData.profile_photo} />
