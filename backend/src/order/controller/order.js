@@ -54,7 +54,7 @@ async function getOrders(req, res) {
     if (req.query.id) {
       const id = req.query.id;
       const result = await getOrdersById(id);
-      console.log("order data =>", result);
+      // console.log("order data =>", result);
       return res.send(result);
     }
   } catch (error) {

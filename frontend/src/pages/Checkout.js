@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { Container } from "@mui/system";
@@ -14,6 +14,8 @@ import { useSelector } from "react-redux";
 
 const Checkout = () => {
   const navigate = useNavigate();
+  const socket = useSelector((state) => state.socket);
+  const user = useSelector((state) => state.login);
   const orderData = useSelector((state) => state.order);
   const [time, setTime] = useState("");
   const [isValid, setIsValid] = useState(false);
@@ -25,6 +27,14 @@ const Checkout = () => {
       total += order.total;
     }
   });
+  const handleNotification = (type) => {
+    socket.emit("sendNotification", {
+      senderName: user.customer_id,
+      receiverName: orderData[0].cook,
+      type,
+    });
+  };
+  console.log("data", orderData[0].cook);
 
   console.log(OrderIDs);
 
@@ -105,9 +115,9 @@ const Checkout = () => {
       <br />
       <Button
         onClick={() => {
-          console.log("click");
           SubmitOrder();
           updateOrder();
+          handleNotification(1);
         }}
       >
         Confirm

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Menu from "../components/Menu";
 import { Rating, Grid, Container } from "@mui/material";
@@ -19,7 +19,22 @@ import OrderTable from "../components/OrderTable";
 const CookProfile = () => {
   const navigate = useNavigate();
   const userData = useSelector((state) => state.login);
-  console.log(userData);
+  const socket = useSelector((state) => state.socket);
+
+  console.log(socket);
+
+  // Notification
+  const [notifications, setNotifications] = useState([""]);
+
+  useEffect(() => {
+    {
+      socket == null &&
+        socket.on("getNotification", (data) => {
+          setNotifications((prev) => [...prev, data]);
+        });
+    }
+  }, [socket]);
+  console.log(notifications);
 
   const [menu, setMenu] = useState([]);
   const [isOrder, setIsOrder] = useState(true);

@@ -38,22 +38,23 @@ io.on("connection", (socket) => {
 
 let onlineUsers = [];
 
-const addNewUser = (email, socketId) => {
-  !onlineUsers.some((user) => user.email === email) &&
-    onlineUsers.push({ email, socketId });
+const addNewUser = (user_id, socketId) => {
+  !onlineUsers.some((user) => user.user_id === user_id) &&
+    onlineUsers.push({ user_id, socketId });
+  console.log("onlineUsers=>", onlineUsers);
 };
 
 const removeUser = (socketId) => {
   onlineUsers = onlineUsers.filter((user) => user.socketId !== socketId);
 };
 
-const getUser = (email) => {
-  return onlineUsers.find((user) => user.email === email);
+const getUser = (user_id) => {
+  return onlineUsers.find((user) => user.user_id === user_id);
 };
 
 io.on("connection", (socket) => {
-  socket.on("newUser", (email) => {
-    addNewUser(email, socket.id);
+  socket.on("newUser", (user_id) => {
+    addNewUser(user_id, socket.id);
   });
 
   socket.on("sendNotification", ({ senderName, receiverName, type }) => {
@@ -64,13 +65,13 @@ io.on("connection", (socket) => {
     });
   });
 
-  socket.on("sendText", ({ senderName, receiverName, text }) => {
-    const receiver = getUser(receiverName);
-    io.to(receiver.socketId).emit("getText", {
-      senderName,
-      text,
-    });
-  });
+  // socket.on("sendText", ({ senderName, receiverName, text }) => {
+  //   const receiver = getUser(receiverName);
+  //   io.to(receiver.socketId).emit("getText", {
+  //     senderName,
+  //     text,
+  //   });
+  // });
 
   socket.on("disconnect", () => {
     removeUser(socket.id);

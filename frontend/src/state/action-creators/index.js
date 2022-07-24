@@ -24,3 +24,12 @@ export const addOrderData = (new_value) => {
     });
   };
 };
+
+export const addSocket = (new_value) => {
+  return (dispatch) => {
+    dispatch({
+      type: "getSocket",
+      payload: new_value,
+    });
+  };
+};

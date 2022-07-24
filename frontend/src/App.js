@@ -1,4 +1,4 @@
-import { useEffect, useState, createContext } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
@@ -11,38 +11,47 @@ import Orders from "./pages/Orders";
 import Checkout from "./pages/Checkout";
 import CookProfile from "./pages/CookProfile";
 import { io } from "socket.io-client";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
+import { actionCreators } from "../src/state/index";
+import LandingPage from "./pages/LandingPage";
 
 function App() {
-  const [socket, setSocket] = useState(null);
-  const SocketContext = createContext();
+  const dispatch = useDispatch();
+  const { addSocket } = bindActionCreators(actionCreators, dispatch);
 
+  const [socket, setSocket] = useState(null);
   useEffect(() => {
-    const setSocket = io("http://localhost:4000");
+    setSocket(io("http://localhost:4000"));
+    addSocket(io("http://localhost:4000"));
   }, []);
 
   const user = useSelector((state) => state.login);
   console.log(user.email);
 
   useEffect(() => {
-    socket.emit("newUser", user.email);
+    if (localStorage.getItem("user_type") === "customer") {
+      socket?.emit("newUser", user.customer_id);
+    } else {
+      socket?.emit("newUser", user.cook_id);
+    }
+    console.log("socket", socket);
   }, [socket, user]);
 
   return (
     <BrowserRouter>
       <Toaster position="top-center" reverseOrder={false} />
       <Routes>
-        <SocketContext.Provider value={socket}>
-          <Route path="/sign-in" element={<SignIn />}></Route>
-          <Route path="/sign-up" element={<SignUp />}></Route>
-          <Route path="/add-menu" element={<AddMenu />}></Route>
-          <Route path="/follow-up" element={<RegisterFollowUp />}></Route>
-          <Route path="/main-page" element={<MainPage />}></Route>
-          <Route path="/cook" element={<SingleCook />}></Route>
-          <Route path="/orders" element={<Orders />}></Route>
-          <Route path="/checkout" element={<Checkout />}></Route>
-          <Route path="/cook-profile" element={<CookProfile />}></Route>
-        </SocketContext.Provider>
+        <Route path="/" element={<LandingPage />}></Route>
+        <Route path="/sign-in" element={<SignIn />}></Route>
+        <Route path="/sign-up" element={<SignUp />}></Route>
+        <Route path="/add-menu" element={<AddMenu />}></Route>
+        <Route path="/follow-up" element={<RegisterFollowUp />}></Route>
+        <Route path="/main-page" element={<MainPage />}></Route>
+        <Route path="/cook" element={<SingleCook />}></Route>
+        <Route path="/orders" element={<Orders />}></Route>
+        <Route path="/checkout" element={<Checkout />}></Route>
+        <Route path="/cook-profile" element={<CookProfile />}></Route>
       </Routes>
     </BrowserRouter>
   );
