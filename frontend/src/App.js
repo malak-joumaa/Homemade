@@ -15,6 +15,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "../src/state/index";
 import LandingPage from "./pages/LandingPage";
+import Chat from "./pages/chat/Chat";
 
 function App() {
   const dispatch = useDispatch();
@@ -52,6 +53,7 @@ function App() {
         <Route path="/orders" element={<Orders />}></Route>
         <Route path="/checkout" element={<Checkout />}></Route>
         <Route path="/cook-profile" element={<CookProfile />}></Route>
+        <Route path="/chat" element={<Chat />}></Route>
       </Routes>
     </BrowserRouter>
   );
