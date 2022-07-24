@@ -44,6 +44,7 @@ const SignIn = () => {
       window.localStorage.setItem("user_type", decoded.user_type);
       console.log(decoded);
       addUserData({
+        user_id: decoded._id,
         fname: decoded.first_name,
         lname: decoded.first_name,
         email: decoded.email,

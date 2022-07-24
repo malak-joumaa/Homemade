@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   ConversationContainer,
   ConversationImg,
@@ -6,7 +6,13 @@ import {
 } from "../../styles/chat/Conversation.style";
 import userProfile from "../../assets/user.jpg";
 
-const Conversation = () => {
+const Conversation = ({ conversation, currentUser }) => {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const friendId = conversation.member.find((m) => m !== currentUser);
+  }, []);
+
   return (
     <ConversationContainer>
       <ConversationImg src={userProfile}></ConversationImg>
