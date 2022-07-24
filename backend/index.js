@@ -5,6 +5,7 @@ const cors = require("cors");
 const userRouter = require("./src/user");
 const cookRouter = require("./src/menu");
 const orderRouter = require("./src/order");
+const chatRouter = require("./src/chat");
 
 // mongodDB online -> use Atlas
 const DB_CONNECT = process.env.DB_CONNECT || "";
@@ -19,6 +20,7 @@ app.use(express.json());
 app.use("/api/user", userRouter);
 app.use("/api/cook", cookRouter);
 app.use("/api/order", orderRouter);
+app.use("/api/chat", chatRouter);
 
 const { Server } = require("socket.io");
 
