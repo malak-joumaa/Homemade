@@ -12,6 +12,8 @@ import {
   SearchBox,
   ChatBoxTop,
   ChatBoxBottom,
+  ChatInput,
+  SendBtn,
 } from "../../styles/chat/Chat.style";
 import Conversation from "./Conversation";
 import Message from "./Message";
@@ -37,14 +39,30 @@ const Chat = () => {
           <Grid item xs={5.5}>
             <ChatBox>
               <ChatBoxWrapper>
-                <ChatBoxTop></ChatBoxTop>
+                <ChatBoxTop>
+                  <Message />
+                  <Message me={true} />
+                  <Message />
+                  <Message />
+                  <Message />
 
-                <Message />
-                <Message me={true} />
-                <Message />
-                <Message />
-
-                <ChatBoxBottom></ChatBoxBottom>
+                  <Message />
+                  <Message />
+                  <Message />
+                  <Message />
+                  <Message />
+                  <Message />
+                  <Message />
+                  <Message />
+                  <Message />
+                  <Message />
+                  <Message />
+                  <Message />
+                </ChatBoxTop>
+                <ChatBoxBottom>
+                  <ChatInput placeholder="Type a message..." />
+                  <SendBtn>Send</SendBtn>
+                </ChatBoxBottom>
               </ChatBoxWrapper>
             </ChatBox>
           </Grid>
