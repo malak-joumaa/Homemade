@@ -14,6 +14,7 @@ import {
   ChatBoxBottom,
   ChatInput,
   SendBtn,
+  NoConversationText,
 } from "../../styles/chat/Chat.style";
 import Conversation from "./Conversation";
 import Message from "./Message";
@@ -23,6 +24,8 @@ import { useSelector } from "react-redux";
 const Chat = () => {
   const user = useSelector((state) => state.login);
   const [conversation, setConversation] = useState([]);
+  const [currentChat, setCurrentChat] = useState(null);
+  const [messages, setMessages] = useState([]);
   const user_id = user.user_id;
 
   console.log(user_id);
@@ -64,29 +67,37 @@ const Chat = () => {
           <Grid item xs={5.5}>
             <ChatBox>
               <ChatBoxWrapper>
-                <ChatBoxTop>
-                  <Message />
-                  <Message me={true} />
-                  <Message />
-                  <Message />
-                  <Message />
-                  <Message />
-                  <Message />
-                  <Message />
-                  <Message />
-                  <Message />
-                  <Message />
-                  <Message />
-                  <Message />
-                  <Message />
-                  <Message />
-                  <Message />
-                  <Message />
-                </ChatBoxTop>
-                <ChatBoxBottom>
-                  <ChatInput placeholder="Type a message..." />
-                  <SendBtn>Send</SendBtn>
-                </ChatBoxBottom>
+                {currentChat ? (
+                  <>
+                    <ChatBoxTop>
+                      <Message />
+                      <Message me={true} />
+                      <Message />
+                      <Message />
+                      <Message />
+                      <Message />
+                      <Message />
+                      <Message />
+                      <Message />
+                      <Message />
+                      <Message />
+                      <Message />
+                      <Message />
+                      <Message />
+                      <Message />
+                      <Message />
+                      <Message />
+                    </ChatBoxTop>
+                    <ChatBoxBottom>
+                      <ChatInput placeholder="Type a message..." />
+                      <SendBtn>Send</SendBtn>
+                    </ChatBoxBottom>
+                  </>
+                ) : (
+                  <NoConversationText>
+                    Open a conversation to start a chat.
+                  </NoConversationText>
+                )}
               </ChatBoxWrapper>
             </ChatBox>
           </Grid>

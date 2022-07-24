@@ -34,6 +34,7 @@ export const ChatBoxWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
 `;
 
 export const ChatBoxTop = styled.div`
@@ -78,4 +79,12 @@ export const SendBtn = styled.button`
   &:active {
     transform: translateY(2px);
   }
+`;
+
+export const NoConversationText = styled.span`
+  position: absolute;
+  top: 100px;
+  font-size: 50px;
+  color: lightgray;
+  cursor: default;
 `;
