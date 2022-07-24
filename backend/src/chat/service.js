@@ -30,8 +30,14 @@ async function getConversationByUserId(userId) {
   return await Conversation.find({ members: { $in: [userId] } });
 }
 
+// Get Messages By Convo Id
+async function getMessageByConvoId(convoId) {
+  return await Message.find({ conversationId: convoId });
+}
+
 module.exports = {
   newMessage,
   newConversation,
   getConversationByUserId,
+  getMessageByConvoId,
 };
