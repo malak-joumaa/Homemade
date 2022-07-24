@@ -9,8 +9,10 @@ import {
   ChatMenuWrapper,
   ChatBoxWrapper,
   ChatOnlineWrapper,
+  SearchBox,
+  ChatBoxTop,
+  ChatBoxBottom,
 } from "../../styles/chat/Chat.style";
-import { SearchBox } from "../../styles/MainPage.style";
 import Conversation from "./Conversation";
 
 const Chat = () => {
@@ -22,7 +24,10 @@ const Chat = () => {
           <Grid item xs={3.5}>
             <ChatMenu>
               <ChatMenuWrapper>
-                <SearchBox placeholder="search" />'
+                <SearchBox placeholder="search" />
+                <Conversation />
+                <Conversation />
+                <Conversation />
                 <Conversation />
               </ChatMenuWrapper>
             </ChatMenu>
@@ -30,7 +35,10 @@ const Chat = () => {
 
           <Grid item xs={5.5}>
             <ChatBox>
-              <ChatBoxWrapper>box</ChatBoxWrapper>
+              <ChatBoxWrapper>
+                <ChatBoxTop></ChatBoxTop>
+                <ChatBoxBottom></ChatBoxBottom>
+              </ChatBoxWrapper>
             </ChatBox>
           </Grid>
 
