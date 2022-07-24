@@ -14,6 +14,7 @@ import {
   ChatBoxBottom,
 } from "../../styles/chat/Chat.style";
 import Conversation from "./Conversation";
+import Message from "./Message";
 
 const Chat = () => {
   return (
@@ -37,6 +38,12 @@ const Chat = () => {
             <ChatBox>
               <ChatBoxWrapper>
                 <ChatBoxTop></ChatBoxTop>
+
+                <Message />
+                <Message me={true} />
+                <Message />
+                <Message />
+
                 <ChatBoxBottom></ChatBoxBottom>
               </ChatBoxWrapper>
             </ChatBox>
