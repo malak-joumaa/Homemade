@@ -11,6 +11,7 @@ import {
   ChatOnlineWrapper,
 } from "../../styles/chat/Chat.style";
 import { SearchBox } from "../../styles/MainPage.style";
+import Conversation from "./Conversation";
 
 const Chat = () => {
   return (
@@ -21,7 +22,8 @@ const Chat = () => {
           <Grid item xs={3.5}>
             <ChatMenu>
               <ChatMenuWrapper>
-                <SearchBox placeholder="search" />
+                <SearchBox placeholder="search" />'
+                <Conversation />
               </ChatMenuWrapper>
             </ChatMenu>
           </Grid>
