@@ -8,14 +8,14 @@ import {
 } from "../../styles/chat/Message.style";
 import userProfile from "../../assets/user.jpg";
 
-const Message = ({ me }) => {
+const Message = ({ message, me }) => {
   return (
     <MessageContainer person={me}>
       <MessageTop>
         <MessageImg src={userProfile}></MessageImg>
-        <MessageText person={me}>Hello this is a message</MessageText>
+        <MessageText person={me}>{message.text}</MessageText>
       </MessageTop>
-      <MessageBottom>1 hour ago</MessageBottom>
+      <MessageBottom>{message.createdAt}</MessageBottom>
     </MessageContainer>
   );
 };

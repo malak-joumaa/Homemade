@@ -95,23 +95,9 @@ const Chat = () => {
                 {currentChat ? (
                   <>
                     <ChatBoxTop>
-                      <Message />
-                      <Message me={true} />
-                      <Message />
-                      <Message />
-                      <Message />
-                      <Message />
-                      <Message />
-                      <Message />
-                      <Message />
-                      <Message />
-                      <Message />
-                      <Message />
-                      <Message />
-                      <Message />
-                      <Message />
-                      <Message />
-                      <Message />
+                      {messages.map((msg) => (
+                        <Message message={msg} me={msg.sender === user_id} />
+                      ))}
                     </ChatBoxTop>
                     <ChatBoxBottom>
                       <ChatInput placeholder="Type a message..." />
