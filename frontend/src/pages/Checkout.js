@@ -14,7 +14,7 @@ import { useSelector } from "react-redux";
 
 const Checkout = () => {
   const navigate = useNavigate();
-  const socket = useSelector((state) => state.socket);
+  // const socket = useSelector((state) => state.socket);
   const user = useSelector((state) => state.login);
   const orderData = useSelector((state) => state.order);
   const [time, setTime] = useState("");
@@ -27,13 +27,13 @@ const Checkout = () => {
       total += order.total;
     }
   });
-  const handleNotification = (type) => {
-    socket.emit("sendNotification", {
-      senderName: user.customer_id,
-      receiverName: orderData[0].cook,
-      type,
-    });
-  };
+  // const handleNotification = (type) => {
+  //   socket.emit("sendNotification", {
+  //     senderName: user.customer_id,
+  //     receiverName: orderData[0].cook,
+  //     type,
+  //   });
+  // };
   console.log("data", orderData[0].cook);
 
   console.log(OrderIDs);
@@ -117,7 +117,7 @@ const Checkout = () => {
         onClick={() => {
           SubmitOrder();
           updateOrder();
-          handleNotification(1);
+          // handleNotification(1);
         }}
       >
         Confirm
