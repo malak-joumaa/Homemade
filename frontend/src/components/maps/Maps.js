@@ -1,10 +1,17 @@
 import React, { useState } from "react";
-import { useJsApiLoader, GoogleMap, Marker } from "@react-google-maps/api";
+import {
+  useJsApiLoader,
+  GoogleMap,
+  Marker,
+  Autocomplete,
+} from "@react-google-maps/api";
 import MapSearchBox from "./MapSearchBox";
 
 const Maps = () => {
+  const libraries = ["places"];
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+    libraries,
   });
 
   const [map, setMap] = useState(/**@type google.maps.Map*/ (null));
@@ -16,7 +23,9 @@ const Maps = () => {
   return (
     <>
       <div style={{ width: "100%", height: "80%" }}>
-        <MapSearchBox map={map} center={center} />
+        <Autocomplete>
+          <MapSearchBox map={map} center={center} />
+        </Autocomplete>
         <GoogleMap
           center={center}
           zoom={15}
