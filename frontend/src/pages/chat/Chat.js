@@ -20,17 +20,49 @@ import Conversation from "./Conversation";
 import Message from "./Message";
 import OnlineChat from "./OnlineChat";
 import { useSelector } from "react-redux";
+import { io } from "socket.io-client";
 
 const Chat = () => {
+  // const [socket, setSocket] = useState(null);
   const user = useSelector((state) => state.login);
   const [conversation, setConversation] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
+  const [arrivalMessage, setArrivalMessage] = useState(null);
   const user_id = user.user_id;
   const scrollRef = useRef();
+  const socket = useRef();
 
   console.log(user_id);
+  useEffect(() => {
+    socket.current = io("ws://localhost:8900");
+    socket.current.on("getMessage", (data) => {
+      setArrivalMessage({
+        sender: data.senderId,
+        text: data.text,
+        createdAt: Date.now(),
+      });
+    });
+  }, []);
+  // const socket = useSelector((state) => state.socket);
+  {
+    socket && console.log("socket", socket);
+  }
+
+  useEffect(() => {
+    socket?.current.emit("addUser", user?.user_id);
+    socket?.current.on("getUsers", (users) => {
+      console.log("users", users);
+    });
+  }, [user]);
+
+  useEffect(() => {
+    arrivalMessage &&
+      currentChat?.members.includes(arrivalMessage.sender) &&
+      setMessages((prev) => [...prev, arrivalMessage]);
+  }, [arrivalMessage, currentChat]);
+
   useEffect(() => {
     getConversations();
   }, []);
@@ -78,6 +110,14 @@ const Chat = () => {
       conversationId: currentChat._id,
     };
     console.log("hi", currentChat);
+
+    const receiverId = currentChat.members.find((m) => m !== user_id);
+
+    socket?.current.emit("sendMessage", {
+      senderId: user_id,
+      receiverId,
+      text: newMessage,
+    });
 
     try {
       const response = await fetch(
