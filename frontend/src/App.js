@@ -10,35 +10,10 @@ import SingleCook from "./pages/SingleCook";
 import Orders from "./pages/Orders";
 import Checkout from "./pages/Checkout";
 import CookProfile from "./pages/CookProfile";
-import { io } from "socket.io-client";
-import { useSelector, useDispatch } from "react-redux";
-import { bindActionCreators } from "redux";
-import { actionCreators } from "../src/state/index";
 import LandingPage from "./pages/LandingPage";
 import Chat from "./pages/chat/Chat";
 
 function App() {
-  const dispatch = useDispatch();
-  const { addSocket } = bindActionCreators(actionCreators, dispatch);
-
-  const [socket, setSocket] = useState(null);
-  useEffect(() => {
-    setSocket(io("http://localhost:4000"));
-    addSocket(io("http://localhost:4000"));
-  }, []);
-
-  const user = useSelector((state) => state.login);
-  console.log(user.email);
-
-  useEffect(() => {
-    if (localStorage.getItem("user_type") === "customer") {
-      socket?.emit("newUser", user.customer_id);
-    } else {
-      socket?.emit("newUser", user.cook_id);
-    }
-    console.log("socket", socket);
-  }, [socket, user]);
-
   return (
     <BrowserRouter>
       <Toaster position="top-center" reverseOrder={false} />
