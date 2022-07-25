@@ -1,4 +1,4 @@
-const { newMenu, newDish, newQuestion } = require("../service");
+const { newMenu, newDish } = require("../service");
 const Menu = require("../../../model/Menu");
 
 // Menu

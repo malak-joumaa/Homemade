@@ -71,6 +71,10 @@ async function getMenusBycookId(id) {
   return await Menu.find({ cook: id }).populate("dishes");
 }
 
+async function getAllMenus() {
+  return await Menu.find().populate("cook");
+}
+
 module.exports = {
   newMenu,
   newDish,
@@ -79,4 +83,5 @@ module.exports = {
   getCategories,
   getCookById,
   getMenusBycookId,
+  getAllMenus,
 };
