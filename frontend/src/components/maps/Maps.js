@@ -16,11 +16,15 @@ const Maps = () => {
   return (
     <>
       <div style={{ width: "100%", height: "80%" }}>
-        <MapSearchBox />
+        <MapSearchBox map={map} center={center} />
         <GoogleMap
           center={center}
           zoom={15}
-          mapContainerStyle={{ width: "100%", height: "100%", zIndex: "-1" }}
+          mapContainerStyle={{
+            width: "100%",
+            height: "100%",
+            position: "relative",
+          }}
           onLoad={(map) => setMap(map)}
         >
           <Marker position={center} />

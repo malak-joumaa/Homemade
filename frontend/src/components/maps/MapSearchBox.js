@@ -1,8 +1,8 @@
 import React from "react";
 import { Grid } from "@mui/material";
-import { MapSearch } from "../../styles/Map.style";
+import { MapSearch, SearchInput, LocationArrow } from "../../styles/Map.style";
 
-const MapSearchBox = ({ route }) => {
+const MapSearchBox = ({ route, map, center }) => {
   return (
     <MapSearch>
       <Grid container spacing={1}>
@@ -15,7 +15,10 @@ const MapSearchBox = ({ route }) => {
         ) : (
           <>
             <Grid item xs={12}>
-              <input type="text" placeholder="Search" />
+              <SearchInput type="text" placeholder="Search" />
+              <LocationArrow onClick={() => map.panTo(center)}>
+                <i className="fa-solid fa-location-arrow"></i>
+              </LocationArrow>
             </Grid>
           </>
         )}
