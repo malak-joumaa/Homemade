@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import { MainPageContainer, SearchLocation } from "../styles/Container.style";
 import { SearchBox, LocationName, Title } from "../styles/MainPage.style";
@@ -11,6 +11,26 @@ import "swiper/css/free-mode";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 const MainPage = () => {
+  const [cooks, setCooks] = useState([]);
+
+  useEffect(() => {
+    getCooks();
+  }, []);
+
+  // get all cooks
+  const getCooks = async () => {
+    try {
+      const response = await fetch(
+        "http://localhost:5000/api/user/auth/get-cooks"
+      );
+      const data = await response.json();
+      setCooks(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  console.log(cooks);
+
   return (
     <Container maxWidth="xl">
       <MainPageContainer>
@@ -42,26 +62,7 @@ const MainPage = () => {
           spaceBetween={30}
           modules={[Navigation]}
           className="mySwiper"
-        >
-          <SwiperSlide>
-            <TopCook />
-          </SwiperSlide>
-          <SwiperSlide>
-            <TopCook></TopCook>
-          </SwiperSlide>
-          <SwiperSlide>
-            <TopCook></TopCook>
-          </SwiperSlide>
-          <SwiperSlide>
-            <TopCook></TopCook>
-          </SwiperSlide>
-          <SwiperSlide>
-            <TopCook></TopCook>
-          </SwiperSlide>
-          <SwiperSlide>
-            <TopCook></TopCook>
-          </SwiperSlide>
-        </Swiper>
+        ></Swiper>
 
         {/* New Cooks */}
         <Title>New Cooks</Title>
