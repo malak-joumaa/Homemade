@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Green from "../assets/green-bk3.png";
 
 export const SearchBox = styled.input`
   height: 35px;
@@ -21,4 +22,64 @@ export const LocationName = styled.input`
 
 export const Title = styled.h2`
   font-size: 1.4em;
+`;
+
+export const TopContainer = styled.div`
+  width: 100%;
+  height: 180px;
+  padding: 20px;
+  background-image: url("${Green}");
+  box-shadow: inset 0 0 0 1000px rgba(113, 209, 165, 0.2);
+  border-radius: 20px;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.2s;
+  &:hover {
+    transform: scale(1.05);
+  }
+`;
+export const PhotoName = styled.div`
+  display: flex;
+`;
+export const TopPhoto = styled.img`
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+`;
+export const TopName = styled.h3`
+  padding-top: -1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+export const TopRating = styled.div`
+  text-align: center;
+`;
+export const TopProfileLink = styled.a`
+  text-decoration: underline;
+  font-weight: bold;
+  position: absolute;
+  bottom: 30px;
+`;
+
+export const IconsBox = styled.div`
+  display: flex;
+  text-align: center;
+  margin-top: 25px;
+`;
+export const IconWrapper = styled.div`
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: rgba(204, 255, 232, 0.8);
+  margin-right: 30px;
+  display: flex;
+  justify-content: center;
+`;
+export const Icon = styled.img`
+  width: 30px;
+  height: 30px;
+  margin: auto;
 `;

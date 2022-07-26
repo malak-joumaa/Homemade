@@ -339,3 +339,10 @@ table{
   border: 1px solid #A5A5A5;
   border-collapse: collapse;
 }
+
+.color1{
+  background-color: #9DA4A0;
+}
+.color2{
+  background-color: pink;
+}
