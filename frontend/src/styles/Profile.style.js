@@ -54,3 +54,9 @@ export const Button = styled.div`
     background-color: #43c187;
   }
 `;
+
+export const TableRow = styled.tr`
+  background-color: ${(props) => (props.status === "ready" ? "#97d7bacf" : "")};
+  background-color: ${(props) =>
+    props.status === "delivered" ? "#b5b5b5" : ""};
+`;
