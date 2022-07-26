@@ -13,9 +13,9 @@ import Icon1 from "../assets/icon1.png";
 import Icon2 from "../assets/icon2.png";
 import Icon3 from "../assets/icon3.png";
 
-const TopCook = ({ id, photo, fname, lname }) => {
+const TopCook = ({ id, photo, fname, lname, count }) => {
   return (
-    <TopContainer>
+    <div className={"top_cook top" + count}>
       <PhotoName>
         <TopPhoto src={photo}></TopPhoto>
         <TopName>
@@ -23,19 +23,19 @@ const TopCook = ({ id, photo, fname, lname }) => {
         </TopName>
       </PhotoName>
       <IconsBox>
-        <IconWrapper>
+        <IconWrapper className={"icon" + count}>
           <Icon src={Icon1}></Icon>
         </IconWrapper>
-        <IconWrapper>
+        <IconWrapper className={"icon" + count}>
           <Icon src={Icon2}></Icon>
         </IconWrapper>
-        <IconWrapper>
+        <IconWrapper className={"icon" + count}>
           <Icon src={Icon3}></Icon>
         </IconWrapper>
       </IconsBox>
       <br />
       <TopProfileLink>Check Profile -{">"}</TopProfileLink>
-    </TopContainer>
+    </div>
   );
 };
 

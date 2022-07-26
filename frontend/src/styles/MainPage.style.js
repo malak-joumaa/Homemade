@@ -1,9 +1,8 @@
 import styled from "styled-components";
-import Green from "../assets/green-bk3.png";
 
 export const SearchBox = styled.input`
   height: 35px;
-  width: fill;
+  width: 100%;
   margin-right: 100px;
   background-color: #f9f9f9;
   border: 1px solid #d2d2d2;
@@ -25,20 +24,6 @@ export const Title = styled.h2`
   margin-top: 50px;
 `;
 
-export const TopContainer = styled.div`
-  width: 200px;
-  height: 180px;
-  padding: 20px;
-  background-image: url("${Green}");
-  box-shadow: inset 0 0 0 1000px rgba(113, 209, 165, 0.2);
-  border-radius: 20px;
-  cursor: pointer;
-  position: relative;
-  transition: transform 0.2s;
-  &:hover {
-    transform: scale(1.05);
-  }
-`;
 export const PhotoName = styled.div`
   display: flex;
 `;
@@ -72,7 +57,6 @@ export const IconWrapper = styled.div`
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: rgba(204, 255, 232, 0.8);
   margin-right: 10%;
   display: flex;
   justify-content: center;
@@ -86,11 +70,10 @@ export const Icon = styled.img`
 // New Cook
 
 export const NewContainer = styled.div`
-  width: 200px;
+  width: 300px;
   height: 42px;
   padding: 10px 15px;
   border-radius: 10px;
-  border: 4px solid #b5e7d0;
   cursor: pointer;
   position: relative;
   display: flex;

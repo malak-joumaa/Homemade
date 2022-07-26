@@ -13,7 +13,8 @@ import { Navigation } from "swiper";
 const MainPage = () => {
   const [cooks, setCooks] = useState([]);
   const [newCooks, setNewCooks] = useState([]);
-
+  var top_count = 1;
+  var new_count = 1;
   var d1 = new Date();
   var d2 = new Date(cooks[0]?.createdAt);
 
@@ -42,8 +43,14 @@ const MainPage = () => {
       <MainPageContainer>
         <Navbar />
         <SearchLocation>
-          <SearchBox placeholder="Search..."></SearchBox>
-          <LocationName></LocationName>
+          <Grid container spacing={1}>
+            <Grid item xs={8}>
+              <SearchBox placeholder="Search..."></SearchBox>
+            </Grid>
+            <Grid item xs={4}>
+              <LocationName></LocationName>
+            </Grid>
+          </Grid>
         </SearchLocation>
 
         {/* Top Cooks */}
@@ -69,18 +76,19 @@ const MainPage = () => {
           modules={[Navigation]}
           className="mySwiper"
         >
-          {cooks
-            ?.filter((cook) => cook.rate > 4)
-            .map((cook) => (
-              <SwiperSlide key={cook._id}>
-                <TopCook
-                  id={cook._id}
-                  photo={cook.user.profile_photo}
-                  fname={cook.user.first_name}
-                  lname={cook.user.last_name}
-                />
-              </SwiperSlide>
-            ))}
+          {cooks.map((cook) => (
+            <SwiperSlide key={cook._id}>
+              <TopCook
+                id={cook._id}
+                photo={cook.user.profile_photo}
+                fname={cook.user.first_name}
+                lname={cook.user.last_name}
+                count={
+                  top_count == 5 ? ((top_count = 1), top_count++) : top_count++
+                }
+              />
+            </SwiperSlide>
+          ))}
         </Swiper>
 
         {/* New Cooks */}
@@ -104,6 +112,11 @@ const MainPage = () => {
                   photo={cook.user.profile_photo}
                   fname={cook.user.first_name}
                   lname={cook.user.last_name}
+                  count={
+                    new_count == 5
+                      ? ((new_count = 1), new_count++)
+                      : new_count++
+                  }
                 />
               </SwiperSlide>
             ))}
