@@ -21,9 +21,12 @@ const Checkout = () => {
   const [isValid, setIsValid] = useState(false);
   var OrderIDs = [];
   var total = 0;
-  orderData.forEach((order) => {
+  orderData?.forEach((order) => {
     if (order.status == "cart") {
-      OrderIDs.push(order._id);
+      OrderIDs.push(
+        { name: order.dish.name },
+        { quantity: order.dish.quantity }
+      );
       total += order.total;
     }
   });
@@ -36,7 +39,7 @@ const Checkout = () => {
   // };
   console.log("data", orderData[0].cook);
 
-  console.log(OrderIDs);
+  console.log("order", OrderIDs[0].name);
 
   // Add Submitted Order
   const SubmitOrder = async () => {
@@ -58,6 +61,7 @@ const Checkout = () => {
       });
       const data2 = await res.json();
       console.log(data2);
+      navigate("/orders");
     } catch (error) {
       console.log(error);
     }
@@ -79,7 +83,6 @@ const Checkout = () => {
         }
       );
     });
-    navigate("/orders");
   };
   return (
     <Container maxWidth="xl">
@@ -115,8 +118,8 @@ const Checkout = () => {
       <br />
       <Button
         onClick={() => {
-          SubmitOrder();
           updateOrder();
+          SubmitOrder();
           // handleNotification(1);
         }}
       >

@@ -15,17 +15,21 @@ const Cart = () => {
   }
   return (
     <>
-      {orderData.map((order, index) => (
-        <>
-          {orderData[index].status === "cart" ? (
-            <>
-              <SingleOrder cart={true} orderData={orderData[index]} />
-            </>
-          ) : (
-            <></>
-          )}
-        </>
-      ))}
+      {orderData.length > 0 ? (
+        orderData.map((order, index) => (
+          <>
+            {orderData[index].status === "cart" ? (
+              <>
+                <SingleOrder cart={true} orderData={orderData[index]} />
+              </>
+            ) : (
+              <></>
+            )}
+          </>
+        ))
+      ) : (
+        <></>
+      )}
       {count > 0 && (
         <Button
           onClick={() => {

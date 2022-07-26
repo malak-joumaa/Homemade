@@ -20,7 +20,7 @@ const Menu = ({ menu, disable = false }) => {
             <Grid
               key={index}
               item
-              xl={3}
+              xl={disable ? 4 : 3}
               lg={4}
               md={6}
               xs={12}

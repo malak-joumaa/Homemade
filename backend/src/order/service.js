@@ -40,7 +40,12 @@ async function newSubOrder(body) {
 }
 
 async function getSubOrdersById(id) {
-  return await SubmittedOrder.find({ id }).populate("dish");
+  return await SubmittedOrder.find({ id }).populate({
+    path: "customer",
+    populate: {
+      path: "user",
+    },
+  });
 }
 
 module.exports = {

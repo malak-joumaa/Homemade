@@ -37,7 +37,7 @@ export const Rate = styled.div`
 
 export const Button = styled.div`
   cursor: pointer;
-  width: 150%;
+  width: 220px;
   height: 50px;
   font-size: 1.2em;
   font-family: "Quicksand", sans-serif;

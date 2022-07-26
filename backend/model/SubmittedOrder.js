@@ -28,8 +28,7 @@ const submittedSchema = new mongoose.Schema({
   },
   orders: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Order",
+      type: Object,
     },
   ],
   cook: {

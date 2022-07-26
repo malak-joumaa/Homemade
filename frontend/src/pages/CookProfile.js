@@ -86,8 +86,8 @@ const CookProfile = () => {
       </ProfileInfo>
 
       {/* Functionalities */}
-      <Grid container spacing={1}>
-        <Grid item xs={1}>
+      <Grid container spacing={2}>
+        <Grid item xs={2}>
           <Button
             onClick={() => {
               setIsOrder(true);
