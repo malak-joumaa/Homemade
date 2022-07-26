@@ -16,12 +16,10 @@ const cookSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
-  menus: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Menu",
-    },
-  ],
+  menu: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Menu",
+  },
   reviews: [
     {
       type: mongoose.Schema.Types.ObjectId,

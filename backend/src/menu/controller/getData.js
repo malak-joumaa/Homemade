@@ -1,4 +1,4 @@
-const { getCookById, getMenusBycookId, getAllMenus } = require("../service");
+const { getCookById, getMenuBycookId, getAllMenus } = require("../service");
 
 //Get Cook
 async function getCook(req, res) {
@@ -23,7 +23,7 @@ async function getMenu(req, res) {
 
     if (req.query.id) {
       const id = req.query.id;
-      const result = await getMenusBycookId(id);
+      const result = await getMenuBycookId(id);
       console.log("cook data =>", result);
       return res.send(result);
     }

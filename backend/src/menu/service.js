@@ -6,7 +6,7 @@ const User = require("../../model/User");
 
 //Add Menu function
 async function newMenu(body) {
-  const { cook, days, dishes } = body;
+  const { cook, dishes } = body;
 
   const menu = new Menu({
     cook,
@@ -67,7 +67,7 @@ async function getCookById(id) {
   return await Cook.findById(id).populate("user");
 }
 
-async function getMenusBycookId(id) {
+async function getMenuBycookId(id) {
   return await Menu.find({ cook: id }).populate("dishes");
 }
 
@@ -82,6 +82,6 @@ module.exports = {
   getByType,
   getCategories,
   getCookById,
-  getMenusBycookId,
+  getMenuBycookId,
   getAllMenus,
 };

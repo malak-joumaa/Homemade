@@ -1,5 +1,6 @@
 const { newMenu, newDish } = require("../service");
 const Menu = require("../../../model/Menu");
+const Cook = require("../../../model/Cook");
 
 // Menu
 async function addMenu(req, res) {
@@ -10,6 +11,19 @@ async function addMenu(req, res) {
     const menuResult = await newMenu(req.body);
     console.log("menuResult =>", menuResult);
     if (!menuResult) return res.status(400).send("Invalid Credentials");
+
+    // Updating cook having this menu
+    const updateCook = await Cook.updateOne(
+      {
+        _id: menuResult.cook,
+      },
+      {
+        $push: {
+          menu: menuResult._id,
+        },
+      }
+    );
+    console.log("updateCook =>", updateCook);
 
     return res.status(200).send(menuResult);
   } catch (error) {
