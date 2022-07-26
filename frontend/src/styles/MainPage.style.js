@@ -18,3 +18,7 @@ export const LocationName = styled.input`
   border: 1px solid #43c187;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 `;
+
+export const Title = styled.h2`
+  font-size: 1.4em;
+`;
