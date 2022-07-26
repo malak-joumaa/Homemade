@@ -97,6 +97,10 @@ async function getReviewsByCookID(id) {
   return await Review.find({ cook: id }).populate("customer");
 }
 
+async function getAllCooks() {
+  return await Cook.find().populate("menu").populate("user");
+}
+
 module.exports = {
   addUser,
   addNewCook,
@@ -107,4 +111,5 @@ module.exports = {
   getCookByUserId,
   getCustomerByUserId,
   getByUserId,
+  getAllCooks,
 };
