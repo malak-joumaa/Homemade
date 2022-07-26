@@ -97,7 +97,6 @@ export const NewContainer = styled.div`
 `;
 
 export const NewPhoto = styled.img`
-  border: 1px solid black;
   border-radius: 50%;
   width: 40px;
   height: 40px;

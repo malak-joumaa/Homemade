@@ -1,11 +1,13 @@
 import React from "react";
 import { NewContainer, NewPhoto, NewName } from "../styles/MainPage.style";
 
-const NewCook = () => {
+const NewCook = ({ id, photo, fname, lname }) => {
   return (
     <NewContainer>
-      <NewPhoto></NewPhoto>
-      <NewName>Amina Aboud</NewName>
+      <NewPhoto src={photo} />
+      <NewName>
+        {fname} {lname}
+      </NewName>
     </NewContainer>
   );
 };

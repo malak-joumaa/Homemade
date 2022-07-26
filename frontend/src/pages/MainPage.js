@@ -12,8 +12,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 const MainPage = () => {
   const [cooks, setCooks] = useState([]);
-  const [topCooks, setTopCooks] = useState([]);
   const [newCooks, setNewCooks] = useState([]);
+
+  var d1 = new Date();
+  var d2 = new Date(cooks[0]?.createdAt);
+
+  console.log(d1.getMonth() === d2.getMonth());
 
   useEffect(() => {
     getCooks();
@@ -87,24 +91,22 @@ const MainPage = () => {
           modules={[Navigation]}
           className="mySwiper"
         >
-          <SwiperSlide>
-            <NewCook />
-          </SwiperSlide>
-          <SwiperSlide>
-            <NewCook />
-          </SwiperSlide>
-          <SwiperSlide>
-            <NewCook />
-          </SwiperSlide>
-          <SwiperSlide>
-            <NewCook />
-          </SwiperSlide>
-          <SwiperSlide>
-            <NewCook />
-          </SwiperSlide>
-          <SwiperSlide>
-            <NewCook />
-          </SwiperSlide>
+          {cooks
+            ?.filter(
+              (cook) =>
+                new Date(cook.createdAt).getMonth() == new Date().getMonth() ||
+                new Date(cook.createdAt).getMonth() == new Date().getMonth() + 1
+            )
+            .map((cook) => (
+              <SwiperSlide key={cook._id}>
+                <NewCook
+                  id={cook._id}
+                  photo={cook.user.profile_photo}
+                  fname={cook.user.first_name}
+                  lname={cook.user.last_name}
+                />
+              </SwiperSlide>
+            ))}
         </Swiper>
 
         {/* Menu */}
