@@ -39,7 +39,7 @@ const Checkout = () => {
   // };
   console.log("data", orderData[0].cook);
 
-  console.log("order", OrderIDs[0].name);
+  // console.log("order", OrderIDs[0].name);
 
   // Add Submitted Order
   const SubmitOrder = async () => {

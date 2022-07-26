@@ -123,12 +123,12 @@ const MainPage = () => {
         </Swiper>
 
         {/* Menu */}
-        <Title>Menu</Title>
+        <Title>Menus</Title>
         {/* Map cooks over menu */}
         {cooks
           ?.filter((cook) => !!cook.menu)
           .map((cook) => (
-            <Menu menu={cook.menu} disable={true} key={cook._id} />
+            <Menu menu={[cook.menu]} disable={true} key={cook._id} />
           ))}
       </MainPageContainer>
     </Container>

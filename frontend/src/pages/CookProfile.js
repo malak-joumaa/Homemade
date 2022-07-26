@@ -57,6 +57,8 @@ const CookProfile = () => {
     }
   };
 
+  console.log("menu", menu);
+
   return (
     <Container maxWidth="xl">
       <Navbar />
@@ -119,7 +121,7 @@ const CookProfile = () => {
           <br />
         </Grid>
         <Grid item xs={10}>
-          {isMenu && <Menu menu={menu} disable={true} />}
+          {isMenu && menu.length > 0 && <Menu menu={menu} disable={true} />}
           {isOrder && <OrderTable />}
         </Grid>
       </Grid>

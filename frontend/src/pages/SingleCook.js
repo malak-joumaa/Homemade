@@ -38,7 +38,7 @@ function SingleCook() {
           localStorage.getItem("cook_id")
       ).then(async (res) => {
         const data = await res.json();
-        console.log(data);
+        // console.log(data);
         setCook(data);
         setLoading(false);
       });
@@ -50,7 +50,7 @@ function SingleCook() {
   // Get Menu Data
   const getMenu = async () => {
     try {
-      console.log("here");
+      // console.log("hereee");
       const res2 = await fetch(
         "http://localhost:5000/api/cook/get-menu?id=" +
           localStorage.getItem("cook_id")
@@ -63,8 +63,8 @@ function SingleCook() {
       console.log(err);
     }
   };
-  console.log(menu);
-  console.log(cook);
+  // console.log(menu);
+  // console.log(cook);
   return (
     <>
       {loading && <div>Loading...</div>}

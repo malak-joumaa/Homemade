@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import {
   TopContainer,
   TopPhoto,
@@ -14,8 +15,15 @@ import Icon2 from "../assets/icon2.png";
 import Icon3 from "../assets/icon3.png";
 
 const TopCook = ({ id, photo, fname, lname, count }) => {
+  const navigate = useNavigate();
   return (
-    <div className={"top_cook top" + count}>
+    <div
+      className={"top_cook top" + count}
+      onClick={() => {
+        localStorage.setItem("cook_id", id);
+        navigate("/cook");
+      }}
+    >
       <PhotoName>
         <TopPhoto src={photo}></TopPhoto>
         <TopName>

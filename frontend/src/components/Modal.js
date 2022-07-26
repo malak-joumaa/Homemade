@@ -87,7 +87,7 @@ const Modal = (data) => {
   return (
     <>
       <AddDish onClick={toggleModal}>
-        <i class="fa-solid fa-plus"></i>
+        <i className="fa-solid fa-plus"></i>
       </AddDish>
       {modal && (
         <ModalDiv>
@@ -95,7 +95,7 @@ const Modal = (data) => {
             <ModalContent>
               <Close onClick={toggleModal}>
                 {" "}
-                <i class="fa-solid fa-x"></i>
+                <i className="fa-solid fa-x"></i>
               </Close>
               <br />
               <Photo src={details.photo ? details.photo : defaultDish} />
@@ -108,7 +108,7 @@ const Modal = (data) => {
               <br />
               <QA>
                 {/* Map */}
-                {details.questions.map((singleQuest, index) => (
+                {details?.questions.map((singleQuest, index) => (
                   <>
                     {/* {singleQuest.type === "checkBox" &&
                       (answers[index] = new Array(
@@ -172,12 +172,12 @@ const Modal = (data) => {
                     }}
                   >
                     {" "}
-                    <i class="fa-solid fa-plus"></i>
+                    <i className="fa-solid fa-plus"></i>
                   </Add>
                   <Quantity>{count}</Quantity>
                   <Add onClick={handleSub}>
                     {" "}
-                    <i class="fa-solid fa-minus"></i>
+                    <i className="fa-solid fa-minus"></i>
                   </Add>
                 </Grid>
                 <Grid item xs={4}>

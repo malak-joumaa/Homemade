@@ -46,7 +46,7 @@ const SignIn = () => {
       addUserData({
         user_id: decoded._id,
         fname: decoded.first_name,
-        lname: decoded.first_name,
+        lname: decoded.last_name,
         email: decoded.email,
         phone_number: decoded.phone_number,
         location: decoded.location,
