@@ -5,6 +5,7 @@ import { SearchBox, LocationName, Title } from "../styles/MainPage.style";
 import { Container, Grid, Rating } from "@mui/material";
 import TopCook from "../components/TopCook";
 import NewCook from "../components/NewCook";
+import Menu from "../components/Menu";
 import "swiper/css";
 import "swiper/css/free-mode";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -92,6 +93,10 @@ const MainPage = () => {
 
         {/* Menu */}
         <Title>Menu</Title>
+        <Menu />
+        <Menu />
+        <Menu />
+        <Menu />
       </MainPageContainer>
     </Container>
   );
