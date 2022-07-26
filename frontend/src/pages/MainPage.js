@@ -111,10 +111,12 @@ const MainPage = () => {
 
         {/* Menu */}
         <Title>Menu</Title>
-        <Menu />
-        <Menu />
-        <Menu />
-        <Menu />
+        {/* Map cooks over menu */}
+        {cooks
+          ?.filter((cook) => !!cook.menu)
+          .map((cook) => (
+            <Menu menu={cook.menu} disable={true} key={cook._id} />
+          ))}
       </MainPageContainer>
     </Container>
   );
