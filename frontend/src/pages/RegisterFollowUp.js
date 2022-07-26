@@ -46,7 +46,7 @@ const RegisterFollowUp = () => {
       const data2 = await res.json();
       console.log(data2);
 
-      if (user_type == "cook") {
+      if (user_type === "cook") {
         try {
           const res = await fetch(
             "http://localhost:5000/api/user/auth/add-cook",
@@ -63,6 +63,7 @@ const RegisterFollowUp = () => {
                 ],
                 description: data[3].description,
                 rate: 5,
+                submitted_orders: [],
               }),
             }
           );
@@ -72,7 +73,7 @@ const RegisterFollowUp = () => {
         } catch (error) {
           toast.error("Sign up failed");
         }
-      } else if (user_type == "customer") {
+      } else if (user_type === "customer") {
         try {
           const res = await fetch(
             "http://localhost:5000/api/user/auth/add-customer",
@@ -84,6 +85,7 @@ const RegisterFollowUp = () => {
               body: JSON.stringify({
                 user: data2.user,
                 categories: data[4].categories,
+                submitted_orders: [],
               }),
             }
           );

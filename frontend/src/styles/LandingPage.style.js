@@ -35,6 +35,9 @@ export const MainLogo = styled.img`
   top: 20px;
   right: 300px;
   margin-top: 110px;
+  @media (max-width: 1000px) {
+    display: none;
+  }
 `;
 
 export const Welcome = styled.h2`
