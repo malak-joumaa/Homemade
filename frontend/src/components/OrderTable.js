@@ -3,6 +3,8 @@ import { TableRow } from "../styles/Profile.style";
 
 const OrderTable = () => {
   const [orders, setOrders] = useState([]);
+  const [selected, setSelected] = useState(new Array(orders.length));
+
   useEffect(() => {
     getOrders();
   }, []);
@@ -21,6 +23,40 @@ const OrderTable = () => {
       console.log(err);
     }
   };
+
+  const handleSelect = (event, index) => {
+    console.log(event.target.value);
+    let data = [...selected];
+    data[index] = event.target.value;
+    setSelected(data);
+  };
+  console.log(selected);
+
+  // Update Status
+  const updateStatus = async (id, status) => {
+    console.log(id, status);
+    try {
+      const res = await fetch(
+        "http://localhost:5000/api/order/update-sub-order/?id=" + id,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            status: status,
+          }),
+        }
+      );
+      window.location.reload();
+
+      const data = await res.json();
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div>
       <table>
@@ -34,8 +70,8 @@ const OrderTable = () => {
           <th>Location</th>
         </thead>
         <tbody>
-          {orders?.map((order) => (
-            <TableRow status={order.status}>
+          {orders?.map((order, index) => (
+            <TableRow status={order.status} key={index}>
               <td>Name Name</td>
               <td>
                 {order.orders.map((item) => (
@@ -50,15 +86,26 @@ const OrderTable = () => {
               <td>{order.pickup_hours[0]}</td>
               <td>{order.total}</td>
               <td>
-                <select>
+                <select
+                  value={selected[index]}
+                  onChange={(event) => {
+                    handleSelect(event, index);
+                  }}
+                >
                   <option selected disabled>
                     {order.status}
                   </option>
-                  <option>Pending</option>
-                  <option>Ready</option>
-                  <option>Delivered</option>
+                  <option value="pending">Pending</option>
+                  <option value="ready">Ready</option>
+                  <option value="delivered">Delivered</option>
                 </select>
-                <button>Confirm</button>
+                <button
+                  onClick={() => {
+                    updateStatus(order._id, selected[index]);
+                  }}
+                >
+                  Confirm
+                </button>
               </td>
               <td></td>
               <td></td>

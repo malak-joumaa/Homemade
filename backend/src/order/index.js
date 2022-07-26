@@ -19,6 +19,6 @@ router.put("/update-order", updateOrder);
 
 router.post("/add-sub-order", addSubOrder);
 router.get("/get-sub-orders", getSubOrders);
-router.put("/update-sub0order", updateSubOrder);
+router.put("/update-sub-order", updateSubOrder);
 
 module.exports = router;
