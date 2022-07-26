@@ -25,7 +25,7 @@ export const Title = styled.h2`
 `;
 
 export const TopContainer = styled.div`
-  width: 100%;
+  width: 200px;
   height: 180px;
   padding: 20px;
   background-image: url("${Green}");
@@ -54,9 +54,6 @@ export const TopName = styled.h3`
   overflow: hidden;
   text-overflow: ellipsis;
 `;
-export const TopRating = styled.div`
-  text-align: center;
-`;
 export const TopProfileLink = styled.a`
   text-decoration: underline;
   font-weight: bold;
@@ -66,6 +63,7 @@ export const TopProfileLink = styled.a`
 
 export const IconsBox = styled.div`
   display: flex;
+
   text-align: center;
   margin-top: 25px;
 `;
@@ -74,7 +72,7 @@ export const IconWrapper = styled.div`
   height: 45px;
   border-radius: 50%;
   background-color: rgba(204, 255, 232, 0.8);
-  margin-right: 30px;
+  margin-right: 10%;
   display: flex;
   justify-content: center;
 `;

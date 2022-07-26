@@ -1,23 +1,9 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import { MainPageContainer, SearchLocation } from "../styles/Container.style";
-import {
-  SearchBox,
-  LocationName,
-  Title,
-  TopContainer,
-  TopPhoto,
-  TopName,
-  TopProfileLink,
-  PhotoName,
-  IconsBox,
-  Icon,
-  IconWrapper,
-} from "../styles/MainPage.style";
+import { SearchBox, LocationName, Title } from "../styles/MainPage.style";
 import { Container, Grid, Rating } from "@mui/material";
-import Icon1 from "../assets/icon1.png";
-import Icon2 from "../assets/icon2.png";
-import Icon3 from "../assets/icon3.png";
+import TopCook from "../components/TopCook";
 
 const MainPage = () => {
   return (
@@ -28,31 +14,28 @@ const MainPage = () => {
           <SearchBox placeholder="Search..."></SearchBox>
           <LocationName></LocationName>
         </SearchLocation>
+
+        {/* Top Cooks */}
         <Title>Took Cooks</Title>
-        <Grid container spacing={1}>
-          <Grid item xs={12} sm={6} md={3}>
-            <TopContainer>
-              <PhotoName>
-                <TopPhoto></TopPhoto>
-                <TopName>Amina Aboud</TopName>
-              </PhotoName>
-              <IconsBox>
-                <IconWrapper>
-                  <Icon src={Icon1}></Icon>
-                </IconWrapper>
-                <IconWrapper>
-                  <Icon src={Icon2}></Icon>
-                </IconWrapper>
-                <IconWrapper>
-                  <Icon src={Icon3}></Icon>
-                </IconWrapper>
-              </IconsBox>
-              <br />
-              <TopProfileLink>Check Profile -{">"}</TopProfileLink>
-            </TopContainer>
+        <Grid container spacing={6}>
+          <Grid item xs={3}>
+            <TopCook />
+          </Grid>
+          <Grid item xs={3}>
+            <TopCook />
+          </Grid>
+          <Grid item xs={3}>
+            <TopCook />
+          </Grid>
+          <Grid item xs={3}>
+            <TopCook />
           </Grid>
         </Grid>
+
+        {/* New Cooks */}
         <Title>New Cooks</Title>
+
+        {/* Menu */}
         <Title>Menu</Title>
       </MainPageContainer>
     </Container>

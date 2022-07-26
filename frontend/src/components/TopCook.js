@@ -1,0 +1,40 @@
+import React from "react";
+import {
+  TopContainer,
+  TopPhoto,
+  TopName,
+  TopProfileLink,
+  PhotoName,
+  IconsBox,
+  Icon,
+  IconWrapper,
+} from "../styles/MainPage.style";
+import Icon1 from "../assets/icon1.png";
+import Icon2 from "../assets/icon2.png";
+import Icon3 from "../assets/icon3.png";
+
+const TopCook = () => {
+  return (
+    <TopContainer>
+      <PhotoName>
+        <TopPhoto></TopPhoto>
+        <TopName>Amina Aboud</TopName>
+      </PhotoName>
+      <IconsBox>
+        <IconWrapper>
+          <Icon src={Icon1}></Icon>
+        </IconWrapper>
+        <IconWrapper>
+          <Icon src={Icon2}></Icon>
+        </IconWrapper>
+        <IconWrapper>
+          <Icon src={Icon3}></Icon>
+        </IconWrapper>
+      </IconsBox>
+      <br />
+      <TopProfileLink>Check Profile -{">"}</TopProfileLink>
+    </TopContainer>
+  );
+};
+
+export default TopCook;
