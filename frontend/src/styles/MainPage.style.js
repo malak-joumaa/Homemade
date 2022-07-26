@@ -43,10 +43,9 @@ export const PhotoName = styled.div`
   display: flex;
 `;
 export const TopPhoto = styled.img`
-  border: 1px solid black;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 55px;
+  height: 55px;
   margin-right: 20px;
 `;
 export const TopName = styled.h3`
@@ -64,13 +63,14 @@ export const TopProfileLink = styled.a`
 
 export const IconsBox = styled.div`
   display: flex;
-
+  width: 170px;
+  margin: 0 auto;
   text-align: center;
   margin-top: 25px;
 `;
 export const IconWrapper = styled.div`
-  width: 45px;
-  height: 45px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background-color: rgba(204, 255, 232, 0.8);
   margin-right: 10%;
@@ -78,8 +78,8 @@ export const IconWrapper = styled.div`
   justify-content: center;
 `;
 export const Icon = styled.img`
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   margin: auto;
 `;
 

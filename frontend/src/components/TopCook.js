@@ -13,12 +13,14 @@ import Icon1 from "../assets/icon1.png";
 import Icon2 from "../assets/icon2.png";
 import Icon3 from "../assets/icon3.png";
 
-const TopCook = () => {
+const TopCook = ({ id, photo, fname, lname }) => {
   return (
     <TopContainer>
       <PhotoName>
-        <TopPhoto></TopPhoto>
-        <TopName>Amina Aboud</TopName>
+        <TopPhoto src={photo}></TopPhoto>
+        <TopName>
+          {fname} {lname}
+        </TopName>
       </PhotoName>
       <IconsBox>
         <IconWrapper>

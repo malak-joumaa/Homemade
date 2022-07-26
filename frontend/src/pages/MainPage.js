@@ -12,6 +12,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 const MainPage = () => {
   const [cooks, setCooks] = useState([]);
+  const [topCooks, setTopCooks] = useState([]);
+  const [newCooks, setNewCooks] = useState([]);
 
   useEffect(() => {
     getCooks();
@@ -41,7 +43,7 @@ const MainPage = () => {
         </SearchLocation>
 
         {/* Top Cooks */}
-        <Title>Took Cooks</Title>
+        <Title>Top Cooks</Title>
         {/* <Grid container spacing={6}>
           <Grid item xs={3}>
             <TopCook />
@@ -62,7 +64,20 @@ const MainPage = () => {
           spaceBetween={30}
           modules={[Navigation]}
           className="mySwiper"
-        ></Swiper>
+        >
+          {cooks
+            ?.filter((cook) => cook.rate > 4)
+            .map((cook) => (
+              <SwiperSlide key={cook._id}>
+                <TopCook
+                  id={cook._id}
+                  photo={cook.user.profile_photo}
+                  fname={cook.user.first_name}
+                  lname={cook.user.last_name}
+                />
+              </SwiperSlide>
+            ))}
+        </Swiper>
 
         {/* New Cooks */}
         <Title>New Cooks</Title>
