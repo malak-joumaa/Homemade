@@ -22,6 +22,7 @@ export const LocationName = styled.input`
 
 export const Title = styled.h2`
   font-size: 1.4em;
+  margin-top: 50px;
 `;
 
 export const TopContainer = styled.div`
@@ -80,4 +81,31 @@ export const Icon = styled.img`
   width: 30px;
   height: 30px;
   margin: auto;
+`;
+
+// New Cook
+
+export const NewContainer = styled.div`
+  width: 200px;
+  height: 42px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 4px solid #b5e7d0;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+`;
+
+export const NewPhoto = styled.img`
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-right: 20px;
+`;
+export const NewName = styled.h3`
+  margin-top: 7px;
+  white-space: nowrap;
+  // overflow: hidden;
+  text-overflow: ellipsis;
 `;

@@ -4,6 +4,7 @@ import { MainPageContainer, SearchLocation } from "../styles/Container.style";
 import { SearchBox, LocationName, Title } from "../styles/MainPage.style";
 import { Container, Grid, Rating } from "@mui/material";
 import TopCook from "../components/TopCook";
+import NewCook from "../components/NewCook";
 import "swiper/css";
 import "swiper/css/free-mode";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -36,23 +37,13 @@ const MainPage = () => {
         </Grid> */}
 
         <Swiper
-          navigation={true}
           slidesPerView={4}
           spaceBetween={30}
           modules={[Navigation]}
           className="mySwiper"
         >
           <SwiperSlide>
-            <TopCook></TopCook>
-          </SwiperSlide>
-          <SwiperSlide>
-            <TopCook></TopCook>
-          </SwiperSlide>
-          <SwiperSlide>
-            <TopCook></TopCook>
-          </SwiperSlide>
-          <SwiperSlide>
-            <TopCook></TopCook>
+            <TopCook />
           </SwiperSlide>
           <SwiperSlide>
             <TopCook></TopCook>
@@ -73,6 +64,31 @@ const MainPage = () => {
 
         {/* New Cooks */}
         <Title>New Cooks</Title>
+        <Swiper
+          slidesPerView={4}
+          spaceBetween={30}
+          modules={[Navigation]}
+          className="mySwiper"
+        >
+          <SwiperSlide>
+            <NewCook />
+          </SwiperSlide>
+          <SwiperSlide>
+            <NewCook />
+          </SwiperSlide>
+          <SwiperSlide>
+            <NewCook />
+          </SwiperSlide>
+          <SwiperSlide>
+            <NewCook />
+          </SwiperSlide>
+          <SwiperSlide>
+            <NewCook />
+          </SwiperSlide>
+          <SwiperSlide>
+            <NewCook />
+          </SwiperSlide>
+        </Swiper>
 
         {/* Menu */}
         <Title>Menu</Title>
