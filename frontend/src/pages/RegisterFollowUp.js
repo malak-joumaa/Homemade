@@ -14,7 +14,7 @@ const RegisterFollowUp = () => {
   const [stateNb, setStateNb] = useState(1);
   const [data, setData] = useState([
     { profilePhoto: "" },
-    { location: [] },
+    { location: {} },
     { openingHours: { from: "", till: "" } },
     { description: "" },
     { categories: [] },
@@ -40,7 +40,7 @@ const RegisterFollowUp = () => {
           password: user.password,
           user_type: localStorage.getItem("user_type"),
           profile_photo: data[0].profilePhoto.image,
-          // location: data[1].location
+          location: data[1].location,
         }),
       });
       const data2 = await res.json();
@@ -110,7 +110,7 @@ const RegisterFollowUp = () => {
 
         {stateNb == 1 && <AddProfilePhoto data={data} setData={setData} />}
 
-        {stateNb == 2 && <ChooseLocation setData={setData} />}
+        {stateNb == 2 && <ChooseLocation data={data} setData={setData} />}
 
         {stateNb == 3 &&
           (user_type == "cook" ? (

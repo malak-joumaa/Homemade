@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from "react";
 import Maps from "./maps/Maps";
 
-function ChooseLocation() {
+function ChooseLocation({ setData, data }) {
   const [selectedPosition, setSelectedPosition] = useState([
     33.893791, 35.501778,
   ]);
   const [locationName, setLocationName] = useState("");
+  data[1].location = {
+    type: "Point",
+    coordinates: selectedPosition,
+    location: locationName,
+  };
+  setData(data);
 
+  console.log(data);
   useEffect(() => {
     getName();
   }, []);
