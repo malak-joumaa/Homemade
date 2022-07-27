@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
@@ -12,8 +12,26 @@ import Checkout from "./pages/Checkout";
 import CookProfile from "./pages/CookProfile";
 import LandingPage from "./pages/LandingPage";
 import Chat from "./pages/chat/Chat";
+import { io } from "socket.io-client";
+import { useSelector, useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
+import { actionCreators } from "./state/index";
 
 function App() {
+  const [socket, setSocket] = useState(null);
+  const dispatch = useDispatch();
+  const { addSocket } = bindActionCreators(actionCreators, dispatch);
+  const user = useSelector((state) => state.login);
+
+  useEffect(() => {
+    setSocket(io("http://localhost:8900"));
+    console.log(socket);
+    addSocket(io("http://localhost:8900"));
+  }, []);
+
+  useEffect(() => {
+    socket?.emit("newUser", user);
+  }, [socket, user.user_id]);
   return (
     <BrowserRouter>
       <Toaster position="top-center" reverseOrder={false} />

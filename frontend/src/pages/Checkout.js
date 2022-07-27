@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { Container } from "@mui/system";
@@ -11,6 +11,7 @@ import {
 } from "../styles/Checkout.styles";
 import SingleOrder from "../components/SingleOrder";
 import { useSelector } from "react-redux";
+import { io } from "socket.io-client";
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -21,6 +22,13 @@ const Checkout = () => {
   const [isValid, setIsValid] = useState(false);
   var OrderIDs = [];
   var total = 0;
+  console.log(orderData);
+  const [socket, setSocket] = useState(null);
+
+  useEffect(() => {
+    setSocket(io("http://localhost:8900"));
+  }, []);
+
   orderData?.forEach((order) => {
     if (order.status == "cart") {
       OrderIDs.push(
@@ -30,16 +38,19 @@ const Checkout = () => {
       total += order.total;
     }
   });
-  // const handleNotification = (type) => {
-  //   socket.emit("sendNotification", {
-  //     senderName: user.customer_id,
-  //     receiverName: orderData[0].cook,
-  //     type,
-  //   });
-  // };
-  console.log("data", orderData[0].cook);
+  const handleNotification = (type) => {
+    socket?.emit("sendNotification", {
+      senderName: user.user_id,
+      receiverName: orderData[orderData.length - 1].cook.user,
+      type,
+    });
+  };
+  // console.log(user, user.user_id);
+  console.log("OD", orderData[orderData.length - 1].cook.user);
 
-  // console.log("order", OrderIDs[0].name);
+  console.log("data", orderData[orderData.length - 1].status);
+
+  console.log("order", OrderIDs);
 
   // Add Submitted Order
   const SubmitOrder = async () => {
@@ -120,7 +131,7 @@ const Checkout = () => {
         onClick={() => {
           updateOrder();
           SubmitOrder();
-          // handleNotification(1);
+          handleNotification(1);
         }}
       >
         Confirm

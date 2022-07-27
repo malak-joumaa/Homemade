@@ -37,6 +37,15 @@ io.on("connection", (socket) => {
       text,
     });
   });
+  //Send notification
+  // socket.on("sendNotification", ({ senderId, receiverId, type }) => {
+  //   const receiver = getUser(receiverId);
+  //   io.to(receiver.socketId).emit("getNotification", {
+  //     senderId,
+  //     type,
+  //   });
+  // });
+  // console.log(socket);
 
   //when disconnect
   socket.on("disconnect", () => {

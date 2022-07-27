@@ -19,7 +19,7 @@ async function newOrder(body) {
 }
 
 async function getOrdersById(id) {
-  return await Order.find({ id }).populate("dish");
+  return await Order.find({ customer: id }).populate("dish").populate("cook");
 }
 
 //Add Submitted Order function

@@ -37,10 +37,10 @@ const LandingPage = () => {
             localStorage.setItem("user_type", "customer");
           }}
         >
-          <SignInText>Sign in</SignInText>
+          <SignInText>Customer</SignInText>
           <br />
 
-          <TypeText>As a customer</TypeText>
+          <TypeText>Sign in</TypeText>
         </SignInBtn>
         <SignInBtn
           onClick={() => {
@@ -48,9 +48,9 @@ const LandingPage = () => {
             localStorage.setItem("user_type", "cook");
           }}
         >
-          <SignInText>Sign in</SignInText>
+          <SignInText>Cook</SignInText>
           <br />
-          <TypeText>As a cook</TypeText>
+          <TypeText>Sign in</TypeText>
         </SignInBtn>
       </Blob>
       <MainLogo src={logo} />
