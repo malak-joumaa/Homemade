@@ -52,6 +52,7 @@ const SingleOrder = ({ cart = false, orderData }) => {
             <Delete
               onClick={() => {
                 deleteOrder(orderData._id);
+                window.location.reload();
               }}
             >
               <i className="fa-solid fa-trash"></i>
