@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { Container } from "@mui/system";
@@ -20,6 +20,15 @@ const Checkout = () => {
   const orderData = useSelector((state) => state.order);
   const [time, setTime] = useState("");
   const [isValid, setIsValid] = useState(false);
+  const [cookLocation, setCookLocation] = useState({});
+
+  useEffect(() => {
+    {
+      {
+        orderData.length > 0 && getUser();
+      }
+    }
+  }, []);
 
   //Location
   const [selectedPosition, setSelectedPosition] = useState([
@@ -39,6 +48,24 @@ const Checkout = () => {
       total += order.total;
     }
   });
+
+  console.log();
+
+  // Get user by cook id
+  const getUser = async () => {
+    try {
+      const res = await fetch(
+        "http://localhost:5000/api/user/auth/get-userId?id=" +
+          orderData?.cook._id
+      );
+      const data = await res.json();
+      console.log(data);
+      setCookLocation(data.location.coordinates);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   // const handleNotification = (type) => {
   //   socket.emit("sendNotification", {
   //     senderName: user.customer_id,
@@ -109,12 +136,15 @@ const Checkout = () => {
       <Total>Total: {total}$</Total>
       <SubTitle>Location:</SubTitle>
       <div style={{ width: "100%", height: "350px" }}>
-        <Maps
-          selectedPosition={selectedPosition}
-          setSelectedPosition={setSelectedPosition}
-          locationName={locationName}
-          setLocationName={setLocationName}
-        />
+        {orderData.length > 0 && cookLocation.length > 0 && (
+          <Maps
+            selectedPosition={selectedPosition}
+            setSelectedPosition={setSelectedPosition}
+            locationName={locationName}
+            setLocationName={setLocationName}
+            coord={cookLocation}
+          />
+        )}
       </div>
 
       <SubTitle>Pickup Hour:</SubTitle>

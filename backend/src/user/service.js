@@ -101,6 +101,10 @@ async function getAllCooks() {
   return await Cook.find().populate("menu").populate("user");
 }
 
+async function getUserIdByCook(cookId) {
+  return await Cook.findOne({ cook: cookId });
+}
+
 module.exports = {
   addUser,
   addNewCook,
@@ -112,4 +116,5 @@ module.exports = {
   getCustomerByUserId,
   getByUserId,
   getAllCooks,
+  getUserIdByCook,
 };

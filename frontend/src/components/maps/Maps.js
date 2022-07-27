@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   MapContainer,
   TileLayer,
@@ -7,12 +7,14 @@ import {
   useMapEvents,
 } from "react-leaflet";
 import GeoLocation from "./GeoLocation";
+import * as L from "leaflet";
 
 const Maps = ({
   selectedPosition,
   setSelectedPosition,
   locationName,
   setLocationName,
+  coord,
 }) => {
   const location = GeoLocation();
   useEffect(() => {
@@ -72,7 +74,15 @@ const Maps = ({
       console.log(err);
     }
   };
+  const LeafIcon = L.Icon.extend({
+    options: {},
+  });
 
+  const greenIcon = new LeafIcon({
+    iconUrl:
+      "https://www.google.com/https://toppng.com/map-point-google-map-marker-gif-PNG-free-PNG-Images_164268?imgurl=https%3A%2F%2Fimg.favpng.com%2F20%2F11%2F24%2Fgoogle-map-maker-google-maps-computer-icons-map-collection-png-favpng-BNWkuCw9tdsBqxLR2PTzGbS6V.jpg&imgrefurl=https%3A%2F%2Ffavpng.com%2Fpng_view%2Fmap-marker-google-map-maker-google-maps-map-collection-png%2FcNTWStkY&tbnid=j8aV-BdeL3YjFM&vet=12ahUKEwjWjMa4iJr5AhVNwIUKHQ4mABgQMygMegUIARD_AQ..i&docid=E_ekYPUFcM4zXM&w=820&h=512&q=map%20marker&ved=2ahUKEwjWjMa4iJr5AhVNwIUKHQ4mABgQMygMegUIARD_AQ",
+  });
+  const [icon, setIcon] = useState(greenIcon);
   return (
     <>
       <MapContainer
@@ -85,6 +95,14 @@ const Maps = ({
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
         <Markers />
+        {coord && (
+          <Marker
+            key={selectedPosition[0]}
+            position={coord}
+            interactive={false}
+            icon={icon}
+          />
+        )}
       </MapContainer>
       <button
         className="locate-me-btn btn"
