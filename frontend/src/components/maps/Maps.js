@@ -1,6 +1,26 @@
-import { MapContainer, TileLayer } from "react-leaflet";
+import { MapContainer, TileLayer, useMap } from "react-leaflet";
+import GeoLocation from "./GeoLocation";
 
-const Maps = () => {
+const Maps = ({ selectedPosition, setSelectedPosition }) => {
+  const location = GeoLocation();
+
+  //Function to get current location
+  const showMyLocation = () => {
+    if (location.loaded && !location.error) {
+      setSelectedPosition([
+        location.coordinates.lat,
+        location.coordinates.long,
+      ]);
+      useMap.current.leafletElement.flyTo(
+        [location.coordinates.lat, location.coordinates.long],
+        20,
+        { animate: true }
+      );
+    } else {
+      alert(location.error.message);
+    }
+  };
+
   return (
     <>
       <MapContainer
@@ -13,6 +33,15 @@ const Maps = () => {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
       </MapContainer>
+      <button
+        className="locate-me-btn btn"
+        onClick={(e) => {
+          e.preventDefault();
+          showMyLocation();
+        }}
+      >
+        Locate Me
+      </button>
     </>
   );
 };
