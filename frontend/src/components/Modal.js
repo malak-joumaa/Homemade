@@ -78,6 +78,8 @@ const Modal = (data) => {
       });
       const data2 = await res.json();
       console.log(data2);
+      toggleModal();
+      toast.success("Item added to cart");
     } catch (error) {
       console.log(error);
     }

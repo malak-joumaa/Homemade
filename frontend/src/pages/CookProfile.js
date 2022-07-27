@@ -19,22 +19,22 @@ import OrderTable from "../components/OrderTable";
 const CookProfile = () => {
   const navigate = useNavigate();
   const userData = useSelector((state) => state.login);
-  const socket = useSelector((state) => state.socket);
+  // const socket = useSelector((state) => state.socket);
 
-  console.log(socket);
+  // console.log(socket);
 
   // Notification
-  const [notifications, setNotifications] = useState([""]);
+  // const [notifications, setNotifications] = useState([""]);
 
-  useEffect(() => {
-    {
-      socket == null &&
-        socket.on("getNotification", (data) => {
-          setNotifications((prev) => [...prev, data]);
-        });
-    }
-  }, [socket]);
-  console.log(notifications);
+  // useEffect(() => {
+  //   {
+  //     socket == null &&
+  //       socket.on("getNotification", (data) => {
+  //         setNotifications((prev) => [...prev, data]);
+  //       });
+  //   }
+  // }, [socket]);
+  // console.log(notifications);
 
   const [menu, setMenu] = useState([]);
   const [isOrder, setIsOrder] = useState(true);
@@ -56,8 +56,6 @@ const CookProfile = () => {
       console.log(err);
     }
   };
-
-  console.log("menu", menu);
 
   return (
     <Container maxWidth="xl">
@@ -121,7 +119,7 @@ const CookProfile = () => {
           <br />
         </Grid>
         <Grid item xs={10}>
-          {isMenu && menu.length > 0 && <Menu menu={menu} disable={true} />}
+          {isMenu && <Menu menu={menu} disable={true} />}
           {isOrder && <OrderTable />}
         </Grid>
       </Grid>
