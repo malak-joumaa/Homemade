@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   MapContainer,
   TileLayer,
@@ -7,9 +8,18 @@ import {
 } from "react-leaflet";
 import GeoLocation from "./GeoLocation";
 
-const Maps = ({ selectedPosition, setSelectedPosition, getName }) => {
+const Maps = ({
+  selectedPosition,
+  setSelectedPosition,
+  locationName,
+  setLocationName,
+}) => {
   const location = GeoLocation();
-
+  useEffect(() => {
+    getName();
+  }, []);
+  console.log(locationName);
+  console.log(selectedPosition);
   //Function to display marker on click
   const Markers = () => {
     const map = useMapEvents({
@@ -42,6 +52,24 @@ const Maps = ({ selectedPosition, setSelectedPosition, getName }) => {
       );
     } else {
       alert(location.error.message);
+    }
+  };
+
+  //Get the name of the selected location
+  const getName = async () => {
+    try {
+      const res = await fetch(
+        "https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=" +
+          selectedPosition[0] +
+          "&longitude=" +
+          selectedPosition[1] +
+          "&localityLanguage=en"
+      );
+      const data = await res.json();
+      console.log(data);
+      setLocationName("" + data.locality + ", " + data.countryName);
+    } catch (err) {
+      console.log(err);
     }
   };
 

@@ -11,6 +11,7 @@ import {
 } from "../styles/Checkout.styles";
 import SingleOrder from "../components/SingleOrder";
 import { useSelector } from "react-redux";
+import Maps from "../components/maps/Maps";
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -19,6 +20,14 @@ const Checkout = () => {
   const orderData = useSelector((state) => state.order);
   const [time, setTime] = useState("");
   const [isValid, setIsValid] = useState(false);
+
+  //Location
+  const [selectedPosition, setSelectedPosition] = useState([
+    user.location.coordinates[0],
+    user.location.coordinates[1],
+  ]);
+  const [locationName, setLocationName] = useState("");
+
   var OrderIDs = [];
   var total = 0;
   orderData?.forEach((order) => {
@@ -99,6 +108,15 @@ const Checkout = () => {
       </Orders>
       <Total>Total: {total}$</Total>
       <SubTitle>Location:</SubTitle>
+      <div style={{ width: "100%", height: "350px" }}>
+        <Maps
+          selectedPosition={selectedPosition}
+          setSelectedPosition={setSelectedPosition}
+          locationName={locationName}
+          setLocationName={setLocationName}
+        />
+      </div>
+
       <SubTitle>Pickup Hour:</SubTitle>
       <input
         type="time"
