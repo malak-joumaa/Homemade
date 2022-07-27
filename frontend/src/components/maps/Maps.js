@@ -1,8 +1,31 @@
-import { MapContainer, TileLayer, useMap } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  useMap,
+  Marker,
+  useMapEvents,
+} from "react-leaflet";
 import GeoLocation from "./GeoLocation";
 
 const Maps = ({ selectedPosition, setSelectedPosition }) => {
   const location = GeoLocation();
+
+  //Function to display marker on click
+  const Markers = () => {
+    const map = useMapEvents({
+      click(e) {
+        setSelectedPosition([e.latlng.lat, e.latlng.lng]);
+        console.log(selectedPosition);
+      },
+    });
+    return selectedPosition ? (
+      <Marker
+        key={selectedPosition[0]}
+        position={selectedPosition}
+        interactive={false}
+      />
+    ) : null;
+  };
 
   //Function to get current location
   const showMyLocation = () => {
@@ -24,7 +47,7 @@ const Maps = ({ selectedPosition, setSelectedPosition }) => {
   return (
     <>
       <MapContainer
-        center={[33.893791, 35.501778]}
+        center={selectedPosition}
         zoom="12"
         style={{ width: "100%", height: "100%" }}
       >
@@ -32,6 +55,7 @@ const Maps = ({ selectedPosition, setSelectedPosition }) => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
+        <Markers />
       </MapContainer>
       <button
         className="locate-me-btn btn"
