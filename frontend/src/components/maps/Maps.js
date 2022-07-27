@@ -7,7 +7,7 @@ import {
 } from "react-leaflet";
 import GeoLocation from "./GeoLocation";
 
-const Maps = ({ selectedPosition, setSelectedPosition }) => {
+const Maps = ({ selectedPosition, setSelectedPosition, getName }) => {
   const location = GeoLocation();
 
   //Function to display marker on click
@@ -16,6 +16,7 @@ const Maps = ({ selectedPosition, setSelectedPosition }) => {
       click(e) {
         setSelectedPosition([e.latlng.lat, e.latlng.lng]);
         console.log(selectedPosition);
+        getName();
       },
     });
     return selectedPosition ? (
