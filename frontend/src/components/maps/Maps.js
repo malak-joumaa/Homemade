@@ -9,6 +9,7 @@ import {
 import GeoLocation from "./GeoLocation";
 import * as L from "leaflet";
 import { requirePropFactory } from "@mui/material";
+import RoutineMachine from "./RoutingMachine";
 
 const Maps = ({
   selectedPosition,
@@ -36,12 +37,15 @@ const Maps = ({
       },
     });
     return selectedPosition ? (
-      <Marker
-        key={selectedPosition[0]}
-        position={selectedPosition}
-        interactive={false}
-        icon={greenIcon}
-      />
+      <>
+        {!coord && (
+          <Marker
+            key={selectedPosition[0]}
+            position={selectedPosition}
+            interactive={false}
+          />
+        )}
+      </>
     ) : null;
   };
 
@@ -54,7 +58,7 @@ const Maps = ({
       ]);
       useMap.current.leafletElement.flyTo(
         [location.coordinates.lat, location.coordinates.long],
-        20,
+        13,
         { animate: true }
       );
     } else {
@@ -79,18 +83,7 @@ const Maps = ({
       console.log(err);
     }
   };
-  const LeafIcon = L.Icon.extend({
-    options: {},
-  });
 
-  const blueIcon = new LeafIcon({
-    iconUrl: require("../../assets/marker2.png"),
-    iconSize: [23, 40],
-  });
-  const greenIcon = new LeafIcon({
-    iconUrl: require("../../assets/marker1.png"),
-    iconSize: [23, 40],
-  });
   return (
     <>
       <MapContainer
@@ -102,25 +95,20 @@ const Maps = ({
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
+        {coord && <RoutineMachine marker1={selectedPosition} marker2={coord} />}
         <Markers />
-        {coord && (
-          <Marker
-            key={selectedPosition[0]}
-            position={coord}
-            interactive={false}
-            icon={blueIcon}
-          />
-        )}
       </MapContainer>
-      <button
-        className="locate-me-btn btn"
-        onClick={(e) => {
-          e.preventDefault();
-          showMyLocation();
-        }}
-      >
-        Locate Me
-      </button>
+      {!coord && (
+        <button
+          className="locate-me-btn btn"
+          onClick={(e) => {
+            e.preventDefault();
+            showMyLocation();
+          }}
+        >
+          Locate Me
+        </button>
+      )}
     </>
   );
 };

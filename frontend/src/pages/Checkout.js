@@ -23,7 +23,9 @@ const Checkout = () => {
   const [cookLocation, setCookLocation] = useState([]);
 
   //Location
-  const [selectedPosition, setSelectedPosition] = useState([35.857, 33.857]);
+  const [selectedPosition, setSelectedPosition] = useState([
+    33.893791, 35.501778,
+  ]);
   const [locationName, setLocationName] = useState("");
 
   var OrderIDs = [];

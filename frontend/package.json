@@ -12,6 +12,7 @@
     "firebase": "^9.9.1",
     "jwt-decode": "^3.1.2",
     "leaflet": "^1.8.0",
+    "leaflet-routing-machine": "^3.2.12",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.3.0",
     "react-leaflet": "^4.0.1",
