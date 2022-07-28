@@ -24,7 +24,7 @@ const Menu = ({ menu, disable = false, profile, name }) => {
 
         <Grid container spacing={1}>
           {/* Dish Image */}
-          {menu[0].dishes.map((dish, index) => (
+          {menu[0]?.dishes.map((dish, index) => (
             <Grid
               key={index}
               item
