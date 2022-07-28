@@ -29,10 +29,10 @@ const SingleOrder = ({ cart = false, orderData }) => {
   return (
     <CartOrder>
       <Grid container spacing={1}>
-        <Grid item xs={0.8}>
+        <Grid item xs={1.2} lg={0.8}>
           <Photo src={orderData.dish.photo} />
         </Grid>
-        <Grid item xs={8.2}>
+        <Grid item xs={5.8} lg={6.2}>
           <CookInfo>
             <CookName>{orderData.dish.name}</CookName>
             <br />
@@ -40,6 +40,11 @@ const SingleOrder = ({ cart = false, orderData }) => {
               {orderData.dish.description} <Answer>{orderData.answer}</Answer>
             </span>
           </CookInfo>
+        </Grid>
+        <Grid item xs={2}>
+          <Info>
+            {orderData.cook.user.first_name} {orderData.cook.user.last_name}
+          </Info>
         </Grid>
         <Grid item xs={1}>
           <Info>{orderData.quantity} items</Info>
@@ -58,7 +63,9 @@ const SingleOrder = ({ cart = false, orderData }) => {
               <i className="fa-solid fa-trash"></i>
             </Delete>
           ) : (
-            <Info>{orderData.pickup_hours}</Info>
+            <Info>
+              <i className="fa-solid fa-location-dot"></i>
+            </Info>
           )}
         </Grid>
       </Grid>

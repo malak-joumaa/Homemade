@@ -9,7 +9,7 @@ export const NavItem = styled.div`
   cursor: pointer;
   border: 1px solid #79c3a1;
   border-radius: 10px;
-  padding: 2px 11px;
+  padding: 5px 25px;
   margin-right: 20px;
   font-size: 1.2em;
   font-weight: 600;
