@@ -132,3 +132,40 @@ export const Heading = styled.span`
   font-size: 1.2em;
   font-weight: 600;
 `;
+
+// Reviews
+
+export const ReviewContainer = styled.div``;
+
+export const ReviewCard = styled.div`
+  width: 97%;
+  height: 300px;
+  border: 2px dashed #43c187;
+  border-radius: 30px;
+  margin: 30px auto;
+  margin-bottom: 80px;
+  background-color: #eef9f4;
+  text-align: center;
+`;
+
+export const ReviewImage = styled.img`
+  width: 150px;
+  margin-top: 20px;
+  margin-bottom: 5px;
+`;
+
+export const ReviewName = styled.span`
+  font-size: 1.5em;
+  font-weight: 600;
+  color: #329332;
+`;
+
+export const ReviewText = styled.p`
+  width: 80%;
+  margin: 0 auto;
+  font-size: 1.1em;
+  font-weight: 500;
+  text-justify: inter-word;
+  justify-content: center;
+  margin-top: 20px;
+`;

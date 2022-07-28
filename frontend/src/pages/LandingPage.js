@@ -17,10 +17,23 @@ import {
   CookContainer,
   Number,
   Heading,
+  ReviewContainer,
+  ReviewCard,
+  ReviewImage,
+  ReviewName,
+  ReviewText,
 } from "../styles/LandingPage.style";
 import logo from "../assets/3.png";
 import CookImg from "../assets/user-sign-in.jpg";
 import { Grid, Container } from "@mui/material";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, Navigation } from "swiper";
+import user3 from "../assets/user1.webp";
+import user2 from "../assets/user2.webp";
+import user1 from "../assets/user4.webp";
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -128,6 +141,56 @@ const LandingPage = () => {
             </Grid>
           </Grid>
         </CookContainer>
+
+        <ReviewContainer>
+          <Swiper
+            spaceBetween={30}
+            centeredSlides={true}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            pagination={{
+              clickable: true,
+            }}
+            modules={[Autoplay, Pagination, Navigation]}
+            className="mySwiper"
+          >
+            <SwiperSlide>
+              <ReviewCard>
+                <ReviewImage src={user1}></ReviewImage>
+                <br />
+                <ReviewName>Harry Johnson</ReviewName>
+                <ReviewText>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </ReviewText>
+              </ReviewCard>
+            </SwiperSlide>
+            <SwiperSlide>
+              <ReviewCard>
+                <ReviewImage src={user2}></ReviewImage>
+                <br />
+                <ReviewName>Ashley Jones</ReviewName>
+                <ReviewText>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </ReviewText>
+              </ReviewCard>
+            </SwiperSlide>
+            <SwiperSlide>
+              <ReviewCard>
+                <ReviewImage src={user3}></ReviewImage>
+                <br />
+                <ReviewName>David Wilson</ReviewName>
+                <ReviewText>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </ReviewText>
+              </ReviewCard>
+            </SwiperSlide>
+          </Swiper>
+        </ReviewContainer>
       </Container>
     </>
   );
