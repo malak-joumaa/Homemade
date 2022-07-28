@@ -11,12 +11,21 @@ export const SearchBox = styled.input`
   font-size: 1.1em;
 `;
 
-export const LocationName = styled.input`
-  height: 40px;
+export const LocationName = styled.div`
+  height: 34px;
   width: 250px;
   float: right;
   border: 1px solid #43c187;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px;
+  text-align: center;
+  font-weight: 500;
+  box-sizing: border-box;
+  padding-top: 5px;
+`;
+
+export const Loc = styled.i`
+  margin-right: 10px;
 `;
 
 export const Title = styled.h2`

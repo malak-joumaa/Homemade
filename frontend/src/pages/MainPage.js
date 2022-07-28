@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import { MainPageContainer, SearchLocation } from "../styles/Container.style";
-import { SearchBox, LocationName, Title } from "../styles/MainPage.style";
+import { SearchBox, LocationName, Title, Loc } from "../styles/MainPage.style";
 import { Container, Grid, Rating } from "@mui/material";
 import TopCook from "../components/TopCook";
 import NewCook from "../components/NewCook";
@@ -10,9 +10,11 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
+import { useSelector } from "react-redux";
+
 const MainPage = () => {
   const [cooks, setCooks] = useState([]);
-  const [newCooks, setNewCooks] = useState([]);
+  const userData = useSelector((state) => state.login);
   var top_count = 1;
   var new_count = 1;
   var d1 = new Date();
@@ -48,7 +50,10 @@ const MainPage = () => {
               <SearchBox placeholder="Search..."></SearchBox>
             </Grid>
             <Grid item xs={4}>
-              <LocationName></LocationName>
+              <LocationName>
+                <Loc className="fa-solid fa-location-dot"></Loc>
+                {userData?.location.location}
+              </LocationName>
             </Grid>
           </Grid>
         </SearchLocation>
