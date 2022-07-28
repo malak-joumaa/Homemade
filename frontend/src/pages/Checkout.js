@@ -20,21 +20,10 @@ const Checkout = () => {
   const orderData = useSelector((state) => state.order);
   const [time, setTime] = useState("");
   const [isValid, setIsValid] = useState(false);
-  const [cookLocation, setCookLocation] = useState({});
-
-  useEffect(() => {
-    {
-      {
-        orderData.length > 0 && getUser();
-      }
-    }
-  }, []);
+  const [cookLocation, setCookLocation] = useState([]);
 
   //Location
-  const [selectedPosition, setSelectedPosition] = useState([
-    user.location.coordinates[0],
-    user.location.coordinates[1],
-  ]);
+  const [selectedPosition, setSelectedPosition] = useState([35.857, 33.857]);
   const [locationName, setLocationName] = useState("");
 
   var OrderIDs = [];
@@ -51,21 +40,6 @@ const Checkout = () => {
 
   console.log();
 
-  // Get user by cook id
-  const getUser = async () => {
-    try {
-      const res = await fetch(
-        "http://localhost:5000/api/user/auth/get-userId?id=" +
-          orderData?.cook._id
-      );
-      const data = await res.json();
-      console.log(data);
-      setCookLocation(data.location.coordinates);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   // const handleNotification = (type) => {
   //   socket.emit("sendNotification", {
   //     senderName: user.customer_id,
@@ -73,7 +47,6 @@ const Checkout = () => {
   //     type,
   //   });
   // };
-  console.log("data", orderData[0].cook);
 
   console.log("order", OrderIDs[0].name);
 
@@ -126,25 +99,23 @@ const Checkout = () => {
       <Title>Checkout</Title>
       <Orders>
         {orderData.map((order, index) => (
-          <>
+          <div key={index}>
             {order.status === "cart" && (
               <SingleOrder cart={false} orderData={orderData[index]} />
             )}
-          </>
+          </div>
         ))}
       </Orders>
       <Total>Total: {total}$</Total>
       <SubTitle>Location:</SubTitle>
       <div style={{ width: "100%", height: "350px" }}>
-        {orderData.length > 0 && cookLocation.length > 0 && (
-          <Maps
-            selectedPosition={selectedPosition}
-            setSelectedPosition={setSelectedPosition}
-            locationName={locationName}
-            setLocationName={setLocationName}
-            coord={cookLocation}
-          />
-        )}
+        <Maps
+          selectedPosition={selectedPosition}
+          setSelectedPosition={setSelectedPosition}
+          locationName={locationName}
+          setLocationName={setLocationName}
+          coord={orderData[0].cook.user.location.coordinates}
+        />
       </div>
 
       <SubTitle>Pickup Hour:</SubTitle>

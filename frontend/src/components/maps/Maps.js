@@ -8,6 +8,7 @@ import {
 } from "react-leaflet";
 import GeoLocation from "./GeoLocation";
 import * as L from "leaflet";
+import { requirePropFactory } from "@mui/material";
 
 const Maps = ({
   selectedPosition,
@@ -16,9 +17,12 @@ const Maps = ({
   setLocationName,
   coord,
 }) => {
+  console.log(selectedPosition.lenght);
   const location = GeoLocation();
   useEffect(() => {
-    getName();
+    if (selectedPosition.length > 0) {
+      getName();
+    }
   }, []);
   console.log(locationName);
   console.log(selectedPosition);
@@ -36,6 +40,7 @@ const Maps = ({
         key={selectedPosition[0]}
         position={selectedPosition}
         interactive={false}
+        icon={greenIcon}
       />
     ) : null;
   };
@@ -78,11 +83,14 @@ const Maps = ({
     options: {},
   });
 
-  const greenIcon = new LeafIcon({
-    iconUrl:
-      "https://www.google.com/https://toppng.com/map-point-google-map-marker-gif-PNG-free-PNG-Images_164268?imgurl=https%3A%2F%2Fimg.favpng.com%2F20%2F11%2F24%2Fgoogle-map-maker-google-maps-computer-icons-map-collection-png-favpng-BNWkuCw9tdsBqxLR2PTzGbS6V.jpg&imgrefurl=https%3A%2F%2Ffavpng.com%2Fpng_view%2Fmap-marker-google-map-maker-google-maps-map-collection-png%2FcNTWStkY&tbnid=j8aV-BdeL3YjFM&vet=12ahUKEwjWjMa4iJr5AhVNwIUKHQ4mABgQMygMegUIARD_AQ..i&docid=E_ekYPUFcM4zXM&w=820&h=512&q=map%20marker&ved=2ahUKEwjWjMa4iJr5AhVNwIUKHQ4mABgQMygMegUIARD_AQ",
+  const blueIcon = new LeafIcon({
+    iconUrl: require("../../assets/marker2.png"),
+    iconSize: [23, 40],
   });
-  const [icon, setIcon] = useState(greenIcon);
+  const greenIcon = new LeafIcon({
+    iconUrl: require("../../assets/marker1.png"),
+    iconSize: [23, 40],
+  });
   return (
     <>
       <MapContainer
@@ -100,7 +108,7 @@ const Maps = ({
             key={selectedPosition[0]}
             position={coord}
             interactive={false}
-            icon={icon}
+            icon={blueIcon}
           />
         )}
       </MapContainer>
