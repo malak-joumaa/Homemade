@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { TableRow } from "../styles/Profile.style";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const OrderTable = () => {
+  const navigate = useNavigate();
   const [orders, setOrders] = useState([]);
   const [selected, setSelected] = useState(new Array(orders.length));
+  const userData = useSelector((state) => state.login);
+  console.log(userData);
 
   useEffect(() => {
     getOrders();
@@ -52,6 +57,25 @@ const OrderTable = () => {
 
       const data = await res.json();
       console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const createChat = async (order) => {
+    try {
+      const res = await fetch("http://localhost:5000/api/chat/add-convo", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          members: [userData.user_id, order.customer.user],
+        }),
+      });
+      const data = await res.json();
+      console.log(data);
+      navigate("/chat");
     } catch (err) {
       console.log(err);
     }
@@ -107,7 +131,14 @@ const OrderTable = () => {
                   Confirm
                 </button>
               </td>
-              <td></td>
+              <td>
+                <i
+                  className="fa-regular fa-comment-dots"
+                  onClick={() => {
+                    createChat(order);
+                  }}
+                ></i>
+              </td>
               <td></td>
             </TableRow>
           ))}
