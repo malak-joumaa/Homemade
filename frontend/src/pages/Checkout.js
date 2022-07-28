@@ -12,6 +12,7 @@ import {
 import SingleOrder from "../components/SingleOrder";
 import { useSelector } from "react-redux";
 import Maps from "../components/maps/Maps";
+import { requestForToken } from "../firebaseNotifications/firebase";
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -21,6 +22,13 @@ const Checkout = () => {
   const [time, setTime] = useState("");
   const [isValid, setIsValid] = useState(false);
   const [cookLocation, setCookLocation] = useState([]);
+
+  //Notification
+  const Notification = () => {
+    requestForToken();
+    //....
+  };
+  Notification();
 
   //Location
   const [selectedPosition, setSelectedPosition] = useState(

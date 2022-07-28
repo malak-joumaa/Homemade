@@ -16,10 +16,10 @@ const Menu = ({ menu, disable = false, profile, name }) => {
     <>
       <MenuContainer>
         {profile && (
-          <dic style={{ display: "flex", marginBottom: "15px" }}>
+          <div style={{ display: "flex", marginBottom: "15px" }}>
             <NewPhoto src={profile}></NewPhoto>
             <NewName>{name}</NewName>
-          </dic>
+          </div>
         )}
 
         <Grid container spacing={1}>
