@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { ModalDiv, Overlay, ModalContent } from "../styles/Modal.style";
+import Maps from "./maps/Maps";
 
-const MapsModal = () => {
+const MapsModal = ({ route }) => {
   const [modal, setMapsModal] = useState(false);
 
   const toggleMapsModal = () => setMapsModal(!modal);
@@ -14,9 +15,11 @@ const MapsModal = () => {
     <>
       <i className="fa-solid fa-location-dot" onClick={toggleMapsModal}></i>
       {modal && (
-        <ModalDiv>
+        <ModalDiv onClick={toggleMapsModal}>
           <Overlay>
-            <ModalContent></ModalContent>
+            <ModalContent style={{ width: "500px", height: "500px" }}>
+              <Maps selectedPosition={route[0]} coord={route[1]} />
+            </ModalContent>
           </Overlay>
         </ModalDiv>
       )}

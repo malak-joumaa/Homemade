@@ -142,7 +142,7 @@ const OrderTable = () => {
                 ></i>
               </td>
               <td>
-                <MapsModal />
+                <MapsModal route={order.route} />
               </td>
             </TableRow>
           ))}

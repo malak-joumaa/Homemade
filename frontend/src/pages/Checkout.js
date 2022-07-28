@@ -73,6 +73,7 @@ const Checkout = () => {
           orders: OrderIDs,
         }),
       });
+
       const data2 = await res.json();
       console.log(data2);
       navigate("/orders");

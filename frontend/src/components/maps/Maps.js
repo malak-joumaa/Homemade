@@ -13,9 +13,9 @@ import RoutineMachine from "./RoutingMachine";
 
 const Maps = ({
   selectedPosition,
-  setSelectedPosition,
-  locationName,
-  setLocationName,
+  setSelectedPosition = null,
+  locationName = null,
+  setLocationName = null,
   coord,
 }) => {
   console.log(selectedPosition.lenght);
