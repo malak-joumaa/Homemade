@@ -35,3 +35,13 @@ export const Description = styled.textarea`
   font-size: 1.3em;
   background-color: transparent;
 `;
+
+export const PhotoName = styled.div`
+  display: flex;
+  text-align: center;
+`;
+
+export const Name = styled.div`
+  margin-top: 10px;
+  margin-right: 10px;
+`;

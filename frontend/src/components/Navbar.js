@@ -1,6 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Nav, NavUl, NavLogoDiv } from "../styles/Container.style";
+import {
+  Nav,
+  NavUl,
+  NavLogoDiv,
+  PhotoName,
+  Name,
+} from "../styles/Container.style";
 import { List } from "../styles/Links.style";
 import { NavLogo, ProfileIcon } from "../styles/Image.style";
 import Logo from "../assets/logo.png";
@@ -29,10 +35,12 @@ const Navbar = () => {
             </List>
             <List>
               <NavLink to="/cook-profile">
-                <ProfileIcon src={userData.profile_photo} />
-                <span>
-                  {userData.fname} {userData.lname}
-                </span>
+                <PhotoName style={{ display: "flex" }}>
+                  <Name>
+                    {userData.fname} {userData.lname}
+                  </Name>
+                  <ProfileIcon src={userData.profile_photo} />
+                </PhotoName>
               </NavLink>
             </List>
             <List>
