@@ -133,7 +133,13 @@ const MainPage = () => {
         {cooks
           ?.filter((cook) => !!cook.menu)
           .map((cook) => (
-            <Menu menu={[cook.menu]} disable={true} key={cook._id} />
+            <Menu
+              menu={[cook.menu]}
+              disable={true}
+              key={cook._id}
+              profile={cook.user.profile_photo}
+              name={`${cook.user.first_name} ${cook.user.last_name}`}
+            />
           ))}
       </MainPageContainer>
     </Container>

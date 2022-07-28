@@ -8,12 +8,20 @@ import {
   DishDescription,
   DishPrice,
 } from "../styles/Menu.style";
+import { NewPhoto, NewName } from "../styles/MainPage.style";
 import defaultDish from "../assets/default-plate.jpg";
 
-const Menu = ({ menu, disable = false }) => {
+const Menu = ({ menu, disable = false, profile, name }) => {
   return (
     <>
       <MenuContainer>
+        {profile && (
+          <dic style={{ display: "flex", marginBottom: "15px" }}>
+            <NewPhoto src={profile}></NewPhoto>
+            <NewName>{name}</NewName>
+          </dic>
+        )}
+
         <Grid container spacing={1}>
           {/* Dish Image */}
           {menu[0].dishes.map((dish, index) => (
