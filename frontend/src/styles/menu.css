@@ -8,15 +8,19 @@
 #add-menu{
     background-color: white;
     width: 80vw;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 30px;
-    bottom: 30px;
+    height: 95vh;
     margin: auto;
     border-radius: 5px;
     box-sizing: border-box;
     padding: 8px 30px;
+}
+
+#add-menu-form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #dish {
@@ -100,4 +104,9 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+#submit-menu{
+    width:150px!important;
+    height: 40px !important;
 }

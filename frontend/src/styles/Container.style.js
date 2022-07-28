@@ -32,8 +32,9 @@ export const Description = styled.textarea`
   border-radius: 5px;
   resize: none;
   margin-top: 15px;
-  font-size: 1.3em;
-  background-color: transparent;
+  font-size: 1.25em;
+  background-color: white;
+  font-family: "Quicksand", sans-serif;
 `;
 
 export const PhotoName = styled.div`

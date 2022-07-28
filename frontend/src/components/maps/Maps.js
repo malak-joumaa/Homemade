@@ -10,6 +10,7 @@ import GeoLocation from "./GeoLocation";
 import * as L from "leaflet";
 import { requirePropFactory } from "@mui/material";
 import RoutineMachine from "./RoutingMachine";
+import { Button } from "../../styles/Map.style";
 
 const Maps = ({
   selectedPosition,
@@ -99,7 +100,7 @@ const Maps = ({
         <Markers />
       </MapContainer>
       {!coord && (
-        <button
+        <Button
           className="locate-me-btn btn"
           onClick={(e) => {
             e.preventDefault();
@@ -107,7 +108,7 @@ const Maps = ({
           }}
         >
           Locate Me
-        </button>
+        </Button>
       )}
     </>
   );

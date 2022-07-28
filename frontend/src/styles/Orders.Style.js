@@ -48,6 +48,7 @@ export const Answer = styled.span`
 
 export const Info = styled.span`
   line-height: 80px;
+  text-align: center;
 `;
 
 export const Delete = styled.span`

@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { TableRow } from "../styles/Profile.style";
+import {
+  TableRow,
+  Table,
+  IconTd,
+  Select,
+  Confirm,
+} from "../styles/Profile.style";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import MapsModal from "./MapsModal";
@@ -85,7 +91,7 @@ const OrderTable = () => {
 
   return (
     <div>
-      <table>
+      <Table>
         <thead>
           <th>Name</th>
           <th>Items</th>
@@ -112,7 +118,7 @@ const OrderTable = () => {
               <td>{order.pickup_hours[0]}</td>
               <td>{order.total}</td>
               <td>
-                <select
+                <Select
                   value={selected[index]}
                   onChange={(event) => {
                     handleSelect(event, index);
@@ -124,30 +130,30 @@ const OrderTable = () => {
                   <option value="pending">Pending</option>
                   <option value="ready">Ready</option>
                   <option value="delivered">Delivered</option>
-                </select>
-                <button
+                </Select>
+                <Confirm
                   onClick={() => {
                     updateStatus(order._id, selected[index]);
                   }}
                 >
                   Confirm
-                </button>
+                </Confirm>
               </td>
-              <td>
+              <IconTd>
                 <i
                   className="fa-regular fa-comment-dots"
                   onClick={() => {
                     createChat(order);
                   }}
                 ></i>
-              </td>
-              <td>
+              </IconTd>
+              <IconTd>
                 <MapsModal route={order.route} />
-              </td>
+              </IconTd>
             </TableRow>
           ))}
         </tbody>
-      </table>
+      </Table>
     </div>
   );
 };

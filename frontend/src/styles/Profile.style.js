@@ -55,8 +55,39 @@ export const Button = styled.div`
   }
 `;
 
+export const Table = styled.table`
+  width: 100%;
+`;
+
 export const TableRow = styled.tr`
   background-color: ${(props) => (props.status === "ready" ? "#97d7bacf" : "")};
   background-color: ${(props) =>
     props.status === "delivered" ? "#b5b5b5" : ""};
+`;
+
+export const IconTd = styled.td`
+  font-size: 1.7em;
+`;
+
+export const Select = styled.select`
+  font-size: 1em;
+  padding: 3px;
+  border-radius: 15px;
+  margin-right: 3px;
+  border: 1px solid #a3a3a3;
+`;
+
+export const Confirm = styled.span`
+  cursor: pointer;
+  font-size: 0.95em;
+  font-weight: 500;
+  border: none;
+  padding: 2px 12px;
+  border-radius: 15px;
+  background-color: #a3a3a3;
+  color: white;
+  box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.2);
+  &:hover {
+    background-color: #767373;
+  }
 `;

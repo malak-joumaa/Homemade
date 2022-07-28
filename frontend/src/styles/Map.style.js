@@ -21,10 +21,22 @@ export const SearchInput = styled.input`
   border: 1px solid #c1bfbf;
 `;
 
-export const LocationArrow = styled.span`
-  font-size: 1.5em;
-  color: #acdac5;
-  margin-left: 12px;
-  position: absolute;
-  bottom: 18px;
+export const Location = styled.p`
+  font-size: 1.45em;
+  font-weight: 500;
+  text-align: center;
+  margin: 10px auto;
+`;
+
+export const Button = styled.button`
+  cursor: pointer;
+  width: 100px;
+  height: 30px;
+  font-size: 17px;
+  border-radius: 5px;
+  background-color: #43c187;
+  color: white;
+  border: none;
+  margin-top: 10px;
+  text-align: center;
 `;

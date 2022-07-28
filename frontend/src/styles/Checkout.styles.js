@@ -26,12 +26,18 @@ export const Total = styled.h3`
 `;
 
 export const Button = styled.button`
-  padding: 7px 15px;
+  cursor: pointer;
+  padding: 8px 30px;
   font-size: 1.25em;
-  background-color: white;
-  border: 2px solid #79c3a1;
+  color: white;
+  background-color: #6ac79cdb;
+  border: none;
   border-radius: 10px;
   margin-top: 30px;
   display: block;
   margin: 0 auto;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.25);
+  &:active {
+    transform: translateY(2px);
+  }
 `;

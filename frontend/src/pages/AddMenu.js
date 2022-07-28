@@ -107,7 +107,7 @@ const AddMenu = () => {
   return (
     <div id="menu">
       <div id="add-menu">
-        <form>
+        <form id="add-menu-form">
           {/* Adding a menu item(dish) */}
           {dish.map((input, index) => (
             <div key={index} id="dish">
@@ -178,7 +178,9 @@ const AddMenu = () => {
           ))}
           <Button btn_name="+" btn_func={addDish} />
           <br />
-          <Button btn_name="Submit Menu" btn_func={submitMenu} />
+          <button id="submit-menu" onClick={submitMenu}>
+            Submit Menu
+          </button>
         </form>
       </div>
     </div>
