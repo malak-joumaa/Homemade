@@ -114,7 +114,7 @@ const CookProfile = () => {
               navigate("/");
             }}
           >
-            <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+            <i className="fa-solid fa-arrow-right-from-bracket"></i> Logout
           </Button>
           <br />
         </Grid>

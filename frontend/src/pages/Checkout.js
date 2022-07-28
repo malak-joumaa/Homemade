@@ -23,9 +23,9 @@ const Checkout = () => {
   const [cookLocation, setCookLocation] = useState([]);
 
   //Location
-  const [selectedPosition, setSelectedPosition] = useState([
-    33.893791, 35.501778,
-  ]);
+  const [selectedPosition, setSelectedPosition] = useState(
+    user.location.coordinates
+  );
   const [locationName, setLocationName] = useState("");
 
   var OrderIDs = [];
@@ -40,7 +40,7 @@ const Checkout = () => {
     }
   });
 
-  console.log();
+  console.log(orderData);
 
   // const handleNotification = (type) => {
   //   socket.emit("sendNotification", {
@@ -66,7 +66,10 @@ const Checkout = () => {
           customer: localStorage.getItem("customer_id"),
           status: "pending",
           pickup_hours: [time],
-          route: [],
+          route: [
+            selectedPosition,
+            orderData[0].cook.user.location.coordinates,
+          ],
           orders: OrderIDs,
         }),
       });

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { TableRow } from "../styles/Profile.style";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import MapsModal from "./MapsModal";
 
 const OrderTable = () => {
   const navigate = useNavigate();
@@ -62,6 +63,7 @@ const OrderTable = () => {
     }
   };
 
+  // Create Chat
   const createChat = async (order) => {
     try {
       const res = await fetch("http://localhost:5000/api/chat/add-convo", {
@@ -139,7 +141,9 @@ const OrderTable = () => {
                   }}
                 ></i>
               </td>
-              <td></td>
+              <td>
+                <MapsModal />
+              </td>
             </TableRow>
           ))}
         </tbody>
