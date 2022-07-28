@@ -13,13 +13,7 @@ const submittedSchema = new mongoose.Schema({
   ],
   route: [
     {
-      type: {
-        type: String,
-        enum: ["Point"],
-      },
-      coordinates: {
-        type: [Number],
-      },
+      type: Array,
     },
   ],
   status: {
