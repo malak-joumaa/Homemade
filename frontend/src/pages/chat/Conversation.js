@@ -4,7 +4,6 @@ import {
   ConversationImg,
   ConversationName,
 } from "../../styles/chat/Conversation.style";
-import userProfile from "../../assets/user.jpg";
 
 const Conversation = ({ conversation, currentUser }) => {
   const [user, setUser] = useState(null);

@@ -8,7 +8,6 @@
 #add-menu{
     background-color: white;
     width: 80vw;
-    height: 95vh;
     margin: auto;
     border-radius: 5px;
     box-sizing: border-box;
@@ -28,7 +27,7 @@
 }
 
 #dish:first-child{
-    width: 50%;
+    width: 55%;
 }
 
 #menu h3{

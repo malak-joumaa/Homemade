@@ -4,11 +4,9 @@ import { Grid, Container } from "@mui/material";
 import {
   ChatContainer,
   ChatMenu,
-  ChatOnline,
   ChatBox,
   ChatMenuWrapper,
   ChatBoxWrapper,
-  ChatOnlineWrapper,
   SearchBox,
   ChatBoxTop,
   ChatBoxBottom,
@@ -18,7 +16,6 @@ import {
 } from "../../styles/chat/Chat.style";
 import Conversation from "./Conversation";
 import Message from "./Message";
-import OnlineChat from "./OnlineChat";
 import { useSelector } from "react-redux";
 import { io } from "socket.io-client";
 
@@ -147,64 +144,64 @@ const Chat = () => {
   return (
     <div>
       <Navbar />
-      <ChatContainer>
-        <Grid container spacing={1}>
-          <Grid item xs={3.5}>
-            <ChatMenu>
-              <ChatMenuWrapper>
-                <SearchBox placeholder="search" />
-                {conversation.map((convo) => (
-                  <div
-                    onClick={() => {
-                      setCurrentChat(convo);
-                    }}
-                  >
-                    <Conversation conversation={convo} currentUser={user_id} />
-                  </div>
-                ))}
-              </ChatMenuWrapper>
-            </ChatMenu>
-          </Grid>
-
-          <Grid item xs={5.5}>
-            <ChatBox>
-              <ChatBoxWrapper>
-                {currentChat ? (
-                  <>
-                    <ChatBoxTop>
-                      {messages.map((msg) => (
-                        <div ref={scrollRef}>
-                          <Message message={msg} me={msg.sender === user_id} />
-                        </div>
-                      ))}
-                    </ChatBoxTop>
-                    <ChatBoxBottom>
-                      <ChatInput
-                        placeholder="Type a message..."
-                        value={newMessage}
-                        onChange={(e) => setNewMessage(e.target.value)}
+      <Container maxWidth="xl">
+        <ChatContainer>
+          <Grid container spacing={1}>
+            <Grid item xs={3.5}>
+              <ChatMenu>
+                <ChatMenuWrapper>
+                  <SearchBox placeholder="search" />
+                  {conversation.map((convo) => (
+                    <div
+                      onClick={() => {
+                        setCurrentChat(convo);
+                      }}
+                    >
+                      <Conversation
+                        conversation={convo}
+                        currentUser={user_id}
                       />
-                      <SendBtn onClick={handleSubmit}>Send</SendBtn>
-                    </ChatBoxBottom>
-                  </>
-                ) : (
-                  <NoConversationText>
-                    Open a conversation to start a chat.
-                  </NoConversationText>
-                )}
-              </ChatBoxWrapper>
-            </ChatBox>
-          </Grid>
+                    </div>
+                  ))}
+                </ChatMenuWrapper>
+              </ChatMenu>
+            </Grid>
 
-          <Grid item xs={3}>
-            <ChatOnline>
-              <ChatOnlineWrapper>
-                <OnlineChat />
-              </ChatOnlineWrapper>
-            </ChatOnline>
+            <Grid item xs={6.5}>
+              <ChatBox>
+                <ChatBoxWrapper>
+                  {currentChat ? (
+                    <>
+                      <ChatBoxTop>
+                        {messages.map((msg) => (
+                          <div ref={scrollRef}>
+                            <Message
+                              message={msg}
+                              me={msg.sender === user_id}
+                            />
+                          </div>
+                        ))}
+                      </ChatBoxTop>
+                      <ChatBoxBottom>
+                        <ChatInput
+                          placeholder="Type a message..."
+                          value={newMessage}
+                          onChange={(e) => setNewMessage(e.target.value)}
+                        />
+                        <SendBtn onClick={handleSubmit}>Send</SendBtn>
+                      </ChatBoxBottom>
+                    </>
+                  ) : (
+                    <NoConversationText>
+                      Open a conversation to start a chat.
+                    </NoConversationText>
+                  )}
+                </ChatBoxWrapper>
+              </ChatBox>
+            </Grid>
           </Grid>
-        </Grid>
-      </ChatContainer>
+        </ChatContainer>
+      </Container>
     </div>
   );
 };

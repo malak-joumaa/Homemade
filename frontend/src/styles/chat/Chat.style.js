@@ -5,7 +5,9 @@ export const ChatContainer = styled.div`
   display: flex;
 `;
 
-export const ChatMenu = styled.div``;
+export const ChatMenu = styled.div`
+  border-right: 3px solid #f5f5f5;
+`;
 
 export const ChatOnline = styled.div``;
 
