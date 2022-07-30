@@ -142,6 +142,7 @@ const MainPage = () => {
               disable={true}
               key={cook._id}
               profile={cook.user.profile_photo}
+              id={cook._id}
               name={`${cook.user.first_name} ${cook.user.last_name}`}
             />
           ))}

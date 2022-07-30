@@ -10,11 +10,20 @@ import {
 } from "../styles/Menu.style";
 import { NewPhoto, NewName } from "../styles/MainPage.style";
 import defaultDish from "../assets/default-plate.jpg";
+import { useNavigate } from "react-router-dom";
 
-const Menu = ({ menu, disable = false, profile, name }) => {
+const Menu = ({ menu, disable = false, profile, name, id = "" }) => {
+  const navigate = useNavigate();
   return (
     <>
-      <MenuContainer>
+      <MenuContainer
+        onClick={() => {
+          if (disable) {
+            localStorage.setItem("cook_id", id);
+            navigate("/cook");
+          }
+        }}
+      >
         {profile && (
           <div style={{ display: "flex", marginBottom: "15px" }}>
             <NewPhoto src={profile}></NewPhoto>
