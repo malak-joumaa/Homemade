@@ -9,6 +9,7 @@ import {
   Info,
   Delete,
 } from "../styles/Orders.style";
+import MapsModal from "./MapsModal";
 
 const SingleOrder = ({ cart = false, orderData }) => {
   console.log(orderData);
@@ -64,7 +65,7 @@ const SingleOrder = ({ cart = false, orderData }) => {
             </Delete>
           ) : (
             <Info>
-              <i className="fa-solid fa-location-dot"></i>
+              <MapsModal route={orderData.route} />
             </Info>
           )}
         </Grid>

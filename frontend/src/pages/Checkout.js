@@ -102,6 +102,10 @@ const Checkout = () => {
           },
           body: JSON.stringify({
             status: "pending",
+            route: [
+              selectedPosition,
+              orderData[0].cook.user.location.coordinates,
+            ],
           }),
         }
       );
