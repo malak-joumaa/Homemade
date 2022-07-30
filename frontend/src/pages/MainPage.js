@@ -81,19 +81,23 @@ const MainPage = () => {
           modules={[Navigation]}
           className="mySwiper"
         >
-          {cooks.map((cook) => (
-            <SwiperSlide key={cook._id}>
-              <TopCook
-                id={cook._id}
-                photo={cook.user.profile_photo}
-                fname={cook.user.first_name}
-                lname={cook.user.last_name}
-                count={
-                  top_count == 5 ? ((top_count = 1), top_count++) : top_count++
-                }
-              />
-            </SwiperSlide>
-          ))}
+          {cooks
+            ?.filter((cook) => cook.rate >= 4.5)
+            .map((cook) => (
+              <SwiperSlide key={cook._id}>
+                <TopCook
+                  id={cook._id}
+                  photo={cook.user.profile_photo}
+                  fname={cook.user.first_name}
+                  lname={cook.user.last_name}
+                  count={
+                    top_count == 5
+                      ? ((top_count = 1), top_count++)
+                      : top_count++
+                  }
+                />
+              </SwiperSlide>
+            ))}
         </Swiper>
 
         {/* New Cooks */}

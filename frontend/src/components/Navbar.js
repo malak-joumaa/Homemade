@@ -43,9 +43,6 @@ const Navbar = () => {
                 </PhotoName>
               </NavLink>
             </List>
-            <List>
-              <i className="fa-solid fa-bars"></i>
-            </List>
           </NavUl>
         </div>
       </Nav>

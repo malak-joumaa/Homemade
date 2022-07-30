@@ -23,76 +23,20 @@ io.on("connection", (socket) => {
   //when connect
   console.log("a user connected.");
 
+  io.emit("firstEvent", "Hello World");
+
   //take userId and socketId from user
   socket.on("addUser", (userId) => {
     addUser(userId, socket.id);
     io.emit("getUsers", users);
   });
 
-  //take userId and socketId from user
-  socket.on("addOnlineUser", (userId) => {
-    addOnlineUser(userId, socket.id);
-    io.emit("getOnlineUsers", onlineUsers);
-  });
-
   //send and get message
   socket.on("sendMessage", ({ senderId, receiverId, text }) => {
     const user = getUser(receiverId);
     io.to(user.socketId).emit("getMessage", {
       senderId,
       text,
-    });
-  });
-  // Send notification
-  socket?.on("sendNotification", ({ senderId, receiverId, type }) => {
-    const receiver = getOnlineUser(receiverId);
-    io.to(receiver.socketId).emit("getNotification", {
-      senderId,
-      type,
-    });
-  });
-  console.log(socket);
-
-  //when disconnect
-  socket.on("disconnect", () => {
-    console.log("a user disconnected!");
-    removeUser(socket.id);
-    removeOnlineUser(socket.id);
-    io.emit("getUsers", users);
-    io.emit("getOnlineUsers", onlineUsers);
-  });
-
-  let onlineUsers = [];
-
-  const addOnlineUser = (userId, socketId) => {
-    !onlineUsers.some((user) => user.userId === userId) &&
-      onlineUsers.push({ userId, socketId });
-  };
-
-  console.log("onlineUsers=>", onlineUsers);
-
-  const removeOnlineUser = (socketId) => {
-    onlineUsers = onlineUsers.filter((user) => user.socketId !== socketId);
-  };
-
-  const getOnlineUser = (userId) => {
-    return onlineUsers.find((user) => user.userId === userId);
-  };
-
-  //send and get message
-  socket.on("sendMessage", ({ senderId, receiverId, text }) => {
-    const user = getUser(receiverId);
-    io.to(user.socketId).emit("getMessage", {
-      senderId,
-      text,
-    });
-  });
-  // Send notification
-  socket.on("sendNotification", ({ senderId, receiverId, type }) => {
-    const receiver = getUser(receiverId);
-    io.to(receiver.socketId).emit("getNotification", {
-      senderId,
-      type,
     });
   });
   console.log(socket);

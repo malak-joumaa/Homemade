@@ -75,8 +75,10 @@ const Specifications = ({ question, setQuestion, dishIndex }) => {
                   }}
                 />
                 <br />
+
                 <button
                   type="button"
+                  id="submit-menu"
                   onClick={() => {
                     handleAddChoice(index, input.currentChoice);
                   }}

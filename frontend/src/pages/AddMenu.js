@@ -3,8 +3,10 @@ import Specifications from "../components/Specifications";
 import "../styles/menu.css";
 import Button from "../components/Button";
 import UploadPhoto from "../components/UploadPhoto";
+import { useNavigate } from "react-router-dom";
 
 const AddMenu = () => {
+  const navigate = useNavigate();
   // Dish useState
   const [dish, setDish] = useState([
     {
@@ -96,6 +98,7 @@ const AddMenu = () => {
           }),
         });
         const data2 = await res2.json();
+        navigate("/cook-profile");
       });
     } catch (err) {
       console.log(err);
@@ -108,6 +111,9 @@ const AddMenu = () => {
     <div id="menu">
       <div id="add-menu">
         <form id="add-menu-form">
+          <h1>
+            <u>Add Menu</u>
+          </h1>
           {/* Adding a menu item(dish) */}
           {dish.map((input, index) => (
             <div key={index} id="dish">
@@ -162,9 +168,9 @@ const AddMenu = () => {
                     handleFormChange(index, e);
                   }}
                 />
-                <br />
+                {/* <br />
                 <label>Category:</label>
-                <input type="text" />
+                <input type="text" /> */}
               </div>
               <div>
                 <h3>Specifications</h3>

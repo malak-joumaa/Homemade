@@ -32,7 +32,7 @@ const SingleOrder = ({ cart = false, orderData }) => {
         <Grid item xs={1.2} lg={0.8}>
           <Photo src={orderData.dish.photo} />
         </Grid>
-        <Grid item xs={6.8} lg={7.2}>
+        <Grid item xs={5.5} lg={6.6}>
           <CookInfo>
             <CookName>{orderData.dish.name}</CookName>
             <br />
@@ -41,7 +41,7 @@ const SingleOrder = ({ cart = false, orderData }) => {
             </span>
           </CookInfo>
         </Grid>
-        <Grid item xs={1} align="center">
+        <Grid item xs={1.5} align="center">
           <Info>
             {orderData.cook.user.first_name} {orderData.cook.user.last_name}
           </Info>

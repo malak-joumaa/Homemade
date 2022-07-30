@@ -28,6 +28,7 @@
 
 #dish:first-child{
     width: 55%;
+    margin-right: 20px;
 }
 
 #menu h3{

@@ -62,7 +62,7 @@ const SignIn = () => {
         navigate("/main-page");
         window.localStorage.setItem("customer_id", decoded.customer_id);
       } else {
-        navigate("/add-menu");
+        navigate("/cook-profile");
         window.localStorage.setItem("cook_id", decoded.cook_id);
       }
     } catch (error) {
