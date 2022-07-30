@@ -105,6 +105,10 @@ async function getUserIdByCook(cookId) {
   return await Cook.findOne({ cook: cookId });
 }
 
+async function getCookByUserId(userId) {
+  return await Cook.findOne({ user: userId });
+}
+
 module.exports = {
   addUser,
   addNewCook,

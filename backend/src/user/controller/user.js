@@ -1,3 +1,6 @@
+const Cook = require("../../../model/Cook");
+const Customer = require("../../../model/Customer");
+
 const {
   addUser,
   getByEmail,
@@ -190,6 +193,50 @@ async function getByCookId(req, res) {
   }
 }
 
+async function findNearbyCooks(req, res) {
+  try {
+    //get customer location
+    const id = req.query.id;
+    const customer = await Customer.findById(req.query.id).populate("user");
+    const customerLatitude = customer.user.location.coordinates[0];
+    const customerLongitude = customer.user.location.coordinates[1];
+    //get all cooks
+    const cooks = await getAllCooks();
+    //find cooks within 5km
+    const nearbyCooks = cooks.filter((cook) => {
+      const cookLatitude = cook.user.location.coordinates[0];
+      const cookLongitude = cook.user.location.coordinates[1];
+      const distance = getDistanceFromLatLonInKm(
+        customerLatitude,
+        customerLongitude,
+        cookLatitude,
+        cookLongitude
+      );
+      return distance <= 5;
+    });
+    return res.send(nearbyCooks);
+  } catch (error) {
+    console.log(error);
+  }
+}
+function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+  var R = 6371; // Radius of the earth in km
+  var dLat = degreesToRadians(lat2 - lat1); // deg2rad below
+  var dLon = degreesToRadians(lon2 - lon1);
+  var a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(degreesToRadians(lat1)) *
+      Math.cos(degreesToRadians(lat2)) *
+      Math.sin(dLon / 2) *
+      Math.sin(dLon / 2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  var d = R * c; // Distance in km
+  return d;
+}
+function degreesToRadians(degrees) {
+  return (degrees * Math.PI) / 180;
+}
+
 module.exports = {
   register,
   login,
@@ -200,4 +247,5 @@ module.exports = {
   getUser,
   getCooks,
   getByCookId,
+  findNearbyCooks,
 };

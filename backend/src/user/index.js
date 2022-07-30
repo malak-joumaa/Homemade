@@ -9,6 +9,7 @@ const {
   getUser,
   getCooks,
   getByCookId,
+  findNearbyCooks,
 } = require("./controller/user");
 const router = Router();
 
@@ -19,7 +20,7 @@ router.post("/auth/add-customer", addCustomer);
 router.post("/auth/add-review", addReview);
 router.get("/auth/get-review", getReview);
 router.get("/auth/get-user", getUser);
-router.get("/auth/get-cooks", getCooks);
+router.get("/auth/get-cooks", findNearbyCooks);
 router.get("/auth/get-userId", getByCookId);
 
 module.exports = router;
