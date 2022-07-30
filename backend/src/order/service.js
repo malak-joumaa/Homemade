@@ -3,7 +3,8 @@ const SubmittedOrder = require("../../model/SubmittedOrder");
 
 //Add Order function
 async function newOrder(body) {
-  const { quantity, total, cook, customer, dish, answers, status } = body;
+  const { quantity, total, cook, customer, dish, answers, status, route } =
+    body;
 
   const order = new Order({
     quantity,
@@ -13,6 +14,7 @@ async function newOrder(body) {
     dish,
     answers,
     status,
+    route,
   });
 
   return await order.save();

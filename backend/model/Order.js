@@ -27,6 +27,11 @@ const orderSchema = new mongoose.Schema({
       type: String,
     },
   ],
+  route: [
+    {
+      type: Array,
+    },
+  ],
   status: {
     type: String,
     required: true,

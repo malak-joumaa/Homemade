@@ -91,7 +91,6 @@ async function updateOrder(req, res) {
         $set: {
           status: req.body.status,
           route: req.body.route,
-          pickup_hours: req.body.pickup_hours,
         },
       }
     );
