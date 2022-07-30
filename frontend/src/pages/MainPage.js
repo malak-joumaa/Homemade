@@ -30,7 +30,8 @@ const MainPage = () => {
   const getCooks = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/user/auth/get-cooks"
+        "http://localhost:5000/api/user/auth/get-cooks?id=" +
+          userData.customer_id
       );
       const data = await response.json();
       setCooks(data);
