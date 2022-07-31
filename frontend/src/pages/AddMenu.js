@@ -118,7 +118,7 @@ const AddMenu = () => {
           {dish.map((input, index) => (
             <div key={index} id="dish">
               <div>
-                <h3>Item Name:</h3>
+                <h3>Item:</h3>
                 <br />
                 <label>Add photo:</label>
 

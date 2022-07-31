@@ -12,13 +12,20 @@ import { NewPhoto, NewName } from "../styles/MainPage.style";
 import defaultDish from "../assets/default-plate.jpg";
 import { useNavigate } from "react-router-dom";
 
-const Menu = ({ menu, disable = false, profile, name, id = "" }) => {
+const Menu = ({
+  menu,
+  disable = false,
+  profile,
+  name,
+  id = "",
+  main_page = false,
+}) => {
   const navigate = useNavigate();
   return (
     <>
       <MenuContainer
         onClick={() => {
-          if (disable) {
+          if (main_page) {
             localStorage.setItem("cook_id", id);
             navigate("/cook");
           }
@@ -54,6 +61,7 @@ const Menu = ({ menu, disable = false, profile, name, id = "" }) => {
                   <DishPrice>{dish.price}$</DishPrice>
                   <br />
                   <DishDescription>{dish.description}</DishDescription>
+                  <br />
                 </Grid>
                 {disable === false && (
                   <Grid item xs={1.5}>

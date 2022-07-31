@@ -169,6 +169,7 @@ const MainPage = () => {
             <Menu
               menu={[cook.menu]}
               disable={true}
+              main_page={true}
               key={cook._id}
               profile={cook.user.profile_photo}
               id={cook._id}
