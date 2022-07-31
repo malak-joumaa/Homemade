@@ -24,6 +24,7 @@ export const LocationName = styled.div`
   padding-top: 5px;
   position: relative;
   z-index: 5;
+  background-color: ${(props) => (!props.color ? "white" : "#b1e4cd")};
 `;
 
 export const Loc = styled.i`

@@ -16,12 +16,13 @@ const MapsModal = ({
     <>
       {modal && (
         <ModalLocDiv>
-          <ModalContentLoc style={{ width: "600px", height: "350px" }}>
+          <ModalContentLoc style={{ width: "450px", height: "300px" }}>
             <Maps
               selectedPosition={route}
               setSelectedPosition={setSelectedPosition}
               locationName={locationName}
               setLocationName={setLocationName}
+              color="#7dc1a2"
             />
           </ModalContentLoc>
         </ModalLocDiv>

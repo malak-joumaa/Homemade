@@ -17,12 +17,14 @@ const MainPage = () => {
   const [cooks, setCooks] = useState([]);
   const userData = useSelector((state) => state.login);
   const [modal, setMapsModal] = useState(false);
+  const [color, setColor] = useState(false);
 
   const [selectedPosition, setSelectedPosition] = useState(
     userData.location.coordinates
   );
   const [locationName, setLocationName] = useState(userData.location.location);
   const toggleMapsModal = () => setMapsModal(!modal);
+  const toggleColor = () => setColor(!color);
   if (modal) {
     document.body.classList.add("active-modal");
   } else {
@@ -71,7 +73,13 @@ const MainPage = () => {
               <SearchBox placeholder="Search..."></SearchBox>
             </Grid>
             <Grid item xs={4}>
-              <LocationName onClick={toggleMapsModal}>
+              <LocationName
+                color={color}
+                onClick={() => {
+                  toggleMapsModal();
+                  toggleColor();
+                }}
+              >
                 <Loc className="fa-solid fa-location-dot"></Loc>
                 {locationName}
               </LocationName>

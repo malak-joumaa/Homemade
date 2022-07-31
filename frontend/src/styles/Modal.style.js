@@ -151,9 +151,9 @@ export const ModalLocDiv = styled.div`
 export const ModalContentLoc = styled.div`
   position: absolute;
   top: 150px;
-  right: 10px;
+  right: 25px;
   line-height: 1.4;
   background: #b7b3b3;
-  padding: 5px;
   border-radius: 3px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 `;

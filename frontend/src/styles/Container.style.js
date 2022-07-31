@@ -47,4 +47,5 @@ export const PhotoName = styled.div`
 export const Name = styled.div`
   margin-top: 10px;
   margin-right: 10px;
+  color: #45a479;
 `;

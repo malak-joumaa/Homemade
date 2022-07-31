@@ -18,6 +18,7 @@ const Maps = ({
   locationName = null,
   setLocationName = null,
   coord,
+  color = null,
 }) => {
   console.log(selectedPosition.lenght);
   const location = GeoLocation();
@@ -101,7 +102,11 @@ const Maps = ({
       </MapContainer>
       {!coord && (
         <Button
-          className="locate-me-btn btn"
+          className={
+            color === "#7dc1a2"
+              ? "locate-me-btn btn btn-color"
+              : "locate-me-btn btn"
+          }
           onClick={(e) => {
             e.preventDefault();
             showMyLocation();
