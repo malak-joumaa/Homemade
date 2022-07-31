@@ -11,10 +11,23 @@ import "swiper/css/free-mode";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import { useSelector } from "react-redux";
+import LocationModal from "../components/maps/LocationModal";
 
 const MainPage = () => {
   const [cooks, setCooks] = useState([]);
   const userData = useSelector((state) => state.login);
+  const [modal, setMapsModal] = useState(false);
+
+  const [selectedPosition, setSelectedPosition] = useState(
+    userData.location.coordinates
+  );
+  const toggleMapsModal = () => setMapsModal(!modal);
+  if (modal) {
+    document.body.classList.add("active-modal");
+  } else {
+    document.body.classList.remove("active-modal");
+  }
+
   var top_count = 1;
   var new_count = 1;
   var d1 = new Date();
@@ -51,13 +64,18 @@ const MainPage = () => {
               <SearchBox placeholder="Search..."></SearchBox>
             </Grid>
             <Grid item xs={4}>
-              <LocationName>
+              <LocationName onClick={toggleMapsModal}>
                 <Loc className="fa-solid fa-location-dot"></Loc>
                 {userData?.location.location}
               </LocationName>
             </Grid>
           </Grid>
         </SearchLocation>
+        <LocationModal
+          toggleMapsModal={toggleMapsModal}
+          modal={modal}
+          route={selectedPosition}
+        />
 
         {/* Top Cooks */}
         <Title>Top Cooks</Title>

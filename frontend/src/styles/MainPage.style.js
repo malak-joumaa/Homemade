@@ -22,6 +22,8 @@ export const LocationName = styled.div`
   font-weight: 500;
   box-sizing: border-box;
   padding-top: 5px;
+  position: relative;
+  z-index: 5;
 `;
 
 export const Loc = styled.i`

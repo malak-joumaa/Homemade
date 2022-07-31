@@ -136,3 +136,24 @@ export const QA = styled.div`
   overflow-y: scroll;
   margin-bottom: 10px;
 `;
+
+export const ModalLocDiv = styled.div`
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  z-index: 2;
+`;
+
+export const ModalContentLoc = styled.div`
+  position: absolute;
+  top: 15%;
+  right: 10px;
+  line-height: 1.4;
+  background: #b7b3b3;
+  padding: 5px;
+  border-radius: 3px;
+`;

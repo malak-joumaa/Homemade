@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { ModalDiv, Overlay, ModalContent } from "../styles/Modal.style";
-import Maps from "./maps/Maps";
+import { ModalDiv, Overlay, ModalContent } from "../../styles/Modal.style";
+import Maps from "./Maps";
 
 const MapsModal = ({ route }) => {
   const [modal, setMapsModal] = useState(false);

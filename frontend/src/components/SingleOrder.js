@@ -9,7 +9,7 @@ import {
   Info,
   Delete,
 } from "../styles/Orders.style";
-import MapsModal from "./MapsModal";
+import MapsModal from "./maps/MapsModal";
 
 const SingleOrder = ({ cart = false, orderData }) => {
   console.log(orderData);

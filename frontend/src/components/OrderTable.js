@@ -10,7 +10,7 @@ import {
 } from "../styles/Profile.style";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import MapsModal from "./MapsModal";
+import MapsModal from "./maps/MapsModal";
 
 const OrderTable = () => {
   const navigate = useNavigate();
