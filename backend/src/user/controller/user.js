@@ -196,10 +196,8 @@ async function getByCookId(req, res) {
 async function findNearbyCooks(req, res) {
   try {
     //get customer location
-    const id = req.query.id;
-    const customer = await Customer.findById(req.query.id).populate("user");
-    const customerLatitude = customer.user.location.coordinates[0];
-    const customerLongitude = customer.user.location.coordinates[1];
+    const customerLatitude = req.query.location1;
+    const customerLongitude = req.query.location2;
     //get all cooks
     const cooks = await getAllCooks();
     //find cooks within 5km

@@ -37,15 +37,19 @@ const MainPage = () => {
   console.log(d1.getMonth() === d2.getMonth());
 
   useEffect(() => {
-    getCooks();
-  }, []);
+    if (selectedPosition) {
+      getCooks();
+    }
+  }, [selectedPosition]);
 
   // get all cooks
   const getCooks = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/user/auth/get-cooks?id=" +
-          userData.customer_id
+        "http://localhost:5000/api/user/auth/get-cooks?location1=" +
+          selectedPosition[0] +
+          "&location2=" +
+          selectedPosition[1]
       );
       const data = await response.json();
       setCooks(data);
