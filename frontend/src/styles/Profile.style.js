@@ -57,12 +57,31 @@ export const Button = styled.div`
 
 export const Table = styled.table`
   width: 100%;
+  height: 520px;
+  overflow-y: scroll;
+  border-radius: 10px;
+  display: block;
+`;
+
+export const Thead = styled.table`
+  display: table;
+  width: 100%;
+  border: 1px solid #e1e0e0;
+  position: sticky;
+  top: 0;
+  background-color: white;
+`;
+
+export const Tbody = styled.table`
+  display: table;
+  width: 100%;
+  border: 1px solid #e1e0e0;
 `;
 
 export const TableRow = styled.tr`
-  background-color: ${(props) => (props.status === "ready" ? "#97d7bacf" : "")};
+  background-color: ${(props) => (props.status === "ready" ? "#a0e9c8cf" : "")};
   background-color: ${(props) =>
-    props.status === "delivered" ? "#b5b5b5" : ""};
+    props.status === "delivered" ? "#c7c7c7" : ""};
 `;
 
 export const IconTd = styled.td`

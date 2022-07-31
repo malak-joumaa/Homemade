@@ -5,6 +5,8 @@ import {
   IconTd,
   Select,
   Confirm,
+  Tbody,
+  Thead,
 } from "../styles/Profile.style";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -28,7 +30,7 @@ const OrderTable = () => {
           localStorage.getItem("cook_id")
       ).then(async (res) => {
         const data = await res.json();
-        setOrders(data);
+        setOrders(data.reverse());
         console.log(data);
       });
     } catch (err) {
@@ -92,7 +94,7 @@ const OrderTable = () => {
   return (
     <div>
       <Table>
-        <thead>
+        <Thead>
           <th>Name</th>
           <th>Items</th>
           <th>Hour</th>
@@ -100,8 +102,8 @@ const OrderTable = () => {
           <th>Status</th>
           <th>Chat</th>
           <th>Location</th>
-        </thead>
-        <tbody>
+        </Thead>
+        <Tbody>
           {orders?.map((order, index) => (
             <TableRow status={order.status} key={index}>
               <td>Name Name</td>
@@ -152,7 +154,7 @@ const OrderTable = () => {
               </IconTd>
             </TableRow>
           ))}
-        </tbody>
+        </Tbody>
       </Table>
     </div>
   );
