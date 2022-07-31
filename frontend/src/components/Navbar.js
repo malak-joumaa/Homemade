@@ -28,7 +28,11 @@ const Navbar = () => {
               <NavLink to="/main-page">Explore</NavLink>
             </List>
             <List>
-              <NavLink to="/orders">Orders</NavLink>
+              {userData.customer_id == "" ? (
+                <NavLink to="/add-menu">Menu</NavLink>
+              ) : (
+                <NavLink to="/orders">Orders</NavLink>
+              )}
             </List>
             <List>
               <NavLink to="/chat">Messages</NavLink>
