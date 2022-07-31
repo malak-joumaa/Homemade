@@ -5,10 +5,11 @@ import { List } from "../styles/Links.style";
 import { NavLogo, ProfileIcon } from "../styles/Image.style";
 import Logo from "../assets/logo.png";
 import { Container } from "@mui/material";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const userData = useSelector((state) => state.login);
+  const navigate = useNavigate();
   console.log(userData);
   return (
     <Container maxWidth="xl">
@@ -32,19 +33,39 @@ const Navbar = () => {
               <NavLink to="/chat">Messages</NavLink>
             </List>
             <List>
-              <NavLink to="/cook-profile">
-                <div style={{ display: "flex" }} className="dropdown">
-                  <Name>
-                    {userData.fname} {userData.lname}
-                  </Name>
-                  <ProfileIcon src={userData.profile_photo} />
-                </div>
-                <div className="dropdown-content">
-                  <div>
-                    Logout <i className="fa-solid fa-right-from-bracket"></i>
+              {userData.customer_id == "" ? (
+                <NavLink to="/cook-profile">
+                  <div style={{ display: "flex" }} className="dropdown">
+                    <Name>
+                      {userData.fname} {userData.lname}
+                    </Name>
+                    <ProfileIcon src={userData.profile_photo} />
                   </div>
-                </div>
-              </NavLink>
+                </NavLink>
+              ) : (
+                <>
+                  <div style={{ display: "flex" }} className="dropdown">
+                    <Name>
+                      {userData.fname} {userData.lname}
+                    </Name>
+                    <ProfileIcon src={userData.profile_photo} />
+                  </div>
+                  <div
+                    className="dropdown-content"
+                    // onClick={() => {
+                    //   localStorage.clear();
+                    //   navigate("/");
+                    // }}
+                  >
+                    <NavLink to="/">
+                      <div>
+                        Logout{" "}
+                        <i className="fa-solid fa-right-from-bracket"></i>
+                      </div>
+                    </NavLink>
+                  </div>
+                </>
+              )}
             </List>
           </NavUl>
         </div>
