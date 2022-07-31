@@ -12,7 +12,6 @@ export const Container1 = styled.div`
   background-color: #b9e5d0;
   overflow: hidden;
   z-index: -1;
-  //   #a2e5c6  95dbba
 `;
 
 export const Blob = styled.div`
@@ -51,8 +50,8 @@ export const SubTitle = styled.h1`
 `;
 
 export const SignInBtn = styled.button`
-  width: 170px;
-  height: 58px;
+  width: 160px;
+  height: 52px;
   background-color: white;
   color: #4ea97f;
   border: none;

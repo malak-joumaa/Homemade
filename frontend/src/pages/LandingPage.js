@@ -51,9 +51,6 @@ const LandingPage = () => {
           }}
         >
           <SignInText>Customer</SignInText>
-          <br />
-
-          <TypeText>Sign in</TypeText>
         </SignInBtn>
         <SignInBtn
           onClick={() => {
@@ -62,8 +59,6 @@ const LandingPage = () => {
           }}
         >
           <SignInText>Cook</SignInText>
-          <br />
-          <TypeText>Sign in</TypeText>
         </SignInBtn>
       </Blob>
       <MainLogo src={logo} />
