@@ -62,13 +62,35 @@ const OrderTable = () => {
           }),
         }
       );
-      window.location.reload();
+      // window.location.reload();
 
       const data = await res.json();
       console.log(data);
     } catch (err) {
       console.log(err);
     }
+  };
+
+  // Update Order
+  const updateOrder = async (status, ids) => {
+    var i = 0;
+    console.log("ids", ids.id);
+    ids.forEach(async (singleOrder) => {
+      console.log(singleOrder);
+      const res = await fetch(
+        "http://localhost:5000/api/order/update-order/?id=" + singleOrder.id,
+        {
+          method: "PUT",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            status: status,
+          }),
+        }
+      );
+      i++;
+    });
   };
 
   // Create Chat
@@ -136,6 +158,10 @@ const OrderTable = () => {
                 <Confirm
                   onClick={() => {
                     updateStatus(order._id, selected[index]);
+                    updateOrder(
+                      selected[index],
+                      order.orders.filter((item) => item.id !== undefined)
+                    );
                   }}
                 >
                   Confirm
