@@ -40,6 +40,8 @@ export const Description = styled.textarea`
 export const PhotoName = styled.div`
   display: flex;
   text-align: center;
+  position: relative;
+  display: inline-block;
 `;
 
 export const Name = styled.div`

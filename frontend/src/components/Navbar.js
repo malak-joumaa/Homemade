@@ -1,12 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import {
-  Nav,
-  NavUl,
-  NavLogoDiv,
-  PhotoName,
-  Name,
-} from "../styles/Container.style";
+import { Nav, NavUl, NavLogoDiv, Name } from "../styles/Container.style";
 import { List } from "../styles/Links.style";
 import { NavLogo, ProfileIcon } from "../styles/Image.style";
 import Logo from "../assets/logo.png";
@@ -39,12 +33,17 @@ const Navbar = () => {
             </List>
             <List>
               <NavLink to="/cook-profile">
-                <PhotoName style={{ display: "flex" }}>
+                <div style={{ display: "flex" }} className="dropdown">
                   <Name>
                     {userData.fname} {userData.lname}
                   </Name>
                   <ProfileIcon src={userData.profile_photo} />
-                </PhotoName>
+                </div>
+                <div className="dropdown-content">
+                  <div>
+                    Logout <i className="fa-solid fa-right-from-bracket"></i>
+                  </div>
+                </div>
               </NavLink>
             </List>
           </NavUl>
