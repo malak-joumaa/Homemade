@@ -21,6 +21,7 @@ const MainPage = () => {
   const [selectedPosition, setSelectedPosition] = useState(
     userData.location.coordinates
   );
+  const [locationName, setLocationName] = useState(userData.location.location);
   const toggleMapsModal = () => setMapsModal(!modal);
   if (modal) {
     document.body.classList.add("active-modal");
@@ -53,6 +54,8 @@ const MainPage = () => {
     }
   };
   console.log(cooks);
+  console.log(selectedPosition);
+  localStorage.setItem("newLocation", JSON.stringify(selectedPosition));
 
   return (
     <Container maxWidth="xl">
@@ -66,7 +69,7 @@ const MainPage = () => {
             <Grid item xs={4}>
               <LocationName onClick={toggleMapsModal}>
                 <Loc className="fa-solid fa-location-dot"></Loc>
-                {userData?.location.location}
+                {locationName}
               </LocationName>
             </Grid>
           </Grid>
@@ -75,6 +78,9 @@ const MainPage = () => {
           toggleMapsModal={toggleMapsModal}
           modal={modal}
           route={selectedPosition}
+          setSelectedPosition={setSelectedPosition}
+          locationName={locationName}
+          setLocationName={setLocationName}
         />
 
         {/* Top Cooks */}
