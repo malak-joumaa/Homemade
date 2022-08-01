@@ -162,6 +162,7 @@ const OrderTable = () => {
                       selected[index],
                       order.orders.filter((item) => item.id !== undefined)
                     );
+                    window.location.reload();
                   }}
                 >
                   Confirm
