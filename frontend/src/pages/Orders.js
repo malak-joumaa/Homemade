@@ -13,6 +13,8 @@ const Orders = () => {
   const [isCart, setCart] = useState(true);
   const [isOrdered, setOrdered] = useState(false);
   const [order, setOrder] = useState([]);
+  const [modal, setModal] = useState(false);
+  const [cook, setCook] = useState([]);
 
   useEffect(() => {
     getOrders();
@@ -22,6 +24,12 @@ const Orders = () => {
   // Redux
   const dispatch = useDispatch();
   const { addOrderData } = bindActionCreators(actionCreators, dispatch);
+  const toggleModal = () => setModal(!modal);
+  if (modal) {
+    document.body.classList.add("active-modal");
+  } else {
+    document.body.classList.remove("active-modal");
+  }
 
   // Get Orders
   const getOrders = async () => {
@@ -38,6 +46,18 @@ const Orders = () => {
       console.log(err);
     }
   };
+
+  order.forEach((order) => {
+    if (
+      order.status === "delivered" &&
+      order.rated === false &&
+      cook.indexOf(order.cook) == -1
+    ) {
+      console.log("rated");
+      setCook([...cook, order.cook]);
+      toggleModal();
+    }
+  });
 
   return (
     <>
@@ -65,7 +85,7 @@ const Orders = () => {
             Ordered
           </NavItem>
         </Nav>
-        {isCart ? <Cart /> : <Ordered />}
+        {isCart ? <Cart modal={modal} /> : <Ordered />}
       </Container>
     </>
   );

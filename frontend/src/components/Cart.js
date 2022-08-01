@@ -3,8 +3,9 @@ import SingleOrder from "../components/SingleOrder";
 import { Button } from "../styles/Orders.style";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { ModalDiv, Overlay, ModalContent } from "../styles/Modal.style";
 
-const Cart = () => {
+const Cart = ({ modal }) => {
   const navigate = useNavigate();
   var orderData = useSelector((state) => state.order);
   var count = 0;
@@ -38,6 +39,13 @@ const Cart = () => {
         >
           Go to checkout
         </Button>
+      )}
+      {modal && (
+        <ModalDiv>
+          <Overlay>
+            <ModalContent></ModalContent>
+          </Overlay>
+        </ModalDiv>
       )}
     </>
   );

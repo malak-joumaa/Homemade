@@ -74,6 +74,7 @@ const Modal = (data) => {
           dish: details._id,
           answers: answers,
           status: "cart",
+          rated: false,
         }),
       });
       const data2 = await res.json();
