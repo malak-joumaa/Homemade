@@ -36,6 +36,9 @@ const orderSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  rated: {
+    type: Boolean,
+  },
 });
 
 module.exports = mongoose.model("Orders", orderSchema);
