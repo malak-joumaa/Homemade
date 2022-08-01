@@ -80,6 +80,7 @@ const Checkout = () => {
             orderData[0].cook.user.location.coordinates,
           ],
           orders: OrderIDs,
+          rated: false,
         }),
       });
 

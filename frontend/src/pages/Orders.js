@@ -13,23 +13,17 @@ const Orders = () => {
   const [isCart, setCart] = useState(true);
   const [isOrdered, setOrdered] = useState(false);
   const [order, setOrder] = useState([]);
-  const [modal, setModal] = useState(false);
-  const [cook, setCook] = useState([]);
+  const [subOrder, setSubOrder] = useState([]);
 
   useEffect(() => {
     getOrders();
+    getSubOrders();
   }, []);
   console.log(order);
 
   // Redux
   const dispatch = useDispatch();
   const { addOrderData } = bindActionCreators(actionCreators, dispatch);
-  const toggleModal = () => setModal(!modal);
-  if (modal) {
-    document.body.classList.add("active-modal");
-  } else {
-    document.body.classList.remove("active-modal");
-  }
 
   // Get Orders
   const getOrders = async () => {
@@ -47,17 +41,20 @@ const Orders = () => {
     }
   };
 
-  order.forEach((order) => {
-    if (
-      order.status === "delivered" &&
-      order.rated === false &&
-      cook.indexOf(order.cook) == -1
-    ) {
-      console.log("rated");
-      setCook([...cook, order.cook]);
-      toggleModal();
+  // Get Submitted Orders
+  const getSubOrders = async () => {
+    try {
+      const res = await fetch(
+        "http://localhost:5000/api/order/get-c-sub-orders/?id=" +
+          localStorage.getItem("customer_id")
+      ).then(async (res) => {
+        const data = await res.json();
+        setSubOrder(data);
+      });
+    } catch (err) {
+      console.log(err);
     }
-  });
+  };
 
   return (
     <>
@@ -85,7 +82,7 @@ const Orders = () => {
             Ordered
           </NavItem>
         </Nav>
-        {isCart ? <Cart modal={modal} /> : <Ordered />}
+        {isCart ? <Cart order={subOrder} /> : <Ordered />}
       </Container>
     </>
   );
