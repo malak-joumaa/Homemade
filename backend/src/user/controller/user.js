@@ -130,6 +130,25 @@ async function addCustomer(req, res) {
   }
 }
 
+// Update Cook
+async function updateCook(req, res) {
+  try {
+    const cookUpdate = await Cook.findByIdAndUpdate(
+      { _id: req.query.id },
+      {
+        $set: {
+          rate: req.body.rate,
+        },
+      }
+    );
+    console.log("cookUpdate =>", cookUpdate);
+
+    return res.send();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 // Add Review
 async function addReview(req, res) {
   try {
@@ -259,4 +278,5 @@ module.exports = {
   getByCookId,
   findNearbyCooks,
   verifyToken,
+  updateCook,
 };
