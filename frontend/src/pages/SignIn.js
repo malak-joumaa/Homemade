@@ -58,13 +58,7 @@ const SignIn = () => {
         customer_id: decoded.customer_id,
       });
       window.localStorage.setItem("userData", userData);
-      if (decoded.user_type == "customer") {
-        navigate("/main-page");
-        window.localStorage.setItem("customer_id", decoded.customer_id);
-      } else {
-        navigate("/cook-profile");
-        window.localStorage.setItem("cook_id", decoded.cook_id);
-      }
+      window.location.reload();
     } catch (error) {
       toast.error("Incorrect username or password");
     }

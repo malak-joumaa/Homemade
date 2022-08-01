@@ -52,10 +52,10 @@ const Navbar = () => {
                   </div>
                   <div
                     className="dropdown-content"
-                    // onClick={() => {
-                    //   localStorage.clear();
-                    //   navigate("/");
-                    // }}
+                    onClick={() => {
+                      localStorage.clear();
+                      window.location.reload();
+                    }}
                   >
                     <NavLink to="/">
                       <div>

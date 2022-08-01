@@ -111,7 +111,7 @@ const CookProfile = () => {
           <Button
             onClick={() => {
               localStorage.clear();
-              navigate("/");
+              window.location.reload();
             }}
           >
             <i className="fa-solid fa-arrow-right-from-bracket"></i> Logout
