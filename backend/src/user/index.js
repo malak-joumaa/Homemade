@@ -10,11 +10,13 @@ const {
   getCooks,
   getByCookId,
   findNearbyCooks,
+  verifyToken,
 } = require("./controller/user");
 const router = Router();
 
 router.post("/auth/register", register);
 router.post("/auth/login", login);
+router.post("/auth/verify", verifyToken);
 router.post("/auth/add-cook", addCook);
 router.post("/auth/add-customer", addCustomer);
 router.post("/auth/add-review", addReview);

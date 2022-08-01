@@ -90,6 +90,18 @@ async function login(req, res) {
   }
 }
 
+// Verify Token
+async function verifyToken(req, res) {
+  try {
+    const token = req.body.token;
+    const decoded = jwt.verify(token, TOKEN_SECRET);
+    console.log(decoded);
+    return res.status(200).json({ decoded });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send(error);
+  }
+}
 // Add Cook
 async function addCook(req, res) {
   try {
@@ -246,4 +258,5 @@ module.exports = {
   getCooks,
   getByCookId,
   findNearbyCooks,
+  verifyToken,
 };
