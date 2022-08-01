@@ -3,17 +3,8 @@ const SubmittedOrder = require("../../model/SubmittedOrder");
 
 //Add Order function
 async function newOrder(body) {
-  const {
-    quantity,
-    total,
-    cook,
-    customer,
-    dish,
-    answers,
-    status,
-    route,
-    rated,
-  } = body;
+  const { quantity, total, cook, customer, dish, answers, status, route } =
+    body;
 
   const order = new Order({
     quantity,
@@ -24,7 +15,6 @@ async function newOrder(body) {
     answers,
     status,
     route,
-    rated,
   });
 
   return await order.save();
@@ -41,7 +31,8 @@ async function getOrdersById(id) {
 
 //Add Submitted Order function
 async function newSubOrder(body) {
-  const { total, pickup_hours, route, status, cook, customer, orders } = body;
+  const { total, pickup_hours, route, status, cook, customer, orders, rated } =
+    body;
 
   const subOrder = new SubmittedOrder({
     total,
@@ -51,6 +42,7 @@ async function newSubOrder(body) {
     cook,
     customer,
     orders,
+    rated,
   });
 
   return await subOrder.save();
@@ -68,10 +60,14 @@ async function newSubOrder(body) {
 async function getSubOrdersById(id) {
   return await SubmittedOrder.find({ cook: id }).populate("customer");
 }
+async function getSubOrdersByCustomerId(id) {
+  return await SubmittedOrder.find({ customer: id }).populate("cook");
+}
 
 module.exports = {
   newOrder,
   getOrdersById,
   newSubOrder,
   getSubOrdersById,
+  getSubOrdersByCustomerId,
 };

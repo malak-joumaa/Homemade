@@ -9,6 +9,7 @@ const {
   addSubOrder,
   getSubOrders,
   updateSubOrder,
+  getCustomerSubOrders,
 } = require("./controller/submittedOrder");
 const router = Router();
 
@@ -19,6 +20,7 @@ router.put("/update-order", updateOrder);
 
 router.post("/add-sub-order", addSubOrder);
 router.get("/get-sub-orders", getSubOrders);
+router.get("/get-c-sub-orders", getCustomerSubOrders);
 router.put("/update-sub-order", updateSubOrder);
 
 module.exports = router;

@@ -33,6 +33,9 @@ const submittedSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Customer",
   },
+  rated: {
+    type: Boolean,
+  },
 });
 
 module.exports = mongoose.model("SubmittedOrders", submittedSchema);

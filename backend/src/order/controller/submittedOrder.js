@@ -1,4 +1,8 @@
-const { newSubOrder, getSubOrdersById } = require("../service");
+const {
+  newSubOrder,
+  getSubOrdersById,
+  getSubOrdersByCustomerId,
+} = require("../service");
 const SubmittedOrder = require("../../../model/SubmittedOrder");
 const Cook = require("../../../model/Cook");
 const Customer = require("../../../model/Customer");
@@ -46,7 +50,7 @@ async function addSubOrder(req, res) {
   }
 }
 
-//Get submitted orders by customer Id
+//Get submitted orders by cook Id
 async function getSubOrders(req, res) {
   try {
     console.log(req.query);
@@ -54,6 +58,22 @@ async function getSubOrders(req, res) {
     if (req.query.id) {
       const id = req.query.id;
       const result = await getSubOrdersById(id);
+      console.log("submitted order data =>", result);
+      return res.send(result);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+//Get submitted orders by customer Id
+async function getCustomerSubOrders(req, res) {
+  try {
+    console.log(req.query);
+
+    if (req.query.id) {
+      const id = req.query.id;
+      const result = await getSubOrdersByCustomerId(id);
       console.log("submitted order data =>", result);
       return res.send(result);
     }
@@ -71,6 +91,7 @@ async function updateSubOrder(req, res) {
       {
         $set: {
           status: req.body.status,
+          rated: req.body.rated,
         },
       }
     );
@@ -84,4 +105,5 @@ module.exports = {
   addSubOrder,
   getSubOrders,
   updateSubOrder,
+  getCustomerSubOrders,
 };
