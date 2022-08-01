@@ -57,7 +57,8 @@ export const Button = styled.div`
 
 export const Table = styled.table`
   width: 100%;
-  height: 520px;
+  min-height: 100px;
+  max-height: 520px;
   overflow-y: scroll;
   border-radius: 10px;
   display: block;
@@ -79,9 +80,9 @@ export const Tbody = styled.table`
 `;
 
 export const TableRow = styled.tr`
-  background-color: ${(props) => (props.status === "ready" ? "#a0e9c8cf" : "")};
+  background-color: ${(props) => (props.status === "ready" ? "#cbedde" : "")};
   background-color: ${(props) =>
-    props.status === "delivered" ? "#c7c7c7" : ""};
+    props.status === "delivered" ? "#d7d7d7" : ""};
 `;
 
 export const IconTd = styled.td`
