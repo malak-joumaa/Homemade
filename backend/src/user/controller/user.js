@@ -1,13 +1,10 @@
 const Cook = require("../../../model/Cook");
-const Customer = require("../../../model/Customer");
 
 const {
   addUser,
   getByEmail,
   addNewCook,
   addNewCustomer,
-  addNewReview,
-  getReviewsByCookID,
   getCookByUserId,
   getCustomerByUserId,
   getByUserId,
@@ -149,36 +146,6 @@ async function updateCook(req, res) {
   }
 }
 
-// Add Review
-async function addReview(req, res) {
-  try {
-    console.log(req.body);
-
-    const addReviewResult = await addNewReview(req.body);
-    console.log("addReviewResult =>", addReviewResult);
-
-    return res.send({ review_id: addReviewResult });
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-// Get Reviews
-async function getReview(req, res) {
-  try {
-    console.log(req.query);
-
-    if (req.query.id) {
-      const id = req.query.id;
-      const result = await getReviewsByCookID(id);
-      console.log("review data =>", result);
-      return res.send(result);
-    }
-  } catch (error) {
-    console.log(error);
-  }
-}
-
 // Get User by id
 async function getUser(req, res) {
   try {
@@ -196,7 +163,7 @@ async function getUser(req, res) {
 }
 
 // Get Cooks
-async function getCooks(req, res) {
+async function getAllCooks(req, res) {
   try {
     console.log(req.query);
 
@@ -271,10 +238,8 @@ module.exports = {
   login,
   addCook,
   addCustomer,
-  addReview,
-  getReview,
   getUser,
-  getCooks,
+  getAllCooks,
   getByCookId,
   findNearbyCooks,
   verifyToken,

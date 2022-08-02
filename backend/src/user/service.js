@@ -1,8 +1,6 @@
 const User = require("../../model/User");
 const Cook = require("../../model/Cook");
 const Customer = require("../../model/Customer");
-const Review = require("../../model/Review");
-const { populate } = require("../../model/Menu");
 
 //Add user function
 async function addUser(body, hashPassword) {
@@ -49,29 +47,15 @@ async function addNewCook(body) {
 
 //Add customer function
 async function addNewCustomer(body) {
-  const { user, categories, orders, submitted_orders } = body;
+  const { user, orders, submitted_orders } = body;
 
   const customer = new Customer({
     user,
-    categories,
     orders,
     submitted_orders,
   });
 
   return await customer.save();
-}
-
-//Add customer function
-async function addNewReview(body) {
-  const { user_review, cook, customer } = body;
-
-  const review = new Review({
-    user_review,
-    cook,
-    customer,
-  });
-
-  return await review.save();
 }
 
 //Get user by id
@@ -86,25 +70,26 @@ async function getByEmail(email) {
   });
 }
 
+// Get Cook by user id
 async function getCookByUserId(userId) {
   return await Cook.findOne({ user: userId });
 }
 
+// Get Customer by user id
 async function getCustomerByUserId(userId) {
   return await Customer.findOne({ user: userId });
-}
-async function getReviewsByCookID(id) {
-  return await Review.find({ cook: id }).populate("customer");
 }
 
 async function getAllCooks() {
   return await Cook.find().populate("menu").populate("user");
 }
 
+// Get user by cook id
 async function getUserIdByCook(cookId) {
   return await Cook.findOne({ cook: cookId });
 }
 
+// Get cook by user id
 async function getCookByUserId(userId) {
   return await Cook.findOne({ user: userId });
 }
@@ -113,9 +98,7 @@ module.exports = {
   addUser,
   addNewCook,
   addNewCustomer,
-  addNewReview,
   getByEmail,
-  getReviewsByCookID,
   getCookByUserId,
   getCustomerByUserId,
   getByUserId,
