@@ -20,6 +20,7 @@ async function newOrder(body) {
   return await order.save();
 }
 
+// Get Orders by Customer Id
 async function getOrdersById(id) {
   return await Order.find({ customer: id })
     .populate("dish")
@@ -48,18 +49,12 @@ async function newSubOrder(body) {
   return await subOrder.save();
 }
 
-// async function getSubOrdersById(id) {
-//   return await SubmittedOrder.find({ customer: id }).populate({
-//     path: "customer",
-//     populate: {
-//       path: "user",
-//     },
-//   });
-// }
-
-async function getSubOrdersById(id) {
+// Get Submitted Orders by Cook Id
+async function getSubOrdersByCookId(id) {
   return await SubmittedOrder.find({ cook: id }).populate("customer");
 }
+
+// Get Submitted Orders by Customer Id
 async function getSubOrdersByCustomerId(id) {
   return await SubmittedOrder.find({ customer: id }).populate("cook");
 }
@@ -68,6 +63,6 @@ module.exports = {
   newOrder,
   getOrdersById,
   newSubOrder,
-  getSubOrdersById,
+  getSubOrdersByCookId,
   getSubOrdersByCustomerId,
 };

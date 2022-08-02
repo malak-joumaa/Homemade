@@ -3,7 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const userRouter = require("./src/user");
-const cookRouter = require("./src/menu");
+const menuRouter = require("./src/menu");
 const orderRouter = require("./src/order");
 const chatRouter = require("./src/chat");
 
@@ -18,7 +18,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use("/api/user", userRouter);
-app.use("/api/cook", cookRouter);
+app.use("/api/menu", menuRouter);
 app.use("/api/order", orderRouter);
 app.use("/api/chat", chatRouter);
 

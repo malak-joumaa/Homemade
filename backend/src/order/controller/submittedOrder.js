@@ -1,6 +1,6 @@
 const {
   newSubOrder,
-  getSubOrdersById,
+  getSubOrdersByCookId,
   getSubOrdersByCustomerId,
 } = require("../service");
 const SubmittedOrder = require("../../../model/SubmittedOrder");
@@ -51,13 +51,13 @@ async function addSubOrder(req, res) {
 }
 
 //Get submitted orders by cook Id
-async function getSubOrders(req, res) {
+async function getSubOrdersCook(req, res) {
   try {
     console.log(req.query);
 
     if (req.query.id) {
       const id = req.query.id;
-      const result = await getSubOrdersById(id);
+      const result = await getSubOrdersByCookId(id);
       console.log("submitted order data =>", result);
       return res.send(result);
     }
@@ -103,7 +103,7 @@ async function updateSubOrder(req, res) {
 
 module.exports = {
   addSubOrder,
-  getSubOrders,
+  getSubOrdersCook,
   updateSubOrder,
   getCustomerSubOrders,
 };
