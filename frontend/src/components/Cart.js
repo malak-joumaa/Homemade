@@ -13,12 +13,13 @@ const Cart = ({ order }) => {
   const [modal, setModal] = useState(false);
 
   const toggleModal = () => setModal(!modal);
-  var count = 0;
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     for (let i = 0; i < orderData.length; i++) {
       if (orderData[i].status === "cart") {
-        count++;
+        setCount(count + 1);
+        console.log("count", count);
       }
     }
 
