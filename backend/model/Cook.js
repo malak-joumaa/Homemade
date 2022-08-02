@@ -20,12 +20,6 @@ const cookSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Menu",
   },
-  reviews: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Review",
-    },
-  ],
   orders: [
     {
       type: mongoose.Schema.Types.ObjectId,

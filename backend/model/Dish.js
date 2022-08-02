@@ -23,12 +23,6 @@ const dishSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Menu",
   },
-  categories: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Category",
-    },
-  ],
   questions: {
     type: Array,
   },

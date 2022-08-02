@@ -5,12 +5,6 @@ const customerSchema = new mongoose.Schema({
     type: mongoose.Types.ObjectId,
     ref: "User",
   },
-  categories: [
-    {
-      type: mongoose.Types.ObjectId,
-      ref: "Category",
-    },
-  ],
   orders: [
     {
       type: mongoose.Schema.Types.ObjectId,
