@@ -16,7 +16,6 @@ const Cart = ({ order }) => {
   var count = 0;
 
   useEffect(() => {
-    console.log("subOrder", order);
     for (let i = 0; i < orderData.length; i++) {
       if (orderData[i].status === "cart") {
         count++;

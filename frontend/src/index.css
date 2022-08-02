@@ -283,35 +283,6 @@ a:link, a:visited{
   margin: 30px auto;
 }
 
-/* Categories */
-#category-div{
-  display: flex;
-  flex-wrap: wrap;
-  width: 900px;
-  margin: 0 auto;
-  margin-top: 150px;
-}
-
-.category{
-  cursor: pointer;
-  color: white;
-  background-color: #9DA4A0;
-  margin-right:40px;
-  margin-bottom: 30px;
-  padding:4px 10px;
-  font-size: 1.2em;
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-
-.category:hover{
-  background-color: #43C187;
-}
-
-.clicked_category{
-  background-color: #43C187;
-}
-
 .fa-plus{
   margin-top: 4px;
 }

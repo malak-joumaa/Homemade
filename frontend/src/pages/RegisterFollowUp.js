@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AddProfilePhoto from "../components/AddProfilePhoto";
-import Categories from "../components/Categories";
 import ChooseLocation from "../components/ChooseLocation";
 import OpeningHours from "../components/OpeningHours";
 import { useSelector } from "react-redux";
@@ -17,7 +16,6 @@ const RegisterFollowUp = () => {
     { location: {} },
     { openingHours: { from: "", till: "" } },
     { description: "" },
-    { categories: [] },
   ]);
   console.log(stateNb);
 
@@ -28,7 +26,7 @@ const RegisterFollowUp = () => {
   // Add Data to User
   const addData = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/user/auth/register", {
+      const res = await fetch("http://localhost:5000/api/user/register", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
@@ -48,25 +46,22 @@ const RegisterFollowUp = () => {
 
       if (user_type === "cook") {
         try {
-          const res = await fetch(
-            "http://localhost:5000/api/user/auth/add-cook",
-            {
-              method: "POST",
-              headers: {
-                "Content-type": "application/json",
-              },
-              body: JSON.stringify({
-                user: data2.user,
-                opening_hours: [
-                  data[2].openingHours.from,
-                  data[2].openingHours.till,
-                ],
-                description: data[3].description,
-                rate: 5,
-                submitted_orders: [],
-              }),
-            }
-          );
+          const res = await fetch("http://localhost:5000/api/user/add-cook", {
+            method: "POST",
+            headers: {
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify({
+              user: data2.user,
+              opening_hours: [
+                data[2].openingHours.from,
+                data[2].openingHours.till,
+              ],
+              description: data[3].description,
+              rate: 5,
+              submitted_orders: [],
+            }),
+          });
           const resData = await res.json();
           console.log(resData);
           navigate("/sign-in");
@@ -76,7 +71,7 @@ const RegisterFollowUp = () => {
       } else if (user_type === "customer") {
         try {
           const res = await fetch(
-            "http://localhost:5000/api/user/auth/add-customer",
+            "http://localhost:5000/api/user/add-customer",
             {
               method: "POST",
               headers: {
@@ -84,7 +79,6 @@ const RegisterFollowUp = () => {
               },
               body: JSON.stringify({
                 user: data2.user,
-                categories: data[4].categories,
                 submitted_orders: [],
               }),
             }
@@ -116,7 +110,7 @@ const RegisterFollowUp = () => {
           (user_type == "cook" ? (
             <OpeningHours data={data} setData={setData} />
           ) : (
-            <Categories data={data} setData={setData} />
+            <></>
           ))}
 
         {/* Links to Skip or move to the next page */}
@@ -133,7 +127,10 @@ const RegisterFollowUp = () => {
         <span
           className="next"
           onClick={() => {
-            if (stateNb == 3) {
+            if (stateNb == 2 && user_type == "customer") {
+              addData();
+            }
+            if (stateNb == 3 && user_type == "cook") {
               addData();
             } else {
               setStateNb(stateNb + 1);

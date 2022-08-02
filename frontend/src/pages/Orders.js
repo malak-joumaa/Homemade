@@ -1,10 +1,9 @@
-import { Grid } from "@mui/material";
 import { Container } from "@mui/system";
 import React, { useState, useEffect } from "react";
 import Cart from "../components/Cart";
 import Navbar from "../components/Navbar";
 import Ordered from "../components/Ordered";
-import { Nav, NavItem, Button } from "../styles/Orders.style";
+import { Nav, NavItem } from "../styles/Orders.style";
 import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "../state/index";

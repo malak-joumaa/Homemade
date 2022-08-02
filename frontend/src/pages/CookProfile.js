@@ -45,7 +45,7 @@ const CookProfile = () => {
     try {
       console.log("here");
       const res2 = await fetch(
-        "http://localhost:5000/api/cook/get-menu?id=" +
+        "http://localhost:5000/api/menu/get-menu?id=" +
           localStorage.getItem("cook_id")
       ).then(async (res2) => {
         const data2 = await res2.json();

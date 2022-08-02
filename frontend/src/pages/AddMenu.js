@@ -15,7 +15,6 @@ const AddMenu = () => {
       price: "",
       quantity: "",
       photo: "",
-      categories: [],
     },
   ]);
 
@@ -54,7 +53,6 @@ const AddMenu = () => {
       price: "",
       quantity: "",
       photo: "",
-      categories: [],
     };
     setDish([...dish, newDish]);
     setQuestion([...question, []]);
@@ -62,7 +60,7 @@ const AddMenu = () => {
 
   const submitMenu = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/cook/add-menu", {
+      const res = await fetch("http://localhost:5000/api/menu/add-menu", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
@@ -78,7 +76,7 @@ const AddMenu = () => {
       var count = -1;
       dish.forEach(async (singleDish) => {
         count++;
-        const res2 = await fetch("http://localhost:5000/api/cook/add-dish", {
+        const res2 = await fetch("http://localhost:5000/api/menu/add-dish", {
           method: "POST",
           headers: {
             "Content-type": "application/json",
@@ -90,10 +88,6 @@ const AddMenu = () => {
             photo: singleDish.photo,
             quantity: singleDish.quantity,
             menu: menuId,
-            categories: [
-              "62cb22ab7c4f7b9583bd6d5e",
-              "62cb29b0c427950bca3e65ed",
-            ],
             questions: question[count],
           }),
         });
@@ -168,9 +162,6 @@ const AddMenu = () => {
                     handleFormChange(index, e);
                   }}
                 />
-                {/* <br />
-                <label>Category:</label>
-                <input type="text" /> */}
               </div>
               <div>
                 <h3>Specifications</h3>

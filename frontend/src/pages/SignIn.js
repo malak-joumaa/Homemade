@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import User_Sign_In from "../assets/chef.jpg";
 import Logo from "../assets/logo.png";
 import jwt_decode from "jwt-decode";
@@ -10,7 +10,6 @@ import { bindActionCreators } from "redux";
 import { actionCreators } from "../state/index";
 
 const SignIn = () => {
-  const navigate = useNavigate();
   const userData = useSelector((state) => state.login);
   const dispatch = useDispatch();
   const { addUserData } = bindActionCreators(actionCreators, dispatch);
@@ -24,7 +23,7 @@ const SignIn = () => {
   // Login api
   const signIn = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/user/auth/login", {
+      const res = await fetch("http://localhost:5000/api/user/login", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
@@ -59,6 +58,11 @@ const SignIn = () => {
       });
       window.localStorage.setItem("userData", userData);
       window.location.reload();
+      if (decoded.user_type == "customer") {
+        window.localStorage.setItem("customer_id", decoded.customer_id);
+      } else {
+        window.localStorage.setItem("cook_id", decoded.cook_id);
+      }
     } catch (error) {
       toast.error("Incorrect username or password");
     }
@@ -92,7 +96,7 @@ const SignIn = () => {
                 e.preventDefault();
                 if (email == "" || password == "") {
                   console.log("here");
-                  toast.error("Please fill all feilds");
+                  toast.error("Please fill all fields");
                 } else {
                   signIn();
                 }

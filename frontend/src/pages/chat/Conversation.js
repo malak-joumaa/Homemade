@@ -14,7 +14,7 @@ const Conversation = ({ conversation, currentUser }) => {
     const getUser = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/user/auth/get-user/?id=" + friendId
+          "http://localhost:5000/api/user/get-user/?id=" + friendId
         );
         const data = await response.json();
         console.log("friend", data);

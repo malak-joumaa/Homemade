@@ -48,7 +48,7 @@ const MainPage = () => {
   const getCooks = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/user/auth/get-cooks?location1=" +
+        "http://localhost:5000/api/user/get-cooks?location1=" +
           selectedPosition[0] +
           "&location2=" +
           selectedPosition[1]

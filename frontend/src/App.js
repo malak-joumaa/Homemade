@@ -17,7 +17,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const verifyToken = async () => {
-    const res = await fetch("http://localhost:5000/api/user/auth/verify", {
+    const res = await fetch("http://localhost:5000/api/user/verify", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
