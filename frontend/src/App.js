@@ -15,6 +15,7 @@ import Chat from "./pages/chat/Chat";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const verifyToken = async () => {
     const res = await fetch("http://localhost:5000/api/user/verify", {
@@ -30,15 +31,19 @@ function App() {
     console.log("Verify: ", data);
     if (data.decoded) {
       setIsLoggedIn(true);
+      setIsLoading(false);
     } else {
       setIsLoggedIn(false);
+      setIsLoading(false);
     }
   };
   useEffect(() => {
     verifyToken();
   }, []);
 
-  return (
+  return isLoading ? (
+    <div>Loading...</div>
+  ) : (
     <BrowserRouter>
       <Toaster position="top-center" reverseOrder={false} />
       {isLoggedIn ? (
