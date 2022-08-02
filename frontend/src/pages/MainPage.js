@@ -62,7 +62,6 @@ const MainPage = () => {
   console.log(cooks);
   console.log(selectedPosition);
   localStorage.setItem("newLocation", JSON.stringify(selectedPosition));
-
   return (
     <Container maxWidth="xl">
       <MainPageContainer>
@@ -149,7 +148,7 @@ const MainPage = () => {
             ?.filter(
               (cook) =>
                 new Date(cook.createdAt).getMonth() == new Date().getMonth() ||
-                new Date(cook.createdAt).getMonth() == new Date().getMonth() + 1
+                new Date(cook.createdAt).getMonth() == new Date().getMonth() - 1
             )
             .map((cook) => (
               <SwiperSlide key={cook._id}>
