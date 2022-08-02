@@ -12,15 +12,29 @@
 
 <img src="./readme/title2.svg"/>
 
-> The Well app is a mental health and mindfulness app built on top of the science of positive psychology. The Well app is more than just another meditation or journaling app; it encourages you to enhance and reflect on your day with structured, guided activities.
->
-> There are 5 daily tasks that the Well app asks you to complete each day: record 3 gratitudes, write a journal entry, perform 3 acts of kindness, exercise for 20 minutes, and meditate for 15 minutes.
+> Homemade is a website that allows users to sell and buy homemade food.
 
 ### User Stories
 
-- As a user, I want to browsse ablums, so that I can find quick links
-- As a user, I want to browsse ablums, so that I can find quick links
-- As a user, I want to browsse ablums, so that I can find quick links
+#### &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; As a Customer:
+
+- I want to see menus of home cooks that are located in my area.
+- I want to be able to view cooks from other areas.
+- I want to see the top and new home cooks.
+- I want to view the cook details with their menu.
+- I want to order food from the cook.
+- I want to see my placed orders that are not delivered yet.
+- I want to view the route between my location and the cook.
+- I want to chat with the cook.
+- I want to be able to rate the cook.
+
+#### &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; As a Cook:
+
+- I want to create and view my menu.
+- I want to be able to check my orders and change the status of my orders.
+- I want to be able to view the route between my location and the customer.
+- I want to be able to chat with the customer.
+- I want to be able to view other cooks.
 
 <br><br>
 
