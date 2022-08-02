@@ -70,6 +70,11 @@ async function getByEmail(email) {
   });
 }
 
+// Get Cook by id
+async function getCookById(id) {
+  return await Cook.findById(id).populate("user");
+}
+
 // Get Cook by user id
 async function getCookByUserId(userId) {
   return await Cook.findOne({ user: userId });
@@ -104,4 +109,5 @@ module.exports = {
   getByUserId,
   getAllCooks,
   getUserIdByCook,
+  getCookById,
 };

@@ -5,11 +5,12 @@ const {
   addCook,
   addCustomer,
   getUser,
-  getAllCooks,
+  getCooks,
   getByCookId,
   findNearbyCooks,
   verifyToken,
   updateCook,
+  getCook,
 } = require("./controller/user");
 const router = Router();
 
@@ -20,7 +21,8 @@ router.post("/add-cook", addCook);
 router.post("/add-customer", addCustomer);
 router.put("/update-cook", updateCook);
 router.get("/get-user", getUser);
-router.get("/get-all-cooks", getAllCooks);
+router.get("/get-cook", getCook);
+router.get("/get-all-cooks", getCooks);
 router.get("/get-cooks", findNearbyCooks);
 router.get("/get-userId", getByCookId);
 

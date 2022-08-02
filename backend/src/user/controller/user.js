@@ -10,6 +10,7 @@ const {
   getByUserId,
   getAllCooks,
   getUserIdByCook,
+  getCookById,
 } = require("../service");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -146,6 +147,22 @@ async function updateCook(req, res) {
   }
 }
 
+//Get Cook by id
+async function getCook(req, res) {
+  try {
+    console.log(req.query);
+
+    if (req.query.id) {
+      const id = req.query.id;
+      const result = await getCookById(id);
+      console.log("cook data =>", result);
+      return res.send(result);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 // Get User by id
 async function getUser(req, res) {
   try {
@@ -163,7 +180,7 @@ async function getUser(req, res) {
 }
 
 // Get Cooks
-async function getAllCooks(req, res) {
+async function getCooks(req, res) {
   try {
     console.log(req.query);
 
@@ -239,9 +256,10 @@ module.exports = {
   addCook,
   addCustomer,
   getUser,
-  getAllCooks,
+  getCooks,
   getByCookId,
   findNearbyCooks,
   verifyToken,
   updateCook,
+  getCook,
 };

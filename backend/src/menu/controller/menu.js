@@ -2,7 +2,7 @@ const { newMenu, newDish } = require("../service");
 const Menu = require("../../../model/Menu");
 const Cook = require("../../../model/Cook");
 
-// Menu
+// Add Menu
 async function addMenu(req, res) {
   try {
     console.log(req.body);
@@ -32,7 +32,7 @@ async function addMenu(req, res) {
   }
 }
 
-// Dish
+// Add Dish
 async function addDish(req, res) {
   try {
     console.log(req.body);
