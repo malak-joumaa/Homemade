@@ -80,7 +80,7 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 | Order Modal                                        | Cart                                            |
 | ![Order Modal](readme/Images/order-modal.gif)      | ![Cart](readme/Images/cart.png)                 |
 | Checkout                                           | Ordered                                         |
-| ![Checkout](readme/Images/checkout.png)            | ![Ordered](readme/Images/ordered.png)           |
+| ![Checkout](readme/Images/checkout.png)            | ![Ordered](readme/Images/ordered.gif)           |
 | Cook Profile Orders                                | Cook Profile Menu                               |
 | ![Checkout](readme/Images/cook-profile-orders.png) | ![Ordered](readme/Images/cook-profile-menu.png) |
 | Chat                                               | Add Menu                                        |
