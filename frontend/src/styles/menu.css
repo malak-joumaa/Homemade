@@ -5,6 +5,10 @@
     position: relative;
 }
 
+#menu h1{
+    margin-bottom: 50px;
+}
+
 #add-menu{
     background-color: white;
     width: 80vw;
@@ -12,6 +16,7 @@
     border-radius: 5px;
     box-sizing: border-box;
     padding: 8px 30px;
+    padding-bottom: 200px;
 }
 
 #add-menu-form{
@@ -67,6 +72,7 @@
     border: none;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 8px;
+    margin-top: 25px;
 }
 
 /* Image Upload */
