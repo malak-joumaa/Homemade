@@ -67,23 +67,16 @@ const MainPage = () => {
       <MainPageContainer>
         <Navbar />
         <SearchLocation>
-          <Grid container spacing={1}>
-            <Grid item xs={8}>
-              <SearchBox placeholder="Search..."></SearchBox>
-            </Grid>
-            <Grid item xs={4}>
-              <LocationName
-                color={color}
-                onClick={() => {
-                  toggleMapsModal();
-                  toggleColor();
-                }}
-              >
-                <Loc className="fa-solid fa-location-dot"></Loc>
-                {locationName}
-              </LocationName>
-            </Grid>
-          </Grid>
+          <LocationName
+            color={color}
+            onClick={() => {
+              toggleMapsModal();
+              toggleColor();
+            }}
+          >
+            <Loc className="fa-solid fa-location-dot"></Loc>
+            {locationName}
+          </LocationName>
         </SearchLocation>
         <LocationModal
           toggleMapsModal={toggleMapsModal}
@@ -169,6 +162,8 @@ const MainPage = () => {
 
         {/* Menu */}
         <Title>Menus</Title>
+        <SearchBox placeholder="Search..."></SearchBox>
+
         {/* Map cooks over menu */}
         {cooks
           ?.filter((cook) => !!cook.menu)
