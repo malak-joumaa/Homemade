@@ -76,7 +76,7 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 | Follow Up                                          | Follow Up                                       |
 | ![Sign Up](readme/Images/follow-up2.png)           | ![Follow Up](readme/Images/follow-up3.png)      |
 | Main Page                                          | Cook Page                                       |
-| ![Main Page](readme/Images/main-page.png)          | ![Cook Page](readme/Images/cook-page.png)       |
+| ![Main Page](readme/Images/main-page.png)          | ![Cook Page](readme/Images/cook-page.gif)       |
 | Order Modal                                        | Cart                                            |
 | ![Order Modal](readme/Images/order-modal.png)      | ![Cart](readme/Images/cart.png)                 |
 | Checkout                                           | Ordered                                         |
