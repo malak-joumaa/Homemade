@@ -48,15 +48,7 @@ export const Description = styled.textarea`
   }
 `;
 
-export const PhotoName = styled.div`
-  display: flex;
-  text-align: center;
-  position: relative;
-  display: inline-block;
-`;
-
 export const Name = styled.div`
   margin-top: 10px;
-  margin-right: 10px;
   color: #45a479;
 `;

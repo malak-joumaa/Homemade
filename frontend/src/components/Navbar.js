@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Nav, NavUl, NavLogoDiv, Name } from "../styles/Container.style";
 import { List } from "../styles/Links.style";
-import { NavLogo, ProfileIcon } from "../styles/Image.style";
+import { NavLogo, ProfileIcon1, ProfileIcon2 } from "../styles/Image.style";
 import Logo from "../assets/logo.png";
 import { Container } from "@mui/material";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -22,13 +22,11 @@ const Navbar = () => {
             <List>
               <NavLink to="/main-page">Explore</NavLink>
             </List>
-            <List>
-              {userData.customer_id == "" ? (
-                <NavLink to="/add-menu">Menu</NavLink>
-              ) : (
+            {userData.cook_id == "" && (
+              <List>
                 <NavLink to="/orders">Orders</NavLink>
-              )}
-            </List>
+              </List>
+            )}
             <List>
               <NavLink to="/chat">Messages</NavLink>
             </List>
@@ -36,10 +34,8 @@ const Navbar = () => {
               {userData.customer_id == "" ? (
                 <NavLink to="/cook-profile">
                   <div style={{ display: "flex" }} className="dropdown">
-                    <Name>
-                      {userData.fname} {userData.lname}
-                    </Name>
-                    <ProfileIcon src={userData.profile_photo} />
+                    {userData.fname} {userData.lname}
+                    <ProfileIcon1 src={userData.profile_photo} />
                   </div>
                 </NavLink>
               ) : (
@@ -48,7 +44,7 @@ const Navbar = () => {
                     <Name>
                       {userData.fname} {userData.lname}
                     </Name>
-                    <ProfileIcon src={userData.profile_photo} />
+                    <ProfileIcon2 src={userData.profile_photo} />
                   </div>
                   <div
                     className="dropdown-content"

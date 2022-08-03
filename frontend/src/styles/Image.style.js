@@ -5,11 +5,20 @@ export const NavLogo = styled.img`
   float: left;
 `;
 
-export const ProfileIcon = styled.img`
+export const ProfileIcon1 = styled.img`
   width: 40px;
   height: 40px;
   border-radius: 50px;
-  margin-right: 10px;
+  margin-left: 10px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 10px;
+  margin-top: -10px;
+`;
+
+export const ProfileIcon2 = styled.img`
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  margin-left: 10px;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 10px;
 `;
 
