@@ -66,17 +66,21 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 <br><br>
 <img src="./readme/title5.svg"/>
 
-> Uing the above mentioned tecch stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
+> Using the above mentioned tech stacks and the wireframes build with figma from the user stories we have, the implementation of the app is shown as below, these are screenshots from the real app
 
-| Landing                                   | Sign In                                    |
-| ----------------------------------------- | ------------------------------------------ |
-| ![Landing](readme/Images/Landing.png)     | ![Sign In](readme/Images/Sign-in.png)      |
-| Sign Up                                   | Follow Up                                  |
-| ![Sign Up](readme/Images/Sign-up.png)     | ![Follow Up](readme/Images/follow-up1.png) |
-| Follow Up                                 | Follow Up                                  |
-| ![Sign Up](readme/Images/follow-up2.png)  | ![Follow Up](readme/Images/follow-up3.png) |
-| Main Page                                 | Cook Page                                  |
-| ![Main Page](readme/Images/main-page.png) | ![Cook Page](readme/Images/cook-page.png)  |
+| Landing                                       | Sign In                                    |
+| --------------------------------------------- | ------------------------------------------ |
+| ![Landing](readme/Images/Landing.png)         | ![Sign In](readme/Images/Sign-in.png)      |
+| Sign Up                                       | Follow Up                                  |
+| ![Sign Up](readme/Images/Sign-up.png)         | ![Follow Up](readme/Images/follow-up1.png) |
+| Follow Up                                     | Follow Up                                  |
+| ![Sign Up](readme/Images/follow-up2.png)      | ![Follow Up](readme/Images/follow-up3.png) |
+| Main Page                                     | Cook Page                                  |
+| ![Main Page](readme/Images/main-page.png)     | ![Cook Page](readme/Images/cook-page.png)  |
+| Order Modal                                   | Cart                                       |
+| ![Order Modal](readme/Images/order-modal.png) | ![Cart](readme/Images/cart.png)            |
+| Checkout                                      | Ordered                                    |
+| ![Checkout](readme/Images/checkout.png)       | ![Ordered](readme/Images/ordered.png)      |
 
 <br><br>
 <img src="./readme/title6.svg"/>
