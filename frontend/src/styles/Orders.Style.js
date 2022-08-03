@@ -8,15 +8,12 @@ export const Nav = styled.div`
 export const NavItem = styled.div`
   cursor: pointer;
   border: 1px solid #79c3a1;
-  border-radius: 10px;
+  border-radius: 20px;
   padding: 5px 25px;
   margin-right: 20px;
   font-size: 1.2em;
   font-weight: 600;
-  background-color: ${(props) => (props.type === true ? "#76cfa6" : "white")};
-  &:hover {
-    background-color: #acdac5;
-  }
+  background-color: ${(props) => (props.type === true ? "#93d3b5" : "white")};
 `;
 
 export const CartOrder = styled.div`
@@ -57,11 +54,9 @@ export const Delete = styled.span`
 `;
 
 export const Button = styled.button`
-  width: 140px;
-  height: 37px;
-  color: white;
-  border-radius: 5px;
-  background-color: #76cfa6;
+  padding: 11px 20px;
+  border-radius: 20px;
+  background-color: #93d3b5;
   border: none;
   font-size: 1.05em;
   display: block;
@@ -69,4 +64,7 @@ export const Button = styled.button`
   margin-top: 30px;
   font-family: "Quicksand", sans-serif;
   font-weight: 500;
+  &:hover {
+    background-color: #79c3a1;
+  }
 `;
