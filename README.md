@@ -43,9 +43,13 @@
 > This design was planned before on paper, then moved to Figma app for the fine details.
 > Note that i didn't use any styling library or theme, all from scratch and using pure css modules
 
-| Landing                               | Home/Search                                                                               |
-| ------------------------------------- | ----------------------------------------------------------------------------------------- |
-| ![Landing](readme/Images/Landing.png) | ![Home/Search](https://github.com/julescript/spotifyndr/blob/master/demo/Search_Page.jpg) |
+| Main Page                                        | Cook Page                                    |
+| ------------------------------------------------ | -------------------------------------------- |
+| ![Main Page](readme/Images/wf-main-page.png)     | ![Cook Page](readme/Images/wf-cook-page.png) |
+| Order Modal                                      | Cart                                         |
+| ![Order Modal](readme/Images/wf-order-modal.png) | ![Cart](readme/Images/wf-cart.png)           |
+| Checkout                                         | Ordered                                      |
+| ![Checkout](readme/Images/wf-checkout.png)       | ![Ordered](readme/Images/wf-cook-page.png)   |
 
 | Artists results                                                                                | Artist's Albums                                                                               |
 | ---------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
