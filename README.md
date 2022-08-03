@@ -70,7 +70,7 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 | Landing                                            | Sign In                                         |
 | -------------------------------------------------- | ----------------------------------------------- |
-| ![Landing](readme/Images/Landing.png)              | ![Sign In](readme/Images/Sign-in.png)           |
+| ![Landing](readme/Images/Landing.png)              | ![Sign In](readme/Images/sign-in.gif)           |
 | Sign Up                                            | Follow Up                                       |
 | ![Sign Up](readme/Images/Sign-up.png)              | ![Follow Up](readme/Images/follow-up1.png)      |
 | Follow Up                                          | Follow Up                                       |
