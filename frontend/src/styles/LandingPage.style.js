@@ -12,6 +12,7 @@ export const Container1 = styled.div`
   background-color: #b9e5d0;
   overflow: hidden;
   z-index: -1;
+  margin-right: 0px;
 `;
 
 export const Blob = styled.div`
