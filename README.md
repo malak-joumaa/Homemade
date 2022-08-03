@@ -84,7 +84,7 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 | Cook Profile Orders                                | Cook Profile Menu                               |
 | ![Checkout](readme/Images/cook-profile-orders.png) | ![Ordered](readme/Images/cook-profile-menu.png) |
 | Chat                                               | Add Menu                                        |
-| ![Checkout](readme/Images/chat.png)                | ![Ordered](readme/Images/add-menu.png)          |
+| ![Checkout](readme/Images/chat.gif)                | ![Ordered](readme/Images/add-menu.png)          |
 
 <br><br>
 <img src="./readme/title6.svg"/>
