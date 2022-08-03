@@ -157,3 +157,14 @@ export const ModalContentLoc = styled.div`
   border-radius: 3px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 `;
+
+export const OverlayLoc = styled.div`
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  background: rgba(49, 49, 49, 0.5);
+`;
