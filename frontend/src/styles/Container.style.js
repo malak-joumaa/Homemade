@@ -25,16 +25,27 @@ export const SearchLocation = styled.div`
   margin-top: 25px;
 `;
 
+export const CookDescription = styled.div`
+  width: 86%;
+  margin: 0 auto;
+  box-size: border-box;
+  padding-right: 30px;
+`;
+
 export const Description = styled.textarea`
   height: 150px;
   width: 100%;
-  border: 2px solid #45a479;
-  border-radius: 5px;
+  background-color: #d3f2e3;
+  padding: 15px;
+  border: none;
+  border-radius: 20px;
   resize: none;
   margin-top: 15px;
-  font-size: 1.25em;
-  background-color: white;
+  font-size: 1.2em;
   font-family: "Quicksand", sans-serif;
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const PhotoName = styled.div`

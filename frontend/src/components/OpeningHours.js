@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material";
 import React, { useState } from "react";
 import Photo from "../assets/hours.png";
-import { Description } from "../styles/Container.style";
+import { Description, CookDescription } from "../styles/Container.style";
 
 const OpeningHours = ({ setData, data }) => {
   const [valid, setValid] = useState(false);
@@ -60,7 +60,7 @@ const OpeningHours = ({ setData, data }) => {
             />
           </div>
         </div>
-        <div>
+        <CookDescription>
           <label id="desc">Cook/Restaurant Description:</label>
           <br />
           <Grid container spacing={1}>
@@ -76,7 +76,7 @@ const OpeningHours = ({ setData, data }) => {
               />
             </Grid>
           </Grid>
-        </div>
+        </CookDescription>
       </div>
     </>
   );
