@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
+import { useNavigate } from "react-router-dom";
 import { Grid, Container, Rating } from "@mui/material";
 import {
   Cook_Name,
@@ -7,11 +8,13 @@ import {
   Description,
   Opening_Hours,
   Title,
+  Messages,
 } from "../styles/SingleCook.styles";
 import Menu from "../components/Menu";
 import { Display_Cook_Image } from "../styles/Image.style";
 
 function SingleCook() {
+  const navigate = useNavigate();
   const [cook, setCook] = useState([]);
   const [menu, setMenu] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -62,6 +65,27 @@ function SingleCook() {
       console.log(err);
     }
   };
+
+  // Create Chat
+  const createChat = async () => {
+    try {
+      const res = await fetch("http://localhost:5000/api/chat/add-convo", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          members: ["62e161b3a3bef4c5101d59bc", "62dff826486c6987659535fc"],
+        }),
+      });
+      const data = await res.json();
+      console.log(data);
+      navigate("/chat");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <>
       {loading && <div>Loading...</div>}
@@ -94,6 +118,10 @@ function SingleCook() {
                   value={cook.rate}
                   readOnly
                 />
+                <Messages
+                  className="fa-solid fa-comment-dots"
+                  onClick={createChat}
+                ></Messages>
               </Grid>
             </Grid>
             <Opening_Hours>

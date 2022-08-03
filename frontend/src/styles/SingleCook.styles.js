@@ -49,3 +49,10 @@ export const Title = styled.h2`
   color: #3c3c3c;
   text-decoration: underline;
 `;
+
+export const Messages = styled.i`
+  cursor: pointer;
+  font-size: 2em;
+  margin-left: 10px;
+  color: #383838;
+`;

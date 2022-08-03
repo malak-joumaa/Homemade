@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const MenuContainer = styled.div`
-  border: 3px solid #79bb9cd1;
+  border: 3px solid #79c3a1;
   border-radius: 15px;
   min-height: 160px;
   margin-top: 30px;
