@@ -68,14 +68,11 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 > Uing the above mentioned tecch stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
 
-| Landing                                  | Sign In                                    |
-| ---------------------------------------- | ------------------------------------------ |
-| ![Landing](readme/Images/Landing.png)    | ![Sign In](readme/Images/Sign-in.png)      |
-| Sign Up                                  | Follow Up                                  |
-| -------------------------------------    | -------------------------------------      |
-| ![Sign Up](readme/Images/Sign-up.png)    | ![Follow Up](readme/Images/follow-up1.png) |
-| Follow Up                                | Follow Up                                  |
-| -------------------------------------    | -------------------------------------      |
+| Landing | Sign In |
+| ![Landing](readme/Images/Landing.png) | ![Sign In](readme/Images/Sign-in.png) |
+| Sign Up | Follow Up |
+| ![Sign Up](readme/Images/Sign-up.png) | ![Follow Up](readme/Images/follow-up1.png) |
+| Follow Up | Follow Up |
 | ![Sign Up](readme/Images/follow-up2.png) | ![Follow Up](readme/Images/follow-up3.png) |
 
 <br><br>
