@@ -119,7 +119,7 @@ const OrderTable = () => {
         <Thead className="table-section">
           <th>Name</th>
           <th>Items</th>
-          <th>Hour</th>
+          <th>Order Time</th>
           <th>Total</th>
           <th>Status</th>
           <th>Chat</th>
