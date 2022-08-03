@@ -78,7 +78,7 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 | Explore Page                                       | Cook Page                                       |
 | ![Main Page](readme/Images/explore-page.gif)       | ![Cook Page](readme/Images/cook-page.gif)       |
 | Order Modal                                        | Cart                                            |
-| ![Order Modal](readme/Images/order-modal.png)      | ![Cart](readme/Images/cart.png)                 |
+| ![Order Modal](readme/Images/order-modal.gif)      | ![Cart](readme/Images/cart.png)                 |
 | Checkout                                           | Ordered                                         |
 | ![Checkout](readme/Images/checkout.png)            | ![Ordered](readme/Images/ordered.png)           |
 | Cook Profile Orders                                | Cook Profile Menu                               |
