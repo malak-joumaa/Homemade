@@ -48,7 +48,7 @@ export const AddDish = styled.div`
 `;
 
 export const Photo = styled.img`
-  width: 220px;
+  width: 150px;
   height: 130px;
   margin: 10px auto;
   border-radius: 10px;

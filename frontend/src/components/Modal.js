@@ -85,7 +85,6 @@ const Modal = (data) => {
       console.log(error);
     }
   };
-  console.log(details.questions[0].question);
   console.log(answers);
   return (
     <>

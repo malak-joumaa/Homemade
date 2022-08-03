@@ -54,5 +54,5 @@ export const Messages = styled.i`
   cursor: pointer;
   font-size: 2em;
   margin-left: 10px;
-  color: #383838;
+  color: #6d716f;
 `;
