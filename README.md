@@ -51,10 +51,6 @@
 | Checkout                                         | Ordered                                      |
 | ![Checkout](readme/Images/wf-checkout.png)       | ![Ordered](readme/Images/wf-cook-page.png)   |
 
-| Artists results                                                                                | Artist's Albums                                                                               |
-| ---------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| ![Artists results](https://github.com/julescript/spotifyndr/blob/master/demo/Artists_Page.jpg) | ![Artist's Albums](https://github.com/julescript/spotifyndr/blob/master/demo/Albums_Page.jpg) |
-
 <br><br>
 
 <img src="./readme/title4.svg"/>
