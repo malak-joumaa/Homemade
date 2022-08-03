@@ -68,23 +68,25 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 > Using the above mentioned tech stacks and the wireframes build with figma from the user stories we have, the implementation of the app is shown as below, these are screenshots from the real app
 
-| Landing                                            | Sign In                                         |
-| -------------------------------------------------- | ----------------------------------------------- |
-| ![Landing](readme/Images/Landing.png)              | ![Sign In](readme/Images/sign-in.gif)           |
-| Sign Up                                            | Follow Up                                       |
-| ![Sign Up](readme/Images/Sign-up.png)              | ![Follow Up](readme/Images/follow-up1.gif)      |
-| Follow Up                                          | Follow Up                                       |
-| ![Sign Up](readme/Images/follow-up2.png)           | ![Follow Up](readme/Images/follow-up3.gif)      |
-| Explore Page                                       | Cook Page                                       |
-| ![Main Page](readme/Images/explore-page.gif)       | ![Cook Page](readme/Images/cook-page.gif)       |
-| Order Modal                                        | Cart                                            |
-| ![Order Modal](readme/Images/order-modal.gif)      | ![Cart](readme/Images/cart.png)                 |
-| Checkout                                           | Ordered                                         |
-| ![Checkout](readme/Images/checkout.png)            | ![Ordered](readme/Images/ordered.gif)           |
-| Cook Profile Orders                                | Cook Profile Menu                               |
-| ![Checkout](readme/Images/cook-profile-orders.png) | ![Ordered](readme/Images/cook-profile-menu.png) |
-| Chat                                               | Add Menu                                        |
-| ![Checkout](readme/Images/chat.gif)                | ![Ordered](readme/Images/add-menu.png)          |
+| Landing                                            | Sign In                                               |
+| -------------------------------------------------- | ----------------------------------------------------- |
+| ![Landing](readme/Images/Landing.png)              | ![Sign In](readme/Images/sign-in.gif)                 |
+| Sign Up                                            | Follow Up                                             |
+| ![Sign Up](readme/Images/Sign-up.png)              | ![Follow Up](readme/Images/follow-up1.gif)            |
+| Follow Up                                          | Follow Up                                             |
+| ![Sign Up](readme/Images/follow-up2.png)           | ![Follow Up](readme/Images/follow-up3.gif)            |
+| Explore Page                                       | Cooks From Different Areas                            |
+| ![Main Page](readme/Images/explore-page.gif)       | ![Different Areas](readme/Images/different-areas.gif) |
+| Cook Page                                          | Order Modal                                           |
+| ![Cook Page](readme/Images/cook-page.gif)          | ![Order Modal](readme/Images/order-modal.gif)         |
+| Cart                                               | Checkout                                              |
+| ![Cart](readme/Images/cart.png)                    | ![Checkout](readme/Images/checkout.png)               |
+| Ordered                                            | Rate                                                  |
+| ![Ordered](readme/Images/ordered.gif)              | ![Rate](readme/Images/rate.png)                       |
+| Cook Profile Orders                                | Cook Profile Menu                                     |
+| ![Checkout](readme/Images/cook-profile-orders.png) | ![Ordered](readme/Images/cook-profile-menu.png)       |
+| Chat                                               | Add Menu                                              |
+| ![Checkout](readme/Images/chat.gif)                | ![Ordered](readme/Images/add-menu.png)                |
 
 <br><br>
 <img src="./readme/title6.svg"/>
