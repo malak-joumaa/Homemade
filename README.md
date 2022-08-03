@@ -45,7 +45,7 @@
 
 | Landing                                                                                  | Home/Search                                                                               |
 | ---------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| ![Landing](https://github.com/malak-joumaa/Homemade/tree/main/readme/images/Landing.png) | ![Home/Search](https://github.com/julescript/spotifyndr/blob/master/demo/Search_Page.jpg) |
+| ![Landing](https://github.com/malak-joumaa/Homemade/tree/main/readme/Images/Landing.png) | ![Home/Search](https://github.com/julescript/spotifyndr/blob/master/demo/Search_Page.jpg) |
 
 | Artists results                                                                                | Artist's Albums                                                                               |
 | ---------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
