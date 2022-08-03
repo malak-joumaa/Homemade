@@ -116,7 +116,7 @@ const OrderTable = () => {
   return (
     <div>
       <Table>
-        <Thead>
+        <Thead className="table-section">
           <th>Name</th>
           <th>Items</th>
           <th>Hour</th>
@@ -127,7 +127,11 @@ const OrderTable = () => {
         </Thead>
         <Tbody>
           {orders?.map((order, index) => (
-            <TableRow status={order.status} key={index}>
+            <TableRow
+              status={order.status}
+              key={index}
+              className="table-section"
+            >
               <td>Name Name</td>
               <td>
                 {order.orders.map((item) => (

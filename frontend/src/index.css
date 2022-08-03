@@ -416,3 +416,7 @@ table{
 .btn-color{
   background-color: #97d5b9 !important;
 }
+
+.table-section td, .table-section th {
+  width: 14.285%;
+}

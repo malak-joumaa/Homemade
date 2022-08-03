@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ProfileInfo = styled.div`
-  margin-top: 70px;
+  margin-top: 90px;
   min-height: 210px;
 `;
 
@@ -9,7 +9,7 @@ export const Hat = styled.img`
   width: 100px;
   transform: rotate(-0.04turn);
   position: absolute;
-  top: 65px;
+  top: 85px;
 `;
 
 export const ProfilePhoto = styled.img`
@@ -51,7 +51,7 @@ export const Button = styled.div`
   &:hover,
   :active {
     color: white;
-    background-color: #43c187;
+    background-color: #93d3b5;
   }
 `;
 
@@ -94,6 +94,7 @@ export const Select = styled.select`
   padding: 3px;
   border-radius: 15px;
   margin-right: 3px;
+  margin-bottom: 5px;
   border: 1px solid #a3a3a3;
 `;
 
@@ -106,7 +107,7 @@ export const Confirm = styled.span`
   border-radius: 15px;
   background-color: #a3a3a3;
   color: white;
-  box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.15);
   &:hover {
     background-color: #767373;
   }
