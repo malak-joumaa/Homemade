@@ -72,9 +72,9 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 | -------------------------------------------------- | ----------------------------------------------- |
 | ![Landing](readme/Images/Landing.png)              | ![Sign In](readme/Images/sign-in.gif)           |
 | Sign Up                                            | Follow Up                                       |
-| ![Sign Up](readme/Images/sign-up.png)              | ![Follow Up](readme/Images/follow-up1.png)      |
+| ![Sign Up](readme/Images/sign-up.png)              | ![Follow Up](readme/Images/follow-up1.gif)      |
 | Follow Up                                          | Follow Up                                       |
-| ![Sign Up](readme/Images/follow-up2.png)           | ![Follow Up](readme/Images/follow-up3.png)      |
+| ![Sign Up](readme/Images/follow-up2.png)           | ![Follow Up](readme/Images/follow-up3.gif)      |
 | Main Page                                          | Cook Page                                       |
 | ![Main Page](readme/Images/main-page.png)          | ![Cook Page](readme/Images/cook-page.gif)       |
 | Order Modal                                        | Cart                                            |
