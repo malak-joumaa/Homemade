@@ -111,3 +111,20 @@ export const Confirm = styled.span`
     background-color: #767373;
   }
 `;
+
+export const NewMenuBtn = styled.button`
+  cursor: pointer;
+  padding: 8px 30px;
+  font-size: 1.25em;
+  color: white;
+  background-color: #6ac79cdb;
+  border: none;
+  border-radius: 10px;
+  margin-top: 50px;
+  display: block;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.25);
+  &:active,
+  &:hover {
+    transform: translateY(2px);
+  }
+`;

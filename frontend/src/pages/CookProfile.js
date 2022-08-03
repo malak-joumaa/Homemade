@@ -13,6 +13,7 @@ import {
   Description,
   Rate,
   Button,
+  NewMenuBtn,
 } from "../styles/Profile.style";
 import OrderTable from "../components/OrderTable";
 
@@ -119,7 +120,14 @@ const CookProfile = () => {
           <br />
         </Grid>
         <Grid item xs={10}>
-          {isMenu && <Menu menu={menu} disable={true} />}
+          {isMenu && (
+            <>
+              <Menu menu={menu} disable={true} />
+              <NewMenuBtn onClick={() => navigate("/add-menu")}>
+                Replace Menu
+              </NewMenuBtn>
+            </>
+          )}
           {isOrder && <OrderTable />}
         </Grid>
       </Grid>
