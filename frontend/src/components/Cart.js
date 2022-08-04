@@ -29,6 +29,9 @@ const Cart = ({ order }) => {
         setModal(true);
       }
     }
+    if (order.length == 0) {
+      setCount(0);
+    }
   }, []);
 
   // Update rating
@@ -69,6 +72,7 @@ const Cart = ({ order }) => {
       {count > 0 && (
         <Button
           onClick={() => {
+            setCount(0);
             navigate("/checkout");
           }}
         >

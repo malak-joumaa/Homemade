@@ -13,6 +13,7 @@ import SingleOrder from "../components/SingleOrder";
 import { useSelector } from "react-redux";
 import Maps from "../components/maps/Maps";
 import { requestForToken } from "../firebaseNotifications/firebase";
+import toast from "react-hot-toast";
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -21,7 +22,6 @@ const Checkout = () => {
   const orderData = useSelector((state) => state.order);
   const [time, setTime] = useState("");
   const [isValid, setIsValid] = useState(false);
-  const [cookLocation, setCookLocation] = useState([]);
 
   //Notification
   const Notification = () => {
@@ -157,9 +157,12 @@ const Checkout = () => {
       <br />
       <Button
         onClick={() => {
-          updateOrder();
-          SubmitOrder();
-          // handleNotification(1);
+          if (time === "") {
+            toast.error("Please select a pickup hour");
+          } else {
+            updateOrder();
+            SubmitOrder();
+          }
         }}
       >
         Confirm
