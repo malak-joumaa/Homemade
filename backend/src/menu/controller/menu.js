@@ -62,7 +62,24 @@ async function addDish(req, res) {
   }
 }
 
+// Delete menu by id
+async function deleteMenu(req, res) {
+  try {
+    const menu = await Menu.findOne({ _id: req.query.id });
+    if (!menu) return res.status(400).send("invalid credentials");
+
+    const deleteMenu = await menu.remove();
+
+    await Cook.updateOne({ _id: menu.cook }, { $pull: { menu: menu._id } });
+
+    return res.send("menu removed");
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 module.exports = {
   addMenu,
   addDish,
+  deleteMenu,
 };
