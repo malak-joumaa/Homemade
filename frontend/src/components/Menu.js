@@ -24,6 +24,7 @@ const Menu = ({
   return (
     <>
       <MenuContainer
+        // Making menus clickable in main page
         onClick={() => {
           if (main_page) {
             localStorage.setItem("cook_id", id);
@@ -73,7 +74,6 @@ const Menu = ({
           ))}
         </Grid>
       </MenuContainer>
-      {/* )} */}
     </>
   );
 };

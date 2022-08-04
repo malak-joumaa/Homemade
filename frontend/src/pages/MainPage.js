@@ -14,29 +14,24 @@ import { useSelector } from "react-redux";
 import LocationModal from "../components/maps/LocationModal";
 
 const MainPage = () => {
-  const [cooks, setCooks] = useState([]);
   const userData = useSelector((state) => state.login);
+  const [cooks, setCooks] = useState([]);
   const [modal, setMapsModal] = useState(false);
   const [color, setColor] = useState(false);
 
+  // for maps
   const [selectedPosition, setSelectedPosition] = useState(
     userData.location.coordinates
   );
   const [locationName, setLocationName] = useState(userData.location.location);
   const toggleMapsModal = () => setMapsModal(!modal);
   const toggleColor = () => setColor(!color);
-  if (modal) {
-    document.body.classList.add("active-modal");
-  } else {
-    document.body.classList.remove("active-modal");
-  }
 
+  // for filtering new and top cooks
   var top_count = 1;
   var new_count = 1;
   var d1 = new Date();
   var d2 = new Date(cooks[0]?.createdAt);
-
-  console.log(d1.getMonth() === d2.getMonth());
 
   useEffect(() => {
     if (selectedPosition) {
@@ -55,17 +50,15 @@ const MainPage = () => {
       );
       const data = await response.json();
       setCooks(data);
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   };
-  console.log(cooks);
-  console.log(selectedPosition);
   localStorage.setItem("newLocation", JSON.stringify(selectedPosition));
+
   return (
     <Container maxWidth="xl">
       <MainPageContainer>
         <Navbar />
+        {/* Search */}
         <SearchLocation>
           <LocationName
             color={color}
@@ -78,6 +71,8 @@ const MainPage = () => {
             {locationName}
           </LocationName>
         </SearchLocation>
+
+        {/* Maps Modal */}
         <LocationModal
           toggleMapsModal={toggleMapsModal}
           modal={modal}
@@ -89,20 +84,6 @@ const MainPage = () => {
 
         {/* Top Cooks */}
         <Title>Top Cooks</Title>
-        {/* <Grid container spacing={6}>
-          <Grid item xs={3}>
-            <TopCook />
-          </Grid>
-          <Grid item xs={3}>
-            <TopCook />
-          </Grid>
-          <Grid item xs={3}>
-            <TopCook />
-          </Grid>
-          <Grid item xs={3}>
-            <TopCook />
-          </Grid>
-        </Grid> */}
 
         <Swiper
           slidesPerView={4}

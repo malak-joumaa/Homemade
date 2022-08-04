@@ -13,6 +13,7 @@ import {
 } from "../styles/SingleCook.styles";
 import Menu from "../components/Menu";
 import { Display_Cook_Image } from "../styles/Image.style";
+import toast from "react-hot-toast";
 
 function SingleCook() {
   const navigate = useNavigate();
@@ -35,13 +36,10 @@ function SingleCook() {
           localStorage.getItem("cook_id")
       ).then(async (res) => {
         const data = await res.json();
-        // console.log(data);
         setCook(data);
         setLoading(false);
       });
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   };
 
   // Get Menu Data
@@ -52,12 +50,9 @@ function SingleCook() {
           localStorage.getItem("cook_id")
       ).then(async (res2) => {
         const data2 = await res2.json();
-        console.log(data2);
         setMenu(data2);
       });
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   };
 
   // Create Chat
@@ -73,28 +68,24 @@ function SingleCook() {
         }),
       });
       const data = await res.json();
-      console.log(data);
       navigate("/chat");
     } catch (err) {
-      console.log(err);
+      toast.error("Something went wrong");
     }
   };
 
+  // Getting conversations to check if the conversation already exists or not
   useEffect(() => {
     const getConversations = async () => {
-      try {
-        const response = await fetch(
-          "http://localhost:5000/api/chat/get-convo/?id=" + userData.user_id
-        );
-        const data = await response.json();
-        console.log(data);
-        setConversations(data);
-      } catch (err) {
-        console.log(err);
-      }
+      const response = await fetch(
+        "http://localhost:5000/api/chat/get-convo/?id=" + userData.user_id
+      );
+      const data = await response.json();
+      setConversations(data);
     };
     getConversations();
   }, []);
+
   var created = false;
   const handleChat = () => {
     for (var i = 0; i < conversations.length; i++) {
@@ -107,12 +98,14 @@ function SingleCook() {
       createChat();
     }
   };
+
   return (
     <>
       {loading && <div>Loading...</div>}
       {!loading && (
         <Container maxWidth="xl">
           <Navbar />
+          {/* Cook Information */}
           <Info_Container>
             <Display_Cook_Image
               src={cook.user.profile_photo}
@@ -125,18 +118,21 @@ function SingleCook() {
                 <Description>{cook?.description}</Description>
               </Grid>
               <Grid item xs={2}>
+                {/* Rate */}
                 <Rating
                   name="half-rating-read"
                   precision={0.5}
                   value={cook.rate}
                   readOnly
                 />
+                {/* Chat */}
                 <Messages
                   className="fa-solid fa-comment-dots"
                   onClick={handleChat}
                 ></Messages>
               </Grid>
             </Grid>
+            {/* Opening Hours */}
             <Opening_Hours>
               Opening Hours:{" "}
               {cook?.opening_hours?.length > 0 && cook.opening_hours[0]} -&gt;{" "}
@@ -148,7 +144,6 @@ function SingleCook() {
 
           {/* Menu */}
           <Menu menu={menu} />
-          {/* </div> */}
         </Container>
       )}
     </>
