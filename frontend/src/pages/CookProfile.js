@@ -16,26 +16,11 @@ import {
   NewMenuBtn,
 } from "../styles/Profile.style";
 import OrderTable from "../components/OrderTable";
+import toast from "react-hot-toast";
 
 const CookProfile = () => {
   const navigate = useNavigate();
   const userData = useSelector((state) => state.login);
-  // const socket = useSelector((state) => state.socket);
-
-  // console.log(socket);
-
-  // Notification
-  // const [notifications, setNotifications] = useState([""]);
-
-  // useEffect(() => {
-  //   {
-  //     socket == null &&
-  //       socket.on("getNotification", (data) => {
-  //         setNotifications((prev) => [...prev, data]);
-  //       });
-  //   }
-  // }, [socket]);
-  // console.log(notifications);
 
   const [menu, setMenu] = useState([]);
   const [isOrder, setIsOrder] = useState(true);
@@ -44,17 +29,15 @@ const CookProfile = () => {
   // Get Menu Data
   const getMenu = async () => {
     try {
-      console.log("here");
       const res2 = await fetch(
         "http://localhost:5000/api/menu/get-menu?id=" +
           localStorage.getItem("cook_id")
       ).then(async (res2) => {
         const data2 = await res2.json();
-        console.log(data2);
         setMenu(data2);
       });
     } catch (err) {
-      console.log(err);
+      toast.error("Error fetching menu data");
     }
   };
 
@@ -87,6 +70,8 @@ const CookProfile = () => {
       </ProfileInfo>
 
       {/* Functionalities */}
+
+      {/* Orders button */}
       <Grid container spacing={2}>
         <Grid item xs={2}>
           <Button
@@ -99,6 +84,7 @@ const CookProfile = () => {
           </Button>
           <br />
 
+          {/* Menu button */}
           <Button
             onClick={() => {
               getMenu();
@@ -109,6 +95,8 @@ const CookProfile = () => {
             <i className="fa-solid fa-bars"></i> Menu
           </Button>
           <br />
+
+          {/* Logout Button */}
           <Button
             onClick={() => {
               localStorage.clear();

@@ -12,7 +12,7 @@ import { Answer } from "../styles/Orders.style";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import MapsModal from "./maps/MapsModal";
-import { handleBreakpoints } from "@mui/system";
+import toast from "react-hot-toast";
 
 const OrderTable = () => {
   const navigate = useNavigate();
@@ -20,7 +20,6 @@ const OrderTable = () => {
   const [selected, setSelected] = useState(new Array(orders.length));
   const userData = useSelector((state) => state.login);
   const [conversations, setConversations] = useState([]);
-  console.log(userData);
 
   useEffect(() => {
     getOrders();
@@ -34,24 +33,20 @@ const OrderTable = () => {
       ).then(async (res) => {
         const data = await res.json();
         setOrders(data.reverse());
-        console.log(data);
       });
     } catch (err) {
-      console.log(err);
+      toast.error("Error fetching orders data");
     }
   };
 
   const handleSelect = (event, index) => {
-    console.log(event.target.value);
     let data = [...selected];
     data[index] = event.target.value;
     setSelected(data);
   };
-  console.log(selected);
 
   // Update Status
   const updateStatus = async (id, status) => {
-    console.log(id, status);
     try {
       const res = await fetch(
         "http://localhost:5000/api/order/update-sub-order/?id=" + id,
@@ -68,18 +63,15 @@ const OrderTable = () => {
       // window.location.reload();
 
       const data = await res.json();
-      console.log(data);
     } catch (err) {
-      console.log(err);
+      toast.error("Error updating order status");
     }
   };
 
   // Update Order
   const updateOrder = async (status, ids) => {
     var i = 0;
-    console.log("ids", ids.id);
     ids.forEach(async (singleOrder) => {
-      console.log(singleOrder);
       const res = await fetch(
         "http://localhost:5000/api/order/update-order/?id=" + singleOrder.id,
         {
@@ -109,27 +101,20 @@ const OrderTable = () => {
         }),
       });
       const data = await res.json();
-      console.log(data);
       navigate("/chat");
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   };
   useEffect(() => {
     const getConversations = async () => {
-      try {
-        const response = await fetch(
-          "http://localhost:5000/api/chat/get-convo/?id=" + userData.user_id
-        );
-        const data = await response.json();
-        console.log(data);
-        setConversations(data);
-      } catch (err) {
-        console.log(err);
-      }
+      const response = await fetch(
+        "http://localhost:5000/api/chat/get-convo/?id=" + userData.user_id
+      );
+      const data = await response.json();
+      setConversations(data);
     };
     getConversations();
   }, []);
+
   var created = false;
   const handleChat = (order) => {
     for (var i = 0; i < conversations.length; i++) {
@@ -146,6 +131,7 @@ const OrderTable = () => {
   return (
     <div>
       <Table>
+        {/* Head */}
         <Thead className="table-section">
           <th>Name</th>
           <th>Items</th>
@@ -155,6 +141,7 @@ const OrderTable = () => {
           <th>Chat</th>
           <th>Location</th>
         </Thead>
+        {/* Body */}
         <Tbody>
           {orders?.map((order, index) => (
             <TableRow
@@ -177,6 +164,7 @@ const OrderTable = () => {
               <td>{order.pickup_hours[0]}</td>
               <td>{order.total}</td>
               <td>
+                {/* Change Status */}
                 <Select
                   value={selected[index]}
                   onChange={(event) => {
@@ -203,6 +191,7 @@ const OrderTable = () => {
                   Confirm
                 </Confirm>
               </td>
+              {/* Chat */}
               <IconTd>
                 <i
                   className="fa-regular fa-comment-dots"
@@ -212,6 +201,7 @@ const OrderTable = () => {
                 ></i>
               </IconTd>
               <IconTd>
+                {/* Location */}
                 <MapsModal route={order.route} />
               </IconTd>
             </TableRow>

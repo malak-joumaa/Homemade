@@ -5,12 +5,10 @@ import { List } from "../styles/Links.style";
 import { NavLogo, ProfileIcon1, ProfileIcon2 } from "../styles/Image.style";
 import Logo from "../assets/logo.png";
 import { Container } from "@mui/material";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const userData = useSelector((state) => state.login);
-  const navigate = useNavigate();
-  console.log(userData);
   return (
     <Container maxWidth="xl">
       <Nav>

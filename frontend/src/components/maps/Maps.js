@@ -7,8 +7,6 @@ import {
   useMapEvents,
 } from "react-leaflet";
 import GeoLocation from "./GeoLocation";
-import * as L from "leaflet";
-import { requirePropFactory } from "@mui/material";
 import RoutineMachine from "./RoutingMachine";
 import { Button } from "../../styles/Map.style";
 
@@ -20,15 +18,13 @@ const Maps = ({
   coord,
   color = null,
 }) => {
-  console.log(selectedPosition.lenght);
   const location = GeoLocation();
   useEffect(() => {
     if (selectedPosition.length > 0) {
       getName();
     }
   }, []);
-  console.log(locationName);
-  console.log(selectedPosition);
+
   //Function to display marker on click
   const Markers = () => {
     const map = useMapEvents({
@@ -38,6 +34,7 @@ const Maps = ({
         getName();
       },
     });
+
     return selectedPosition ? (
       <>
         {!coord && (
@@ -70,20 +67,15 @@ const Maps = ({
 
   //Get the name of the selected location
   const getName = async () => {
-    try {
-      const res = await fetch(
-        "https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=" +
-          selectedPosition[0] +
-          "&longitude=" +
-          selectedPosition[1] +
-          "&localityLanguage=en"
-      );
-      const data = await res.json();
-      console.log(data);
-      setLocationName("" + data.locality + ", " + data.countryName);
-    } catch (err) {
-      console.log(err);
-    }
+    const res = await fetch(
+      "https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=" +
+        selectedPosition[0] +
+        "&longitude=" +
+        selectedPosition[1] +
+        "&localityLanguage=en"
+    );
+    const data = await res.json();
+    setLocationName("" + data.locality + ", " + data.countryName);
   };
 
   return (

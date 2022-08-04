@@ -42,8 +42,6 @@ const AddMenu = () => {
     data[index].photo = event.target.result;
     setDish(data);
   };
-  console.log(dish);
-  console.log(question);
 
   //Add a new Dish
   const addDish = () => {
@@ -83,7 +81,6 @@ const AddMenu = () => {
       });
       const data = await res.json();
       const menuId = data._id;
-      console.log(data);
       var count = -1;
       dish.forEach(async (singleDish) => {
         count++;
@@ -105,12 +102,7 @@ const AddMenu = () => {
         const data2 = await res2.json();
         navigate("/cook-profile");
       });
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  const imgStore = (image) => {
-    console.log(image);
+    } catch (err) {}
   };
   return (
     <div id="menu">
