@@ -28,10 +28,10 @@ const SingleOrder = ({ cart = false, orderData }) => {
   return (
     <CartOrder>
       <Grid container spacing={1}>
-        <Grid item xs={1.2} lg={0.8}>
+        <Grid item xs={2.2} md={1.2} lg={0.8}>
           <Photo src={orderData.dish.photo} />
         </Grid>
-        <Grid item xs={5.5} lg={6.6}>
+        <Grid item xs={5.3} md={6.2} lg={6.6}>
           <CookInfo>
             <CookName>{orderData.dish.name}</CookName>
             <br />
