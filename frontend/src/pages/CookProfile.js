@@ -73,7 +73,7 @@ const CookProfile = () => {
 
       {/* Orders button */}
       <Grid container spacing={2}>
-        <Grid item xs={2}>
+        <Grid item xl={2} lg={2.5} xs={4}>
           <Button
             onClick={() => {
               setIsOrder(true);
@@ -107,7 +107,7 @@ const CookProfile = () => {
           </Button>
           <br />
         </Grid>
-        <Grid item xs={10}>
+        <Grid item xl={9} lg={9.5} xs={12}>
           {isMenu && (
             <>
               <Menu menu={menu} disable={true} />
