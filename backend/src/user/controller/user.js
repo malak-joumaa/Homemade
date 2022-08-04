@@ -1,4 +1,5 @@
 const Cook = require("../../../model/Cook");
+const User = require("../../../model/User");
 
 const {
   addUser,
@@ -250,6 +251,25 @@ function degreesToRadians(degrees) {
   return (degrees * Math.PI) / 180;
 }
 
+// Update Cook
+async function updateUser(req, res) {
+  try {
+    const userUpdate = await User.findByIdAndUpdate(
+      { _id: req.query.id },
+      {
+        $set: {
+          firebase_token: req.body.firebase_token,
+        },
+      }
+    );
+    console.log("userUpdate =>", userUpdate);
+
+    return res.send();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 module.exports = {
   register,
   login,
@@ -262,4 +282,5 @@ module.exports = {
   verifyToken,
   updateCook,
   getCook,
+  updateUser,
 };

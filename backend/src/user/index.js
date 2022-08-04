@@ -11,6 +11,7 @@ const {
   verifyToken,
   updateCook,
   getCook,
+  updateUser,
 } = require("./controller/user");
 const router = Router();
 
@@ -20,6 +21,7 @@ router.post("/verify", verifyToken);
 router.post("/add-cook", addCook);
 router.post("/add-customer", addCustomer);
 router.put("/update-cook", updateCook);
+router.put("/update-user", updateUser);
 router.get("/get-user", getUser);
 router.get("/get-cook", getCook);
 router.get("/get-all-cooks", getCooks);

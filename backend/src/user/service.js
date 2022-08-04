@@ -12,6 +12,7 @@ async function addUser(body, hashPassword) {
     profile_photo,
     location,
     user_type,
+    firebase_token,
   } = body;
 
   const user = new User({
@@ -23,6 +24,7 @@ async function addUser(body, hashPassword) {
     profile_photo,
     location,
     user_type,
+    firebase_token,
   });
 
   return await user.save();
