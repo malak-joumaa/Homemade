@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import MapsModal from "./maps/MapsModal";
 import toast from "react-hot-toast";
+import { getMessaging } from "firebase/messaging";
 
 const OrderTable = () => {
   const navigate = useNavigate();
@@ -127,6 +128,7 @@ const OrderTable = () => {
       createChat(order);
     }
   };
+  console.log(orders);
 
   return (
     <div>
@@ -185,6 +187,29 @@ const OrderTable = () => {
                       selected[index],
                       order.orders.filter((item) => item.id !== undefined)
                     );
+                    if (selected[index] === "ready") {
+                      // Sending Notification to Customer
+                      const message = {
+                        token: order.customer.user,
+                        notification: {
+                          title: "order",
+                          body: "Your order is ready!",
+                        },
+                        data: {
+                          title: "order",
+                          body: "Your order is ready!",
+                        },
+                      };
+                      getMessaging()
+                        .send(message)
+                        .then((response) => {
+                          // Response is a message ID string.
+                          console.log("Successfully sent message:", response);
+                        })
+                        .catch((error) => {
+                          console.log("Error sending message:", error);
+                        });
+                    }
                     window.location.reload();
                   }}
                 >

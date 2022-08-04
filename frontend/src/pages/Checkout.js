@@ -13,6 +13,7 @@ import SingleOrder from "../components/SingleOrder";
 import { useSelector } from "react-redux";
 import Maps from "../components/maps/Maps";
 import toast from "react-hot-toast";
+import { getMessaging } from "firebase/messaging";
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -39,6 +40,9 @@ const Checkout = () => {
       );
       total += order.total;
     }
+    // if (order.dish.user.firebase_token) {
+    //   OrderIDs.push({ firebase_token: order.dish.user.firebase_token });
+    // }
   });
 
   // Add Submitted Order
@@ -143,6 +147,27 @@ const Checkout = () => {
           if (time === "") {
             toast.error("Please select a pickup hour");
           } else {
+            // Sending Notification to Cook
+            // const message = {
+            //   token: orderData.cook.user.firebase_token,
+            //   notification: {
+            //     title: "new order",
+            //     body: "You have a new order!",
+            //   },
+            //   data: {
+            //     title: "new order",
+            //     body: "You have a new order!",
+            //   },
+            // };
+            // getMessaging()
+            //   .send(message)
+            //   .then((response) => {
+            //     // Response is a message ID string.
+            //     console.log("Successfully sent message:", response);
+            //   })
+            //   .catch((error) => {
+            //     console.log("Error sending message:", error);
+            //   });
             updateOrder();
             SubmitOrder();
           }
