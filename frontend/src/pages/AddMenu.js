@@ -104,6 +104,7 @@ const AddMenu = () => {
       });
     } catch (err) {}
   };
+  const imgStore = (image) => {};
   return (
     <div id="menu">
       <div id="add-menu">
