@@ -68,22 +68,22 @@ const LandingPage = () => {
       <Container maxWidth="lg">
         <Grid container spacing={1}>
           <Container2>
-            <Grid item xs={3}>
+            <Grid item md={3}>
               <Grid2>
                 <Image2 src={CookImg} />
               </Grid2>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item md={3}>
               <Grid2>
                 Discover Cooks <br /> Around You
               </Grid2>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item md={3}>
               <Grid2>
                 View a Variety <br /> of Menus
               </Grid2>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item md={3}>
               <Grid2>
                 Get a Taste <br /> of Home
               </Grid2>
@@ -97,7 +97,7 @@ const LandingPage = () => {
             Become a <span style={{ color: "#43c187" }}>Cook</span>
           </Cook>
           <Grid container spacing={6}>
-            <Grid item xs={4}>
+            <Grid item md={4}>
               <CookDiv>
                 <Number>1</Number>
                 <Heading>
@@ -110,7 +110,7 @@ const LandingPage = () => {
                 </p>
               </CookDiv>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item md={4}>
               <CookDiv>
                 <Number>2</Number>
                 <Heading>
@@ -124,7 +124,7 @@ const LandingPage = () => {
                 </p>
               </CookDiv>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item md={4}>
               <CookDiv>
                 <Number>3</Number>
                 <Heading>

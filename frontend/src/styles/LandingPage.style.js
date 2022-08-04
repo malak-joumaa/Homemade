@@ -25,6 +25,10 @@ export const Blob = styled.div`
   padding-top: 200px;
   margin-left: 200px;
   height: 100vh;
+  @media (max-width: 800px) {
+    margin: 0 auto;
+    margin-left: 50px;
+  }
 `;
 
 export const MainLogo = styled.img`
@@ -35,7 +39,10 @@ export const MainLogo = styled.img`
   top: 20px;
   right: 300px;
   margin-top: 110px;
-  @media (max-width: 1000px) {
+  @media (max-width: 1500px) {
+    right: 50px;
+  }
+  @media (max-width: 1250px) {
     display: none;
   }
 `;
@@ -64,6 +71,9 @@ export const SignInBtn = styled.button`
   &:hover {
     color: white;
     background-color: #93d3b5;
+  }
+  @media (max-width: 1250px) {
+    margin-right: 20px;
   }
 `;
 
@@ -139,7 +149,7 @@ export const ReviewContainer = styled.div``;
 
 export const ReviewCard = styled.div`
   width: 97%;
-  height: 300px;
+  min-height: 300px;
   border: 2px dashed #43c187;
   border-radius: 30px;
   margin: 30px auto;
