@@ -95,14 +95,12 @@ Here's a brief high-level overview of the tech stack the Homemade website uses:
 
 ### Prerequisites
 
-First, you need to have the latest npm version installed.
-
-````bash
+First, you need to have the latest npm version installed:
 
 - npm
   ```sh
   npm install npm@latest -g
-````
+  ```
 
 ### Installation
 
@@ -121,7 +119,7 @@ First, you need to have the latest npm version installed.
    ```sh
    npm install
    ```
-4. Rename `.env.example` to `.env` then set your `DB_CONNECT` to your MongoDB connection URI and add your `TOKEN_SECRET`.
+4. Rename `.env.example` to `.env` then set your `DB_CONNECT` to your MongoDB connection URL and add your `TOKEN_SECRET`.
 
 5. Inside the socket folder, run:
 
