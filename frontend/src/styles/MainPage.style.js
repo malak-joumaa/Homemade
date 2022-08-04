@@ -99,7 +99,7 @@ export const NewPhoto = styled.img`
 `;
 export const NewName = styled.h3`
   margin-top: 7px;
-  white-space: nowrap;
+  // white-space: nowrap;
   // overflow: hidden;
   text-overflow: ellipsis;
 `;

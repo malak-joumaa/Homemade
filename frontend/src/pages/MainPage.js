@@ -86,7 +86,16 @@ const MainPage = () => {
         <Title>Top Cooks</Title>
 
         <Swiper
-          slidesPerView={4}
+          breakpoints={{
+            3000: {
+              width: 2500,
+              slidesPerView: 4,
+            },
+            800: {
+              width: 800,
+              slidesPerView: 2,
+            },
+          }}
           spaceBetween={30}
           modules={[Navigation]}
           className="mySwiper"
@@ -113,7 +122,16 @@ const MainPage = () => {
         {/* New Cooks */}
         <Title>New Cooks</Title>
         <Swiper
-          slidesPerView={4}
+          breakpoints={{
+            3000: {
+              width: 2500,
+              slidesPerView: 4,
+            },
+            800: {
+              width: 800,
+              slidesPerView: 2,
+            },
+          }}
           spaceBetween={30}
           modules={[Navigation]}
           className="mySwiper"
