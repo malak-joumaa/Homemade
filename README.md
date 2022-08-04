@@ -55,12 +55,12 @@ Cooks can create menus with their special recipes and sell them to the community
 
 <img src="./readme/title4.svg"/>
 
-Here's a brief high-level overview of the tech stack the Well app uses:
+Here's a brief high-level overview of the tech stack the Homemade website uses:
 
-- This project uses the [ReactJS](https://reactjs.org/). React is a JavaScript library used for building composable user interfaces. It encourages the creation of reusable UI components, which present data that changes over time
+- This project uses the [ReactJS](https://reactjs.org/). React is a JavaScript library used for building composable user interfaces. It encourages the creation of reusable UI components, which present data that changes over time.
 - For persistent storage (database), the app uses the [Mongoose ODM](https://mongoosejs.com) package which allows the app to create a custom storage schema and save it to [MongoDB](https://www.mongodb.com).
-- To send Messages, the app uses [Socket_IO](https://socket.io/) which is a library that enables low-latency, bidirectional and event-based communication between a client and a server.
-- To display maps and get location, the app uses the [React Leaflet](https://react-leaflet.js.org/) which is an open-source library for creating interactive maps.
+- To send Messages, the app uses [Socket.IO](https://socket.io/) which is a library that enables low-latency, bidirectional and event-based communication between a client and a server.
+- To display maps and get user's location, the app uses the [React Leaflet](https://react-leaflet.js.org/) which is an open-source library for creating interactive maps.
 
 <br><br>
 <img src="./readme/title5.svg"/>
