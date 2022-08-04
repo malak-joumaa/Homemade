@@ -7,7 +7,6 @@ const Textbox = ({
   setValue,
   class_name = "",
 }) => {
-  console.log(value);
   return (
     <input
       type={type}

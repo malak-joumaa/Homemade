@@ -23,7 +23,10 @@ const Cart = ({ order }) => {
     }
 
     if (order.length >= 1) {
-      if (order[0].status === "delivered" && order[0].rated === false) {
+      if (
+        order[order.length - 1].status === "delivered" &&
+        order[order.length - 1].rated === false
+      ) {
         setModal(true);
       }
     }
@@ -43,6 +46,27 @@ const Cart = ({ order }) => {
         },
         body: JSON.stringify({
           rated: true,
+        }),
+      }
+    );
+    const data = await res.json();
+  };
+  console.log(orderData);
+
+  // Update cook rate
+  const updateRate = async (id, rate, rate_count) => {
+    let total_rate = rate / rate_count + 1 + rate / rate_count + 1;
+    let total_rate_count = rate_count + 1;
+    const res = await fetch(
+      "http://localhost:5000/api/user/update-cook/?id=" + id,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          rate: total_rate,
+          rate_count: total_rate_count,
         }),
       }
     );
@@ -89,6 +113,11 @@ const Cart = ({ order }) => {
               onClick={() => {
                 updateIsRated(order[0]._id);
                 toggleModal();
+                updateRate(
+                  order[0].cook._id,
+                  order[0].cook.rate,
+                  order[0].cook.rate_count
+                );
               }}
             >
               Submit

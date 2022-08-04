@@ -63,6 +63,7 @@ const RegisterFollowUp = () => {
               ],
               description: data[3].description,
               rate: 5,
+              rate_count: 1,
               submitted_orders: [],
               firebase_token: "",
             }),

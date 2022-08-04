@@ -28,7 +28,6 @@ const SignUp = () => {
       password: password,
       phoneNumber: phoneNumber,
     });
-    console.log(user);
     navigate("/follow-up");
   };
 
@@ -87,12 +86,10 @@ const SignUp = () => {
                 c_password == "" ||
                 phoneNumber == ""
               ) {
-                console.log("here");
                 toast.error("Please fill all fields");
               } else if (password != c_password) {
                 toast.error("Password and Confirm Password do not match");
               } else {
-                console.log("followup");
                 followUp();
               }
             }}

@@ -32,14 +32,12 @@ const SignIn = () => {
         }),
       });
       const data = await res.json();
-      console.log("here", data);
       var token = data.token;
       // Saving token in local storage
       window.localStorage.setItem("token", token);
       // Decode JWT
       var decoded = jwt_decode(token);
       window.localStorage.setItem("user_type", decoded.user_type);
-      console.log(decoded);
       addUserData({
         user_id: decoded._id,
         fname: decoded.first_name,
@@ -93,7 +91,6 @@ const SignIn = () => {
               onClick={(e) => {
                 e.preventDefault();
                 if (email == "" || password == "") {
-                  console.log("here");
                   toast.error("Please fill all fields");
                 } else {
                   signIn();

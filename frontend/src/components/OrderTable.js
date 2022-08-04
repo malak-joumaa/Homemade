@@ -151,7 +151,10 @@ const OrderTable = () => {
               key={index}
               className="table-section"
             >
-              <td>Name Name</td>
+              <td>
+                {order?.customer?.user?.first_name}{" "}
+                {order?.customer?.user?.last_name}
+              </td>
               <td>
                 {order.orders.map((item) => (
                   <>
