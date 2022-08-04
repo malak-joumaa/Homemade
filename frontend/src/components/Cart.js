@@ -51,7 +51,6 @@ const Cart = ({ order }) => {
     );
     const data = await res.json();
   };
-  console.log(orderData);
 
   // Update cook rate
   const updateRate = async (id, rate, rate_count) => {
@@ -111,13 +110,14 @@ const Cart = ({ order }) => {
             />
             <Button
               onClick={() => {
-                updateIsRated(order[0]._id);
+                updateIsRated(order[order.length - 1]._id);
                 toggleModal();
                 updateRate(
                   order[0].cook._id,
                   order[0].cook.rate,
                   order[0].cook.rate_count
                 );
+                window.location.reload();
               }}
             >
               Submit
