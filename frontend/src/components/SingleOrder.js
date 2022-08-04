@@ -12,8 +12,6 @@ import {
 import MapsModal from "./maps/MapsModal";
 
 const SingleOrder = ({ cart = false, orderData }) => {
-  console.log(orderData);
-
   // Delete order
   const deleteOrder = async (order_id) => {
     const res = await fetch(
@@ -54,6 +52,7 @@ const SingleOrder = ({ cart = false, orderData }) => {
           <Info>Total:{orderData.total}$</Info>
         </Grid>
         <Grid item xs={1} align="center">
+          {/* Delete button or Location button */}
           {cart ? (
             <Delete
               onClick={() => {

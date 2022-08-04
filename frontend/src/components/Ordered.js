@@ -9,8 +9,8 @@ const Ordered = () => {
     <>
       {orderData.map((order, index) => (
         <>
-          {orderData[index].status === "pending" ? (
-            <SingleOrder cart={false} orderData={orderData[index]} />
+          {order.status === "pending" ? (
+            <SingleOrder cart={false} orderData={order} />
           ) : (
             <></>
           )}

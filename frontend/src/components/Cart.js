@@ -19,13 +19,11 @@ const Cart = ({ order }) => {
     for (let i = 0; i < orderData.length; i++) {
       if (orderData[i].status === "cart") {
         setCount(count + 1);
-        console.log("count", count);
       }
     }
 
     if (order.length >= 1) {
       if (order[0].status === "delivered" && order[0].rated === false) {
-        console.log("rated");
         setModal(true);
       }
     }
@@ -49,26 +47,20 @@ const Cart = ({ order }) => {
       }
     );
     const data = await res.json();
-    console.log(data);
   };
 
   return (
     <>
-      {orderData.length > 0 ? (
+      {orderData.length > 0 &&
         orderData.map((order, index) => (
           <>
-            {orderData[index].status === "cart" ? (
-              <>
-                <SingleOrder cart={true} orderData={orderData[index]} />
-              </>
-            ) : (
-              <></>
+            {order.status === "cart" && (
+              <SingleOrder cart={true} orderData={order} />
             )}
           </>
-        ))
-      ) : (
-        <></>
-      )}
+        ))}
+
+      {/* Checkout button */}
       {count > 0 && (
         <Button
           onClick={() => {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { Container } from "@mui/system";
@@ -17,7 +17,6 @@ import toast from "react-hot-toast";
 
 const Checkout = () => {
   const navigate = useNavigate();
-  // const socket = useSelector((state) => state.socket);
   const user = useSelector((state) => state.login);
   const orderData = useSelector((state) => state.order);
   const [time, setTime] = useState("");
@@ -26,7 +25,6 @@ const Checkout = () => {
   //Notification
   const Notification = () => {
     requestForToken();
-    //....
   };
   Notification();
 
@@ -50,18 +48,6 @@ const Checkout = () => {
     }
   });
 
-  console.log(orderData);
-
-  // const handleNotification = (type) => {
-  //   socket.emit("sendNotification", {
-  //     senderName: user.customer_id,
-  //     receiverName: orderData[0].cook,
-  //     type,
-  //   });
-  // };
-
-  console.log("order", OrderIDs[0].name);
-
   // Add Submitted Order
   const SubmitOrder = async () => {
     try {
@@ -84,18 +70,15 @@ const Checkout = () => {
           rated: false,
         }),
       });
-
-      const data2 = await res.json();
-      console.log(data2);
       navigate("/orders");
     } catch (error) {
-      console.log(error);
+      toast.error("Could not add order");
     }
   };
+
   // Update Order
   const updateOrder = async () => {
     orderData.forEach(async (singleOrder) => {
-      console.log(singleOrder);
       const res = await fetch(
         "http://localhost:5000/api/order/update-order/?id=" + singleOrder._id,
         {
@@ -114,10 +97,12 @@ const Checkout = () => {
       );
     });
   };
+
   return (
     <Container maxWidth="xl">
       <Navbar />
       <Title>Checkout</Title>
+      {/* Displaying Orders */}
       <Orders>
         {orderData.map((order, index) => (
           <div key={index}>
@@ -127,7 +112,10 @@ const Checkout = () => {
           </div>
         ))}
       </Orders>
+
       <Total>Total: {total}$</Total>
+
+      {/* Map */}
       <SubTitle>Location:</SubTitle>
       <div style={{ width: "100%", height: "350px" }}>
         <Maps
@@ -156,6 +144,7 @@ const Checkout = () => {
         style={{ marginLeft: "0px" }}
       />
       <br />
+
       <Button
         onClick={() => {
           if (time === "") {

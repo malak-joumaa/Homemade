@@ -28,12 +28,6 @@ const Modal = (data) => {
   const [answers, setAnswers] = useState([]);
 
   const toggleModal = () => setModal(!modal);
-  if (modal) {
-    document.body.classList.add("active-modal");
-  } else {
-    document.body.classList.remove("active-modal");
-  }
-  console.log(details._id);
 
   //   Counter for quantity
   const [count, setCount] = useState(1);
@@ -52,13 +46,11 @@ const Modal = (data) => {
       setTotal(total - details.price);
     }
   };
-  console.log(count);
 
   //   Total calculation
   const [total, setTotal] = useState(details.price);
 
-  console.log(data);
-
+  //   Add to cart
   const AddToCart = async () => {
     try {
       const res = await fetch("http://localhost:5000/api/order/add-order", {
@@ -78,14 +70,13 @@ const Modal = (data) => {
         }),
       });
       const data2 = await res.json();
-      console.log(data2);
       toggleModal();
       toast.success("Item added to cart");
     } catch (error) {
-      console.log(error);
+      toast.error("Could not add item to cart");
     }
   };
-  console.log(answers);
+
   return (
     <>
       <AddDish onClick={toggleModal}>
@@ -108,14 +99,12 @@ const Modal = (data) => {
               <br />
               <DishDescription>{details.description}</DishDescription>
               <br />
+
+              {/* Displaying Questions */}
               <QA>
                 {/* Map */}
                 {details?.questions.map((singleQuest, index) => (
                   <>
-                    {/* {singleQuest.type === "checkBox" &&
-                      (answers[index] = new Array(
-                        singleQuest.choices.length
-                      ).fill(""))} */}
                     <Question>{singleQuest.question}</Question>
                     <br />
                     {singleQuest.type === "textBox" ? (
@@ -125,7 +114,6 @@ const Modal = (data) => {
                         onChange={(e) => {
                           answers[index] = e.target.value;
                           setAnswers(answers);
-                          console.log(answers);
                         }}
                       />
                     ) : (
@@ -136,11 +124,10 @@ const Modal = (data) => {
                               key={choiceIndex}
                               type={singleQuest.type}
                               value={choice}
-                              name={singleQuest}
+                              name={singleQuest.question}
                               onChange={(e) => {
                                 answers[index] = e.target.value;
                                 setAnswers(answers);
-                                console.log(answers);
                               }}
                             />
                           )}
@@ -153,8 +140,6 @@ const Modal = (data) => {
                                 answers[index][choiceIndex] = e.target.checked
                                   ? e.target.value
                                   : "";
-                                // setAnswers(answers);
-                                console.log(answers);
                               }}
                             />
                           )}
