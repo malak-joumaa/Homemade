@@ -35,6 +35,7 @@ Cooks can create menus with their special recipes and sell them to the community
 - I want to be able to view the route between my location and the customer' location.
 - I want to be able to chat with the customer.
 - I want to be able to view other cooks.
+- I want to receive notifications.
 
 <br><br>
 
