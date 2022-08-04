@@ -8,23 +8,25 @@ import toast from "react-hot-toast";
 
 const RegisterFollowUp = () => {
   const navigate = useNavigate();
+  // Getting data from sign up page
   const user = useSelector((state) => state.user);
 
+  // Setting state variable to keep track of the components being displayed
   const [stateNb, setStateNb] = useState(1);
+
+  var user_type = localStorage.getItem("user_type");
+
+  // Array to store the data from follow-up components
   const [data, setData] = useState([
     { profilePhoto: "" },
     { location: {} },
     { openingHours: { from: "", till: "" } },
     { description: "" },
   ]);
-  console.log(stateNb);
-
-  var user_type = localStorage.getItem("user_type");
-  console.log(stateNb);
-  console.log(data[0].profilePhoto.image);
 
   // Add Data to User
   const addData = async () => {
+    // Sign Up User with data from sign up page
     try {
       const res = await fetch("http://localhost:5000/api/user/register", {
         method: "POST",
@@ -42,8 +44,10 @@ const RegisterFollowUp = () => {
         }),
       });
       const data2 = await res.json();
-      console.log(data2);
 
+      //Create cook or customer profile with data from follow up
+
+      // Cook
       if (user_type === "cook") {
         try {
           const res = await fetch("http://localhost:5000/api/user/add-cook", {
@@ -63,11 +67,11 @@ const RegisterFollowUp = () => {
             }),
           });
           const resData = await res.json();
-          console.log(resData);
           navigate("/sign-in");
         } catch (error) {
           toast.error("Sign up failed");
         }
+        // Customer
       } else if (user_type === "customer") {
         try {
           const res = await fetch(
@@ -84,15 +88,12 @@ const RegisterFollowUp = () => {
             }
           );
           const resData = await res.json();
-          console.log(resData);
           navigate("/sign-in");
         } catch (error) {
-          console.log("Failed");
-          toast.error("Sign up failed");
+          toast.error("Sign up failed, try again");
         }
       }
     } catch (err) {
-      console.log(err);
       toast.error("Sign up failed, make sure image size is not too big");
     }
   };
@@ -106,12 +107,9 @@ const RegisterFollowUp = () => {
 
         {stateNb == 2 && <ChooseLocation data={data} setData={setData} />}
 
-        {stateNb == 3 &&
-          (user_type == "cook" ? (
-            <OpeningHours data={data} setData={setData} />
-          ) : (
-            <></>
-          ))}
+        {stateNb == 3 && user_type == "cook" && (
+          <OpeningHours data={data} setData={setData} />
+        )}
 
         {/* Links to Skip or move to the next page */}
         {stateNb == 1 ? (

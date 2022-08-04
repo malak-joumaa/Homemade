@@ -10,15 +10,13 @@ import { bindActionCreators } from "redux";
 import { actionCreators } from "../state/index";
 
 const SignIn = () => {
-  const userData = useSelector((state) => state.login);
-  const dispatch = useDispatch();
-  const { addUserData } = bindActionCreators(actionCreators, dispatch);
-
-  console.log(userData);
-
   // Email and password use state
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  // Send userData to redux store
+  const dispatch = useDispatch();
+  const { addUserData } = bindActionCreators(actionCreators, dispatch);
+  const userData = useSelector((state) => state.login);
 
   // Login api
   const signIn = async () => {

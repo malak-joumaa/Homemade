@@ -10,7 +10,6 @@ const AddProfilePhoto = ({ setData, data }) => {
     data[0].profilePhoto = { image };
     setData(data);
   };
-  console.log(profilePhoto);
 
   return (
     <>

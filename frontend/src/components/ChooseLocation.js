@@ -13,13 +13,12 @@ function ChooseLocation({ setData, data }) {
     location: locationName,
   };
   setData(data);
-  console.log(data);
-
   return (
     <>
       <h1>Choose Location</h1>
       <Location>{locationName}</Location>
       <div style={{ width: "100%", height: "64%" }}>
+        {/* Display Map */}
         <Maps
           selectedPosition={selectedPosition}
           setSelectedPosition={setSelectedPosition}

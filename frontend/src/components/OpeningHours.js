@@ -9,17 +9,12 @@ const OpeningHours = ({ setData, data }) => {
   const [timeTill, setTimeTill] = useState("");
   const [desc, setDesc] = useState("");
 
-  console.log(timeFrom);
-  console.log(timeTill);
-  console.log(data[2]);
-  console.log(data[3]);
-
   return (
     <>
       <h1>Opening Hours - Description</h1>
       <div>
         <div className="oph-div">
-          {/* Main Content */}
+          {/* Opening Hours */}
           <div id="oph-photo">
             <img src={Photo} />
           </div>
@@ -60,6 +55,8 @@ const OpeningHours = ({ setData, data }) => {
             />
           </div>
         </div>
+
+        {/* Description */}
         <CookDescription>
           <label id="desc">Cook/Restaurant Description:</label>
           <br />
