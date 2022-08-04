@@ -39,6 +39,7 @@ const LandingPage = () => {
   const navigate = useNavigate();
   return (
     <>
+      {/* Container 1 */}
       <Container1></Container1>
       <Blob>
         <Welcome>Welcome to Homemade</Welcome>
@@ -63,6 +64,7 @@ const LandingPage = () => {
       </Blob>
       <MainLogo src={logo} />
 
+      {/* Container 2 */}
       <Container maxWidth="lg">
         <Grid container spacing={1}>
           <Container2>
@@ -89,6 +91,7 @@ const LandingPage = () => {
           </Container2>
         </Grid>
 
+        {/* Container 3 */}
         <CookContainer>
           <Cook>
             Become a <span style={{ color: "#43c187" }}>Cook</span>
@@ -102,7 +105,7 @@ const LandingPage = () => {
                 </Heading>
                 <br />
                 <p>
-                  Make your desired menu full with your specialties. Be diverse
+                  Create your desired menu full of your specialties. Be diverse
                   with different cuisines or specialize with one!
                 </p>
               </CookDiv>
@@ -137,6 +140,7 @@ const LandingPage = () => {
           </Grid>
         </CookContainer>
 
+        {/* Container 1 */}
         <ReviewContainer>
           <Swiper
             spaceBetween={30}
@@ -157,8 +161,8 @@ const LandingPage = () => {
                 <br />
                 <ReviewName>Harry Johnson</ReviewName>
                 <ReviewText>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  I wish this website existed before! I love that i have access
+                  to delicious homemade food wherever I go!
                 </ReviewText>
               </ReviewCard>
             </SwiperSlide>
@@ -168,8 +172,8 @@ const LandingPage = () => {
                 <br />
                 <ReviewName>Ashley Jones</ReviewName>
                 <ReviewText>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  As a stay at home mom with no education, this website gave me
+                  the opportunity to make money out of something I love.
                 </ReviewText>
               </ReviewCard>
             </SwiperSlide>
@@ -179,8 +183,9 @@ const LandingPage = () => {
                 <br />
                 <ReviewName>David Wilson</ReviewName>
                 <ReviewText>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Not only the food makes you feel like home, the website itself
+                  does that as well! Very easy to use, easy to navigate and easy
+                  on the eyes!
                 </ReviewText>
               </ReviewCard>
             </SwiperSlide>
