@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import { Grid, Container, Rating } from "@mui/material";
+import { useSelector } from "react-redux";
 import {
   Cook_Name,
   Info_Container,
@@ -18,15 +19,8 @@ function SingleCook() {
   const [cook, setCook] = useState([]);
   const [menu, setMenu] = useState([]);
   const [loading, setLoading] = useState(true);
-  const days = [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Sunday",
-  ];
+  const userData = useSelector((state) => state.login);
+  const [conversations, setConversations] = useState([]);
 
   useEffect(() => {
     getCook();
@@ -75,7 +69,7 @@ function SingleCook() {
           "Content-type": "application/json",
         },
         body: JSON.stringify({
-          members: ["62e161b3a3bef4c5101d59bc", "62dff826486c6987659535fc"],
+          members: [userData.user_id, cook.user._id],
         }),
       });
       const data = await res.json();
@@ -86,6 +80,33 @@ function SingleCook() {
     }
   };
 
+  useEffect(() => {
+    const getConversations = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:5000/api/chat/get-convo/?id=" + userData.user_id
+        );
+        const data = await response.json();
+        console.log(data);
+        setConversations(data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getConversations();
+  }, []);
+  var created = false;
+  const handleChat = () => {
+    for (var i = 0; i < conversations.length; i++) {
+      if (conversations[i].members.includes(cook.user._id)) {
+        created = true;
+        navigate("/chat");
+      }
+    }
+    if (created == false) {
+      createChat();
+    }
+  };
   return (
     <>
       {loading && <div>Loading...</div>}
@@ -112,7 +133,7 @@ function SingleCook() {
                 />
                 <Messages
                   className="fa-solid fa-comment-dots"
-                  onClick={createChat}
+                  onClick={handleChat}
                 ></Messages>
               </Grid>
             </Grid>
