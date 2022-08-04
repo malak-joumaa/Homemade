@@ -4,7 +4,7 @@
 
 > Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available.
 
-**[PROJECT PHILOSOPHY](https://github.com/malak-joumaa/homemade#-project-philosophy) • [WIREFRAMES](https://github.com/malak-joumaa/homemade#-wireframes) • [TECH STACK](https://github.com/malak-joumaa/homemade#-tech-stack) • [IMPLEMENTATION](https://github.com/malak-joumaa/homemade#-impplementation) • [HOW TO RUN?](https://github.com/malak-joumaa/homemade#-how-to-run)**
+**[PROJECT PHILOSOPHY](https://github.com/malak-joumaa/homemade#project-philosophy) • [WIREFRAMES](https://github.com/malak-joumaa/homemade#wireframes) • [TECH STACK](https://github.com/malak-joumaa/homemade#tech-stack) • [IMPLEMENTATION](https://github.com/malak-joumaa/homemade#impplementation) • [HOW TO RUN?](https://github.com/malak-joumaa/homemade#how-to-run)**
 
 </div>
 
