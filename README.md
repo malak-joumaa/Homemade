@@ -12,7 +12,9 @@
 
 <img src="./readme/title2.svg"/>
 
-> Homemade is a website that allows users to sell and buy homemade food.
+> Homemade is a website that allows users to sell and buy homemade food. This website helps both, home cooks who are not able to find a job and people who don't have access to homemade food.
+
+Cooks can create menus with their special recipes and sell them to the community, while customers can discover various menus and home cooks around them.
 
 ### User Stories
 
@@ -55,11 +57,10 @@
 
 Here's a brief high-level overview of the tech stack the Well app uses:
 
-- This project uses the [Flutter app development framework](https://flutter.dev/). Flutter is a cross-platform hybrid app development platform which allows us to use a single codebase for apps on mobile, desktop, and the web.
-- For persistent storage (database), the app uses the [Hive](https://hivedb.dev/) package which allows the app to create a custom storage schema and save it to a local database.
-- To send local push notifications, the app uses the [flutter_local_notifications](https://pub.dev/packages/flutter_local_notifications) package which supports Android, iOS, and macOS.
-  - 🚨 Currently, notifications aren't working on macOS. This is a known issue that we are working to resolve!
-- The app uses the font ["Work Sans"](https://fonts.google.com/specimen/Work+Sans) as its main font, and the design of the app adheres to the material design guidelines.
+- This project uses the [ReactJS](https://reactjs.org/). React is a JavaScript library used for building composable user interfaces. It encourages the creation of reusable UI components, which present data that changes over time
+- For persistent storage (database), the app uses the [Mongoose ODM](https://mongoosejs.com) package which allows the app to create a custom storage schema and save it to [MongoDB](https://www.mongodb.com).
+- To send Messages, the app uses [Socket_IO](https://socket.io/) which is a library that enables low-latency, bidirectional and event-based communication between a client and a server.
+- To display maps and get location, the app uses the [React Leaflet](https://react-leaflet.js.org/) which is an open-source library for creating interactive maps.
 
 <br><br>
 <img src="./readme/title5.svg"/>
