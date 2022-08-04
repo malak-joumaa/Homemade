@@ -4,7 +4,7 @@
 
 > Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available.
 
-**[PROJECT PHILOSOPHY](#project-philosophy) • [WIREFRAMES](#wireframes) • [TECH STACK](#tech-stack) • [IMPLEMENTATION](#impplementation) • [HOW TO RUN?](https://github.com/malak-joumaa/Homemade#how-to-run)**
+**[PROJECT PHILOSOPHY](#project-philosophy) • [WIREFRAMES](#wireframes) • [TECH STACK](#tech-stack) • [IMPLEMENTATION](#implementation) • [HOW TO RUN?](https://github.com/malak-joumaa/Homemade#how-to-run)**
 
 </div>
 
@@ -106,18 +106,30 @@ First, you need to have the latest npm version installed.
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/malak-joumaa/Homemade.git
    ```
-3. Install NPM packages
+   Here you will find three folders (frontend, backend, and socket)
+2. Inside the frontend folder, run:
+
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = "ENTER YOUR API";
+
+3. Inside the backend folder, run:
+   ```sh
+   npm install
+   ```
+4. Rename `.env.example` to `.env` then set your `DB_CONNECT` to your MongoDB connection URI and add your `TOKEN_SECRET`.
+
+5. Inside the socket folder, run:
+
+   ```sh
+   npm install socket.io
+   ```
+
+6. You are ready to go, inside the backend folder, the frontend folder and the socket folder, run:
+   ```sh
+   npm start
    ```
