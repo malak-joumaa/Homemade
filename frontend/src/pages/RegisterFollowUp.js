@@ -64,6 +64,7 @@ const RegisterFollowUp = () => {
               description: data[3].description,
               rate: 5,
               submitted_orders: [],
+              firebase_token: "",
             }),
           });
           const resData = await res.json();

@@ -147,6 +147,8 @@ const Checkout = () => {
           if (time === "") {
             toast.error("Please select a pickup hour");
           } else {
+            updateOrder();
+            SubmitOrder();
             // Sending Notification to Cook
             // const message = {
             //   token: orderData.cook.user.firebase_token,
@@ -168,8 +170,6 @@ const Checkout = () => {
             //   .catch((error) => {
             //     console.log("Error sending message:", error);
             //   });
-            updateOrder();
-            SubmitOrder();
           }
         }}
       >

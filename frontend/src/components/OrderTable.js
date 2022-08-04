@@ -187,29 +187,29 @@ const OrderTable = () => {
                       selected[index],
                       order.orders.filter((item) => item.id !== undefined)
                     );
-                    if (selected[index] === "ready") {
-                      // Sending Notification to Customer
-                      const message = {
-                        token: order.customer.user,
-                        notification: {
-                          title: "order",
-                          body: "Your order is ready!",
-                        },
-                        data: {
-                          title: "order",
-                          body: "Your order is ready!",
-                        },
-                      };
-                      getMessaging()
-                        .send(message)
-                        .then((response) => {
-                          // Response is a message ID string.
-                          console.log("Successfully sent message:", response);
-                        })
-                        .catch((error) => {
-                          console.log("Error sending message:", error);
-                        });
-                    }
+                    // if (selected[index] === "ready") {
+                    //   // Sending Notification to Customer
+                    //   const message = {
+                    //     token: order.customer.user,
+                    //     notification: {
+                    //       title: "order",
+                    //       body: "Your order is ready!",
+                    //     },
+                    //     data: {
+                    //       title: "order",
+                    //       body: "Your order is ready!",
+                    //     },
+                    //   };
+                    //   getMessaging()
+                    //     .send(message)
+                    //     .then((response) => {
+                    //       // Response is a message ID string.
+                    //       console.log("Successfully sent message:", response);
+                    //     })
+                    //     .catch((error) => {
+                    //       console.log("Error sending message:", error);
+                    //     });
+                    // }
                     window.location.reload();
                   }}
                 >
