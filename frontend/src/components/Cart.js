@@ -13,7 +13,7 @@ const Cart = ({ order }) => {
   const [modal, setModal] = useState(false);
 
   const toggleModal = () => setModal(!modal);
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
 
   useEffect(() => {
     for (let i = 0; i < orderData.length; i++) {

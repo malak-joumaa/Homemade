@@ -8,6 +8,7 @@ import {
   Tbody,
   Thead,
 } from "../styles/Profile.style";
+import { Answer } from "../styles/Orders.style";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import MapsModal from "./maps/MapsModal";
@@ -137,7 +138,8 @@ const OrderTable = () => {
                 {order.orders.map((item) => (
                   <>
                     <span>
-                      {item.name}-{item.quantity}
+                      {item.name} {item.quantity}{" "}
+                      <Answer>{item.answers}</Answer>
                     </span>
                     <br />
                   </>

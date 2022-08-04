@@ -42,8 +42,9 @@ const Checkout = () => {
     if (order.status == "cart") {
       OrderIDs.push(
         { name: order.dish.name },
-        { quantity: order.dish.quantity },
-        { id: order._id }
+        { quantity: order.quantity },
+        { id: order._id },
+        { answers: order.answers }
       );
       total += order.total;
     }

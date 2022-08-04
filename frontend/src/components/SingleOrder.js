@@ -38,7 +38,7 @@ const SingleOrder = ({ cart = false, orderData }) => {
             <CookName>{orderData.dish.name}</CookName>
             <br />
             <span>
-              {orderData.dish.description} <Answer>{orderData.answer}</Answer>
+              {orderData.dish.description} <Answer>{orderData.answers}</Answer>
             </span>
           </CookInfo>
         </Grid>
