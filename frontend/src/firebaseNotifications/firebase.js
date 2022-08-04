@@ -21,6 +21,7 @@ export const requestForToken = () => {
   })
     .then((currentToken) => {
       if (currentToken) {
+        localStorage.setItem("firebase_token", currentToken);
         console.log("current token for client: ", currentToken);
       } else {
         console.log(

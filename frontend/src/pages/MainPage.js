@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import { MainPageContainer, SearchLocation } from "../styles/Container.style";
-import { SearchBox, LocationName, Title, Loc } from "../styles/MainPage.style";
+import { LocationName, Title, Loc } from "../styles/MainPage.style";
 import { Container, Grid, Rating } from "@mui/material";
 import TopCook from "../components/TopCook";
 import NewCook from "../components/NewCook";
@@ -12,6 +12,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import { useSelector } from "react-redux";
 import LocationModal from "../components/maps/LocationModal";
+import { requestForToken } from "../firebaseNotifications/firebase";
 
 const MainPage = () => {
   const userData = useSelector((state) => state.login);
@@ -30,8 +31,12 @@ const MainPage = () => {
   // for filtering new and top cooks
   var top_count = 1;
   var new_count = 1;
-  var d1 = new Date();
-  var d2 = new Date(cooks[0]?.createdAt);
+
+  //Notification
+  const Notification = () => {
+    requestForToken();
+  };
+  Notification();
 
   useEffect(() => {
     if (selectedPosition) {
@@ -53,6 +58,26 @@ const MainPage = () => {
     } catch (err) {}
   };
   localStorage.setItem("newLocation", JSON.stringify(selectedPosition));
+
+  useEffect(() => {
+    updateToken();
+  }, []);
+
+  // Update firebase token
+  const updateToken = async () => {
+    const res = await fetch(
+      "http://localhost:5000/api/user/update-user/?id=" + userData.user_id,
+      {
+        method: "PUT",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          firebase_token: localStorage.getItem("firebase_token"),
+        }),
+      }
+    );
+  };
 
   return (
     <Container maxWidth="xl">
