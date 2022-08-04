@@ -18,21 +18,19 @@
 
 #### &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; As a Customer:
 
-- I want to see menus of home cooks that are located in my area.
-- I want to be able to view cooks from other areas.
+- I want to see menus of home cooks that are located in my area and have the option to view cooks from other areas.
 - I want to see the top and new home cooks.
-- I want to view the cook details with their menu.
-- I want to order food from the cook.
+- I want to view the cook details with their menu and order food.
 - I want to see my placed orders that are not delivered yet.
-- I want to view the route between my location and the cook.
+- I want to view the route between my location and the cook's location.
 - I want to chat with the cook.
 - I want to be able to rate the cook.
 
 #### &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; As a Cook:
 
 - I want to create and view my menu.
-- I want to be able to check my orders and change the status of my orders.
-- I want to be able to view the route between my location and the customer.
+- I want to be able to check my customer's orders and change the status of the orders.
+- I want to be able to view the route between my location and the customer' location.
 - I want to be able to chat with the customer.
 - I want to be able to view other cooks.
 
