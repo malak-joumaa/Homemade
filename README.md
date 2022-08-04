@@ -23,7 +23,6 @@ Cooks can create menus with their special recipes and sell them to the community
 - I want to see menus of home cooks that are located in my area and have the option to view cooks from other areas.
 - I want to see the top and new home cooks.
 - I want to view the cook details with their menu and order food.
-- I want to see my placed orders that are not delivered yet.
 - I want to view the route between my location and the cook's location.
 - I want to chat with the cook.
 - I want to be able to rate the cook.
