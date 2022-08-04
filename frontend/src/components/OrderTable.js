@@ -12,12 +12,14 @@ import { Answer } from "../styles/Orders.style";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import MapsModal from "./maps/MapsModal";
+import { handleBreakpoints } from "@mui/system";
 
 const OrderTable = () => {
   const navigate = useNavigate();
   const [orders, setOrders] = useState([]);
   const [selected, setSelected] = useState(new Array(orders.length));
   const userData = useSelector((state) => state.login);
+  const [conversations, setConversations] = useState([]);
   console.log(userData);
 
   useEffect(() => {
@@ -113,6 +115,33 @@ const OrderTable = () => {
       console.log(err);
     }
   };
+  useEffect(() => {
+    const getConversations = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:5000/api/chat/get-convo/?id=" + userData.user_id
+        );
+        const data = await response.json();
+        console.log(data);
+        setConversations(data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getConversations();
+  }, []);
+  var created = false;
+  const handleChat = (order) => {
+    for (var i = 0; i < conversations.length; i++) {
+      if (conversations[i].members.includes(order.customer.user)) {
+        created = true;
+        navigate("/chat");
+      }
+    }
+    if (created == false) {
+      createChat(order);
+    }
+  };
 
   return (
     <div>
@@ -178,7 +207,7 @@ const OrderTable = () => {
                 <i
                   className="fa-regular fa-comment-dots"
                   onClick={() => {
-                    createChat(order);
+                    handleChat(order);
                   }}
                 ></i>
               </IconTd>
