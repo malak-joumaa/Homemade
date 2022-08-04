@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import toast from "react-hot-toast";
 import {
   ConversationContainer,
   ConversationImg,
@@ -10,17 +11,15 @@ const Conversation = ({ conversation, currentUser }) => {
 
   useEffect(() => {
     const friendId = conversation.members.find((m) => m !== currentUser);
-    console.log(friendId);
     const getUser = async () => {
       try {
         const response = await fetch(
           "http://localhost:5000/api/user/get-user/?id=" + friendId
         );
         const data = await response.json();
-        console.log("friend", data);
         setUser(data);
       } catch (err) {
-        console.log(err);
+        toast.error("Error fetching user");
       }
     };
     getUser();

@@ -7,6 +7,7 @@ import { Nav, NavItem } from "../styles/Orders.style";
 import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "../state/index";
+import toast from "react-hot-toast";
 
 const Orders = () => {
   const [isCart, setCart] = useState(true);
@@ -18,7 +19,6 @@ const Orders = () => {
     getOrders();
     getSubOrders();
   }, []);
-  console.log(order);
 
   // Redux
   const dispatch = useDispatch();
@@ -36,7 +36,7 @@ const Orders = () => {
         addOrderData(data);
       });
     } catch (err) {
-      console.log(err);
+      toast.error("Error fetching orders");
     }
   };
 
@@ -51,7 +51,7 @@ const Orders = () => {
         setSubOrder(data);
       });
     } catch (err) {
-      console.log(err);
+      toast.error("Error fetching orders");
     }
   };
 

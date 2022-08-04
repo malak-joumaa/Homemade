@@ -31,7 +31,6 @@ const Chat = () => {
   const scrollRef = useRef();
   const socket = useRef();
 
-  console.log(user_id);
   useEffect(() => {
     socket.current = io("ws://localhost:8900");
     socket.current.on("getMessage", (data) => {
@@ -42,10 +41,6 @@ const Chat = () => {
       });
     });
   }, []);
-  // const socket = useSelector((state) => state.socket);
-  {
-    socket && console.log("socket", socket);
-  }
 
   useEffect(() => {
     socket?.current.emit("addUser", user?.user_id);
@@ -70,15 +65,9 @@ const Chat = () => {
         "http://localhost:5000/api/chat/get-convo/?id=" + user_id
       );
       const data = await response.json();
-      console.log(data);
       setConversation(data);
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   };
-
-  console.log("convo", conversation);
-  console.log("currentChat", currentChat);
 
   useEffect(() => {
     const getMessages = async () => {
@@ -87,16 +76,11 @@ const Chat = () => {
           "http://localhost:5000/api/chat/get-message/?id=" + currentChat?._id
         );
         const msg = await response.json();
-        console.log(msg);
         setMessages(msg);
-      } catch (err) {
-        console.log(err);
-      }
+      } catch (err) {}
     };
     getMessages();
   }, [currentChat]);
-
-  console.log("messages", messages);
 
   // Submit message
   const handleSubmit = async (e) => {
@@ -106,7 +90,6 @@ const Chat = () => {
       text: newMessage,
       conversationId: currentChat._id,
     };
-    console.log("hi", currentChat);
 
     const receiverId = currentChat.members.find((m) => m !== user_id);
 
@@ -128,12 +111,9 @@ const Chat = () => {
         }
       );
       const data = await response.json();
-      console.log(data);
       setMessages([...messages, data]);
       setNewMessage("");
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   };
 
   // Scroll to bottom
@@ -150,7 +130,6 @@ const Chat = () => {
             <Grid item xs={3.5}>
               <ChatMenu>
                 <ChatMenuWrapper>
-                  <SearchBox placeholder="search" />
                   {conversation.map((convo) => (
                     <div
                       onClick={() => {

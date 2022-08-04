@@ -161,7 +161,6 @@ const MainPage = () => {
 
         {/* Menu */}
         <Title>Menus</Title>
-        <SearchBox placeholder="Search..."></SearchBox>
 
         {/* Map cooks over menu */}
         {cooks
