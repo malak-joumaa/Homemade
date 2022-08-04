@@ -57,6 +57,18 @@ const AddMenu = () => {
     setDish([...dish, newDish]);
     setQuestion([...question, []]);
   };
+  // Delete Menu
+  const deleteMenu = async (menu_id) => {
+    const res = await fetch(
+      "http://localhost:5000/api/menu/delete-menu/?id=" + menu_id,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-type": "application/json",
+        },
+      }
+    );
+  };
 
   const submitMenu = async () => {
     try {
@@ -67,7 +79,6 @@ const AddMenu = () => {
         },
         body: JSON.stringify({
           cook: localStorage.getItem("cook_id"),
-          days: [1, 2],
         }),
       });
       const data = await res.json();
@@ -175,7 +186,14 @@ const AddMenu = () => {
           ))}
           <Button btn_name="+" btn_func={addDish} />
           <br />
-          <button id="submit-menu" onClick={submitMenu}>
+          <button
+            id="submit-menu"
+            onClick={(e) => {
+              e.preventDefault();
+              deleteMenu(localStorage.getItem("menu_id"));
+              submitMenu();
+            }}
+          >
             Submit Menu
           </button>
         </form>

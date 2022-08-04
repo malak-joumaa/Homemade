@@ -123,7 +123,16 @@ const CookProfile = () => {
           {isMenu && (
             <>
               <Menu menu={menu} disable={true} />
-              <NewMenuBtn onClick={() => navigate("/add-menu")}>
+              <NewMenuBtn
+                onClick={() => {
+                  if (menu[0]) {
+                    localStorage.setItem("menu_id", menu[0]._id);
+                  } else {
+                    localStorage.setItem("menu_id", "");
+                  }
+                  navigate("/add-menu");
+                }}
+              >
                 Replace Menu
               </NewMenuBtn>
             </>
