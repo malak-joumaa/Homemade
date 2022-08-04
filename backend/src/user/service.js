@@ -32,11 +32,19 @@ async function addUser(body, hashPassword) {
 
 //Add cook function
 async function addNewCook(body) {
-  const { rate, description, opening_hours, user, orders, submitted_orders } =
-    body;
+  const {
+    rate,
+    rate_count,
+    description,
+    opening_hours,
+    user,
+    orders,
+    submitted_orders,
+  } = body;
 
   const cook = new Cook({
     rate,
+    rate_count,
     description,
     opening_hours,
     user,

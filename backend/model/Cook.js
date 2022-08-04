@@ -4,6 +4,9 @@ const cookSchema = new mongoose.Schema({
   rate: {
     type: Number,
   },
+  rate_count: {
+    type: Number,
+  },
   description: {
     type: String,
   },

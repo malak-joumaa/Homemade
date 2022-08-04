@@ -137,6 +137,7 @@ async function updateCook(req, res) {
       {
         $set: {
           rate: req.body.rate,
+          rate_count: req.body.rate_count,
         },
       }
     );

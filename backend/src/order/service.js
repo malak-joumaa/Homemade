@@ -51,7 +51,12 @@ async function newSubOrder(body) {
 
 // Get Submitted Orders by Cook Id
 async function getSubOrdersByCookId(id) {
-  return await SubmittedOrder.find({ cook: id }).populate("customer");
+  return await SubmittedOrder.find({ cook: id })
+    .populate("customer")
+    .populate({
+      path: "customer",
+      populate: { path: "user" },
+    });
 }
 
 // Get Submitted Orders by Customer Id
