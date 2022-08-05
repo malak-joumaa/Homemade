@@ -14,7 +14,7 @@
 
 > Homemade is a website that allows users to sell and buy homemade food. This website helps both, home cooks who are not able to find a job and people who don't have access to homemade food.
 
-Cooks can create menus with their special recipes and sell them to the community, while customers can discover various menus and home cooks around them.
+> Cooks can create menus with their special recipes and sell them to the community, while customers can discover various menus and home cooks around them.
 
 ### User Stories
 
@@ -22,7 +22,7 @@ Cooks can create menus with their special recipes and sell them to the community
 
 - I want to see menus of home cooks that are located in my area and have the option to view cooks from other areas.
 - I want to see the top and new home cooks.
-- I want to view the cook details with their menu and order food.
+- I want to view the cook's information with their menu and order food.
 - I want to view the route between my location and the cook's location.
 - I want to chat with the cook.
 - I want to be able to rate the cook.
@@ -31,7 +31,7 @@ Cooks can create menus with their special recipes and sell them to the community
 
 - I want to create and view my menu.
 - I want to be able to check my customer's orders and change the status of the orders.
-- I want to be able to view the route between my location and the customer' location.
+- I want to be able to view the route between my location and the customer's location.
 - I want to be able to chat with the customer.
 - I want to be able to view other cooks.
 
@@ -64,7 +64,7 @@ Here's a brief high-level overview of the tech stack the Homemade website uses:
 <br><br>
 <img id="implementation" src="./readme/title5.svg"/>
 
-> Using the above mentioned tech stacks and the wireframes build with figma from the user stories we have, the implementation of the app is shown as below, these are screenshots from the real app
+> Using the above mentioned tech stacks and the wireframes build with figma from the user stories we have, the implementation of the website is shown as below, these are screenshots from the real website.
 
 | Landing                                            | Sign In                                               |
 | -------------------------------------------------- | ----------------------------------------------------- |
