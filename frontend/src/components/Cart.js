@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ModalDiv, Overlay, ModalContent } from "../styles/Modal.style";
 import { Rating } from "@mui/material";
+import toast from "react-hot-toast";
 
 const Cart = ({ order }) => {
   const navigate = useNavigate();
@@ -13,12 +14,12 @@ const Cart = ({ order }) => {
   const [modal, setModal] = useState(false);
 
   const toggleModal = () => setModal(!modal);
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(false);
 
   useEffect(() => {
     for (let i = 0; i < orderData.length; i++) {
       if (orderData[i].status === "cart") {
-        setCount(count + 1);
+        setCount(true);
       }
     }
 
@@ -29,9 +30,6 @@ const Cart = ({ order }) => {
       ) {
         setModal(true);
       }
-    }
-    if (order.length == 0) {
-      setCount(0);
     }
   }, []);
 
@@ -84,16 +82,18 @@ const Cart = ({ order }) => {
         ))}
 
       {/* Checkout button */}
-      {count > 0 && (
-        <Button
-          onClick={() => {
+      <Button
+        onClick={() => {
+          if (count == 1) {
             setCount(0);
             navigate("/checkout");
-          }}
-        >
-          Go to checkout
-        </Button>
-      )}
+          } else {
+            toast.error("You must have at least one order");
+          }
+        }}
+      >
+        Go to checkout
+      </Button>
       {/* Map over cook array to fire modal*/}
       {modal && (
         <ModalDiv>
@@ -106,6 +106,7 @@ const Cart = ({ order }) => {
               value={rate}
               onClick={(e) => {
                 setRate(e.target.value);
+                console.log(e.target.value);
               }}
             />
             <Button
